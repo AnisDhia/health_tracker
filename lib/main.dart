@@ -1,27 +1,38 @@
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
-import 'package:health_tracker/pages/home.dart';
+// import 'package:health_tracker/pages/home.dart';
+import 'package:health_tracker/themes.dart';
+import 'package:health_tracker/utils/user_preferences.dart';
 import 'package:health_tracker/widgets/navigation.dart';
 
-void main() {
-  runApp(const MyApp());
+Future main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  await UserPreferences.init();
+  
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  static const String title = 'Health Tracker';
+  
+  // const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
-      // theme: ThemeData(
-        
-      //   primarySwatch: Colors.red,
-      // ),
-      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: const Navigation(),
-    );
+    final user = UserPreferences.myUser;
+
+    return ThemeProvider(
+      initTheme: user.isDarkMode ? MyThemes.darkTheme : MyThemes.lightTheme,
+      builder: (context, myTheme) {
+          return MaterialApp(
+            title: title,
+            debugShowCheckedModeBanner: false,
+            theme: myTheme,
+            home: const Navigation(),
+          );
+        }
+      );
   }
 }
 /*

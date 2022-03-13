@@ -4,6 +4,8 @@ import 'package:health_tracker/pages/home.dart';
 import 'package:health_tracker/pages/plans.dart';
 import 'package:health_tracker/pages/profile.dart';
 import 'package:health_tracker/widgets/nav-drawer.dart';
+import 'package:health_tracker/utils/user_preferences.dart';
+
 
 
 class Navigation extends StatefulWidget {
@@ -32,11 +34,11 @@ class _NavigationState extends State<Navigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const NavDrawer(),
-      appBar: AppBar(
-        title: const Text('Health Tracker'), 
-        centerTitle: true,
-      ),
+      // drawer: const NavDrawer(),
+      // appBar: AppBar(
+      //   title: const Text('Health Tracker'), 
+      //   centerTitle: true,
+      // ),
       body: PageView(
         controller: pageController,
         children: const <Widget>[
@@ -66,10 +68,10 @@ class _NavigationState extends State<Navigation> {
             label: 'Profile',
           ),
         ],
-        selectedItemColor: Colors.white,
+        selectedItemColor: Colors.red,
         currentIndex: _selectedIndex,
         // showUnselectedLabels: false,
-        onTap: _onItemTapped,
+        onTap:  _onItemTapped,
       ),
     );
   }
