@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:health_tracker/pages/home.dart';
+import 'package:health_tracker/widgets/navigation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,17 +13,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
       // theme: ThemeData(
         
       //   primarySwatch: Colors.red,
       // ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: const Home(),
+      home: const Navigation(),
     );
   }
 }
-
+/*
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
@@ -101,3 +103,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+*/
