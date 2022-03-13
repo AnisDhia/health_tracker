@@ -1,6 +1,6 @@
 # health_tracker
 
-A new Flutter project.
+A health and nutrition tracking App for iOS and Android.
 
 ## Getting Started
 
