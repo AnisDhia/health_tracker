@@ -18,7 +18,7 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    final user = UserPreferences.myUser;
+    final user = UserPreferences.getUser();
 
     return ThemeSwitchingArea(
       child: Builder(
@@ -30,10 +30,13 @@ class _ProfileState extends State<Profile> {
               children: [
                 ProfileWidget(
                   imagePath: user.imagePath,
-                  onClicked: () {
-                    Navigator.of(context).push(
+                  onClicked: () async {
+                    await Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => const EditProfile()),
                     );
+                    setState(() {
+                      
+                    });
                   },
                 ),
                 const SizedBox(height: 24,),

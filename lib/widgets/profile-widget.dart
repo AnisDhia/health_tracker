@@ -32,13 +32,13 @@ class ProfileWidget extends StatelessWidget {
   }
 
   Widget buildImage() {
-    final image = NetworkImage(imagePath);
+    final image = imagePath.contains('https://') ? NetworkImage(imagePath) : FileImage(File(imagePath));
 
     return ClipOval(
       child: Material(
         color: Colors.transparent,
         child: Ink.image(
-          image: image,
+          image: image as ImageProvider,
           fit: BoxFit.cover,
           width: 128,
           height: 128,
