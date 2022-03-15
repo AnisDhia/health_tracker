@@ -42,6 +42,7 @@ dependencies:
   path_provider: ^2.0.9
   curved_navigation_bar: ^1.0.3
   firebase_auth: ^3.3.10
+  provider: ^6.0.2
 
 dev_dependencies:
   flutter_test:

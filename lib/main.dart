@@ -1,15 +1,21 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-// import 'package:health_tracker/pages/home.dart';
+import 'package:health_tracker/pages/login_screen.dart';
+import 'package:health_tracker/services/authentication_service.dart';
+import 'package:health_tracker/pages/home.dart';
 import 'package:health_tracker/themes.dart';
 import 'package:health_tracker/utils/user_preferences.dart';
 import 'package:health_tracker/widgets/navigation.dart';
+import 'package:provider/provider.dart';
 
 Future main() async{
   WidgetsFlutterBinding.ensureInitialized();
   
   await UserPreferences.init();
   
+  // await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -35,6 +41,21 @@ class MyApp extends StatelessWidget {
       );
   }
 }
+
+// class AuthenticationWrapper extends StatelessWidget {
+//   const AuthenticationWrapper({ Key? key }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final firebaseuser = context.watch<User>();
+//     if(firebaseuser != null){
+//       return const Navigation();
+//     }
+//     return const LoginScreen();
+    
+//   }
+// }
+
 /*
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);

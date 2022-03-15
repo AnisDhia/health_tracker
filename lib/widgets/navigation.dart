@@ -1,12 +1,12 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+// import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/pages/diary.dart';
 import 'package:health_tracker/pages/home.dart';
 import 'package:health_tracker/pages/plans.dart';
 import 'package:health_tracker/pages/profile.dart';
 import 'package:health_tracker/pages/recipes.dart';
-import 'package:health_tracker/widgets/nav-drawer.dart';
-import 'package:health_tracker/utils/user_preferences.dart';
+// import 'package:health_tracker/widgets/nav-drawer.dart';
+// import 'package:health_tracker/utils/user_preferences.dart';
 
 
 

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:health_tracker/services/authentication_service.dart';
+import 'package:provider/provider.dart';
 
 class NavDrawer extends StatelessWidget {
   const NavDrawer({ Key? key }) : super(key: key);
@@ -45,7 +47,9 @@ class NavDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.exit_to_app),
             title: const Text('Logout'),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => {
+              // context.read<AuthenticationService>().signOut()
+            },
           ),
         ],
       )
