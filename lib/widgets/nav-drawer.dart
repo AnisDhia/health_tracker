@@ -48,7 +48,7 @@ class NavDrawer extends StatelessWidget {
             leading: const Icon(Icons.exit_to_app),
             title: const Text('Logout'),
             onTap: () => {
-              // context.read<AuthenticationService>().signOut()
+              context.read<AuthenticationService>().signOut()
             },
           ),
         ],
