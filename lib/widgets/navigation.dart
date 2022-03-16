@@ -1,12 +1,12 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+// import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/pages/diary.dart';
 import 'package:health_tracker/pages/home.dart';
 import 'package:health_tracker/pages/plans.dart';
 import 'package:health_tracker/pages/profile.dart';
 import 'package:health_tracker/pages/recipes.dart';
-import 'package:health_tracker/widgets/nav-drawer.dart';
-import 'package:health_tracker/utils/user_preferences.dart';
+// import 'package:health_tracker/widgets/nav-drawer.dart';
+// import 'package:health_tracker/utils/user_preferences.dart';
 
 
 
@@ -28,13 +28,13 @@ class _NavigationState extends State<Navigation> {
     Diary(),
     Profile(),
   ];
-  var items = const[
-    Icon(Icons.fastfood, size: 30),
-    Icon(Icons.list, size: 30),
-    Icon(Icons.home, size: 30),
-    Icon(Icons.query_stats, size: 30),
-    Icon(Icons.person, size: 30),
-  ];
+  // var items = const[
+  //   Icon(Icons.restaurant, size: 30),
+  //   Icon(Icons.fitness_center, size: 30),
+  //   Icon(Icons.explore_outlined, size: 30),
+  //   Icon(Icons.leaderboard, size: 30),
+  //   Icon(Icons.person, size: 30),
+  // ];
 
   @override
   void initState() {
@@ -74,18 +74,19 @@ class _NavigationState extends State<Navigation> {
           });
         } ,
       ),
-      
-      // bottomNavigationBar: CurvedNavigationBar(
-      //   color: Colors.grey.shade900,
-      //   backgroundColor: Colors.transparent,
-      //   buttonBackgroundColor: Colors.red,
-      //   height: 60,
-      //   index: _selectedIndex,
-      //   items: items,
-      //   // onTap: (_selectedIndex) => setState(() => this._selectedIndex = _selectedIndex),
-      //   onTap: _onItemTapped,
-      // ),
-      
+      /*
+      bottomNavigationBar: CurvedNavigationBar(
+        color: Colors.grey.shade900,
+        backgroundColor: Colors.transparent,
+        buttonBackgroundColor: Colors.red,
+        height: 60,
+        index: _selectedIndex,
+        items: items,
+        // onTap: (_selectedIndex) => setState(() => this._selectedIndex = _selectedIndex),
+        onTap: _onItemTapped,
+      ),
+      // */
+      // /*
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
@@ -115,7 +116,7 @@ class _NavigationState extends State<Navigation> {
         // showUnselectedLabels: false,
         onTap:  _onItemTapped,
       ),
-      
+    // */      
     );
   }
 }
