@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class MyThemes {
-  static final primary = Colors.red;
+  static const primary = Colors.red;
   static final primaryColor = Colors.red.shade300;
 
   static final darkTheme = ThemeData(
     scaffoldBackgroundColor: Colors.grey.shade900,
     primaryColorDark: primaryColor, 
-    colorScheme: ColorScheme.dark(primary: primary),
+    colorScheme: const ColorScheme.dark(primary: primary),
     dividerColor: Colors.white,
   );
 
@@ -19,7 +18,7 @@ class MyThemes {
       backgroundColor: Colors.white,
       foregroundColor: Colors.black,
       ),
-    colorScheme: ColorScheme.light(primary: primary),
+    colorScheme: const ColorScheme.light(primary: primary),
     dividerColor: Colors.black,
   );
 }

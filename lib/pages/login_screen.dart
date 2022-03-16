@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:health_tracker/pages/registration_screen.dart';
 import 'package:health_tracker/services/authentication_service.dart';
+import 'package:health_tracker/widgets/button-widget.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -26,8 +28,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: const Text(
                     'Health Tracker',
                     style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.w500,
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
                         fontSize: 30),
                   )),
               Container(
@@ -67,33 +69,46 @@ class _LoginScreenState extends State<LoginScreen> {
               Container(
                   height: 50,
                   padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                  child: ElevatedButton(
-                    child: const Text('Login'),
+                  child: buildLoginButton(), 
+                  // ElevatedButton(
+                  //   child: const Text('Login'),
+                  //   onPressed: () {
+                  //     context.read<AuthenticationService>().signIn(
+                  //       email: emailController.text.trim(),
+                  //       password: passwordController.text.trim()
+                  //     );
+                  //   },
+                  // )
+              ),
+              Row(
+                children: <Widget>[
+                  const Text('Don\'t have an account?'),
+                  TextButton(
+                    child: const Text(
+                      'Sign up!',
+                      style: TextStyle(fontSize: 20),
+                    ),
                     onPressed: () {
-                      context.read<AuthenticationService>().signIn(
-                        email: emailController.text.trim(),
-                        password: passwordController.text.trim()
-                      );
+                      //signup screen
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpScreen()));
                     },
                   )
+                ],
+                mainAxisAlignment: MainAxisAlignment.center,
               ),
-              // Row(
-              //   children: <Widget>[
-              //     const Text('Does not have account?'),
-              //     TextButton(
-              //       child: const Text(
-              //         'Sign in',
-              //         style: TextStyle(fontSize: 20),
-              //       ),
-              //       onPressed: () {
-              //         //signup screen
-              //       },
-              //     )
-              //   ],
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              // ),
             ],
           )),
     );
   }
+
+
+  Widget buildLoginButton() => ButtonWidget(
+  text: 'Login',
+  onClicked: () {
+    context.read<AuthenticationService>().signIn(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim()
+      );
+  },
+);
 }
