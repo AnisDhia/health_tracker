@@ -1,21 +1,21 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/model/user.dart';
-import 'package:health_tracker/pages/edit_profile.dart';
+import 'package:health_tracker/screens/edit_profile_screen.dart';
 import 'package:health_tracker/utils/user_preferences.dart';
 import 'package:health_tracker/widgets/appbar.dart';
 import 'package:health_tracker/widgets/button-widget.dart';
 import 'package:health_tracker/widgets/numbers.dart';
 import 'package:health_tracker/widgets/profile-widget.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({ Key? key }) : super(key: key);
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({ Key? key }) : super(key: key);
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<ProfileScreen> createState() => _ProfileState();
 }
 
-class _ProfileState extends State<Profile> {
+class _ProfileState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final user = UserPreferences.getUser();
@@ -32,7 +32,7 @@ class _ProfileState extends State<Profile> {
                   imagePath: user.imagePath,
                   onClicked: () async {
                     await Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const EditProfile()),
+                      MaterialPageRoute(builder: (context) => const EditProfileScreen()),
                     );
                     setState(() {
                       

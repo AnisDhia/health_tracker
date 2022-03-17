@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:health_tracker/widgets/nav-drawer.dart';
 
-class Diary extends StatefulWidget {
-  const Diary({ Key? key }) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({ Key? key }) : super(key: key);
 
   @override
-  State<Diary> createState() => _DiaryState();
+  State<HomeScreen> createState() => _HomeState();
 }
 
-class _DiaryState extends State<Diary> {
+class _HomeState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber,
+      backgroundColor: Colors.grey[700],
       drawer: const NavDrawer(),
       appBar: AppBar(
-        title: const Text('Diary'), 
+        title: const Text('Health Tracker'), 
         centerTitle: true,
       ),
       body: Container(
-        child: const Text('Diary'),
+        child: const Text('Home'),
       ),
     );
   }

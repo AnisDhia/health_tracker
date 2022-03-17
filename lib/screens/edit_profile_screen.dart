@@ -11,14 +11,14 @@ import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 import 'dart:io';
 
-class EditProfile extends StatefulWidget {
-  const EditProfile({ Key? key }) : super(key: key);
+class EditProfileScreen extends StatefulWidget {
+  const EditProfileScreen({ Key? key }) : super(key: key);
 
   @override
-  State<EditProfile> createState() => _EditProfileState();
+  State<EditProfileScreen> createState() => _EditProfileScreenState();
 }
 
-class _EditProfileState extends State<EditProfile> {
+class _EditProfileScreenState extends State<EditProfileScreen> {
   late User user;
 
   @override

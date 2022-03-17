@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:health_tracker/services/authentication_service.dart';
+import 'package:health_tracker/widgets/button-widget.dart';
 import 'package:provider/provider.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
  
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
  
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
  
@@ -26,15 +27,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: const Text(
                     'Health Tracker',
                     style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.w500,
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
                         fontSize: 30),
                   )),
               Container(
                   alignment: Alignment.center,
                   padding: const EdgeInsets.all(10),
                   child: const Text(
-                    'Sign in',
+                    'Sign up',
                     style: TextStyle(fontSize: 20),
                   )),
               Container(
@@ -58,42 +59,43 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              TextButton(
-                onPressed: () {
-                  //forgot password screen
-                },
-                child: const Text('Forgot Password',),
-              ),
+              
               Container(
                   height: 50,
                   padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                  child: ElevatedButton(
-                    child: const Text('Login'),
+                  child: buildSignupButton(), 
+              ),
+              
+              Row(
+                children: <Widget>[
+                  const Text('Already have an account?'),
+                  TextButton(
+                    child: const Text(
+                      'Sign in!',
+                      style: TextStyle(fontSize: 20),
+                    ),
                     onPressed: () {
-                      context.read<AuthenticationService>().signIn(
-                        email: emailController.text.trim(),
-                        password: passwordController.text.trim()
-                      );
+                      //signup screen
+                      Navigator.pop(context);
+                      // Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
                     },
                   )
+                ],
+                mainAxisAlignment: MainAxisAlignment.center,
               ),
-              // Row(
-              //   children: <Widget>[
-              //     const Text('Does not have account?'),
-              //     TextButton(
-              //       child: const Text(
-              //         'Sign in',
-              //         style: TextStyle(fontSize: 20),
-              //       ),
-              //       onPressed: () {
-              //         //signup screen
-              //       },
-              //     )
-              //   ],
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              // ),
             ],
           )),
     );
   }
+
+
+  Widget buildSignupButton() => ButtonWidget(
+  text: 'Sign Up',
+  onClicked: () {
+    context.read<AuthenticationService>().signUp(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim()
+      );
+  },
+);
 }

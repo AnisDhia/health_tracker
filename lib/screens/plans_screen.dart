@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:health_tracker/widgets/nav-drawer.dart';
 
-class Plans extends StatelessWidget {
-  const Plans({ Key? key }) : super(key: key);
+class PlansScreen extends StatelessWidget {
+  const PlansScreen({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
