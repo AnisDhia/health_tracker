@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
-import 'package:health_tracker/pages/login_screen.dart';
+import 'package:health_tracker/screens/login_screen.dart';
 import 'package:health_tracker/services/authentication_service.dart';
 import 'package:health_tracker/themes.dart';
 import 'package:health_tracker/utils/user_preferences.dart';

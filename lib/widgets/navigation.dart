@@ -1,10 +1,10 @@
 // import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:health_tracker/pages/diary.dart';
-import 'package:health_tracker/pages/home.dart';
-import 'package:health_tracker/pages/plans.dart';
-import 'package:health_tracker/pages/profile.dart';
-import 'package:health_tracker/pages/recipes.dart';
+import 'package:health_tracker/screens/diary_screen.dart';
+import 'package:health_tracker/screens/home_screen.dart';
+import 'package:health_tracker/screens/plans_screen.dart';
+import 'package:health_tracker/screens/profile_screen.dart';
+import 'package:health_tracker/screens/recipes_screen.dart';
 // import 'package:health_tracker/widgets/nav-drawer.dart';
 // import 'package:health_tracker/utils/user_preferences.dart';
 
@@ -22,11 +22,11 @@ class _NavigationState extends State<Navigation> {
   PageController pageController = PageController();
 
   static const List<Widget> _widgetOption = <Widget>[
-    Recipes(),
-    Plans(),
-    Home(),
-    Diary(),
-    Profile(),
+    RecipesScreen(),
+    PlansScreen(),
+    HomeScreen(),
+    DiaryScreen(),
+    ProfileScreen(),
   ];
   // var items = const[
   //   Icon(Icons.restaurant, size: 30),

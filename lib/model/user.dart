@@ -19,7 +19,7 @@ class User {
       name: name ?? this.name,
       email: email ?? this.email,
       about: about ?? this.about,
-      isDarkMode: isDarkTheme ?? this.isDarkMode,
+      isDarkMode: isDarkTheme ?? isDarkMode,
     );
 
   static User fromJson(Map<String, dynamic> json) => User(

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:health_tracker/pages/login_screen.dart';
+import 'package:health_tracker/screens/registration_screen.dart';
 import 'package:health_tracker/services/authentication_service.dart';
 import 'package:health_tracker/widgets/button-widget.dart';
 import 'package:provider/provider.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
  
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
  
-class _SignUpScreenState extends State<SignUpScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
  
@@ -36,7 +36,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   alignment: Alignment.center,
                   padding: const EdgeInsets.all(10),
                   child: const Text(
-                    'Sign up',
+                    'Sign in',
                     style: TextStyle(fontSize: 20),
                   )),
               Container(
@@ -60,11 +60,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
               ),
-              
+              TextButton(
+                onPressed: () {
+                  //forgot password screen
+                },
+                child: const Text('Forgot Password',),
+              ),
               Container(
                   height: 50,
                   padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                  child: buildSignupButton(), 
+                  child: buildLoginButton(), 
                   // ElevatedButton(
                   //   child: const Text('Login'),
                   //   onPressed: () {
@@ -77,16 +82,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               Row(
                 children: <Widget>[
-                  const Text('Already have an account?'),
+                  const Text('Don\'t have an account?'),
                   TextButton(
                     child: const Text(
-                      'Sign in!',
+                      'Sign up!',
                       style: TextStyle(fontSize: 20),
                     ),
                     onPressed: () {
                       //signup screen
-                      Navigator.pop(context);
-                      // Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpScreen()));
                     },
                   )
                 ],
@@ -98,10 +102,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
 
-  Widget buildSignupButton() => ButtonWidget(
-  text: 'Sign Up',
+  Widget buildLoginButton() => ButtonWidget(
+  text: 'Login',
   onClicked: () {
-    context.read<AuthenticationService>().signUp(
+    context.read<AuthenticationService>().signIn(
         email: emailController.text.trim(),
         password: passwordController.text.trim()
       );
