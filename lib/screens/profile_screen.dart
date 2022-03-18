@@ -44,7 +44,7 @@ class _ProfileState extends State<ProfileScreen> {
                 const SizedBox(height: 24,),
                 Center(child: buildUpgradeButton()),
                 const SizedBox(height: 24,),
-                NumbersWidget(),
+                const NumbersWidget(),
                 const SizedBox(height: 48,),
                 buildAbout(user),
               ],

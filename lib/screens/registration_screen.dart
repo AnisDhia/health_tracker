@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:health_tracker/services/authentication_service.dart';
 import 'package:health_tracker/widgets/button-widget.dart';
 import 'package:provider/provider.dart';
@@ -62,16 +63,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
               
               Container(
                   height: 50,
+                  margin: const EdgeInsets.fromLTRB(0,15,0,15),
                   padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                   child: buildSignupButton(), 
               ),
-              
+
+              // const SizedBox(height: 5,),
+
               Row(
                 children: <Widget>[
                   const Text('Already have an account?'),
                   TextButton(
                     child: const Text(
-                      'Sign in!',
+                      'Log in',
                       style: TextStyle(fontSize: 20),
                     ),
                     onPressed: () {
@@ -82,6 +86,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   )
                 ],
                 mainAxisAlignment: MainAxisAlignment.center,
+              ),
+
+              ElevatedButton.icon(
+                icon: const FaIcon(FontAwesomeIcons.google),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
+                  onPrimary: Colors.black,
+                  minimumSize: const Size(double.infinity, 50),
+                ),
+                label: const Text('Sign Up with Google'),
+                onPressed: () {
+                  // final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
+                  // provider.googleLogin();
+                  context.read<AuthenticationService>().signInWithGoogle();
+                },
               ),
             ],
           )),
