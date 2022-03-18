@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         StreamProvider(
           create: (context) => context.read<AuthenticationService>().authStateChanges, 
           initialData: null
-          )
+          ),
       ],
       child: ThemeProvider(
         initTheme: user.isDarkMode ? MyThemes.darkTheme : MyThemes.lightTheme,

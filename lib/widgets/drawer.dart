@@ -17,7 +17,7 @@ class NavDrawer extends StatelessWidget {
               style: TextStyle(color: Colors.white, fontSize: 25),
             ),
             decoration: BoxDecoration(
-                color: Colors.green,
+                color: Colors.red,
                 image: DecorationImage(
                     fit: BoxFit.fill,
                     image: AssetImage('assets/images/cover.jpg'),
