@@ -4,9 +4,9 @@ import 'package:health_tracker/model/user.dart';
 import 'package:health_tracker/screens/edit_profile_screen.dart';
 import 'package:health_tracker/utils/user_preferences.dart';
 import 'package:health_tracker/widgets/appbar.dart';
-import 'package:health_tracker/widgets/button-widget.dart';
+import 'package:health_tracker/widgets/button_widget.dart';
 import 'package:health_tracker/widgets/numbers.dart';
-import 'package:health_tracker/widgets/profile-widget.dart';
+import 'package:health_tracker/widgets/profile_widget.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({ Key? key }) : super(key: key);

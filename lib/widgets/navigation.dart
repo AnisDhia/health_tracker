@@ -91,7 +91,7 @@ class _NavigationState extends State<Navigation> {
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.restaurant),
+            icon: Icon(Icons.restaurant_menu),
             label: 'Recipes',
           ),
           BottomNavigationBarItem(
@@ -99,8 +99,8 @@ class _NavigationState extends State<Navigation> {
             label: 'Plans',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: Icon(Icons.explore),
+            label: 'Explore',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.leaderboard),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:health_tracker/services/authentication_service.dart';
-import 'package:health_tracker/widgets/button-widget.dart';
+import 'package:health_tracker/widgets/button_widget.dart';
 import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -88,20 +87,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
               ),
 
-              ElevatedButton.icon(
-                icon: const FaIcon(FontAwesomeIcons.google),
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.white,
-                  onPrimary: Colors.black,
-                  minimumSize: const Size(double.infinity, 50),
-                ),
-                label: const Text('Sign Up with Google'),
-                onPressed: () {
-                  // final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
-                  // provider.googleLogin();
-                  context.read<AuthenticationService>().signInWithGoogle();
-                },
-              ),
+              
             ],
           )),
     );
