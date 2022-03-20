@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:health_tracker/screens/diary_screen.dart';
 import 'package:health_tracker/screens/home_screen.dart';
 import 'package:health_tracker/screens/plans_screen.dart';
-import 'package:health_tracker/screens/profile_screen.dart';
 import 'package:health_tracker/screens/recipes_screen.dart';
+import 'package:health_tracker/screens/together_screen.dart';
 // import 'package:health_tracker/widgets/nav-drawer.dart';
 // import 'package:health_tracker/utils/user_preferences.dart';
 
@@ -26,7 +26,7 @@ class _NavigationState extends State<Navigation> {
     PlansScreen(),
     HomeScreen(),
     DiaryScreen(),
-    ProfileScreen(),
+    TogetherScreen(),
   ];
   // var items = const[
   //   Icon(Icons.restaurant, size: 30),
@@ -52,7 +52,7 @@ class _NavigationState extends State<Navigation> {
     setState(() {
       _selectedIndex = index;
     });
-    pageController.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
+    pageController.jumpToPage(index);
   }
 
   @override
@@ -65,7 +65,7 @@ class _NavigationState extends State<Navigation> {
       //   centerTitle: true,
       // ),
       body: PageView(
-        
+        physics: const NeverScrollableScrollPhysics(),
         controller: pageController,
         children: _widgetOption,
         onPageChanged: (index){
@@ -107,8 +107,8 @@ class _NavigationState extends State<Navigation> {
             label: 'Diary',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
+            icon: Icon(Icons.flag),
+            label: 'Together',
           ),
         ],
         selectedItemColor: Colors.red,
