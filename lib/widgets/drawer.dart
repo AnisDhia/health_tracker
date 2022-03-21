@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:health_tracker/screens/profile_screen.dart';
 import 'package:health_tracker/services/authentication_service.dart';
 import 'package:provider/provider.dart';
 
@@ -32,7 +33,12 @@ class NavDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.verified_user),
             title: const Text('Profile'),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => {
+              Navigator.pop(context),
+              Navigator.push(context, 
+                MaterialPageRoute(
+                  builder: (BuildContext context) => const ProfileScreen()))
+                  },
           ),
           ListTile(
             leading: const Icon(Icons.settings),
