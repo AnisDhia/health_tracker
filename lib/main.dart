@@ -17,7 +17,7 @@ Future main() async{
   );
   await UserPreferences.init();
   
-  // await Firebase.initializeApp();
+  // todo await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
