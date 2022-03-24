@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:health_tracker/widgets/drawer.dart';
+import 'package:health_tracker/widgets/drawer_widget.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class RecipesScreen extends StatefulWidget {
@@ -53,17 +53,17 @@ class _RecipesScreenState extends State<RecipesScreen> {
               child: TabBarView(
                 children: [
                   Container(
-                    child: Center(
+                    child: const Center(
                       child: Text("New")
                       ),
                   ),
                   Container(
-                    child: Center(
+                    child: const Center(
                       child: Text("Favourites")
                       ),
                   ),
                   Container(
-                    child: Center(
+                    child: const Center(
                       child: Text("Categories")
                       ),
                   ),

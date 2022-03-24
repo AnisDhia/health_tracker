@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:health_tracker/model/recipe_model.dart';
+import 'package:health_tracker/models/recipe_model.dart';
 
 class NewRecipe extends StatelessWidget {
   final String title;
@@ -49,7 +49,7 @@ class RecipeCard extends StatelessWidget {
     return Column(
       children: [
         Stack(
-          children: [
+          children: const[
             
           ],
         ),

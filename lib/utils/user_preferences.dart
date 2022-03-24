@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:health_tracker/model/user.dart';
+import 'package:health_tracker/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserPreferences {

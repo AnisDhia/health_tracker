@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:health_tracker/screens/profile_screen.dart';
+import 'package:health_tracker/screens/profile/profile_screen.dart';
 import 'package:health_tracker/services/authentication_service.dart';
 import 'package:provider/provider.dart';
 

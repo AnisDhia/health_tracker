@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:health_tracker/widgets/drawer.dart';
+import 'package:health_tracker/widgets/drawer_widget.dart';
 
 class DiaryScreen extends StatefulWidget {
   const DiaryScreen({ Key? key }) : super(key: key);
