@@ -9,6 +9,10 @@ class MyThemes {
     primaryColorDark: primaryColor, 
     colorScheme: const ColorScheme.dark(primary: primary),
     dividerColor: Colors.white,
+    tabBarTheme: TabBarTheme(
+      labelColor: Colors.white,
+      unselectedLabelColor: Colors.white.withOpacity(0.2)
+    )
   );
 
   static final lightTheme = ThemeData(
@@ -20,5 +24,9 @@ class MyThemes {
       ),
     colorScheme: const ColorScheme.light(primary: primary),
     dividerColor: Colors.black,
+    tabBarTheme: TabBarTheme(
+      labelColor: Colors.black,
+      unselectedLabelColor: Colors.black.withOpacity(0.3)
+    )
   );
 }

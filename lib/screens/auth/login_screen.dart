@@ -97,19 +97,25 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
                 mainAxisAlignment: MainAxisAlignment.center,
               ),
-              ElevatedButton.icon(
-                icon: const FaIcon(FontAwesomeIcons.google),
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.white,
-                  onPrimary: Colors.black,
-                  minimumSize: const Size(double.infinity, 50),
+              Container(
+                height: 50,
+                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                child: ElevatedButton.icon(
+                  icon: const FaIcon(FontAwesomeIcons.google),
+                  style: ElevatedButton.styleFrom(
+                    shape: const StadiumBorder(),
+                    primary: Colors.white,
+                    onPrimary: Colors.black,
+                    // minimumSize: const Size(double.infinity, 50),
+                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                  ),
+                  label: const Text('Sign In with Google'),
+                  onPressed: () {
+                    // final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
+                    // provider.googleLogin();
+                    context.read<AuthenticationService>().signInWithGoogle();
+                  },
                 ),
-                label: const Text('Sign In with Google'),
-                onPressed: () {
-                  // final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
-                  // provider.googleLogin();
-                  context.read<AuthenticationService>().signInWithGoogle();
-                },
               ),
             ],
           )),
@@ -124,6 +130,6 @@ class _LoginScreenState extends State<LoginScreen> {
         email: emailController.text.trim(),
         password: passwordController.text.trim()
       );
-  },
-);
+    },
+  );
 }

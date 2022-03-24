@@ -39,14 +39,14 @@ class _RecipesScreenState extends State<RecipesScreen> {
                 text: 'Categories'.toUpperCase(),
               )
             ],
-            labelColor: Colors.black,
+            labelColor: Theme.of(context).tabBarTheme.labelColor, //Colors.black,
             indicator: DotIndicator(
               color: Colors.red,
               distanceFromCenter: 16,
               radius: 3,
               paintingStyle: PaintingStyle.fill,
               ),
-            unselectedLabelColor: Colors.black.withOpacity(0.3),
+            unselectedLabelColor: Theme.of(context).tabBarTheme.unselectedLabelColor,
             labelPadding: const EdgeInsets.symmetric(horizontal: 24),
             ),
             Expanded(

@@ -59,6 +59,7 @@ dependencies:
   tab_indicator_styler: ^2.0.0
   sliding_up_panel: ^2.0.0+1
   flutter_native_splash: ^2.1.1
+  date_picker_timeline: ^1.2.3
 
 dev_dependencies:
   flutter_test:
