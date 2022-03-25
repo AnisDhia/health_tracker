@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:health_tracker/widgets/drawer_widget.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
+import 'package:table_calendar/table_calendar.dart';
+
 class DiaryScreen extends StatefulWidget {
   const DiaryScreen({ Key? key }) : super(key: key);
 
@@ -9,14 +11,16 @@ class DiaryScreen extends StatefulWidget {
 }
 
 class _DiaryScreenState extends State<DiaryScreen> {
-  DatePickerController _datePickerController = DatePickerController();
-
+  
   DateTime _selectedDate = DateTime.now();
+  DateTime _focusedDate = DateTime.now();
+  CalendarFormat _calendarFormat = CalendarFormat.week;
 
   @override
   void initState() {
     super.initState();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -29,26 +33,41 @@ class _DiaryScreenState extends State<DiaryScreen> {
       ),
       body: Column(
         children: [
-          DatePicker(
-            DateTime.now(),
-            width: 60,
-            height: 80,
-            controller: _datePickerController,
-            initialSelectedDate: DateTime.now(),
-            selectionColor: Colors.red,
-            selectedTextColor: Colors.white,
-            inactiveDates: [
-              DateTime.now().add(const Duration(days: 3)),
-              DateTime.now().add(const Duration(days: 4)),
-              DateTime.now().add(const Duration(days: 7))
-            ],
-            onDateChange: (date) {
-              
+          TableCalendar(
+            firstDay: DateTime.utc(2010,10,16), 
+            lastDay: DateTime.utc(2030, 3, 14),
+            focusedDay: _focusedDate, 
+            calendarFormat: _calendarFormat,
+            calendarStyle: CalendarStyle(
+              selectedDecoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.red,
+              ),
+              todayDecoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.red.withOpacity(0.5),
+              )
+            ),
+            selectedDayPredicate: (day) {
+              return isSameDay(_selectedDate, day);
+            },
+            onDaySelected: (selectedDay, focusedDay) {
               setState(() {
-                _selectedDate = date;
+                _selectedDate = selectedDay;
+                _focusedDate = focusedDay;
               });
             },
-          )
+            onFormatChanged: (format) {
+              setState(() {
+                _calendarFormat = format;
+              });
+            },
+            onPageChanged: (focusedDay) {
+              _focusedDate = focusedDay;
+            },
+            
+          ),
+          const Text('data'),
         ],
       ),
     );

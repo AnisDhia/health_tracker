@@ -8,6 +8,7 @@ import 'package:health_tracker/widgets/button_widget.dart';
 import 'package:health_tracker/widgets/numbers_widget.dart';
 import 'package:health_tracker/widgets/profile_widget.dart';
 
+// TODO: remake profile page
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({ Key? key }) : super(key: key);
 

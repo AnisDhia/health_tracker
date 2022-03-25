@@ -27,29 +27,30 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = UserPreferences.getUser();
-
     return MultiProvider(
       providers: [
         Provider<AuthenticationService>(
           create: (_) => AuthenticationService(FirebaseAuth.instance),
-          ),
+        ),
         StreamProvider(
           create: (context) => context.read<AuthenticationService>().authStateChanges, 
           initialData: null
-          ),
-      ],
-      child: ThemeProvider(
-        initTheme: user.isDarkMode ? MyThemes.darkTheme : MyThemes.lightTheme,
-        builder: (context, myTheme) {
-            return MaterialApp(
-              title: title,
-              debugShowCheckedModeBanner: false,
-              theme: myTheme,
-              home: const AuthenticationWrapper(),
-            );
-          }
         ),
+        ChangeNotifierProvider(
+          create: ((context) => ThemeNotifier()
+          )
+        )
+      ],
+      child: Consumer<ThemeNotifier>(
+        builder: (context, value, child) {
+          return MaterialApp(
+            title: title,
+            debugShowCheckedModeBanner: false,
+            theme: value.darkTheme ? MyThemes.darkTheme : MyThemes.lightTheme,
+            home: const AuthenticationWrapper(),
+          );
+        },
+      ),
     );
   }
 }

@@ -17,8 +17,7 @@ AppBar buildAppBar(BuildContext context) {
     backgroundColor: Colors.transparent,
     elevation: 0,
     actions: [
-      ThemeSwitcher(
-        builder: (context) => IconButton(
+       IconButton(
           onPressed: () {
             final theme = isDarkMode ? MyThemes.lightTheme : MyThemes.darkTheme;
       
@@ -29,7 +28,6 @@ AppBar buildAppBar(BuildContext context) {
           },
           icon: const Icon(icon), 
         ),
-      ),
     ],
   );
 }
