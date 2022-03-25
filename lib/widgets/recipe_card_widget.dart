@@ -1,19 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:health_tracker/models/recipe_model.dart';
+import 'package:health_tracker/screens/recipes/recipe_details_screen.dart';
 
 class NewRecipe extends StatelessWidget {
-  final String title;
-  final String rating;
-  final String cookTime;
-  final String thumbnailUrl;
 
-  const NewRecipe({
-    Key? key,
-    required this.title,
-    required this.cookTime,
-    required this.rating,
-    required this.thumbnailUrl,
-  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +13,17 @@ class NewRecipe extends StatelessWidget {
           children: [
             const SizedBox(height: 20,),
             ListView.builder(
+              physics: const ScrollPhysics(),
               shrinkWrap: true,
               itemCount: RecipeModel.demoRecipe.length,
               itemBuilder: (BuildContext context, int index) {
-                return RecipeCard(recipeModel: RecipeModel.demoRecipe[index]);
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12),
+                  child: GestureDetector(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => RecipeDetails(recipeModel: RecipeModel.demoRecipe[index],),)),
+                    child: RecipeCard(recipeModel: RecipeModel.demoRecipe[index],),
+                  ),
+                );
               },
             )
           ]
@@ -36,7 +33,7 @@ class NewRecipe extends StatelessWidget {
   }
 }
 
-class RecipeCard extends StatelessWidget {
+class RecipeCard extends StatefulWidget {
   final RecipeModel recipeModel;
 
   const RecipeCard({ 
@@ -45,14 +42,98 @@ class RecipeCard extends StatelessWidget {
     }) : super(key: key);
 
   @override
+  State<RecipeCard> createState() => _RecipeCardState();
+}
+
+class _RecipeCardState extends State<RecipeCard> {
+  bool saved = false;
+  bool loved = false;
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Stack(
-          children: const[
-            
+          children: [
+            Align(
+              alignment: Alignment.topCenter,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(24),
+                child: Image(
+                  height: 320,
+                  width: 320,
+                  fit: BoxFit.cover,
+                  image: AssetImage(widget.recipeModel.imgPath),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 20,
+              right: 40,
+              child: InkWell(
+                onTap: () => setState(() {
+                  // TODO: implement bookmark functionallity
+                  saved = !saved;
+                }), 
+                child: Icon(
+                  saved ? Icons.bookmark : Icons.bookmark_add_outlined,
+                  color: Colors.white,
+                  size: 38,
+                ), 
+              )
+            )
           ],
         ),
+        const SizedBox(height: 20,),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(
+                flex: 2,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.recipeModel.title,
+                      style: Theme.of(context).textTheme.subtitle1,
+                    ),
+                    const SizedBox(height: 8,),
+                    Text(
+                      widget.recipeModel.writer,
+                      style: Theme.of(context).textTheme.caption,
+                    ),
+                  ],
+                )
+              ),
+              // Spacer(),
+              Flexible(
+                flex: 1,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    const SizedBox(width: 20,),
+                    const Icon(Icons.timer_outlined),
+                    const SizedBox(width: 4,),
+                    Text(widget.recipeModel.cookingTime.toString() + '\''),
+                    const Spacer(),
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          loved = !loved;
+                        });
+                      },
+                      child: Icon(
+                        loved ? Icons.favorite : Icons.favorite_border, 
+                        color: loved ? Colors.red : Theme.of(context).iconTheme.color,
+                      )
+                    ),
+                  ],
+                )
+              ),
+            ],
+          ),
+        )
       ],
     );
   }

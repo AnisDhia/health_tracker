@@ -45,7 +45,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
               ),
               todayDecoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.red.withOpacity(0.5),
+                color: Colors.red.shade200,
               )
             ),
             selectedDayPredicate: (day) {
