@@ -58,11 +58,14 @@ class _RecipeCardState extends State<RecipeCard> {
               alignment: Alignment.topCenter,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(24),
-                child: Image(
-                  height: 320,
-                  width: 320,
-                  fit: BoxFit.cover,
-                  image: AssetImage(widget.recipeModel.imgPath),
+                child: Hero(
+                  tag: widget.recipeModel.imgPath,
+                  child: Image(
+                    height: 320,
+                    width: 320,
+                    fit: BoxFit.cover,
+                    image: AssetImage(widget.recipeModel.imgPath),
+                  ),
                 ),
               ),
             ),
