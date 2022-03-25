@@ -58,6 +58,10 @@ dependencies:
   http: ^0.13.4
   tab_indicator_styler: ^2.0.0
   sliding_up_panel: ^2.0.0+1
+  flutter_native_splash: ^2.1.1
+  date_picker_timeline: ^1.2.3
+  table_calendar: ^3.0.5
+  # flutter_icons: ^1.1.0
 
 dev_dependencies:
   flutter_test:

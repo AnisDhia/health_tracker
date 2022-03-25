@@ -1,8 +1,8 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
-import 'package:health_tracker/model/user.dart';
+import 'package:health_tracker/models/user.dart';
 import 'package:health_tracker/utils/user_preferences.dart';
-import 'package:health_tracker/widgets/appbar.dart';
+import 'package:health_tracker/widgets/appbar_widget.dart';
 import 'package:health_tracker/widgets/button_widget.dart';
 import 'package:health_tracker/widgets/profile_widget.dart';
 import 'package:health_tracker/widgets/textfield_widget.dart';

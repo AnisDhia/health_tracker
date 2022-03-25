@@ -3,11 +3,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
-import 'package:health_tracker/screens/login_screen.dart';
+import 'package:health_tracker/screens/auth/login_screen.dart';
 import 'package:health_tracker/services/authentication_service.dart';
 import 'package:health_tracker/themes.dart';
 import 'package:health_tracker/utils/user_preferences.dart';
-import 'package:health_tracker/widgets/navigation.dart';
+import 'package:health_tracker/widgets/navigation_widget.dart';
 import 'package:provider/provider.dart';
 
 Future main() async{
@@ -17,7 +17,6 @@ Future main() async{
   );
   await UserPreferences.init();
   
-  // todo await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -28,29 +27,30 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = UserPreferences.getUser();
-
     return MultiProvider(
       providers: [
         Provider<AuthenticationService>(
           create: (_) => AuthenticationService(FirebaseAuth.instance),
-          ),
+        ),
         StreamProvider(
           create: (context) => context.read<AuthenticationService>().authStateChanges, 
           initialData: null
-          ),
-      ],
-      child: ThemeProvider(
-        initTheme: user.isDarkMode ? MyThemes.darkTheme : MyThemes.lightTheme,
-        builder: (context, myTheme) {
-            return MaterialApp(
-              title: title,
-              debugShowCheckedModeBanner: false,
-              theme: myTheme,
-              home: const AuthenticationWrapper(),
-            );
-          }
         ),
+        ChangeNotifierProvider(
+          create: ((context) => ThemeNotifier()
+          )
+        )
+      ],
+      child: Consumer<ThemeNotifier>(
+        builder: (context, value, child) {
+          return MaterialApp(
+            title: title,
+            debugShowCheckedModeBanner: false,
+            theme: value.darkTheme ? MyThemes.darkTheme : MyThemes.lightTheme,
+            home: const AuthenticationWrapper(),
+          );
+        },
+      ),
     );
   }
 }
