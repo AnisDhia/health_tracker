@@ -1,9 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/models/recipe_model.dart';
 import 'package:health_tracker/screens/recipes/recipe_details_screen.dart';
+import 'package:health_tracker/shared/services/firestore_service.dart';
+import 'package:provider/provider.dart';
 
 class NewRecipe extends StatelessWidget {
   final Future<List<Recipe>> newRecipesList;
+
   const NewRecipe({Key? key, required this.newRecipesList}) : super(key: key);
 
   @override
@@ -65,6 +69,7 @@ class RecipeCard extends StatefulWidget {
 class _RecipeCardState extends State<RecipeCard> {
   bool saved = false;
   bool loved = false;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -92,6 +97,11 @@ class _RecipeCardState extends State<RecipeCard> {
                 child: InkWell(
                   onTap: () => setState(() {
                     // TODO: implement bookmark functionallity
+                    FireStoreService().bookmarkRecipe(
+                        widget.recipe.id.toString(), 
+                        context.watch<User?>()!.uid,
+                        [] 
+                        );
                     saved = !saved;
                   }),
                   child: Icon(

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:health_tracker/providers/user_provider.dart';
 import 'package:health_tracker/screens/auth/welcome_screen.dart';
 import 'package:sizer/sizer.dart';
 import 'firebase_options.dart';
@@ -8,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:health_tracker/screens/auth/login_screen.dart';
 import 'package:health_tracker/shared/services/authentication_service.dart';
 import 'package:health_tracker/shared/themes.dart';
-import 'package:health_tracker/utils/user_preferences.dart';
 import 'package:health_tracker/widgets/navigation_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +17,7 @@ Future main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await UserPreferences.init();
+  // await UserPreferences.init();
 
   runApp(const MyApp());
 }
@@ -33,13 +33,16 @@ class MyApp extends StatelessWidget {
       builder: (BuildContext context, orientation, deviceType) {
         return MultiProvider(
           providers: [
-            Provider<AuthenticationService>(
-              create: (_) => AuthenticationService(FirebaseAuth.instance, FirebaseFirestore.instance),
+            ChangeNotifierProvider(
+              create: (_) => UserProvider(),
             ),
-            StreamProvider(
-                create: (context) =>
-                    context.read<AuthenticationService>().authStateChanges,
-                initialData: null),
+            // Provider<AuthenticationService>(
+            //   create: (_) => AuthenticationService(FirebaseAuth.instance, FirebaseFirestore.instance),
+            // ),
+            // StreamProvider(
+            //     create: (context) =>
+            //         context.read<AuthenticationService>().authStateChanges,
+            //     initialData: null),
             ChangeNotifierProvider(create: ((context) => ThemeNotifier()))
           ],
           child: Consumer<ThemeNotifier>(
@@ -49,7 +52,29 @@ class MyApp extends StatelessWidget {
                 debugShowCheckedModeBanner: false,
                 theme:
                     value.darkTheme ? MyThemes.darkTheme : MyThemes.lightTheme,
-                home: const AuthenticationWrapper(),
+                home: /*const AuthenticationWrapper(),*/
+                    StreamBuilder(
+                        stream: FirebaseAuth.instance.authStateChanges(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.active) {
+                            if (snapshot.hasData) {
+                              return const Navigation();
+                            } else if (snapshot.hasError) {
+                              return Center(
+                                child: Text('${snapshot.error}'),
+                              );
+                            }
+                          }
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+
+                          return const WelcomeScreen();
+                        }),
               );
             },
           ),
@@ -59,16 +84,16 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class AuthenticationWrapper extends StatelessWidget {
-  const AuthenticationWrapper({Key? key}) : super(key: key);
+// class AuthenticationWrapper extends StatelessWidget {
+//   const AuthenticationWrapper({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User?>();
+//   @override
+//   Widget build(BuildContext context) {
+//     final firebaseUser = context.watch<User?>();
 
-    if (firebaseUser != null) {
-      return const Navigation();
-    }
-    return const WelcomeScreen();
-  }
-}
+//     if (firebaseUser != null) {
+//       return const Navigation();
+//     }
+//     return const WelcomeScreen();
+//   }
+// }

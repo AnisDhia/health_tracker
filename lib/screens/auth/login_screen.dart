@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:health_tracker/screens/auth/registration_screen.dart';
 import 'package:health_tracker/shared/services/authentication_service.dart';
 import 'package:health_tracker/shared/themes.dart';
+import 'package:health_tracker/shared/utils/utils.dart';
 import 'package:health_tracker/widgets/button_widget.dart';
 import 'package:health_tracker/widgets/navigation_widget.dart';
 import 'package:health_tracker/widgets/textfield_widget.dart';
@@ -123,10 +124,18 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: MyThemes.primary,
                       width: 80.w,
                       title: 'Login',
-                      func: () {
-                        context.read<AuthenticationService>().signIn(
+                      func: () async {
+                        String? res = await AuthenticationService().signIn(
                             email: _emailController.text.trim(),
                             password: _passwordController.text.trim());
+                        if (res == 'success') {
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (context) => const Navigation()),
+                              (route) => false);
+                        } else {
+                          showSnackBar(context, res!);
+                        }
                       },
                     ),
                     // Container(
@@ -358,6 +367,4 @@ class _LoginScreenState extends State<LoginScreen> {
       color: Theme.of(context).dividerColor,
     );
   }
-
-  
 }
