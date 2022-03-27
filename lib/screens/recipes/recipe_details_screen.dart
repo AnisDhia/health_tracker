@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/models/recipe_model.dart';
-import 'package:health_tracker/themes.dart';
+import 'package:health_tracker/shared/themes.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 

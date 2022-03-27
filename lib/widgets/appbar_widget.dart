@@ -1,7 +1,7 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:health_tracker/themes.dart';
+import 'package:health_tracker/shared/themes.dart';
 import 'package:health_tracker/utils/user_preferences.dart';
 // import 'package:health_tracker/utils/user_preferences.dart';
 
