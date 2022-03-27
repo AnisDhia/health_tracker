@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/screens/profile/profile_screen.dart';
 import 'package:health_tracker/screens/settings/settings_screen.dart';
-import 'package:health_tracker/services/authentication_service.dart';
-import 'package:health_tracker/themes.dart';
+import 'package:health_tracker/shared/services/authentication_service.dart';
+import 'package:health_tracker/shared/themes.dart';
 import 'package:provider/provider.dart';
 
 class NavDrawer extends StatelessWidget {
@@ -37,10 +37,10 @@ class NavDrawer extends StatelessWidget {
           title: const Text('Profile'),
           onTap: () => {
             Navigator.pop(context),
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (BuildContext context) => const ProfileScreen()))
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (BuildContext context) => const ProfileScreen()))
           },
         ),
         ListTile(

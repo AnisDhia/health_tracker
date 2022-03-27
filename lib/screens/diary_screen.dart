@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:health_tracker/widgets/drawer_widget.dart';
-import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class DiaryScreen extends StatefulWidget {

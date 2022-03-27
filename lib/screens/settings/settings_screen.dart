@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:health_tracker/themes.dart';
+import 'package:health_tracker/shared/themes.dart';
 import 'package:provider/provider.dart';
 
 class SettingsScreen extends StatefulWidget {
