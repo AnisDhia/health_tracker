@@ -6,7 +6,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class RecipeDetails extends StatelessWidget {
-  final RecipeModel recipeModel;
+  final Recipe recipeModel;
 
   const RecipeDetails({Key? key, required this.recipeModel}) : super(key: key);
 
@@ -32,12 +32,12 @@ class RecipeDetails extends StatelessWidget {
                   Align(
                     alignment: Alignment.topCenter,
                     child: Hero(
-                      tag: recipeModel.imgPath,
+                      tag: recipeModel.imageUrl,
                       child: Image(
                         height: (size.height / 2) + 50,
                         width: double.infinity,
                         fit: BoxFit.cover,
-                        image: AssetImage(recipeModel.imgPath),
+                        image: NetworkImage(recipeModel.imageUrl),
                       ),
                     ),
                   ),
@@ -90,7 +90,7 @@ class RecipeDetails extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    recipeModel.writer,
+                    recipeModel.author,
                     style: _textTheme.caption,
                   ),
                   const SizedBox(
@@ -199,7 +199,7 @@ class RecipeDetails extends StatelessWidget {
 }
 
 class Ingredients extends StatelessWidget {
-  final RecipeModel recipeModel;
+  final Recipe recipeModel;
 
   const Ingredients({Key? key, required this.recipeModel}) : super(key: key);
 
@@ -211,11 +211,11 @@ class Ingredients extends StatelessWidget {
           ListView.separated(
             physics: const ScrollPhysics(),
             shrinkWrap: true,
-            itemCount: recipeModel.ingredients.length,
+            itemCount: 1/*recipeModel.ingredients.length*/,
             itemBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 4),
-                child: Text('⚫ ' + recipeModel.ingredients[index]),
+                // child: Text('⚫ ' + recipeModel.ingredients[index]),
               );
             },
             separatorBuilder: (BuildContext context, int index) {
