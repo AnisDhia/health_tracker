@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:health_tracker/screens/auth/registration_screen.dart';
 import 'package:health_tracker/shared/services/authentication_service.dart';
 import 'package:health_tracker/shared/themes.dart';

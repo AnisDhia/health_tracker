@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:health_tracker/screens/auth/login_screen.dart';
-import 'package:health_tracker/screens/auth/registration_screen.dart';
 import 'package:health_tracker/shared/services/authentication_service.dart';
 import 'package:health_tracker/shared/themes.dart';
 import 'package:health_tracker/widgets/button_widget.dart';
@@ -25,7 +23,6 @@ class _LoginScreenState extends State<SignUpScreen> {
   late TextEditingController _nameController;
   late TextEditingController _emailController;
   late TextEditingController _passwordController;
-  
 
   @override
   void initState() {
@@ -141,7 +138,8 @@ class _LoginScreenState extends State<SignUpScreen> {
                       width: 80.w,
                       title: 'Sign Up',
                       func: () {
-                        context.read<AuthenticationService>().signIn(
+                        context.read<AuthenticationService>().signUp(
+                            name: _nameController.text.trim(),
                             email: _emailController.text.trim(),
                             password: _passwordController.text.trim());
                       },
@@ -295,14 +293,6 @@ class _LoginScreenState extends State<SignUpScreen> {
         //       ],
         //     )),
       ),
-    );
-  }
-
-  Container _myDivider() {
-    return Container(
-      width: 27.w,
-      height: 0.2.h,
-      color: Theme.of(context).dividerColor,
     );
   }
 }
