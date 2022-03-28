@@ -1,5 +1,5 @@
 import 'dart:developer';
-import 'package:health_tracker/models/user.dart' as model;
+import 'package:health_tracker/models/user_model.dart' as model;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
