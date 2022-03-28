@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:health_tracker/screens/auth/login_screen.dart';
 import 'package:health_tracker/shared/services/authentication_service.dart';
 import 'package:health_tracker/shared/themes.dart';
+import 'package:health_tracker/shared/utils/utils.dart';
 import 'package:health_tracker/widgets/button_widget.dart';
 import 'package:health_tracker/widgets/navigation_widget.dart';
 import 'package:health_tracker/widgets/textfield_widget.dart';
@@ -137,11 +138,18 @@ class _LoginScreenState extends State<SignUpScreen> {
                       color: MyThemes.primary,
                       width: 80.w,
                       title: 'Sign Up',
-                      func: () {
-                        context.read<AuthenticationService>().signUp(
+                      func: () async {
+                        String? res = await AuthenticationService().signUp(
                             name: _nameController.text.trim(),
                             email: _emailController.text.trim(),
                             password: _passwordController.text.trim());
+                        if (res == 'success') {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => const Navigation()));
+                        } else {
+                          showSnackBar(context, res!);
+                        }
                       },
                     ),
                     // Container(

@@ -1,16 +1,24 @@
 import 'dart:developer';
-
+import 'package:health_tracker/models/user.dart' as model;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthenticationService {
-  final FirebaseAuth _firebaseAuth;
-  final FirebaseFirestore _firestore;
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  AuthenticationService(this._firebaseAuth, this._firestore);
+  // AuthenticationService(this._firebaseAuth, this._firestore);
 
-  Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
+  Future<model.User> getUserDetails() async {
+    User currentUser = _firebaseAuth.currentUser!;
+
+    DocumentSnapshot documentSnapshot =
+        await _firestore.collection('users').doc(currentUser.uid).get();
+    return model.User.fromSnap(documentSnapshot);
+  }
+
+  // Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
 
   Future<void> signOut() async {
     await _firebaseAuth.signOut();
@@ -24,7 +32,7 @@ class AuthenticationService {
       await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
       log('Signed In');
-      return "Signed in";
+      return "success";
     } on FirebaseAuthException catch (e) {
       log(e.message!);
       return e.message;
@@ -39,13 +47,23 @@ class AuthenticationService {
       UserCredential userCredential = await _firebaseAuth
           .createUserWithEmailAndPassword(email: email, password: password);
 
+      model.User _user = model.User(
+        username: name,
+        uid: userCredential.user!.uid,
+        photoUrl: '',
+        email: email,
+        about: '',
+        isDarkMode: true,
+        bookmarkedRecipes: [],
+      );
+
       await _firestore
-          .collection("/users")
+          .collection("users")
           .doc(userCredential.user!.uid)
-          .set({'Full Name': name, 'uid': userCredential.user!.uid});
+          .set(_user.toJson());
 
       log('Signed Up');
-      return "Signed up";
+      return "success";
     } on FirebaseAuthException catch (e) {
       log(e.message!);
       return e.message;

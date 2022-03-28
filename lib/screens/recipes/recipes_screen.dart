@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:health_tracker/models/recipe_model.dart';
+import 'package:health_tracker/shared/services/api_service.dart';
 import 'package:health_tracker/widgets/drawer_widget.dart';
 import 'package:health_tracker/widgets/recipe_card_widget.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
@@ -11,9 +13,11 @@ class RecipesScreen extends StatefulWidget {
 }
 
 class _RecipesScreenState extends State<RecipesScreen> {
-  
+  Future<List<Recipe>> recipeList = APIService.instance.getRandomRecipes(number: 6);
+
   @override
   Widget build(BuildContext context) {
+    // final List<Recipe> recipesFromAPI = APIService.instance.getRandomRecipes(number: 3) as List<Recipe>;
     return Scaffold(
       drawer: const NavDrawer(),
       appBar: AppBar(
@@ -52,17 +56,13 @@ class _RecipesScreenState extends State<RecipesScreen> {
           Expanded(
             child: TabBarView(
               children: [
-                NewRecipe(),
-                // Container(
-                //   child: const Center(
-                //     child: Text("New")
-                //     ),
-                // ),
+                NewRecipe(newRecipesList: recipeList,),
                 Container(
                   child: const Center(
-                    child: Text("Favourites")
+                    child: Text("New")
                     ),
                 ),
+                // NewRecipe(),
                 Container(
                   child: const Center(
                     child: Text("Categories")

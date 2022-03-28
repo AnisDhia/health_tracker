@@ -1,40 +1,37 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class User {
-  final String imagePath, name, email, about; 
+  final String uid, photoUrl, username, email, about; 
   final bool isDarkMode;
+  final List bookmarkedRecipes;
 
   const User({
-    required this.imagePath,
-    required this.name,
+    required this.username,
+    required this.uid,
+    required this.photoUrl,
     required this.email,
     required this.about,
     required this.isDarkMode,
+    required this.bookmarkedRecipes 
   });
 
-  User copy({
-    String? imagePath, name, email, about,
-    bool? isDarkTheme,
-  }) =>
-    User(
-      imagePath: imagePath ?? this.imagePath,
-      name: name ?? this.name,
-      email: email ?? this.email,
-      about: about ?? this.about,
-      isDarkMode: isDarkTheme ?? isDarkMode,
-    );
-
-  static User fromJson(Map<String, dynamic> json) => User(
-    imagePath: json['imagePath'],
-    name: json['name'],
+  static User fromSnap(DocumentSnapshot json) => User(
+    username: json['username'],
+    uid: json['uid'],
+    photoUrl: json['photoUrl'],
     email: json['email'],
     about: json['about'],
     isDarkMode: json['isDarkMode'],
+    bookmarkedRecipes: json['bookmarkedRecipes']
   );
   
   Map<String, dynamic> toJson() => {
-    'imagePath': imagePath,
-    'name': name,
+    'username': username,
+    'uid': uid,
+    'photoUrl': photoUrl,
     'email': email,
     'about': about,
     'isDarkMode': isDarkMode,
+    'bookmarkedRecipes': bookmarkedRecipes
   };
 }
