@@ -56,7 +56,7 @@ class WelcomeScreen extends StatelessWidget {
               ButtonWidget(
                 color: MyThemes.primary,
                 width: 80.w,
-                title: 'Login',
+                title: 'LOGIN',
                 func: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
                 },
@@ -67,7 +67,7 @@ class WelcomeScreen extends StatelessWidget {
               ButtonWidget(
                 color: MyThemes.primary,
                 width: 80.w,
-                title: 'Sign Up',
+                title: 'CREATE ACCOUNT',
                 func: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpScreen()));
                 },
