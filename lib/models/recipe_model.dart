@@ -3,7 +3,7 @@ class Recipe {
   String title, author, description;
   int cookingTime;
   int servings;
-  // List<String> ingredients = [];
+  List<dynamic> ingredients = [];
   String imageUrl;
 
   Recipe({
@@ -14,7 +14,7 @@ class Recipe {
     required this.cookingTime,
     required this.servings,
     required this.imageUrl,
-    // required this.ingredients,
+    required this.ingredients,
   });
 
   factory Recipe.fromJson(Map<String, dynamic> json) {
@@ -26,7 +26,7 @@ class Recipe {
       cookingTime: json['readyInMinutes'] as int,
       servings: json['servings'] as int,
       imageUrl: json['image'] as String,
-      // ingredients: json['extendedIngredients']
+      ingredients: json['extendedIngredients'] as List
     );
   }
 
@@ -41,15 +41,15 @@ class Recipe {
       cookingTime: 10,
       servings: 4,
       imageUrl: 'assets/images/img1.jpg',
-      // ingredients: [
-      //   '8 large eggs',
-      //   '1 tsp. Dijon mustard',
-      //   'Kosher salt and pepper',
-      //   '1 tbsp. olive oil or unsalted butter',
-      //   '2 slices thick-cut bacon, cooked and broken into pieces',
-      //   '2 c. spinach, torn',
-      //   '2 oz. Gruyère cheese, shredded',
-      // ],
+      ingredients: [
+        '8 large eggs',
+        '1 tsp. Dijon mustard',
+        'Kosher salt and pepper',
+        '1 tbsp. olive oil or unsalted butter',
+        '2 slices thick-cut bacon, cooked and broken into pieces',
+        '2 c. spinach, torn',
+        '2 oz. Gruyère cheese, shredded',
+      ],
     ),
     Recipe(
       id: 2,
@@ -60,15 +60,15 @@ class Recipe {
       cookingTime: 10,
       servings: 4,
       imageUrl: 'assets/images/img2.jpg',
-      // ingredients: [
-      //   '8 large eggs',
-      //   '1 tsp. Dijon mustard',
-      //   'Kosher salt and pepper',
-      //   '1 tbsp. olive oil or unsalted butter',
-      //   '2 slices thick-cut bacon, cooked and broken into pieces',
-      //   '2 c. spinach, torn',
-      //   '2 oz. Gruyère cheese, shredded',
-      // ],
+      ingredients: [
+        '8 large eggs',
+        '1 tsp. Dijon mustard',
+        'Kosher salt and pepper',
+        '1 tbsp. olive oil or unsalted butter',
+        '2 slices thick-cut bacon, cooked and broken into pieces',
+        '2 c. spinach, torn',
+        '2 oz. Gruyère cheese, shredded',
+      ],
     ),
     Recipe(
       id: 3,
@@ -79,15 +79,15 @@ class Recipe {
       cookingTime: 10,
       servings: 4,
       imageUrl: 'assets/images/img3.jpg',
-      // ingredients: [
-      //   '8 large eggs',
-      //   '1 tsp. Dijon mustard',
-      //   'Kosher salt and pepper',
-      //   '1 tbsp. olive oil or unsalted butter',
-      //   '2 slices thick-cut bacon, cooked and broken into pieces',
-      //   '2 c. spinach, torn',
-      //   '2 oz. Gruyère cheese, shredded',
-      // ],
+      ingredients: [
+        '8 large eggs',
+        '1 tsp. Dijon mustard',
+        'Kosher salt and pepper',
+        '1 tbsp. olive oil or unsalted butter',
+        '2 slices thick-cut bacon, cooked and broken into pieces',
+        '2 c. spinach, torn',
+        '2 oz. Gruyère cheese, shredded',
+      ],
     ),
     Recipe(
       id: 4,
@@ -98,15 +98,15 @@ class Recipe {
       cookingTime: 10,
       servings: 4,
       imageUrl: 'assets/images/img4.jpg',
-      // ingredients: [
-      //   '8 large eggs',
-      //   '1 tsp. Dijon mustard',
-      //   'Kosher salt and pepper',
-      //   '1 tbsp. olive oil or unsalted butter',
-      //   '2 slices thick-cut bacon, cooked and broken into pieces',
-      //   '2 c. spinach, torn',
-      //   '2 oz. Gruyère cheese, shredded',
-      // ],
+      ingredients: [
+        '8 large eggs',
+        '1 tsp. Dijon mustard',
+        'Kosher salt and pepper',
+        '1 tbsp. olive oil or unsalted butter',
+        '2 slices thick-cut bacon, cooked and broken into pieces',
+        '2 c. spinach, torn',
+        '2 oz. Gruyère cheese, shredded',
+      ],
     ),
   ];
 }

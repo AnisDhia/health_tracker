@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
                           if (snapshot.connectionState ==
                               ConnectionState.active) {
                             if (snapshot.hasData) {
-                              return const Navigation();
+                              return const AuthWrapper();
                             } else if (snapshot.hasError) {
                               return Center(
                                 child: Text('${snapshot.error}'),
@@ -81,6 +81,32 @@ class MyApp extends StatelessWidget {
         );
       },
     );
+  }
+}
+
+class AuthWrapper extends StatefulWidget {
+  const AuthWrapper({Key? key}) : super(key: key);
+
+  @override
+  State<AuthWrapper> createState() => _AuthWrapperState();
+}
+
+class _AuthWrapperState extends State<AuthWrapper> {
+  @override
+  void initState() {
+    super.initState();
+    addData();
+  }
+
+  addData() async {
+    UserProvider _userProvider =
+        Provider.of<UserProvider>(context, listen: false);
+    await _userProvider.refreshUser();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return const Navigation();
   }
 }
 
