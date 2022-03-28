@@ -5,7 +5,7 @@ import 'package:health_tracker/providers/user_provider.dart';
 import 'package:health_tracker/screens/recipes/recipe_details_screen.dart';
 import 'package:health_tracker/shared/services/firestore_service.dart';
 import 'package:provider/provider.dart';
-import 'package:health_tracker/models/user.dart' as model;
+import 'package:health_tracker/models/user_model.dart' as model;
 
 class NewRecipe extends StatelessWidget {
   final Future<List<Recipe>> newRecipesList;
