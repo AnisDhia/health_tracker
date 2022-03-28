@@ -4,7 +4,7 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "site": "health_tracker (web)",
+    "site": "health-tracker-aa3ae",
     "public": "build/web",
     "ignore": [
       "firebase.json",
