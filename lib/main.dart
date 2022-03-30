@@ -2,14 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:health_tracker/providers/user_provider.dart';
-import 'package:health_tracker/screens/auth/welcome_screen.dart';
+import 'package:health_tracker/ui/screens/auth/welcome_screen.dart';
 import 'package:sizer/sizer.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
-import 'package:health_tracker/screens/auth/login_screen.dart';
+import 'package:health_tracker/ui/screens/auth/login_screen.dart';
 import 'package:health_tracker/shared/services/authentication_service.dart';
-import 'package:health_tracker/shared/themes.dart';
-import 'package:health_tracker/widgets/navigation_widget.dart';
+import 'package:health_tracker/shared/styles/themes.dart';
+import 'package:health_tracker/ui/widgets/navigation_widget.dart';
 import 'package:provider/provider.dart';
 
 Future main() async {

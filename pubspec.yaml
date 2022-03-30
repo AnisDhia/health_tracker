@@ -62,6 +62,11 @@ dependencies:
   table_calendar: ^3.0.5
   animate_do: ^2.1.0
   sizer: ^2.0.15
+  equatable: ^2.0.3
+  bloc: ^8.0.3
+  connectivity_plus: ^2.2.1
+  another_flushbar: ^1.10.28
+  flutter_bloc: ^8.0.1
   # flutter_icons: ^1.1.0
 
 dev_dependencies:

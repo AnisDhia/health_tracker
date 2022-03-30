@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:health_tracker/models/user_model.dart';
+import 'package:health_tracker/data/models/user_model.dart';
 import 'package:health_tracker/shared/services/authentication_service.dart';
 
 class UserProvider with ChangeNotifier {
