@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:health_tracker/bloc/auth/authentication_cubit.dart';
 import 'package:health_tracker/bloc/connectivity/connectivity_cubit.dart';
 import 'package:health_tracker/bloc/onboarding/onboarding_cubit.dart';
-import 'package:health_tracker/providers/user_provider.dart';
 import 'package:health_tracker/ui/screens/auth/onboarding_screen.dart';
 import 'package:health_tracker/ui/screens/auth/welcome_screen.dart';
 import 'package:health_tracker/ui/widgets/indicator_widget.dart';

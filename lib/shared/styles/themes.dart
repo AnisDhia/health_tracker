@@ -18,8 +18,8 @@ class MyThemes {
           labelColor: Colors.white,
           unselectedLabelColor: Colors.white.withOpacity(0.2)),
       floatingActionButtonTheme:
-          const FloatingActionButtonThemeData(
-            backgroundColor: primary));
+          const FloatingActionButtonThemeData(backgroundColor: primary),
+      listTileTheme: const ListTileThemeData(textColor: Colors.white));
 
   static final lightTheme = ThemeData(
       scaffoldBackgroundColor: Colors.white,
@@ -33,7 +33,8 @@ class MyThemes {
       dividerColor: Colors.black,
       tabBarTheme: TabBarTheme(
           labelColor: Colors.black,
-          unselectedLabelColor: Colors.black.withOpacity(0.3)));
+          unselectedLabelColor: Colors.black.withOpacity(0.3)),
+      listTileTheme: const ListTileThemeData(textColor: Colors.black));
 }
 
 class ThemeNotifier extends ChangeNotifier {

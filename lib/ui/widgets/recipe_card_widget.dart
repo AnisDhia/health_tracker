@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/data/models/recipe_model.dart';
-import 'package:health_tracker/providers/user_provider.dart';
 import 'package:health_tracker/ui/screens/recipes/recipe_details_screen.dart';
 import 'package:health_tracker/shared/services/firestore_service.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +24,8 @@ class NewRecipe extends StatelessWidget {
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.data == null) {
                 return const Center(child: CircularProgressIndicator(
-                  semanticsLabel: "Please wait...",
+                  // semanticsLabel: "Please wait...",
+                  // semanticsValue: "Please wait",
                 ));
               } else { 
                 return ListView.builder(
@@ -78,7 +78,7 @@ class _RecipeCardState extends State<RecipeCard> {
 
   @override
   Widget build(BuildContext context) {
-    final model.User user = Provider.of<UserProvider>(context).getUser;
+    // final model.User user = Provider.of<UserProvider>(context).getUser;
     
     return Column(
       children: [
@@ -99,20 +99,21 @@ class _RecipeCardState extends State<RecipeCard> {
                 ),
               ),
             ),
-            Positioned(
+            const Positioned(
                 top: 20,
                 right: 40,
                 child: InkWell(
-                  onTap: () => setState(() {
+                  // onTap: () => setState(() {
                     // TODO: implement bookmark functionallity
-                    FireStoreService().bookmarkRecipe(
-                        widget.recipe.id.toString(),
-                        user.uid,
-                        user.bookmarkedRecipes);
-                    // saved = !saved;
-                  }),
+                  //   FireStoreService().bookmarkRecipe(
+                  //       widget.recipe.id.toString(),
+                  //       user.uid,
+                  //       user.bookmarkedRecipes);
+                  //   // saved = !saved;
+                  // }),
                   child: Icon(
-                    user.bookmarkedRecipes.contains(widget.recipe.id) ? Icons.bookmark : Icons.bookmark_add_outlined,
+                    Icons.bookmark,
+                    // user.bookmarkedRecipes.contains(widget.recipe.id) ? Icons.bookmark : Icons.bookmark_add_outlined,
                     color: Colors.white,
                     size: 38,
                   ),

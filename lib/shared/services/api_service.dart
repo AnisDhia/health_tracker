@@ -67,6 +67,7 @@ class APIService {
       // log('HERE IS THE RECIPE ====> \n' + recipes.toString());
       // return recipes;
     } catch (e) {
+      log(e.toString());
       throw 'POOP ==> '  + e.toString();
     }
   }

@@ -20,13 +20,13 @@ class Recipe {
   factory Recipe.fromJson(Map<String, dynamic> json) {
     return Recipe(
       id: json['id'] as int,
-      title: json['title'] as String,
-      author: json['sourceName'] as String,
-      description: json['summary'] as String,
+      title: json['title'] ?? 'Uknown',
+      author: json['sourceName'] ?? 'Uknown',
+      description: json['summary'] ?? 'no description',
       cookingTime: json['readyInMinutes'] as int,
       servings: json['servings'] as int,
-      imageUrl: json['image'] as String,
-      ingredients: json['extendedIngredients'] as List
+      imageUrl: json['image'] ?? 'https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled.png',
+      ingredients: json['extendedIngredients'] ?? []
     );
   }
 

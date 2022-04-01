@@ -13,7 +13,7 @@ class RecipesScreen extends StatefulWidget {
 }
 
 class _RecipesScreenState extends State<RecipesScreen> {
-  Future<List<Recipe>> recipeList = APIService.instance.getRandomRecipes(number: 6);
+  Future<List<Recipe>> recipeList = APIService.instance.getRandomRecipes(tags: "keto",number: 15);
 
   @override
   Widget build(BuildContext context) {

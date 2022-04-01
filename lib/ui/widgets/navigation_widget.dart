@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:health_tracker/ui/screens/diary_screen.dart';
+import 'package:health_tracker/ui/screens/diary/diary_screen.dart';
+import 'package:health_tracker/ui/screens/diary/test.dart';
 import 'package:health_tracker/ui/screens/home_screen.dart';
 import 'package:health_tracker/ui/screens/plans_screen.dart';
 import 'package:health_tracker/ui/screens/recipes/recipes_screen.dart';
@@ -18,11 +19,12 @@ class _NavigationState extends State<Navigation> {
   int _selectedIndex = 2;
   PageController pageController = PageController();
 
-  static const List<Widget> _widgetOption = <Widget>[
+  final List<Widget> _widgetOption = const <Widget>[
     RecipesScreen(),
     PlansScreen(),
     HomeScreen(),
     DiaryScreen(),
+    // FitnessNutritionMainPage(),
     TogetherScreen(),
   ];
 
