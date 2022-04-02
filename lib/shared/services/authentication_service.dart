@@ -1,8 +1,9 @@
 import 'dart:developer';
-import 'package:health_tracker/models/user_model.dart' as model;
+import 'package:health_tracker/data/models/user_model.dart' as model;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:health_tracker/shared/constants/consts_variables.dart';
 
 class AuthenticationService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -41,6 +42,7 @@ class AuthenticationService {
 
   Future<String?> signUp(
       {required String name,
+      required Sex? sex,
       required String email,
       required String password}) async {
     try {
@@ -49,6 +51,7 @@ class AuthenticationService {
 
       model.User _user = model.User(
         username: name,
+        sex: sex,
         uid: userCredential.user!.uid,
         photoUrl: '',
         email: email,
