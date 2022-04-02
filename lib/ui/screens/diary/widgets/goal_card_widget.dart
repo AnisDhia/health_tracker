@@ -2,18 +2,34 @@ import 'package:flutter/material.dart';
 
 class GoalCard extends StatefulWidget {
   final String title;
-  const GoalCard({
-    Key? key,
-    required this.title
-  }) : super(key: key);
+  final int value, goal;
+  const GoalCard({Key? key, required this.title, required this.value, required this.goal})
+      : super(key: key);
 
   @override
   State<GoalCard> createState() => _GoalCardState();
 }
 
-class _GoalCardState extends State<GoalCard> {
+class _GoalCardState extends State<GoalCard> with TickerProviderStateMixin {
+  late AnimationController controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller = AnimationController(
+      value: 0,
+      vsync: this,
+      duration: const Duration(milliseconds: 1700),
+    )..addListener(() {
+        setState(() {});
+      });
+    controller.animateTo(widget.value / widget.goal);
+  }
+
   @override
   Widget build(BuildContext context) {
+    int percentage = ((widget.value / widget.goal) * 100).toInt();
     return SizedBox(
       height: 100,
       child: Container(
@@ -39,30 +55,34 @@ class _GoalCardState extends State<GoalCard> {
               ],
             ),
             Row(
-              children: const [
+              children: [
                 Text(
-                  "40%",
-                  style: TextStyle(
+                  "$percentage%",
+                  style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),
-                Spacer(),
+                const Spacer(),
                 Text(
-                  "1159",
-                  style: TextStyle(
+                  "${widget.value}",
+                  style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 12,
-                      color: Colors.white),
+                      ),
                 ),
                 Text(
-                  " / 3000 Kcal",
-                  style: TextStyle(
+                  " / ${widget.goal} ${widget.title}",
+                  style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 12,
                       color: Colors.grey),
                 )
               ],
+            ),
+            LinearProgressIndicator(
+              value: controller.value,
+              color: Colors.red,
             ),
             Container(
               height: 8,
