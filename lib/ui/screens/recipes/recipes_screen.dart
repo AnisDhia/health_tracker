@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:health_tracker/data/models/recipe_model.dart';
 import 'package:health_tracker/shared/services/api_service.dart';
 import 'package:health_tracker/ui/widgets/drawer_widget.dart';
-import 'package:health_tracker/ui/widgets/recipe_card_widget.dart';
+import 'package:health_tracker/ui/screens/recipes/widgets/recipe_card_widget.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class RecipesScreen extends StatefulWidget {

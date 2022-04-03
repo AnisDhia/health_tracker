@@ -34,7 +34,7 @@ class _GoalCardState extends State<GoalCard> with TickerProviderStateMixin {
       height: 100,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.1),
+          color: Theme.of(context).dividerColor.withOpacity(0.1),
           borderRadius: BorderRadius.circular(12),
         ),
         padding: const EdgeInsets.all(8),
@@ -61,7 +61,7 @@ class _GoalCardState extends State<GoalCard> with TickerProviderStateMixin {
                   style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                      ),
                 ),
                 const Spacer(),
                 Text(

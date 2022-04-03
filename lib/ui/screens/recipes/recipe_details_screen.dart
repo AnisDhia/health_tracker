@@ -181,8 +181,8 @@ class RecipeDetails extends StatelessWidget {
                             Ingredients(
                               recipeModel: recipeModel,
                             ),
-                            Container(
-                              child: Text('Preparation'),
+                            Preparation(
+                              recipeModel: recipeModel,
                             ),
                             Container(
                               child: Text('Reviews'),
@@ -211,11 +211,44 @@ class Ingredients extends StatelessWidget {
           ListView.separated(
             physics: const ScrollPhysics(),
             shrinkWrap: true,
-            itemCount: 1/*recipeModel.ingredients.length*/,
+            itemCount: recipeModel.ingredients.length,
             itemBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 4),
-                // child: Text('⚫ ' + recipeModel.ingredients[index]),
+                child: Text('⚫ ' + recipeModel.ingredients[index]['original']),
+              );
+            },
+            separatorBuilder: (BuildContext context, int index) {
+              return Divider(
+                color: Colors.black.withOpacity(0.3),
+              );
+            },
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class Preparation extends StatelessWidget {
+  final Recipe recipeModel;
+
+  const Preparation({Key? key, required this.recipeModel}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          ListView.separated(
+            physics: const ScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: recipeModel.preparation[0]['steps'].length,
+            itemBuilder: (BuildContext context, int index) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4),
+                child: Text(
+                    (index+1).toString() + ' - ' + recipeModel.preparation[0]['steps'][index]['step']),
               );
             },
             separatorBuilder: (BuildContext context, int index) {
