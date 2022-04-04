@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:health_tracker/ui/screens/diary/diary_screen.dart';
 import 'package:health_tracker/ui/screens/diary/test.dart';
 import 'package:health_tracker/ui/screens/home_screen.dart';
-import 'package:health_tracker/ui/screens/plans_screen.dart';
+import 'package:health_tracker/ui/screens/plans/plans_screen.dart';
 import 'package:health_tracker/ui/screens/recipes/recipes_screen.dart';
 import 'package:health_tracker/ui/screens/together_screen.dart';
 
