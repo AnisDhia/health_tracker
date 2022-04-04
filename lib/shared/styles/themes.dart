@@ -6,20 +6,21 @@ class MyThemes {
   static final primaryColor = Colors.red.shade300;
 
   static final darkTheme = ThemeData(
-      appBarTheme: AppBarTheme(
-        color: Colors.grey.shade900,
-        elevation: 0,
-      ),
-      scaffoldBackgroundColor: Colors.grey.shade900,
-      primaryColorDark: primaryColor,
-      colorScheme: const ColorScheme.dark(primary: primary),
-      dividerColor: Colors.white,
-      tabBarTheme: TabBarTheme(
-          labelColor: Colors.white,
-          unselectedLabelColor: Colors.white.withOpacity(0.2)),
-      floatingActionButtonTheme:
-          const FloatingActionButtonThemeData(backgroundColor: primary),
-      listTileTheme: const ListTileThemeData(textColor: Colors.white));
+    appBarTheme: AppBarTheme(
+      color: Colors.grey.shade900,
+      elevation: 0,
+    ),
+    scaffoldBackgroundColor: Colors.grey.shade900,
+    primaryColorDark: primaryColor,
+    colorScheme: const ColorScheme.dark(primary: primary),
+    dividerColor: Colors.white,
+    tabBarTheme: TabBarTheme(
+        labelColor: Colors.white,
+        unselectedLabelColor: Colors.white.withOpacity(0.2)),
+    floatingActionButtonTheme:
+        const FloatingActionButtonThemeData(backgroundColor: primary),
+    listTileTheme: const ListTileThemeData(textColor: Colors.white),
+  );
 
   static final lightTheme = ThemeData(
       scaffoldBackgroundColor: Colors.white,
