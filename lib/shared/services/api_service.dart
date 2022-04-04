@@ -51,6 +51,7 @@ class APIService {
       HttpHeaders.contentTypeHeader: 'application/json',
     };
     log(uri.toString());
+    // ! remove this ^
 
     try {
       var response = await http.get(uri, headers: headers);
