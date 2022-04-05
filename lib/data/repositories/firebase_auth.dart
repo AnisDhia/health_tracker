@@ -25,7 +25,7 @@ class FirebaseAuthRepo implements UserRepository {
 
   @override
   Future<void> register(
-      {required String fullname,
+      {required String username,
       required String email,
       required String password}) async {
     try {

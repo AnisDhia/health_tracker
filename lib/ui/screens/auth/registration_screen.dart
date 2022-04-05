@@ -268,7 +268,7 @@ class _LoginScreenState extends State<SignUpScreen> {
   void _signUpWithEmailAndPass(context, AuthenticationCubit cubit) {
     if (_formKey.currentState!.validate()) {
       cubit.register(
-          fullname: _nameController.text,
+          username: _nameController.text,
           email: _emailController.text,
           password: _passwordController.text);
     }

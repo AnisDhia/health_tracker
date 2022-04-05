@@ -36,17 +36,17 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   }
 
   register(
-      {required String fullname,
+      {required String username,
       required String email,
       required String password}) {
     emit(AuthenticationLoadingState());
     firebaseauthrepo
-        .register(fullname: fullname, email: email, password: password)
+        .register(username: username, email: email, password: password)
         .then((value) {
       emit(AuthenticationSuccessState());
 
       final user = FirebaseAuth.instance.currentUser;
-      user!.updateDisplayName(fullname);
+      user!.updateDisplayName(username);
     }).catchError((e) {
       emit(AuthenticationErrorState(e.toString()));
       emit(UnAuthenticationState());

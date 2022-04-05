@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
@@ -11,10 +10,7 @@ import 'package:health_tracker/ui/screens/auth/welcome_screen.dart';
 import 'package:health_tracker/ui/widgets/indicator_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
-import 'firebase_options.dart';
 import 'package:flutter/material.dart';
-import 'package:health_tracker/ui/screens/auth/login_screen.dart';
-import 'package:health_tracker/shared/services/authentication_service.dart';
 import 'package:health_tracker/shared/styles/themes.dart';
 import 'package:health_tracker/ui/widgets/navigation_widget.dart';
 import 'package:provider/provider.dart';
@@ -54,16 +50,6 @@ class MyApp extends StatelessWidget {
           ],
           child: MultiProvider(
             providers: [
-              // ChangeNotifierProvider(
-              //   create: (_) => UserProvider(),
-              // ),
-              // Provider<AuthenticationService>(
-              //   create: (_) => AuthenticationService(FirebaseAuth.instance, FirebaseFirestore.instance),
-              // ),
-              // StreamProvider(
-              //     create: (context) =>
-              //         context.read<AuthenticationService>().authStateChanges,
-              //     initialData: null),
               ChangeNotifierProvider(create: ((context) => ThemeNotifier()))
             ],
             child: Consumer<ThemeNotifier>(
@@ -88,24 +74,7 @@ class MyApp extends StatelessWidget {
                               return const WelcomeScreen();
                             }
                             return const OnBoardingScreen();
-                            // if (snapshot.connectionState ==
-                            //     ConnectionState.active) {
-                            //   if (snapshot.hasData) {
-                            //     return const AuthWrapper();
-                            //   } else if (snapshot.hasError) {
-                            //     return Center(
-                            //       child: Text('${snapshot.error}'),
-                            //     );
-                            //   }
-                            // }
-                            // if (snapshot.connectionState ==
-                            //     ConnectionState.waiting) {
-                            //   return const Center(
-                            //     child: CircularProgressIndicator(),
-                            //   );
-                            // }
-
-                            // return const WelcomeScreen();
+                            
                           }),
                 );
               },
@@ -116,44 +85,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-// ? 2 
-// class AuthWrapper extends StatefulWidget {
-//   const AuthWrapper({Key? key}) : super(key: key);
 
-//   @override
-//   State<AuthWrapper> createState() => _AuthWrapperState();
-// }
-
-// class _AuthWrapperState extends State<AuthWrapper> {
-//   @override
-//   void initState() {
-//     super.initState();
-//     addData();
-//   }
-
-//   addData() async {
-//     UserProvider _userProvider =
-//         Provider.of<UserProvider>(context, listen: false);
-//     await _userProvider.refreshUser();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const Navigation();
-//   }
-// }
-
-// ? 1
-// class AuthenticationWrapper extends StatelessWidget {
-//   const AuthenticationWrapper({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final firebaseUser = context.watch<User?>();
-
-//     if (firebaseUser != null) {
-//       return const Navigation();
-//     }
-//     return const WelcomeScreen();
-//   }
-// }
