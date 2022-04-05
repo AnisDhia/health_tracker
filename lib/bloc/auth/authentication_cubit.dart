@@ -20,7 +20,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       user!.displayName == '' ? user.updateDisplayName('User') : null;
       emit(AuthenticationSuccessState());
     }).catchError((e) {
-      emit(AuthenticationErrortate(e.toString()));
+      emit(AuthenticationErrorState(e.toString()));
       emit(UnAuthenticationState());
     });
   }
@@ -30,7 +30,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     firebaseauthrepo.googleSignIn().then((value) {
       emit(AuthenticationSuccessState());
     }).catchError((e) {
-      emit(AuthenticationErrortate(e.toString()));
+      emit(AuthenticationErrorState(e.toString()));
       emit(UnAuthenticationState());
     });
   }
@@ -48,7 +48,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       final user = FirebaseAuth.instance.currentUser;
       user!.updateDisplayName(fullname);
     }).catchError((e) {
-      emit(AuthenticationErrortate(e.toString()));
+      emit(AuthenticationErrorState(e.toString()));
       emit(UnAuthenticationState());
     });
   }

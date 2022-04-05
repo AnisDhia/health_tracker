@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:health_tracker/bloc/auth/authentication_cubit.dart';
 import 'package:health_tracker/ui/screens/profile/profile_screen.dart';
 import 'package:health_tracker/ui/screens/settings/settings_screen.dart';
 import 'package:health_tracker/shared/services/authentication_service.dart';
@@ -7,7 +8,9 @@ import 'package:health_tracker/shared/styles/themes.dart';
 import 'package:provider/provider.dart';
 
 class NavDrawer extends StatelessWidget {
-  const NavDrawer({Key? key}) : super(key: key);
+  NavDrawer({Key? key, required this.authenticationCubit}) : super(key: key);
+
+  AuthenticationCubit authenticationCubit;
 
   @override
   Widget build(BuildContext context) {
@@ -62,23 +65,26 @@ class NavDrawer extends StatelessWidget {
         ListTile(
           leading: const Icon(Icons.exit_to_app),
           title: const Text('Logout'),
-          onTap: () => {AuthenticationService().signOut()},
-        ),
-        ListTile(
-          leading: const Icon(CupertinoIcons.moon_stars),
-          title: const Text('Dark Mode'),
-          trailing: Consumer<ThemeNotifier>(
-            builder: (context, value, child) {
-              return CupertinoSwitch(
-                value: value.darkTheme,
-                activeColor: Colors.red,
-                onChanged: (newValue) {
-                  value.toggleTheme();
-                }
-              );
+          onTap: () => {
+            // AuthenticationService().signOut()
+            authenticationCubit.signout()
             },
-          ),
         ),
+        // ListTile(
+        //   leading: const Icon(CupertinoIcons.moon_stars),
+        //   title: const Text('Dark Mode'),
+        //   trailing: Consumer<ThemeNotifier>(
+        //     builder: (context, value, child) {
+        //       return CupertinoSwitch(
+        //         value: value.darkTheme,
+        //         activeColor: Colors.red,
+        //         onChanged: (newValue) {
+        //           value.toggleTheme();
+        //         }
+        //       );
+        //     },
+        //   ),
+        // ),
       ],
     ));
   }

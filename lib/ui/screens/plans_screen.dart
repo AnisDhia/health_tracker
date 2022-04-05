@@ -8,7 +8,7 @@ class PlansScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue,
-      drawer: const NavDrawer(),
+      // drawer: const NavDrawer(),
       appBar: AppBar(
         title: const Text('Plans'), 
         centerTitle: true,

@@ -26,11 +26,11 @@ class _DiaryMealCardState extends State<DiaryMealCard> {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Colors.blue,
-              Colors.green,
-              Colors.lightGreenAccent,
-              Colors.yellowAccent,
-              Colors.orangeAccent,
+              // Colors.blue,
+              // Colors.green,
+              // Colors.lightGreenAccent,
+              // Colors.yellowAccent,
+              // Colors.orangeAccent,
               Colors.deepOrange,
               Colors.red,
             ],
@@ -123,9 +123,9 @@ class _DiaryMealCardState extends State<DiaryMealCard> {
                                   colors: [
                                     Colors.red,
                                     Colors.deepOrange,
-                                    Colors.yellow,
-                                    Colors.green,
-                                    Colors.blueAccent,
+                                    // Colors.yellow,
+                                    // Colors.green,
+                                    // Colors.blueAccent,
                                   ],
                                   begin: Alignment.topLeft,
                                   end: Alignment.topRight,
@@ -176,33 +176,49 @@ class _DiaryMealCardState extends State<DiaryMealCard> {
                   itemCount: 5,
                 )),
                 const SizedBox(
-                  height: 16,
+                  height: 20,
                 ),
                 SizedBox(
                   height: 64,
                   child: Row(
                     children: [
                       Expanded(
-                          child: _macroCard("", 748, "kcal", Color.fromARGB(255, 7, 165, 201),
+                          child: _macroCard(
+                              "",
+                              748,
+                              "kcal",
+                              const Color.fromARGB(255, 7, 165, 201),
                               Icons.local_fire_department)),
                       const SizedBox(
                         width: 8,
                       ),
                       Expanded(
-                          child: _macroCard("Carbs", 70, "g", Color.fromARGB(255, 255, 208, 70),
+                          child: _macroCard(
+                              "Carbs",
+                              70,
+                              "g",
+                              const Color.fromARGB(255, 255, 208, 70),
                               Icons.rice_bowl)),
                       const SizedBox(
                         width: 8,
                       ),
                       Expanded(
                           child: _macroCard(
-                              "Protein", 65, "g", Color.fromARGB(255, 215, 86, 67), Icons.egg_alt)),
+                              "Protein",
+                              65,
+                              "g",
+                              const Color.fromARGB(255, 215, 86, 67),
+                              Icons.egg_alt)),
                       const SizedBox(
                         width: 8,
                       ),
                       Expanded(
                           child: _macroCard(
-                              "Fat", 23, "g", Color.fromARGB(255, 211, 91, 120), Icons.water_drop)),
+                              "Fat",
+                              23,
+                              "g",
+                              const Color.fromARGB(255, 211, 91, 120),
+                              Icons.water_drop)),
                       const SizedBox(
                         width: 8,
                       ),
@@ -210,44 +226,63 @@ class _DiaryMealCardState extends State<DiaryMealCard> {
                   ),
                 ),
                 const SizedBox(
-                  height: 16,
+                  height: 32,
                 ),
                 Row(
                   children: [
                     Expanded(
-                        child: Container(
-                      height: 36,
-                      decoration: const BoxDecoration(),
-                      child: const Center(
-                        child: Text(
-                          "DELETE MEAL",
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontWeight: FontWeight.bold,
+                        child: TextButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                          // backgroundColor: MaterialStateProperty.all<Color?>(
+                          //     const Color.fromARGB(255, 6, 174, 213)),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(24.0),
+                            ),
                           ),
-                        ),
+                          padding:
+                              MaterialStateProperty.all<EdgeInsetsGeometry>(
+                                  const EdgeInsets.symmetric(vertical: 16))),
+                      child: Text(
+                        "DELETE MEAL",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey.shade600),
                       ),
                     )),
                     const SizedBox(
                       width: 16,
                     ),
                     Expanded(
-                        child: Container(
-                      height: 36,
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 6, 174, 213),
-                        borderRadius: BorderRadius.circular(24),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          "ADD MEAL",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.white),
-                        ),
+                        child: TextButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color?>(
+                              // const Color.fromARGB(255, 6, 174, 213)
+                              Colors.red
+                              ),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(24.0),
+                            ),
+                          ),
+                          padding:
+                              MaterialStateProperty.all<EdgeInsetsGeometry>(
+                                  const EdgeInsets.symmetric(vertical: 16))),
+                      child: const Text(
+                        "ADD MEAL",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.white),
                       ),
                     )),
                   ],
-                )
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
               ],
             ),
           ),
@@ -262,10 +297,7 @@ class _DiaryMealCardState extends State<DiaryMealCard> {
       margin: const EdgeInsets.symmetric(vertical: 4),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: color,
-            width: 1.5
-          )),
+          border: Border.all(color: color, width: 1.5)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -277,9 +309,7 @@ class _DiaryMealCardState extends State<DiaryMealCard> {
           Text(
             "$count$unit $name",
             style: TextStyle(
-              color: color,
-              fontSize: 12,
-            ),
+                color: color, fontSize: 12, fontWeight: FontWeight.bold),
           )
         ],
       ),

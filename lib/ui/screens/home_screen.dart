@@ -13,7 +13,7 @@ class _HomeState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[700],
-      drawer: const NavDrawer(),
+      // drawer: const NavDrawer(),
       appBar: AppBar(
         title: const Text('Health Tracker'), 
         centerTitle: true,
