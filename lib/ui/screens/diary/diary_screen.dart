@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:health_tracker/ui/screens/diary/widgets/goal_card_widget.dart';
+import 'package:health_tracker/ui/screens/diary/widgets/meal_card_widget.dart';
 import 'package:health_tracker/ui/widgets/drawer_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -38,7 +39,6 @@ class _DiaryScreenState extends State<DiaryScreen> {
     log(event.toString());
     setState(() {
       _steps = event.steps;
-
     });
   }
 
@@ -84,6 +84,20 @@ class _DiaryScreenState extends State<DiaryScreen> {
         title: const Text('Diary'),
         centerTitle: true,
         elevation: 0,
+        actions: [
+          Container(
+            margin: const EdgeInsets.fromLTRB(0,0,4,0),
+            child: TextButton(
+              onPressed: () {
+                
+              },
+              child: const CircleAvatar(
+                backgroundImage: AssetImage('assets/images/cover.jpg'),
+                backgroundColor: Colors.red,
+              ),
+            ),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -129,15 +143,24 @@ class _DiaryScreenState extends State<DiaryScreen> {
                   onDoubleTap: () {
                     log('wow');
                   },
-                  child: GoalCard(
-                    title: "Steps",
-                    value: _steps,
-                    goal: 6000
-                  )),
+                  child: GoalCard(title: "Steps", value: _steps, goal: 6000)),
               const SizedBox(
                 height: 14,
               ),
-              const GoalCard(title: "Calories", value: 1800, goal: 2000,),
+              const GoalCard(
+                title: "Calories",
+                value: 1800,
+                goal: 2000,
+              ),
+              const SizedBox(
+                height: 14,
+              ),
+              const DiaryMealCard(
+                title: "Dinner",
+              ),
+              const SizedBox(
+                height: 14,
+              ),
               ListView.builder(
                   physics: const ScrollPhysics(),
                   shrinkWrap: true,
