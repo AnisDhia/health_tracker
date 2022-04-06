@@ -1,11 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/bloc/auth/authentication_cubit.dart';
-import 'package:health_tracker/ui/screens/profile/profile_screen.dart';
 import 'package:health_tracker/ui/screens/settings/settings_screen.dart';
-import 'package:health_tracker/shared/services/authentication_service.dart';
-import 'package:health_tracker/shared/styles/themes.dart';
-import 'package:provider/provider.dart';
 
 class NavDrawer extends StatelessWidget {
   NavDrawer({Key? key, required this.authenticationCubit}) : super(key: key);

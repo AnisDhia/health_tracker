@@ -103,75 +103,7 @@ class _DiaryMealCardState extends State<DiaryMealCard> {
                 Expanded(
                     child: ListView.builder(
                   itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: 16),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 12),
-                        child: Row(
-                          children: [
-                            Container(
-                              height: 32,
-                              width: 32,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                gradient: LinearGradient(
-                                  colors: [
-                                    Colors.red,
-                                    Colors.deepOrange,
-                                    // Colors.yellow,
-                                    // Colors.green,
-                                    // Colors.blueAccent,
-                                  ],
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.topRight,
-                                ),
-                              ),
-                              padding: const EdgeInsets.all(2),
-                              child: const CircleAvatar(
-                                foregroundColor: Colors.white,
-                                backgroundColor: Colors.black,
-                                child: Icon(
-                                  Icons.check,
-                                  size: 16,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 16),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  Text(
-                                    "Smoking Salmon",
-                                    style: TextStyle(
-                                      // color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 4,
-                                  ),
-                                  Text(
-                                    "232g",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Color.fromARGB(255, 183, 145, 31),
-                                      fontSize: 12,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    );
+                    return const FoodListTile();
                   },
                   itemCount: 5,
                 )),
@@ -312,6 +244,85 @@ class _DiaryMealCardState extends State<DiaryMealCard> {
                 color: color, fontSize: 12, fontWeight: FontWeight.bold),
           )
         ],
+      ),
+    );
+  }
+}
+
+class FoodListTile extends StatelessWidget {
+  const FoodListTile({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.1),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        padding: const EdgeInsets.symmetric(
+            horizontal: 16, vertical: 12),
+        child: Row(
+          children: [
+            Container(
+              height: 32,
+              width: 32,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.red,
+                    Colors.deepOrange,
+                    // Colors.yellow,
+                    // Colors.green,
+                    // Colors.blueAccent,
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.topRight,
+                ),
+              ),
+              padding: const EdgeInsets.all(2),
+              child: const CircleAvatar(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.black,
+                child: Icon(
+                  Icons.check,
+                  size: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Text(
+                    "Smoking Salmon",
+                    style: TextStyle(
+                      // color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 4,
+                  ),
+                  Text(
+                    "232g",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 183, 145, 31),
+                      fontSize: 12,
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

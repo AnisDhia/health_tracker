@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/ui/screens/diary/widgets/goal_card_widget.dart';
 import 'package:health_tracker/ui/screens/diary/widgets/meal_card_widget.dart';
+import 'package:health_tracker/ui/widgets/appbar_widget.dart';
 import 'package:health_tracker/ui/widgets/drawer_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -80,25 +81,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       // drawer: const NavDrawer(),
-      appBar: AppBar(
-        title: const Text('Diary'),
-        centerTitle: true,
-        elevation: 0,
-        actions: [
-          Container(
-            margin: const EdgeInsets.fromLTRB(0,0,4,0),
-            child: TextButton(
-              onPressed: () {
-                
-              },
-              child: const CircleAvatar(
-                backgroundImage: AssetImage('assets/images/cover.jpg'),
-                backgroundColor: Colors.red,
-              ),
-            ),
-          ),
-        ],
-      ),
+      appBar: CustomAppBar(title: "Diary"),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -175,15 +158,17 @@ class _DiaryScreenState extends State<DiaryScreen> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        backgroundColor: Colors.red,
-        foregroundColor: Colors.white,
-        onPressed: () {
-          // TODO: implement diary FAB functionality
-        },
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   child: const Icon(Icons.add),
+      //   backgroundColor: Colors.red,
+      //   foregroundColor: Colors.white,
+      //   onPressed: () {
+      //     // TODO: implement diary FAB functionality
+      //   },
+      // ),
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
+
+

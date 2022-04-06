@@ -21,6 +21,14 @@ class _HomeState extends State<HomeScreen> {
       body: Container(
         child: const Text('Home'),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
+        onPressed: () {
+          // TODO: implement diary FAB functionality
+        },
+      ),
     );
   }
 }
