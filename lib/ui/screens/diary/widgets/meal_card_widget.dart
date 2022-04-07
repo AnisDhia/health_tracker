@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:health_tracker/data/models/food_model.dart';
 
 class DiaryMealCard extends StatefulWidget {
   final String title;
@@ -102,10 +103,14 @@ class _DiaryMealCardState extends State<DiaryMealCard> {
                 ),
                 Expanded(
                     child: ListView.builder(
+                  itemCount: 10,
                   itemBuilder: (context, index) {
-                    return const FoodListTile();
+                    return FoodCard(
+                        food: Food(
+                            name: "Smoking Salmon",
+                            weight: 232,
+                            nutrients: []));
                   },
-                  itemCount: 5,
                 )),
                 const SizedBox(
                   height: 20,
@@ -113,45 +118,45 @@ class _DiaryMealCardState extends State<DiaryMealCard> {
                 SizedBox(
                   height: 64,
                   child: Row(
-                    children: [
+                    children: const [
                       Expanded(
-                          child: _macroCard(
-                              "",
-                              748,
-                              "kcal",
-                              const Color.fromARGB(255, 7, 165, 201),
-                              Icons.local_fire_department)),
-                      const SizedBox(
+                          child: MacroCard(
+                              name: "",
+                              count: 748,
+                              unit: "kcal",
+                              color: Color.fromARGB(255, 7, 165, 201),
+                              icon: Icons.local_fire_department)),
+                      SizedBox(
                         width: 8,
                       ),
                       Expanded(
-                          child: _macroCard(
-                              "Carbs",
-                              70,
-                              "g",
-                              const Color.fromARGB(255, 255, 208, 70),
-                              Icons.rice_bowl)),
-                      const SizedBox(
+                          child: MacroCard(
+                              name: "Carbs",
+                              count: 70,
+                              unit: "g",
+                              color: Color.fromARGB(255, 255, 208, 70),
+                              icon: Icons.rice_bowl)),
+                      SizedBox(
                         width: 8,
                       ),
                       Expanded(
-                          child: _macroCard(
-                              "Protein",
-                              65,
-                              "g",
-                              const Color.fromARGB(255, 215, 86, 67),
-                              Icons.egg_alt)),
-                      const SizedBox(
+                          child: MacroCard(
+                              name: "Protein",
+                              count: 65,
+                              unit: "g",
+                              color: Color.fromARGB(255, 215, 86, 67),
+                              icon: Icons.egg_alt)),
+                      SizedBox(
                         width: 8,
                       ),
                       Expanded(
-                          child: _macroCard(
-                              "Fat",
-                              23,
-                              "g",
-                              const Color.fromARGB(255, 211, 91, 120),
-                              Icons.water_drop)),
-                      const SizedBox(
+                          child: MacroCard(
+                              name: "Fat",
+                              count: 23,
+                              unit: "g",
+                              color: Color.fromARGB(255, 211, 91, 120),
+                              icon: Icons.water_drop)),
+                      SizedBox(
                         width: 8,
                       ),
                     ],
@@ -193,8 +198,7 @@ class _DiaryMealCardState extends State<DiaryMealCard> {
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color?>(
                               // const Color.fromARGB(255, 6, 174, 213)
-                              Colors.red
-                              ),
+                              Colors.red),
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
@@ -222,9 +226,27 @@ class _DiaryMealCardState extends State<DiaryMealCard> {
       ),
     );
   }
+}
 
-  Container _macroCard(
-      String name, int count, String unit, Color color, IconData icon) {
+// ? MacroCard
+class MacroCard extends StatelessWidget {
+  const MacroCard({
+    Key? key,
+    required this.name,
+    required this.count,
+    required this.unit,
+    required this.color,
+    required this.icon,
+  }) : super(key: key);
+
+  final String name;
+  final int count;
+  final String unit;
+  final Color color;
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 4),
       decoration: BoxDecoration(
@@ -249,81 +271,123 @@ class _DiaryMealCardState extends State<DiaryMealCard> {
   }
 }
 
-class FoodListTile extends StatelessWidget {
-  const FoodListTile({
-    Key? key,
-  }) : super(key: key);
+// ? FoodCard
+
+class FoodCard extends StatelessWidget {
+  const FoodCard({Key? key, required this.food}) : super(key: key);
+
+  final Food food;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.1),
-          borderRadius: BorderRadius.circular(8),
+    return Card(
+        // color: Colors.black.withOpacity(0.3),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
         ),
-        padding: const EdgeInsets.symmetric(
-            horizontal: 16, vertical: 12),
-        child: Row(
-          children: [
-            Container(
-              height: 32,
-              width: 32,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.red,
-                    Colors.deepOrange,
-                    // Colors.yellow,
-                    // Colors.green,
-                    // Colors.blueAccent,
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.topRight,
-                ),
-              ),
-              padding: const EdgeInsets.all(2),
-              child: const CircleAvatar(
-                foregroundColor: Colors.white,
-                backgroundColor: Colors.black,
-                child: Icon(
-                  Icons.check,
-                  size: 16,
-                ),
-              ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
-                    "Smoking Salmon",
-                    style: TextStyle(
-                      // color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Text(
-                    "232g",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 183, 145, 31),
-                      fontSize: 12,
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
-    );
+        margin: const EdgeInsets.symmetric(vertical: 6),
+        elevation: 8,
+        child: ListTile(
+          title: Text(food.name),
+          subtitle: Text(
+            '${food.weight}g',
+            style: const TextStyle(
+                color: Color.fromARGB(255, 183, 145, 31),
+                fontWeight: FontWeight.bold),
+          ),
+          trailing: const Text("123 kcal"),
+          onTap: () {},
+        )
+        // Padding(
+        //   padding: const EdgeInsets.all(8.0),
+        //   child: Row(children: [
+        //     Column(
+        //       crossAxisAlignment: CrossAxisAlignment.start,
+        //       children: [
+        //         Text(
+        //           food.name,
+        //           style: const TextStyle(fontWeight: FontWeight.bold),
+        //         ),
+        //         Text(
+        //           '${food.weight} g',
+        //           style: const TextStyle(
+        //             color:Color.fromARGB(255, 183, 145, 31),
+        //             fontWeight: FontWeight.bold),
+        //         )
+        //       ],
+        //     )
+        //   ]),
+        // ),
+        );
+
+    //   // tileColor: Colors.grey.shade200,
+
+    // Padding(
+    //   padding: const EdgeInsets.only(bottom: 16),
+    //   child: Container(
+    //     decoration: BoxDecoration(
+    //       color: Colors.white.withOpacity(0.1),
+    //       borderRadius: BorderRadius.circular(8),
+    //     ),
+    //     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+    //     child: Row(
+    //       children: [
+    //         Container(
+    //           height: 32,
+    //           width: 32,
+    //           decoration: const BoxDecoration(
+    //             shape: BoxShape.circle,
+    //             gradient: LinearGradient(
+    //               colors: [
+    //                 Colors.red,
+    //                 Colors.deepOrange,
+    //                 // Colors.yellow,
+    //                 // Colors.green,
+    //                 // Colors.blueAccent,
+    //               ],
+    //               begin: Alignment.topLeft,
+    //               end: Alignment.topRight,
+    //             ),
+    //           ),
+    //           padding: const EdgeInsets.all(2),
+    //           child: const CircleAvatar(
+    //             foregroundColor: Colors.white,
+    //             backgroundColor: Colors.black,
+    //             child: Icon(
+    //               Icons.check,
+    //               size: 16,
+    //             ),
+    //           ),
+    //         ),
+    //         Padding(
+    //           padding: const EdgeInsets.symmetric(horizontal: 16),
+    //           child: Column(
+    //             crossAxisAlignment: CrossAxisAlignment.start,
+    //             children: [
+    //               Text(
+    //                 food.name,
+    //                 style: const TextStyle(
+    //                   // color: Colors.white,
+    //                   fontWeight: FontWeight.bold,
+    //                 ),
+    //               ),
+    //               const SizedBox(
+    //                 height: 4,
+    //               ),
+    //               Text(
+    //                 "${food.weight}g",
+    //                 style: const TextStyle(
+    //                   fontWeight: FontWeight.bold,
+    //                   color: Color.fromARGB(255, 183, 145, 31),
+    //                   fontSize: 12,
+    //                 ),
+    //               )
+    //             ],
+    //           ),
+    //         )
+    //       ],
+    //     ),
+    //   ),
+    // );
   }
 }

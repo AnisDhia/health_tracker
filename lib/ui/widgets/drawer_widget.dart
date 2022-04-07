@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/bloc/auth/authentication_cubit.dart';
+import 'package:health_tracker/shared/styles/themes.dart';
 import 'package:health_tracker/ui/screens/settings/settings_screen.dart';
+import 'package:provider/provider.dart';
 
 class NavDrawer extends StatelessWidget {
   NavDrawer({Key? key, required this.authenticationCubit}) : super(key: key);
@@ -65,21 +68,21 @@ class NavDrawer extends StatelessWidget {
             authenticationCubit.signout()
             },
         ),
-        // ListTile(
-        //   leading: const Icon(CupertinoIcons.moon_stars),
-        //   title: const Text('Dark Mode'),
-        //   trailing: Consumer<ThemeNotifier>(
-        //     builder: (context, value, child) {
-        //       return CupertinoSwitch(
-        //         value: value.darkTheme,
-        //         activeColor: Colors.red,
-        //         onChanged: (newValue) {
-        //           value.toggleTheme();
-        //         }
-        //       );
-        //     },
-        //   ),
-        // ),
+        ListTile(
+          leading: const Icon(CupertinoIcons.moon_stars),
+          title: const Text('Dark Mode'),
+          trailing: Consumer<ThemeNotifier>(
+            builder: (context, value, child) {
+              return CupertinoSwitch(
+                value: value.darkTheme,
+                activeColor: Colors.red,
+                onChanged: (newValue) {
+                  value.toggleTheme();
+                }
+              );
+            },
+          ),
+        ),
       ],
     ));
   }

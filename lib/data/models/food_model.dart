@@ -1,11 +1,12 @@
 class Food{
-  final String title;
-  late double weight;
+  final String name;
+  final double weight;
   final List nutrients;
 
   Food({
-    required this.title,
+    required this.name,
     required this.nutrients,
+    required this.weight,
   });
 
 
