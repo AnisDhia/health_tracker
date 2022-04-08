@@ -6,7 +6,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
   
   CustomAppBar({
     Key? key,
-    required this.title
+    required this.title,
+    this.actions
   }) : super(key: key);
 
   @override
@@ -15,6 +16,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: Colors.transparent,
       title: Text(title),
       centerTitle: true,
       elevation: 0,

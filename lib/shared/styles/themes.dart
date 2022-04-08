@@ -20,7 +20,7 @@ class MyThemes {
     floatingActionButtonTheme:
         const FloatingActionButtonThemeData(backgroundColor: primary),
     listTileTheme: const ListTileThemeData(textColor: Colors.white),
-    cardColor: Colors.grey.shade900,
+    cardColor: Color.fromARGB(255, 15, 15, 15),
   );
 
   static final lightTheme = ThemeData(
@@ -37,7 +37,7 @@ class MyThemes {
         labelColor: Colors.black,
         unselectedLabelColor: Colors.black.withOpacity(0.3)),
     listTileTheme: const ListTileThemeData(textColor: Colors.black),
-    cardColor: Colors.grey,
+    cardColor: Colors.grey.shade200,
   );
 }
 
