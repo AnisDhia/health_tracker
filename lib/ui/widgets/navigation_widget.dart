@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:health_tracker/bloc/auth/authentication_cubit.dart';
+import 'package:health_tracker/bloc/connectivity/connectivity_cubit.dart';
+import 'package:health_tracker/ui/screens/auth/welcome_screen.dart';
 import 'package:health_tracker/ui/screens/diary/diary_screen.dart';
 import 'package:health_tracker/ui/screens/diary/test.dart';
 import 'package:health_tracker/ui/screens/home_screen.dart';
 import 'package:health_tracker/ui/screens/plans_screen.dart';
 import 'package:health_tracker/ui/screens/recipes/recipes_screen.dart';
 import 'package:health_tracker/ui/screens/together_screen.dart';
-
-
+import 'package:health_tracker/ui/widgets/drawer_widget.dart';
+import 'package:health_tracker/ui/widgets/indicator_widget.dart';
+import 'package:health_tracker/ui/widgets/snackbar_widget.dart';
 
 class Navigation extends StatefulWidget {
-  const Navigation({ Key? key }) : super(key: key);
+  const Navigation({Key? key}) : super(key: key);
 
   @override
   State<Navigation> createState() => _NavigationState();
@@ -49,23 +54,56 @@ class _NavigationState extends State<Navigation> {
 
   @override
   Widget build(BuildContext context) {
+    AuthenticationCubit authenticationCubit = BlocProvider.of(context);
+    // ConnectivityCubit connectivityCubit = BlocProvider.of(context);
+
     return Scaffold(
       // extendBody: true,
-      // drawer: const NavDrawer(),
-      // appBar: AppBar(
-      //   title: const Text('Health Tracker'), 
-      //   centerTitle: true,
-      // ),
-      body: PageView(
-        physics: const NeverScrollableScrollPhysics(),
-        controller: pageController,
-        children: _widgetOption,
-        onPageChanged: (index){
-          setState(() {
-            _selectedIndex = index;
-          });
-        } ,
-      ),
+      drawer: NavDrawer(authenticationCubit: authenticationCubit),
+      body: MultiBlocListener(
+          listeners: [
+            BlocListener<ConnectivityCubit, ConnectivityState>(
+                listener: (context, state) {
+              if (state is ConnectivityOnlineState) {
+                MySnackBar.error(
+                    message: 'Connected',
+                    color: Colors.blue,
+                    context: context);
+              } else {
+                MySnackBar.error(
+                    message: 'Please Check Your Internet Connection',
+                    color: Colors.red,
+                    context: context);
+              }
+            }),
+            BlocListener<AuthenticationCubit, AuthenticationState>(
+                listener: (context, state) {
+              if (state is UnAuthenticationState) {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const WelcomeScreen()),
+                    (route) => false);
+              }
+            })
+          ],
+          child: BlocBuilder<AuthenticationCubit, AuthenticationState>(
+            builder: (context, state) {
+              if (state is AuthenticationLoadingState) {
+                return const MyCircularIndicator();
+              }
+              return PageView(
+                physics: const NeverScrollableScrollPhysics(),
+                controller: pageController,
+                children: _widgetOption,
+                onPageChanged: (index) {
+                  setState(() {
+                    _selectedIndex = index;
+                  });
+                },
+              );
+            },
+          )),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
@@ -94,8 +132,8 @@ class _NavigationState extends State<Navigation> {
         selectedIconTheme: const IconThemeData(size: 30),
         currentIndex: _selectedIndex,
         // showUnselectedLabels: false,
-        onTap:  _onItemTapped,
-      ),   
+        onTap: _onItemTapped,
+      ),
     );
   }
 }

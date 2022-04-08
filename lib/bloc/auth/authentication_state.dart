@@ -17,10 +17,10 @@ class AuthenticationSuccessState extends AuthenticationState {
   List<Object?> get props => [];
 }
 
-class AuthenticationErrortate extends AuthenticationState {
+class AuthenticationErrorState extends AuthenticationState {
   final String error;
 
-  AuthenticationErrortate(this.error);
+  AuthenticationErrorState(this.error);
 
   @override
   List<Object?> get props => [error];

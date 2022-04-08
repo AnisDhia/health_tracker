@@ -3,9 +3,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:health_tracker/data/repositories/user_repository.dart';
 
 class FirebaseAuthRepo implements UserRepository {
-  final _firebaseAuth = FirebaseAuth.instance;
-
   FirebaseAuthRepo();
+
+  final _firebaseAuth = FirebaseAuth.instance;
 
   @override
   Future<void> login({required String email, required String password}) async {
@@ -25,7 +25,7 @@ class FirebaseAuthRepo implements UserRepository {
 
   @override
   Future<void> register(
-      {required String fullname,
+      {required String username,
       required String email,
       required String password}) async {
     try {

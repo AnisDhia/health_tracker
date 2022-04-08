@@ -84,36 +84,36 @@ class _GoalCardState extends State<GoalCard> with TickerProviderStateMixin {
               value: controller.value,
               color: Colors.red,
             ),
-            Container(
-              height: 8,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.15),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Row(
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width / 1.2,
-                    decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(8),
-                      gradient: const LinearGradient(
-                        colors: [
-                          Colors.blue,
-                          Colors.green,
-                          Colors.lightGreenAccent,
-                          Colors.yellowAccent,
-                          Colors.orangeAccent,
-                          Colors.deepOrange,
-                          Colors.red,
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            )
+            // Container(
+            //   height: 8,
+            //   width: double.infinity,
+            //   decoration: BoxDecoration(
+            //     color: Colors.white.withOpacity(0.15),
+            //     borderRadius: BorderRadius.circular(8),
+            //   ),
+            //   child: Row(
+            //     children: [
+            //       Container(
+            //         width: MediaQuery.of(context).size.width / 1.2,
+            //         decoration: BoxDecoration(
+            //           color: Colors.red,
+            //           borderRadius: BorderRadius.circular(8),
+            //           gradient: const LinearGradient(
+            //             colors: [
+            //               Colors.blue,
+            //               Colors.green,
+            //               Colors.lightGreenAccent,
+            //               Colors.yellowAccent,
+            //               Colors.orangeAccent,
+            //               Colors.deepOrange,
+            //               Colors.red,
+            //             ],
+            //           ),
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // )
           ],
         ),
       ),

@@ -20,7 +20,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       user!.displayName == '' ? user.updateDisplayName('User') : null;
       emit(AuthenticationSuccessState());
     }).catchError((e) {
-      emit(AuthenticationErrortate(e.toString()));
+      emit(AuthenticationErrorState(e.toString()));
       emit(UnAuthenticationState());
     });
   }
@@ -30,25 +30,25 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     firebaseauthrepo.googleSignIn().then((value) {
       emit(AuthenticationSuccessState());
     }).catchError((e) {
-      emit(AuthenticationErrortate(e.toString()));
+      emit(AuthenticationErrorState(e.toString()));
       emit(UnAuthenticationState());
     });
   }
 
   register(
-      {required String fullname,
+      {required String username,
       required String email,
       required String password}) {
     emit(AuthenticationLoadingState());
     firebaseauthrepo
-        .register(fullname: fullname, email: email, password: password)
+        .register(username: username, email: email, password: password)
         .then((value) {
       emit(AuthenticationSuccessState());
 
       final user = FirebaseAuth.instance.currentUser;
-      user!.updateDisplayName(fullname);
+      user!.updateDisplayName(username);
     }).catchError((e) {
-      emit(AuthenticationErrortate(e.toString()));
+      emit(AuthenticationErrorState(e.toString()));
       emit(UnAuthenticationState());
     });
   }

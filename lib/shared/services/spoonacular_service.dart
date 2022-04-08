@@ -5,10 +5,10 @@ import 'package:health_tracker/data/models/meal_plan_model.dart';
 import 'package:health_tracker/data/models/recipe_model.dart';
 import 'package:http/http.dart' as http;
 
-class APIService {
-  APIService._instantiate();
+class SpoonacularService {
+  SpoonacularService._instantiate();
 
-  static final APIService instance = APIService._instantiate();
+  static final SpoonacularService instance = SpoonacularService._instantiate();
 
   final String _baseUrl = 'api.spoonacular.com';
   static const String _API_KEY = '73071387df1246538cb0d2678f85ec94';

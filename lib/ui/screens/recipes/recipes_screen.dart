@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:health_tracker/data/models/recipe_model.dart';
-import 'package:health_tracker/shared/services/api_service.dart';
+import 'package:health_tracker/shared/services/spoonacular_service.dart';
 import 'package:health_tracker/ui/widgets/drawer_widget.dart';
 import 'package:health_tracker/ui/screens/recipes/widgets/recipe_card_widget.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
@@ -13,13 +13,13 @@ class RecipesScreen extends StatefulWidget {
 }
 
 class _RecipesScreenState extends State<RecipesScreen> {
-  Future<List<Recipe>> recipeList = APIService.instance.getRandomRecipes(tags: "keto",number: 15);
+  Future<List<Recipe>> recipeList = SpoonacularService.instance.getRandomRecipes(tags: "keto",number: 15);
 
   @override
   Widget build(BuildContext context) {
     // final List<Recipe> recipesFromAPI = APIService.instance.getRandomRecipes(number: 3) as List<Recipe>;
     return Scaffold(
-      drawer: const NavDrawer(),
+      // drawer: const NavDrawer(),
       appBar: AppBar(
         elevation: 0,
         title: const Text('Recipes'), 

@@ -7,7 +7,7 @@ class TogetherScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const NavDrawer(),
+      // drawer: const NavDrawer(),
       appBar: AppBar(
         title: const Text('Together'), 
         centerTitle: true,

@@ -10,7 +10,7 @@ class MyThemes {
       color: Colors.grey.shade900,
       elevation: 0,
     ),
-    scaffoldBackgroundColor: Colors.grey.shade900,
+    scaffoldBackgroundColor: Colors.black,
     primaryColorDark: primaryColor,
     colorScheme: const ColorScheme.dark(primary: primary),
     dividerColor: Colors.white,
@@ -20,22 +20,25 @@ class MyThemes {
     floatingActionButtonTheme:
         const FloatingActionButtonThemeData(backgroundColor: primary),
     listTileTheme: const ListTileThemeData(textColor: Colors.white),
+    cardColor: Color.fromARGB(255, 15, 15, 15),
   );
 
   static final lightTheme = ThemeData(
-      scaffoldBackgroundColor: Colors.white,
-      // primaryColor: Colors.white,
-      appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        elevation: 0,
-      ),
-      colorScheme: const ColorScheme.light(primary: primary),
-      dividerColor: Colors.black,
-      tabBarTheme: TabBarTheme(
-          labelColor: Colors.black,
-          unselectedLabelColor: Colors.black.withOpacity(0.3)),
-      listTileTheme: const ListTileThemeData(textColor: Colors.black));
+    scaffoldBackgroundColor: Colors.white,
+    // primaryColor: Colors.white,
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Colors.white,
+      foregroundColor: Colors.black,
+      elevation: 0,
+    ),
+    colorScheme: const ColorScheme.light(primary: primary),
+    dividerColor: Colors.black,
+    tabBarTheme: TabBarTheme(
+        labelColor: Colors.black,
+        unselectedLabelColor: Colors.black.withOpacity(0.3)),
+    listTileTheme: const ListTileThemeData(textColor: Colors.black),
+    cardColor: Colors.grey.shade200,
+  );
 }
 
 class ThemeNotifier extends ChangeNotifier {

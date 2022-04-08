@@ -13,13 +13,21 @@ class _HomeState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[700],
-      drawer: const NavDrawer(),
+      // drawer: const NavDrawer(),
       appBar: AppBar(
         title: const Text('Health Tracker'), 
         centerTitle: true,
       ),
       body: Container(
         child: const Text('Home'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
+        onPressed: () {
+          // TODO: implement diary FAB functionality
+        },
       ),
     );
   }
