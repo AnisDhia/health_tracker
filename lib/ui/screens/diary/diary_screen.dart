@@ -3,8 +3,10 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:health_tracker/data/models/user_model.dart';
 import 'package:health_tracker/shared/styles/themes.dart';
+import 'package:health_tracker/ui/screens/diary/heart_details_screen.dart';
 import 'package:health_tracker/ui/screens/diary/widgets/goal_card_widget.dart';
 import 'package:health_tracker/ui/screens/diary/widgets/meal_card_widget.dart';
 import 'package:health_tracker/ui/widgets/appbar_widget.dart';
@@ -130,109 +132,116 @@ class _DiaryScreenState extends State<DiaryScreen> {
                     const SizedBox(
                       height: 30,
                     ),
+                    // ? STEPS CARD
                     Card(
                       // margin: const EdgeInsets.all(8.0),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: const [
-                                Expanded(
-                                    flex: 2,
-                                    child: Text('Walking record',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold))),
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    'Today',
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 24,
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: CircularPercentIndicator(
-                                    // reverse: true,
-                                    radius: 50,
-                                    lineWidth: 7,
-                                    animation: true,
-                                    percent: 0.7,
-                                    center: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        const Text(
-                                          '720',
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(20),
+                        onTap: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: const [
+                                  Expanded(
+                                      flex: 2,
+                                      child: Text('Walking record',
                                           style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 22),
-                                        ),
-                                        const SizedBox(
-                                          height: 2,
-                                        ),
-                                        Text('Steps',
+                                              fontWeight: FontWeight.bold))),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      'Today',
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 24,
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: CircularPercentIndicator(
+                                      // reverse: true,
+                                      radius: 50,
+                                      lineWidth: 7,
+                                      animation: true,
+                                      percent: 0.7,
+                                      center: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          const Text(
+                                            '720',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: 12,
-                                                color: Colors.grey.shade500)),
-                                      ],
+                                                fontSize: 22),
+                                          ),
+                                          const SizedBox(
+                                            height: 2,
+                                          ),
+                                          Text('Steps',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 12,
+                                                  color: Colors.grey.shade500)),
+                                        ],
+                                      ),
+                                      backgroundColor: Colors.grey.shade800,
+                                      linearGradient:
+                                          const LinearGradient(colors: [
+                                        Color.fromARGB(255, 224, 139, 27),
+                                        Colors.pink,
+                                      ]),
+                                      circularStrokeCap:
+                                          CircularStrokeCap.round,
                                     ),
-                                    backgroundColor: Colors.grey.shade800,
-                                    linearGradient:
-                                        const LinearGradient(colors: [
-                                      Color.fromARGB(255, 224, 139, 27),
-                                      Colors.pink,
-                                    ]),
-                                    circularStrokeCap: CircularStrokeCap.round,
                                   ),
-                                ),
-                                Expanded(
-                                  child: CircularPercentIndicator(
-                                    // reverse: true,
-                                    radius: 50,
-                                    lineWidth: 7,
-                                    animation: true,
-                                    percent: 0.4,
-                                    center: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        const Text(
-                                          '102',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 22),
-                                        ),
-                                        const SizedBox(
-                                          height: 2,
-                                        ),
-                                        Text('Min',
+                                  Expanded(
+                                    child: CircularPercentIndicator(
+                                      // reverse: true,
+                                      radius: 50,
+                                      lineWidth: 7,
+                                      animation: true,
+                                      percent: 0.4,
+                                      center: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          const Text(
+                                            '102',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: 12,
-                                                color: Colors.grey.shade500)),
-                                      ],
+                                                fontSize: 22),
+                                          ),
+                                          const SizedBox(
+                                            height: 2,
+                                          ),
+                                          Text('Min',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 12,
+                                                  color: Colors.grey.shade500)),
+                                        ],
+                                      ),
+                                      backgroundColor: Colors.grey.shade800,
+                                      linearGradient: const LinearGradient(
+                                          colors: [
+                                            Color.fromARGB(255, 224, 139, 27),
+                                            Colors.pink
+                                          ]),
+                                      circularStrokeCap:
+                                          CircularStrokeCap.round,
                                     ),
-                                    backgroundColor: Colors.grey.shade800,
-                                    linearGradient: const LinearGradient(
-                                        colors: [
-                                          Color.fromARGB(255, 224, 139, 27),
-                                          Colors.pink
-                                        ]),
-                                    circularStrokeCap: CircularStrokeCap.round,
                                   ),
-                                ),
-                              ],
-                            )
-                          ],
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -251,207 +260,224 @@ class _DiaryScreenState extends State<DiaryScreen> {
                               Card(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20)),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: const [
-                                          Expanded(
-                                              child: Text('Heart rate',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 20))),
-                                          Align(
-                                            alignment: Alignment.centerRight,
-                                            child: Icon(
-                                              Icons.favorite_outlined,
-                                              color: Colors.red,
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 100,
-                                        width: 150,
-                                        child: LineChart(LineChartData(
-                                          gridData: FlGridData(show: false),
-                                          titlesData: FlTitlesData(show: false),
-                                          borderData: FlBorderData(show: false),
-                                          minX: 0,
-                                          maxX: 11,
-                                          minY: 0,
-                                          maxY: 6,
-                                          lineBarsData: [
-                                            LineChartBarData(
-                                                spots: const [
-                                                  FlSpot(0, 3),
-                                                  FlSpot(1, 3),
-                                                  FlSpot(1.3, 3.5),
-                                                  FlSpot(1.6, 2.8),
-                                                  FlSpot(2.2, 4.5),
-                                                  FlSpot(2.6, 1.5),
-                                                  FlSpot(3, 3.3),
-                                                  FlSpot(3.2, 3),
-                                                  // second beat
-                                                  FlSpot(4, 3),
-                                                  FlSpot(4.3, 3.5),
-                                                  FlSpot(4.6, 2.8),
-                                                  FlSpot(5.2, 4.2),
-                                                  FlSpot(5.6, 1.9),
-                                                  FlSpot(6, 3.3),
-                                                  FlSpot(6.2, 3),
-                                                  // third beat
-                                                  FlSpot(7, 3),
-                                                  FlSpot(7.3, 3.5),
-                                                  FlSpot(7.6, 2.8),
-                                                  FlSpot(8.2, 4.7),
-                                                  FlSpot(8.6, 2),
-                                                  FlSpot(9, 3.3),
-                                                  FlSpot(9.2, 3),
-                                                  FlSpot(10, 3),
-                                                ],
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(20),
+                                  onTap: () {
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => const HeartDetailsScreen(),));
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          children: const [
+                                            Expanded(
+                                                child: Text('Heart rate',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 20))),
+                                            Align(
+                                              alignment: Alignment.centerRight,
+                                              child: Icon(
+                                                FontAwesomeIcons.heartbeat,
                                                 color: Colors.red,
-                                                // gradient: const LinearGradient(
-                                                //   colors: [
-                                                //     Colors.red,
-                                                //     Colors.transparent
-                                                //   ],
-                                                //   begin: Alignment.centerLeft,
-                                                //   end: Alignment.centerRight,
-                                                // ),
-                                                barWidth: 2,
-                                                isStrokeCapRound: true,
-                                                dotData: FlDotData(
-                                                  show: false,
-                                                ),
-                                                belowBarData: BarAreaData(
-                                                    show: true,
-                                                    gradient: RadialGradient(
-                                                        radius: 1.6,
-                                                        center:
-                                                            Alignment.topCenter,
-                                                        colors: [
-                                                          Colors.red
-                                                              .withOpacity(0.3),
-                                                          // const Color(0xff02d39a)
-                                                          //     .withOpacity(0.3),
-                                                          Colors.transparent
-                                                        ])
-                                                    // LinearGradient(
-                                                    //   colors: [
-                                                    //     const Color(0xff23b6e6)
-                                                    //         .withOpacity(0.3),
-                                                    //     const Color(0xff02d39a)
-                                                    //         .withOpacity(0.3),
-                                                    //     Colors.transparent
-                                                    //   ],
-                                                    //   begin: Alignment.topCenter,
-                                                    //   end: Alignment.bottomCenter,
-                                                    //   transform: GradientTransform.,
-                                                    // ),
-                                                    ))
+                                              ),
+                                            )
                                           ],
-                                        )),
-                                      ),
-                                      Row(
-                                        children: [
-                                          const Text(
-                                            '107',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 24),
-                                          ),
-                                          const SizedBox(
-                                            width: 4,
-                                          ),
-                                          Text(
-                                            'bpm',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.grey.shade600),
-                                          ),
-                                        ],
-                                      )
-                                    ],
+                                        ),
+                                        SizedBox(
+                                          height: 100,
+                                          width: double.infinity,
+                                          child: LineChart(LineChartData(
+                                            gridData: FlGridData(show: false),
+                                            titlesData:
+                                                FlTitlesData(show: false),
+                                            borderData:
+                                                FlBorderData(show: false),
+                                            minX: 0,
+                                            maxX: 11,
+                                            minY: 0,
+                                            maxY: 6,
+                                            lineBarsData: [
+                                              LineChartBarData(
+                                                  spots: const [
+                                                    FlSpot(0, 3),
+                                                    FlSpot(1, 3),
+                                                    FlSpot(1.3, 3.5),
+                                                    FlSpot(1.6, 2.8),
+                                                    FlSpot(2.2, 4.5),
+                                                    FlSpot(2.6, 1.5),
+                                                    FlSpot(3, 3.3),
+                                                    FlSpot(3.2, 3),
+                                                    // second beat
+                                                    FlSpot(4, 3),
+                                                    FlSpot(4.3, 3.5),
+                                                    FlSpot(4.6, 2.8),
+                                                    FlSpot(5.2, 4.2),
+                                                    FlSpot(5.6, 1.9),
+                                                    FlSpot(6, 3.3),
+                                                    FlSpot(6.2, 3),
+                                                    // third beat
+                                                    FlSpot(7, 3),
+                                                    FlSpot(7.3, 3.5),
+                                                    FlSpot(7.6, 2.8),
+                                                    FlSpot(8.2, 4.7),
+                                                    FlSpot(8.6, 2),
+                                                    FlSpot(9, 3.3),
+                                                    FlSpot(9.2, 3),
+                                                    FlSpot(10, 3),
+                                                  ],
+                                                  color: const Color.fromARGB(255, 220, 18, 18),
+                                                  // gradient: const LinearGradient(
+                                                  //   colors: [
+                                                  //     Colors.red,
+                                                  //     Colors.transparent
+                                                  //   ],
+                                                  //   begin: Alignment.centerLeft,
+                                                  //   end: Alignment.centerRight,
+                                                  // ),
+                                                  barWidth: 2,
+                                                  isStrokeCapRound: true,
+                                                  dotData: FlDotData(
+                                                    show: false,
+                                                  ),
+                                                  belowBarData: BarAreaData(
+                                                      show: true,
+                                                      gradient: RadialGradient(
+                                                          radius: 1.6,
+                                                          center: Alignment
+                                                              .topCenter,
+                                                          colors: [
+                                                            const Color.fromARGB(255, 220, 18, 18)
+                                                                .withOpacity(
+                                                                    0.3),
+                                                            // const Color(0xff02d39a)
+                                                            //     .withOpacity(0.3),
+                                                            Colors.transparent
+                                                          ])
+                                                      // LinearGradient(
+                                                      //   colors: [
+                                                      //     const Color(0xff23b6e6)
+                                                      //         .withOpacity(0.3),
+                                                      //     const Color(0xff02d39a)
+                                                      //         .withOpacity(0.3),
+                                                      //     Colors.transparent
+                                                      //   ],
+                                                      //   begin: Alignment.topCenter,
+                                                      //   end: Alignment.bottomCenter,
+                                                      //   transform: GradientTransform.,
+                                                      // ),
+                                                      ))
+                                            ],
+                                          )),
+                                        ),
+                                        Row(
+                                          children: [
+                                            const Text(
+                                              '107',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 24),
+                                            ),
+                                            const SizedBox(
+                                              width: 4,
+                                            ),
+                                            Text(
+                                              'bpm',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.grey.shade600),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
+                              // ? CALORIES CARD
                               Card(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20)),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: const [
-                                          Expanded(
-                                              child: Text('Calories',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 20))),
-                                          Align(
-                                            alignment: Alignment.centerRight,
-                                            child: Icon(
-                                              Icons.local_fire_department,
-                                              color: Color.fromARGB(
-                                                  255, 248, 105, 51),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                      const SizedBox(
-                                        height: 16,
-                                      ),
-                                      SizedBox(
-                                        height: 100,
-                                        width: 150,
-                                        child: CircularPercentIndicator(
-                                          reverse: true,
-                                          radius: 45,
-                                          lineWidth: 7,
-                                          animation: true,
-                                          percent: 0.7,
-                                          center: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              const Text(
-                                                '512',
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 22),
-                                              ),
-                                              const SizedBox(
-                                                height: 2,
-                                              ),
-                                              Text('Kcal',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 12,
-                                                      color: Colors
-                                                          .grey.shade500)),
-                                            ],
-                                          ),
-                                          backgroundColor: Colors.grey.shade800,
-                                          linearGradient: const LinearGradient(
-                                              colors: [
-                                                Color.fromARGB(
-                                                    255, 255, 209, 59),
-                                                Color.fromARGB(
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(20),
+                                  onTap: () {},
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          children: const [
+                                            Expanded(
+                                                child: Text('Calories',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 20))),
+                                            Align(
+                                              alignment: Alignment.centerRight,
+                                              child: Icon(
+                                                Icons.local_fire_department,
+                                                color: Color.fromARGB(
                                                     255, 248, 105, 51),
-                                              ],
-                                              begin: Alignment.topLeft,
-                                              end: Alignment.bottomLeft),
-                                          circularStrokeCap:
-                                              CircularStrokeCap.round,
+                                              ),
+                                            )
+                                          ],
                                         ),
-                                      ),
-                                    ],
+                                        const SizedBox(
+                                          height: 16,
+                                        ),
+                                        SizedBox(
+                                          height: 100,
+                                          width: 150,
+                                          child: CircularPercentIndicator(
+                                            reverse: true,
+                                            radius: 45,
+                                            lineWidth: 7,
+                                            animation: true,
+                                            percent: 0.7,
+                                            center: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                const Text(
+                                                  '512',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 22),
+                                                ),
+                                                const SizedBox(
+                                                  height: 2,
+                                                ),
+                                                Text('Kcal',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 12,
+                                                        color: Colors
+                                                            .grey.shade500)),
+                                              ],
+                                            ),
+                                            backgroundColor:
+                                                Colors.grey.shade800,
+                                            linearGradient:
+                                                const LinearGradient(
+                                                    colors: [
+                                                  Color.fromARGB(
+                                                      255, 255, 209, 59),
+                                                  Color.fromARGB(
+                                                      255, 248, 105, 51),
+                                                ],
+                                                    begin: Alignment.topLeft,
+                                                    end: Alignment.bottomLeft),
+                                            circularStrokeCap:
+                                                CircularStrokeCap.round,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -465,168 +491,182 @@ class _DiaryScreenState extends State<DiaryScreen> {
                               Card(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20)),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: const [
-                                          Expanded(
-                                              child: Text(
-                                            'Water',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 20),
-                                          )),
-                                          Align(
-                                            alignment: Alignment.centerRight,
-                                            child: Icon(
-                                              Icons.water_drop,
-                                              color: Color.fromARGB(
-                                                  255, 84, 184, 252),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 100,
-                                        width: 150,
-                                        child: LineChart(LineChartData(
-                                          gridData: FlGridData(show: false),
-                                          titlesData: FlTitlesData(show: false),
-                                          borderData: FlBorderData(show: false),
-                                          minX: 0,
-                                          maxX: 11,
-                                          minY: 0,
-                                          maxY: 6,
-                                          lineBarsData: [
-                                            LineChartBarData(
-                                                spots: const [
-                                                  FlSpot(0, 3),
-                                                  FlSpot(2.6, 2),
-                                                  FlSpot(4.9, 5),
-                                                  FlSpot(6.8, 3.1),
-                                                  FlSpot(8, 4),
-                                                  FlSpot(9.5, 3),
-                                                  FlSpot(11, 4),
-                                                ],
-                                                isCurved: true,
-                                                gradient: const LinearGradient(
-                                                  colors: [
-                                                    Color(0xff23b6e6),
-                                                    Color(0xff02d39a)
-                                                  ],
-                                                  begin: Alignment.centerLeft,
-                                                  end: Alignment.centerRight,
-                                                ),
-                                                barWidth: 5,
-                                                isStrokeCapRound: true,
-                                                dotData: FlDotData(
-                                                  show: false,
-                                                ),
-                                                belowBarData: BarAreaData(
-                                                    show: true,
-                                                    gradient: RadialGradient(
-                                                        radius: 1.2,
-                                                        center:
-                                                            Alignment.topCenter,
-                                                        colors: [
-                                                          const Color(
-                                                                  0xff23b6e6)
-                                                              .withOpacity(0.3),
-                                                          const Color(
-                                                                  0xff02d39a)
-                                                              .withOpacity(0.3),
-                                                          Colors.transparent
-                                                        ])
-                                                    // LinearGradient(
-                                                    //   colors: [
-                                                    //     const Color(0xff23b6e6)
-                                                    //         .withOpacity(0.3),
-                                                    //     const Color(0xff02d39a)
-                                                    //         .withOpacity(0.3),
-                                                    //     Colors.transparent
-                                                    //   ],
-                                                    //   begin: Alignment.topCenter,
-                                                    //   end: Alignment.bottomCenter,
-                                                    //   transform: GradientTransform.,
-                                                    // ),
-                                                    ))
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(20),
+                                  onTap: () {},
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          children: const [
+                                            Expanded(
+                                                child: Text(
+                                              'Water',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20),
+                                            )),
+                                            Align(
+                                              alignment: Alignment.centerRight,
+                                              child: Icon(
+                                                Icons.water_drop,
+                                                color: Color.fromARGB(
+                                                    255, 84, 184, 252),
+                                              ),
+                                            )
                                           ],
-                                        )),
-                                      ),
-                                      Row(
-                                        children: [
-                                          const Text(
-                                            '2.2',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 24),
-                                          ),
-                                          const SizedBox(
-                                            width: 4,
-                                          ),
-                                          Text(
-                                            'ltr',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.grey.shade600),
-                                          ),
-                                        ],
-                                      )
-                                    ],
+                                        ),
+                                        SizedBox(
+                                          height: 100,
+                                          width: 150,
+                                          child: LineChart(LineChartData(
+                                            gridData: FlGridData(show: false),
+                                            titlesData:
+                                                FlTitlesData(show: false),
+                                            borderData:
+                                                FlBorderData(show: false),
+                                            minX: 0,
+                                            maxX: 11,
+                                            minY: 0,
+                                            maxY: 6,
+                                            lineBarsData: [
+                                              LineChartBarData(
+                                                  spots: const [
+                                                    FlSpot(0, 3),
+                                                    FlSpot(2.6, 2),
+                                                    FlSpot(4.9, 5),
+                                                    FlSpot(6.8, 3.1),
+                                                    FlSpot(8, 4),
+                                                    FlSpot(9.5, 3),
+                                                    FlSpot(11, 4),
+                                                  ],
+                                                  isCurved: true,
+                                                  gradient:
+                                                      const LinearGradient(
+                                                    colors: [
+                                                      Color(0xff23b6e6),
+                                                      Color(0xff02d39a)
+                                                    ],
+                                                    begin: Alignment.centerLeft,
+                                                    end: Alignment.centerRight,
+                                                  ),
+                                                  barWidth: 5,
+                                                  isStrokeCapRound: true,
+                                                  dotData: FlDotData(
+                                                    show: false,
+                                                  ),
+                                                  belowBarData: BarAreaData(
+                                                      show: true,
+                                                      gradient: RadialGradient(
+                                                          radius: 1.2,
+                                                          center: Alignment
+                                                              .topCenter,
+                                                          colors: [
+                                                            const Color(
+                                                                    0xff23b6e6)
+                                                                .withOpacity(
+                                                                    0.3),
+                                                            const Color(
+                                                                    0xff02d39a)
+                                                                .withOpacity(
+                                                                    0.3),
+                                                            Colors.transparent
+                                                          ])
+                                                      // LinearGradient(
+                                                      //   colors: [
+                                                      //     const Color(0xff23b6e6)
+                                                      //         .withOpacity(0.3),
+                                                      //     const Color(0xff02d39a)
+                                                      //         .withOpacity(0.3),
+                                                      //     Colors.transparent
+                                                      //   ],
+                                                      //   begin: Alignment.topCenter,
+                                                      //   end: Alignment.bottomCenter,
+                                                      //   transform: GradientTransform.,
+                                                      // ),
+                                                      ))
+                                            ],
+                                          )),
+                                        ),
+                                        Row(
+                                          children: [
+                                            const Text(
+                                              '2.2',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 24),
+                                            ),
+                                            const SizedBox(
+                                              width: 4,
+                                            ),
+                                            Text(
+                                              'ltr',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.grey.shade600),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
+                              // ? SLEEP CARD
                               Card(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20)),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: const [
-                                          Expanded(
-                                              child: Text(
-                                            'Sleep',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 20),
-                                          )),
-                                          Align(
-                                            alignment: Alignment.centerRight,
-                                            child: Icon(
-                                              CupertinoIcons.moon_stars_fill,
-                                              color: Color.fromARGB(
-                                                  255, 255, 200, 38),
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(20),
+                                  onTap: () {},
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          children: const [
+                                            Expanded(
+                                                child: Text(
+                                              'Sleep',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20),
+                                            )),
+                                            Align(
+                                              alignment: Alignment.centerRight,
+                                              child: Icon(
+                                                CupertinoIcons.moon_stars_fill,
+                                                color: Color.fromARGB(
+                                                    255, 255, 200, 38),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 32,
+                                        ),
+                                        Row(
+                                          children: [
+                                            const Text(
+                                              '8:30',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 24),
                                             ),
-                                          )
-                                        ],
-                                      ),
-                                      const SizedBox(
-                                        height: 24,
-                                      ),
-                                      Row(
-                                        children: [
-                                          const Text(
-                                            '8:30',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 24),
-                                          ),
-                                          const SizedBox(
-                                            width: 4,
-                                          ),
-                                          Text(
-                                            'Hrs/day',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.grey.shade600),
-                                          ),
-                                        ],
-                                      )
-                                    ],
+                                            const SizedBox(
+                                              width: 4,
+                                            ),
+                                            Text(
+                                              'Hrs/day',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.grey.shade600),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
                               )

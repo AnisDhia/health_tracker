@@ -29,7 +29,6 @@ class _RecipesScreenState extends State<RecipesScreen> {
         length: 3,
         initialIndex: 0,
         child: Column(children: [
-          const SizedBox(height: 40,),
           TabBar(
             isScrollable: true,
             tabs: [

@@ -10,6 +10,9 @@ class MyThemes {
       color: Colors.grey.shade900,
       elevation: 0,
     ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: Colors.black,
+    ),
     scaffoldBackgroundColor: Colors.black,
     primaryColorDark: primaryColor,
     colorScheme: const ColorScheme.dark(primary: primary),
@@ -17,10 +20,15 @@ class MyThemes {
     tabBarTheme: TabBarTheme(
         labelColor: Colors.white,
         unselectedLabelColor: Colors.white.withOpacity(0.2)),
-    floatingActionButtonTheme:
-        const FloatingActionButtonThemeData(backgroundColor: primary),
+    // floatingActionButtonTheme:
+    //     const FloatingActionButtonThemeData(backgroundColor: primary),
     listTileTheme: const ListTileThemeData(textColor: Colors.white),
-    cardColor: Color.fromARGB(255, 15, 15, 15),
+    cardColor: const Color.fromARGB(255, 15, 15, 15),
+    textButtonTheme: TextButtonThemeData(
+      style: ButtonStyle(
+        foregroundColor: MaterialStateProperty.all(Colors.white),
+      )
+    ),
   );
 
   static final lightTheme = ThemeData(
@@ -38,6 +46,12 @@ class MyThemes {
         unselectedLabelColor: Colors.black.withOpacity(0.3)),
     listTileTheme: const ListTileThemeData(textColor: Colors.black),
     cardColor: Colors.grey.shade200,
+    textButtonTheme: TextButtonThemeData(
+      style: ButtonStyle(
+        foregroundColor: MaterialStateProperty.all(Colors.black),
+        
+      )
+    ),
   );
 }
 
