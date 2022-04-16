@@ -7,5 +7,6 @@
     },
     "editor.codeActionsOnSave": {
         "source.fixAll": true
-    }
+    },
+    "cmake.sourceDirectory": "${workspaceFolder}/windows"
 }

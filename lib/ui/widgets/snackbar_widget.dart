@@ -13,7 +13,7 @@ class MySnackBar extends Flushbar {
       animationDuration: const Duration(milliseconds: 1000),
       backgroundColor: color,
       duration: const Duration(milliseconds: 3000),
-      flushbarPosition: FlushbarPosition.TOP,
+      flushbarPosition: FlushbarPosition.BOTTOM,
       flushbarStyle: FlushbarStyle.FLOATING,
       messageText: Center(
         child: Text(
