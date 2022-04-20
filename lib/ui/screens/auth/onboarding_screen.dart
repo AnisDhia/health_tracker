@@ -28,6 +28,7 @@ class _OnboardingPageState extends State<OnBoardingScreen> {
   @override
   void dispose() {
     _pageController.dispose();
+    
     super.dispose();
   }
 

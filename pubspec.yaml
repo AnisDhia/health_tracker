@@ -71,6 +71,11 @@ dependencies:
   intl: ^0.17.0
   fl_chart: ^0.50.1
   percent_indicator: ^4.0.0
+  heart_bpm: ^1.1.1+0
+  camera: ^0.9.4+19
+  max30101: ^1.0.0-RC3
+  hive: ^2.1.0
+  flutter_speed_dial: ^5.1.0
   # flutter_icons: ^1.1.0
 
 dev_dependencies:
@@ -118,6 +123,11 @@ flutter:
     - family: IndieFlower
       fonts:
         - asset: assets/fonts/IndieFlower-Regular.ttf
+    - family: Avenir
+      fonts:
+        - asset: assets/fonts/AvenirLTStd-Book.otf
+        # - asset: assets/fonts/AvenirLTStd-Roman.otf
+        # - asset: assets/fonts/AvenirLTStd-Black.otf
     #     - asset: fonts/Schyler-Italic.ttf
     #       style: italic
     # - family: Trajan Pro

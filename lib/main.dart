@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
@@ -8,6 +10,7 @@ import 'package:health_tracker/bloc/onboarding/onboarding_cubit.dart';
 import 'package:health_tracker/ui/screens/auth/onboarding_screen.dart';
 import 'package:health_tracker/ui/screens/auth/welcome_screen.dart';
 import 'package:health_tracker/ui/widgets/indicator_widget.dart';
+import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +23,9 @@ Future main() async {
   await Firebase.initializeApp();
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.black,
+      systemNavigationBarIconBrightness: Brightness.light));
   // await UserPreferences.init();
   final prefs = await SharedPreferences.getInstance();
   final bool? seen = prefs.getBool('seen');
@@ -55,28 +61,28 @@ class MyApp extends StatelessWidget {
             child: Consumer<ThemeNotifier>(
               builder: (context, value, child) {
                 return MaterialApp(
-                  title: title,
-                  debugShowCheckedModeBanner: false,
-                  theme: value.darkTheme
-                      ? MyThemes.darkTheme
-                      : MyThemes.lightTheme,
-                  home: const Navigation()
-                  // StreamBuilder<User?>(
-                  //     stream: FirebaseAuth.instance.authStateChanges(),
-                  //     builder: (context, snapshot) {
-                  //       if (snapshot.connectionState ==
-                  //           ConnectionState.waiting) {
-                  //         return const MyCircularIndicator();
-                  //       }
-                  //       if (snapshot.hasData) {
-                  //         return const Navigation();
-                  //       }
-                  //       if (seen == null) {
-                  //         return const WelcomeScreen();
-                  //       }
-                  //       return const OnBoardingScreen();
-                  //     }),
-                );
+                    title: title,
+                    debugShowCheckedModeBanner: false,
+                    theme: value.darkTheme
+                        ? MyThemes.darkTheme
+                        : MyThemes.lightTheme,
+                    home: const Navigation()
+                    // StreamBuilder<User?>(
+                    //     stream: FirebaseAuth.instance.authStateChanges(),
+                    //     builder: (context, snapshot) {
+                    //       if (snapshot.connectionState ==
+                    //           ConnectionState.waiting) {
+                    //         return const MyCircularIndicator();
+                    //       }
+                    //       if (snapshot.hasData) {
+                    //         return const Navigation();
+                    //       }
+                    //       if (seen == null) {
+                    //         return const WelcomeScreen();
+                    //       }
+                    //       return const OnBoardingScreen();
+                    //     }),
+                    );
               },
             ),
           ),

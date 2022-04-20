@@ -1,17 +1,17 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:math' as math;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:health_tracker/data/models/user_model.dart';
-import 'package:health_tracker/shared/styles/themes.dart';
-import 'package:health_tracker/ui/screens/diary/heart_details_screen.dart';
-import 'package:health_tracker/ui/screens/diary/widgets/goal_card_widget.dart';
-import 'package:health_tracker/ui/screens/diary/widgets/meal_card_widget.dart';
+import 'package:health_tracker/shared/styles/colors.dart';
+import 'package:health_tracker/ui/screens/diary/heart/meassure_bpm_screen.dart';
+import 'package:health_tracker/ui/screens/diary/heart/heart_stats_screen.dart';
+import 'package:health_tracker/ui/screens/diary/water/add_water_screen.dart';
+import 'package:health_tracker/ui/screens/diary/weight/add_weight_screen.dart';
 import 'package:health_tracker/ui/widgets/appbar_widget.dart';
-import 'package:health_tracker/ui/widgets/drawer_widget.dart';
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:pedometer/pedometer.dart';
@@ -27,15 +27,16 @@ class DiaryScreen extends StatefulWidget {
 }
 
 class _DiaryScreenState extends State<DiaryScreen> {
-  DateTime _selectedDate = DateTime.now();
-  DateTime _focusedDate = DateTime.now();
-  CalendarFormat _calendarFormat = CalendarFormat.week;
+  // DateTime _selectedDate = DateTime.now();
+  // DateTime _focusedDate = DateTime.now();
+  // CalendarFormat _calendarFormat = CalendarFormat.week;
   final Future<SharedPreferences> prefs = SharedPreferences.getInstance();
 
+  // ? steps vars
   late Stream<StepCount> _stepCountStream;
   late Stream<PedestrianStatus> _pedestrianStatusStream;
   String _status = '?';
-  int _steps = 0;
+  int _todaySteps = 0;
 
   @override
   void initState() {
@@ -45,8 +46,9 @@ class _DiaryScreenState extends State<DiaryScreen> {
 
   void onStepCount(StepCount event) {
     log(event.toString());
+    // DateTime s = event.timeStamp;
     setState(() {
-      _steps = event.steps;
+      _todaySteps = event.steps;
     });
   }
 
@@ -68,7 +70,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
   void onStepCountError(error) {
     print('onStepCountError: $error');
     setState(() {
-      // _steps = 'Step Count not available';
+      // _todaySteps = 'Step Count not available';
     });
   }
 
@@ -97,8 +99,10 @@ class _DiaryScreenState extends State<DiaryScreen> {
               clipper: MyClipper(),
               child: Container(
                 height: 450,
-                decoration:
-                    const BoxDecoration(color: Color.fromARGB(255, 23, 28, 35)),
+                decoration: BoxDecoration(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? const Color.fromARGB(255, 23, 28, 35)
+                        : Colors.transparent),
               ),
             ),
           ),
@@ -170,14 +174,16 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                       radius: 50,
                                       lineWidth: 7,
                                       animation: true,
-                                      percent: 0.7,
+                                      percent: _todaySteps < 12000
+                                          ? _todaySteps / 12000
+                                          : 1,
                                       center: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          const Text(
-                                            '720',
-                                            style: TextStyle(
+                                          Text(
+                                            '$_todaySteps',
+                                            style: const TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 22),
                                           ),
@@ -263,7 +269,12 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                 child: InkWell(
                                   borderRadius: BorderRadius.circular(20),
                                   onTap: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => const HeartDetailsScreen(),));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const HeartStatsScreen(),
+                                        ));
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.all(16.0),
@@ -328,7 +339,8 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                                     FlSpot(9.2, 3),
                                                     FlSpot(10, 3),
                                                   ],
-                                                  color: const Color.fromARGB(255, 220, 18, 18),
+                                                  color: const Color.fromARGB(
+                                                      255, 220, 18, 18),
                                                   // gradient: const LinearGradient(
                                                   //   colors: [
                                                   //     Colors.red,
@@ -349,7 +361,11 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                                           center: Alignment
                                                               .topCenter,
                                                           colors: [
-                                                            const Color.fromARGB(255, 220, 18, 18)
+                                                            const Color.fromARGB(
+                                                                    255,
+                                                                    220,
+                                                                    18,
+                                                                    18)
                                                                 .withOpacity(
                                                                     0.3),
                                                             // const Color(0xff02d39a)
@@ -719,7 +735,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                 //         onDoubleTap: () {
                 //           // log('wow');
                 //         },
-                //         child: GoalCard(title: "Steps", value: _steps, goal: 6000)),
+                //         child: GoalCard(title: "Steps", value: _todaySteps, goal: 6000)),
                 //     const SizedBox(
                 //       height: 14,
                 //     ),
@@ -751,16 +767,59 @@ class _DiaryScreenState extends State<DiaryScreen> {
                 // ),
                 ),
           ),
+
         ],
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   child: const Icon(Icons.add),
-      //   backgroundColor: Colors.red,
-      //   foregroundColor: Colors.white,
-      //   onPressed: () {
-      //     // TODO: implement diary FAB functionality
-      //   },
-      // ),
+      floatingActionButton: 
+      // const CircularFabWidget(), 
+      SpeedDial(
+          icon: Icons.add,
+          foregroundColor: Colors.white,
+          backgroundColor: Colors.red,
+          shape: const CircleBorder(),
+          // direction: ,
+          overlayOpacity: 0.6,
+          overlayColor: Colors.black,
+          spaceBetweenChildren: 10,
+          useRotationAnimation: true,
+          children: [
+            SpeedDialChild(
+              child: const Icon(Icons.restaurant),
+              label: 'Food',
+              // backgroundColor: Colors.amberAccent,
+              onTap: () {/* Do someting */},
+            ),
+            SpeedDialChild(
+              child: const Icon(Icons.water_drop),
+              label: 'Water',
+              // backgroundColor: Colors.amberAccent,
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const AddWaterScreen(),));
+              },
+            ),
+            SpeedDialChild(
+              child: const Icon(Icons.monitor_weight_outlined),
+              label: 'Weight',
+              // backgroundColor: Colors.amberAccent,
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const AddWeightScreen(),));
+              },
+            ),
+            SpeedDialChild(
+              child: const Icon(Icons.fitness_center),
+              label: 'Exercise',
+              // backgroundColor: Colors.amberAccent,
+              onTap: () {/* Do something */},
+            ),
+            SpeedDialChild(
+              child: const Icon(FontAwesomeIcons.heartbeat),
+              label: 'BPM',
+              // backgroundColor: Colors.amberAccent,
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const MeassureBPMScreen(),));
+              },
+            ),
+          ]),
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
@@ -793,3 +852,101 @@ class MyClipper extends CustomClipper<Path> {
     return true;
   }
 }
+
+// const double buttonSize = 60;
+
+// class CircularFabWidget extends StatefulWidget {
+//   const CircularFabWidget({Key? key}) : super(key: key);
+
+//   @override
+//   State<CircularFabWidget> createState() => _CircularFabWidgetState();
+// }
+
+// class _CircularFabWidgetState extends State<CircularFabWidget>
+//     with SingleTickerProviderStateMixin {
+//   late AnimationController controller;
+
+//   @override
+//   void initState() {
+//     super.initState();
+
+//     controller = AnimationController(
+//         vsync: this, duration: const Duration(milliseconds: 250));
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Flow(
+//       delegate: FlowMenuDelegate(controller: controller),
+//       children: <IconData>[
+//         Icons.water_drop,
+//         Icons.restaurant,
+//         Icons.fitness_center,
+//         Icons.monitor_weight,
+//         Icons.add,
+//       ].map<Widget>(buildFAB).toList(),
+//     );
+//   }
+
+//   Widget buildFAB(IconData icon) => SizedBox(
+//         width: buttonSize,
+//         height: buttonSize,
+//         child: FloatingActionButton(
+//           backgroundColor: Colors.red,
+//           elevation: 0,
+//           splashColor: Colors.black,
+//           child: Icon(
+//             icon,
+//             color: Colors.white,
+//             size: 35,
+//           ),
+//           onPressed: () {
+//             if (controller.status == AnimationStatus.completed) {
+//               controller.reverse();
+//             } else {
+//               controller.forward();
+//             }
+//           },
+//         ),
+//       );
+// }
+
+// class FlowMenuDelegate extends FlowDelegate {
+//   final Animation<double> controller;
+
+//   const FlowMenuDelegate({required this.controller})
+//       : super(repaint: controller);
+
+//   @override
+//   void paintChildren(FlowPaintingContext context) {
+//     final size = context.size;
+//     final xStart = size.width - buttonSize;
+//     final yStart = size.height - buttonSize;
+    
+//     final n = context.childCount;
+//     for (int i = 0; i < n; i++) {
+//       final isLastItem = i == context.childCount - 1,
+//           setValue = (value) => isLastItem ? 0.0 : value,
+//           radius = 180 * controller.value,
+//           theta = i * math.pi * 0.5 / (n - 2),
+//           x = xStart - setValue(radius * math.cos(theta)),
+//           y = yStart - setValue(radius * math.sin(theta));
+
+//       context.paintChild(
+//         i,
+//         transform: Matrix4.identity()
+//           ..translate(x, y, 0)
+//           ..translate(buttonSize / 2, buttonSize / 2)
+//           ..rotateZ(
+//               isLastItem ? 0.0 : 180 * (1 - controller.value) * math.pi / 180)
+//           ..scale(isLastItem ? 1.0 : math.max(controller.value, 0.5))
+//           ..translate(-buttonSize / 2, -buttonSize / 2),
+//       );
+//     }
+//   }
+
+//   @override
+//   bool shouldRepaint(covariant FlowDelegate oldDelegate) {
+//     return false;
+//   }
+// }

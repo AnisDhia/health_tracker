@@ -5,9 +5,9 @@ class MyThemes {
   static const primary = Colors.red;
   static final primaryColor = Colors.red.shade300;
 
-  static final darkTheme = ThemeData(
-    appBarTheme: AppBarTheme(
-      color: Colors.grey.shade900,
+  static final darkTheme = ThemeData.dark().copyWith(
+    appBarTheme: const AppBarTheme(
+      color: /*Colors.grey.shade900*/ Colors.black,
       elevation: 0,
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
@@ -15,8 +15,9 @@ class MyThemes {
     ),
     scaffoldBackgroundColor: Colors.black,
     primaryColorDark: primaryColor,
-    colorScheme: const ColorScheme.dark(primary: primary),
-    dividerColor: Colors.white,
+    colorScheme:
+        const ColorScheme.dark(primary: primary, secondary: primary),
+    // dividerColor: Colors.white,
     tabBarTheme: TabBarTheme(
         labelColor: Colors.white,
         unselectedLabelColor: Colors.white.withOpacity(0.2)),
@@ -25,13 +26,13 @@ class MyThemes {
     listTileTheme: const ListTileThemeData(textColor: Colors.white),
     cardColor: const Color.fromARGB(255, 15, 15, 15),
     textButtonTheme: TextButtonThemeData(
-      style: ButtonStyle(
-        foregroundColor: MaterialStateProperty.all(Colors.white),
-      )
-    ),
+        style: ButtonStyle(
+      foregroundColor: MaterialStateProperty.all(Colors.white),
+    )),
   );
 
   static final lightTheme = ThemeData(
+    fontFamily: 'Avenir',
     scaffoldBackgroundColor: Colors.white,
     // primaryColor: Colors.white,
     appBarTheme: const AppBarTheme(
@@ -40,18 +41,16 @@ class MyThemes {
       elevation: 0,
     ),
     colorScheme: const ColorScheme.light(primary: primary),
-    dividerColor: Colors.black,
+    // dividerColor: Colors.black,
     tabBarTheme: TabBarTheme(
         labelColor: Colors.black,
         unselectedLabelColor: Colors.black.withOpacity(0.3)),
     listTileTheme: const ListTileThemeData(textColor: Colors.black),
     cardColor: Colors.grey.shade200,
     textButtonTheme: TextButtonThemeData(
-      style: ButtonStyle(
-        foregroundColor: MaterialStateProperty.all(Colors.black),
-        
-      )
-    ),
+        style: ButtonStyle(
+      foregroundColor: MaterialStateProperty.all(Colors.black),
+    )),
   );
 }
 

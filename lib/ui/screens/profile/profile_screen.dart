@@ -1,99 +1,82 @@
-// import 'package:animated_theme_switcher/animated_theme_switcher.dart';
-// import 'package:flutter/material.dart';
-// import 'package:health_tracker/models/user.dart';
-// import 'package:health_tracker/screens/profile/edit_profile_screen.dart';
-// import 'package:health_tracker/utils/user_preferences.dart';
-// import 'package:health_tracker/widgets/appbar_widget.dart';
-// import 'package:health_tracker/widgets/button_widget.dart';
-// import 'package:health_tracker/widgets/numbers_widget.dart';
-// import 'package:health_tracker/widgets/profile_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
-// // TODO: remake profile page
-// class ProfileScreen extends StatefulWidget {
-//   const ProfileScreen({ Key? key }) : super(key: key);
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({Key? key}) : super(key: key);
 
-//   @override
-//   State<ProfileScreen> createState() => _ProfileState();
-// }
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
 
-// class _ProfileState extends State<ProfileScreen> {
-//   @override
-//   Widget build(BuildContext context) {
-//     final user = UserPreferences.getUser();
-
-//     return ThemeSwitchingArea(
-//       child: Builder(
-//         builder: (context) {
-//           return Scaffold(
-//             appBar: buildAppBar(context),
-//             body: ListView(
-//               physics: const BouncingScrollPhysics(),
-//               children: [
-//                 ProfileWidget(
-//                   imagePath: user.imagePath,
-//                   onClicked: () async {
-//                     await Navigator.of(context).push(
-//                       MaterialPageRoute(builder: (context) => const EditProfileScreen()),
-//                     );
-//                     setState(() {
-                      
-//                     });
-//                   },
-//                 ),
-//                 const SizedBox(height: 24,),
-//                 buildName(user),
-//                 const SizedBox(height: 24,),
-//                 Center(child: buildUpgradeButton()),
-//                 const SizedBox(height: 24,),
-//                 const NumbersWidget(),
-//                 const SizedBox(height: 48,),
-//                 buildAbout(user),
-//               ],
-//             ),
-//           );
-//         }
-//       ),
-//     );
-//   }
-
-//   Widget buildAbout(User user) => Container(
-//     padding: const EdgeInsets.symmetric(horizontal: 48),
-//     child: Column(
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: <Widget>[
-//         const Text(
-//           'About',
-//           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),        
-//         ),
-//         const SizedBox(height: 16,),
-//         Text(
-//           user.about,
-//           style: const TextStyle(fontSize: 16, height: 1.4),
-//         )
-  
-//       ],
-//     ),
-//   );
-
-//   Widget buildName(User user) => Column(
-//     children: [
-//       Text(
-//         user.name,
-//         style: const TextStyle(
-//           fontWeight: FontWeight.bold,
-//           fontSize: 24,
-//         )
-//       ),
-//       const SizedBox(height: 4,),
-//       Text(
-//         user.email,
-//         style: const TextStyle(color: Colors.grey),
-//       )
-//     ],
-//   );
-
-//   Widget buildUpgradeButton() => ButtonWidget(
-//     text: 'Upgrade To PRO',
-//     onClicked: () {},
-//   );
-// }
+class _ProfileScreenState extends State<ProfileScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Profile'),
+        centerTitle: true,
+        actions: [
+          IconButton(onPressed: (){}, icon: const Icon(Icons.more_vert)),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                CircularPercentIndicator(
+                  radius: 50,
+                  lineWidth: 3,
+                  progressColor: const Color.fromARGB(255, 255, 108, 0),
+                  percent: 0.7,
+                  backgroundColor: Colors.transparent,
+                  animation: true,
+                  center: const SizedBox(
+                    height: 80,
+                    width: 80,
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage('assets/images/profile.jpg'),
+                      backgroundColor: Colors.red,
+                    ),
+                  ),
+                ),
+                const VerticalDivider(width: 30,thickness: 10, color: Colors.amber,),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Joined', style: Theme.of(context).textTheme.subtitle1!.copyWith(fontFamily: 'Avenir' ),),
+                    const SizedBox(height: 12,),
+                    Text('6 mon ago', style: Theme.of(context).textTheme.headline6!.copyWith(fontFamily: 'Avenir' ),),
+                  ],
+                )
+              ],
+            ),
+            const SizedBox(
+              height: 24,
+            ),
+            Text('Anis', style: Theme.of(context).textTheme.headline3,),
+            const Text('Dhia',),
+            Card(
+              // margin: const EdgeInsets.all(8.0),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              child: Column(
+                children: [
+                  Row(
+                    children: const [
+                      SizedBox(
+                        width: 50,
+                        height: 30,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}

@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:health_tracker/ui/screens/profile/profile_screen.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   List<Widget>? actions;
-  
-  CustomAppBar({
-    Key? key,
-    required this.title,
-    this.actions
-  }) : super(key: key);
+
+  CustomAppBar({Key? key, required this.title, this.actions}) : super(key: key);
 
   @override
   Size get preferredSize => const Size.fromHeight(50.0);
@@ -22,13 +19,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
       elevation: 0,
       actions: [
         Container(
-          margin: const EdgeInsets.fromLTRB(0,0,4,0),
+          margin: const EdgeInsets.fromLTRB(0, 0, 4, 0),
           child: TextButton(
             onPressed: () {
-              
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ProfileScreen()));
             },
             child: const CircleAvatar(
-              backgroundImage: AssetImage('assets/images/cover.jpg'),
+              backgroundImage: AssetImage('assets/images/profile.jpg'),
               backgroundColor: Colors.red,
             ),
           ),
