@@ -10,7 +10,7 @@ import 'package:health_tracker/bloc/onboarding/onboarding_cubit.dart';
 import 'package:health_tracker/ui/screens/auth/onboarding_screen.dart';
 import 'package:health_tracker/ui/screens/auth/welcome_screen.dart';
 import 'package:health_tracker/ui/widgets/indicator_widget.dart';
-import 'package:hive/hive.dart';
+// import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';

@@ -43,9 +43,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_launcher_icons: ^0.9.2
 
-  animated_theme_switcher: ^2.0.6
+  # animated_theme_switcher: ^2.0.6
   shared_preferences: ^2.0.13
-  image_picker: ^0.8.4+11
+  # image_picker: ^0.8.4+11
   curved_navigation_bar: ^1.0.3
   path_provider: ^2.0.9
 
@@ -73,9 +73,10 @@ dependencies:
   percent_indicator: ^4.0.0
   heart_bpm: ^1.1.1+0
   camera: ^0.9.4+19
-  max30101: ^1.0.0-RC3
-  hive: ^2.1.0
+  # max30101: ^1.0.0-RC3
+  # hive: ^2.1.0
   flutter_speed_dial: ^5.1.0
+  fab_circular_menu: ^1.0.2
   # flutter_icons: ^1.1.0
 
 dev_dependencies:

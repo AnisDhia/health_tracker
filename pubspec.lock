@@ -8,13 +8,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
-  animated_theme_switcher:
-    dependency: "direct main"
-    description:
-      name: animated_theme_switcher
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.6"
   another_flushbar:
     dependency: "direct main"
     description:
@@ -211,13 +204,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
-  dart_periphery:
-    dependency: transitive
-    description:
-      name: dart_periphery
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.8.29"
   date_picker_timeline:
     dependency: "direct main"
     description:
@@ -239,6 +225,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.3"
+  fab_circular_menu:
+    dependency: "direct main"
+    description:
+      name: fab_circular_menu
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.2"
   fake_async:
     dependency: transitive
     description:
@@ -401,13 +394,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.1+0"
-  hive:
-    dependency: "direct main"
-    description:
-      name: hive
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.0"
   http:
     dependency: "direct main"
     description:
@@ -429,27 +415,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.3"
-  image_picker:
-    dependency: "direct main"
-    description:
-      name: image_picker
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.8.4+11"
-  image_picker_for_web:
-    dependency: transitive
-    description:
-      name: image_picker_for_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.6"
-  image_picker_platform_interface:
-    dependency: transitive
-    description:
-      name: image_picker_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.4.4"
   intl:
     dependency: "direct main"
     description:
@@ -492,13 +457,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.3"
-  max30101:
-    dependency: "direct main"
-    description:
-      name: max30101
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0-RC3"
   meta:
     dependency: transitive
     description:

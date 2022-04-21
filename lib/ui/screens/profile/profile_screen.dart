@@ -12,13 +12,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-        centerTitle: true,
-        actions: [
-          IconButton(onPressed: (){}, icon: const Icon(Icons.more_vert)),
-        ],
-      ),
+      appBar: _getAppBar(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -41,13 +35,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                 ),
-                const VerticalDivider(width: 30,thickness: 10, color: Colors.amber,),
+                const VerticalDivider(
+                  width: 30,
+                  thickness: 10,
+                  color: Colors.amber,
+                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Joined', style: Theme.of(context).textTheme.subtitle1!.copyWith(fontFamily: 'Avenir' ),),
-                    const SizedBox(height: 12,),
-                    Text('6 mon ago', style: Theme.of(context).textTheme.headline6!.copyWith(fontFamily: 'Avenir' ),),
+                    Text(
+                      'Joined',
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle1!
+                          .copyWith(fontFamily: 'Avenir'),
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    Text(
+                      '6 mon ago',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline6!
+                          .copyWith(fontFamily: 'Avenir'),
+                    ),
                   ],
                 )
               ],
@@ -55,8 +67,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
             const SizedBox(
               height: 24,
             ),
-            Text('Anis', style: Theme.of(context).textTheme.headline3,),
-            const Text('Dhia',),
+            Text(
+              'Anis',
+              style: Theme.of(context).textTheme.headline3,
+            ),
+            const Text(
+              'Dhia',
+            ),
             Card(
               // margin: const EdgeInsets.all(8.0),
               shape: RoundedRectangleBorder(
@@ -77,6 +94,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  AppBar _getAppBar() {
+    return AppBar(
+      title: const Text('Profile'),
+      centerTitle: true,
+      actions: [
+        PopupMenuButton(
+            itemBuilder: (context) => [
+                  const PopupMenuItem<int>(
+                      value: 0, child: Text('Edit Profile')),
+                  const PopupMenuItem(child: Text('Edit Profile')),
+                  const PopupMenuItem(child: Text('Edit Profile')),
+                ]),
+        // IconButton(onPressed: (){}, icon: const Icon(Icons.more_vert)),
+      ],
     );
   }
 }
