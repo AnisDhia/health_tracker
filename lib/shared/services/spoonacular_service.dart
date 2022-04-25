@@ -77,7 +77,7 @@ class SpoonacularService {
     Map<String, String> parameters = {'includeNutrition': 'false'};
     Uri uri = Uri.https(_baseUrl, 'recipes/$id/information', parameters);
     Map<String, String> headers = {
-      HttpHeaders.contentTypeHeader: 'applicatoin/json',
+      HttpHeaders.contentTypeHeader: 'application/json',
     };
 
     try {

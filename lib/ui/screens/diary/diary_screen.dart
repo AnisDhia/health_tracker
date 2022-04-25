@@ -102,7 +102,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                   height: 450,
                   decoration: BoxDecoration(
                       color: Theme.of(context).brightness == Brightness.dark
-                          ? const Color.fromARGB(255, 23, 28, 35)
+                          ? darkBlue
                           : Colors.transparent),
                 ),
               ),
@@ -785,36 +785,38 @@ class _DiaryScreenState extends State<DiaryScreen> {
         ),
         floatingActionButton: FabCircularMenu(
           ringColor: Colors.black,
-          fabOpenIcon: const Icon(Icons.add),
-          // ringWidth: 100,
+          fabOpenIcon: const Icon(Icons.add, color: Colors.white,),
+          fabCloseIcon: const Icon(Icons.close, color: Colors.white,),
+          ringWidth: 130,
+          fabCloseColor: Colors.red,
           children: [
             RawMaterialButton(
               onPressed: () {},
               shape: const CircleBorder(),
               padding: const EdgeInsets.all(24.0),
-              child: const Icon(FontAwesomeIcons.heartbeat),
+              child: const Icon(FontAwesomeIcons.heartbeat, color: Colors.white),
             ),
             RawMaterialButton(
                 onPressed: () {},
                 shape: const CircleBorder(),
                 padding: const EdgeInsets.all(24.0),
-                child: const Icon(Icons.restaurant)),
+                child: const Icon(Icons.restaurant, color: Colors.white)),
             RawMaterialButton(
               onPressed: () {},
               shape: const CircleBorder(),
               padding: const EdgeInsets.all(24.0),
-              child: const Icon(Icons.fitness_center),
+              child: const Icon(Icons.fitness_center, color: Colors.white),
             ),
             RawMaterialButton(
                 onPressed: () {},
                 shape: const CircleBorder(),
                 padding: const EdgeInsets.all(24.0),
-                child: const Icon(Icons.monitor_weight)),
+                child: const Icon(Icons.monitor_weight, color: Colors.white)),
             RawMaterialButton(
               onPressed: () {},
               shape: const CircleBorder(),
               padding: const EdgeInsets.all(24.0),
-              child: const Icon(Icons.water_drop),
+              child: const Icon(Icons.water_drop, color: Colors.white),
             ),
           ],
         )
