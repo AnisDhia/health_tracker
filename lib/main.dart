@@ -68,22 +68,23 @@ class MyApp extends StatelessWidget {
                     theme: value.darkTheme
                         ? MyThemes.darkTheme
                         : MyThemes.lightTheme,
-                    home: const Navigation()
-                    // StreamBuilder<User?>(
-                    //     stream: FirebaseAuth.instance.authStateChanges(),
-                    //     builder: (context, snapshot) {
-                    //       if (snapshot.connectionState ==
-                    //           ConnectionState.waiting) {
-                    //         return const MyCircularIndicator();
-                    //       }
-                    //       if (snapshot.hasData) {
-                    //         return const Navigation();
-                    //       }
-                    //       if (seen == null) {
-                    //         return const WelcomeScreen();
-                    //       }
-                    //       return const OnBoardingScreen();
-                    //     }),
+                    home: 
+                    // const Navigation()
+                    StreamBuilder<User?>(
+                        stream: FirebaseAuth.instance.authStateChanges(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const MyCircularIndicator();
+                          }
+                          if (snapshot.hasData) {
+                            return const Navigation();
+                          }
+                          if (seen == null) {
+                            return const WelcomeScreen();
+                          }
+                          return const OnBoardingScreen();
+                        }),
                     );
               },
             ),

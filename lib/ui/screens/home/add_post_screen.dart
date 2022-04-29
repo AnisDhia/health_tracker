@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:health_tracker/data/repositories/firestore.dart';
 import 'package:health_tracker/shared/services/user_provider.dart';
 import 'package:health_tracker/shared/utilities/utils.dart';
 import 'package:image_picker/image_picker.dart';
@@ -59,6 +60,35 @@ class _AddPostScreenState extends State<AddPostScreen> {
         });
   }
 
+  void postImage(String uid, String username, String profImage) async {
+    setState(() {
+      isLoading = true;
+    });
+    // start loading
+    try {
+      String res = await FireStoreCrud().uploadPost(
+          _descriptionController.text, _file!, uid, username, profImage);
+      if (res == 'success') {
+        setState(() {
+          isLoading = false;
+        });
+        showSnackBar(context, 'Posted!');
+        clearImage();
+      }
+    } catch (e) {
+      setState(() {
+        isLoading = false;
+        showSnackBar(context, e.toString());
+      });
+    }
+  }
+
+  void clearImage() {
+    setState(() {
+      _file = null;
+    });
+  }
+
   @override
   void dispose() {
     _descriptionController.dispose();
@@ -69,6 +99,86 @@ class _AddPostScreenState extends State<AddPostScreen> {
   Widget build(BuildContext context) {
     final UserProvider userProvider = Provider.of<UserProvider>(context);
 
-    return Scaffold();
+    return _file == null
+        ? Center(
+            child: IconButton(
+              icon: const Icon(Icons.upload),
+              onPressed: () => _selectImage(context),
+            ),
+          )
+        : Scaffold(
+            appBar: AppBar(
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: clearImage,
+              ),
+              title: const Text(
+                'Post to',
+              ),
+              centerTitle: false,
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () => postImage(
+                    userProvider.getUser.uid,
+                    userProvider.getUser.username,
+                    userProvider.getUser.photoUrl,
+                  ),
+                  child: const Text(
+                    "Post",
+                    style: TextStyle(
+                        color: Colors.blueAccent,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0),
+                  ),
+                )
+              ],
+            ),
+            body: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(children: [
+                isLoading
+                    ? const LinearProgressIndicator()
+                    : const Padding(padding: EdgeInsets.only(top: 0)),
+                const Divider(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    CircleAvatar(
+                      backgroundImage: NetworkImage(
+                        userProvider.getUser.photoUrl,
+                      ),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      child: TextField(
+                        controller: _descriptionController,
+                        decoration: const InputDecoration(
+                            hintText: "Write a caption...",
+                            border: InputBorder.none),
+                        maxLines: 8,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 45.0,
+                      width: 45.0,
+                      child: AspectRatio(
+                        aspectRatio: 487 / 451,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                            fit: BoxFit.fill,
+                            alignment: FractionalOffset.topCenter,
+                            image: MemoryImage(_file!),
+                          )),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const Divider(),
+              ]),
+            ),
+          );
   }
 }
