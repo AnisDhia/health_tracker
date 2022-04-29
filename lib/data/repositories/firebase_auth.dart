@@ -1,11 +1,23 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:health_tracker/data/repositories/user_repository.dart';
+import 'package:health_tracker/data/models/user_model.dart' as model;
 
 class FirebaseAuthRepo implements UserRepository {
   FirebaseAuthRepo();
 
   final _firebaseAuth = FirebaseAuth.instance;
+  final _firestore = FirebaseFirestore.instance;
+
+  Future<model.User> getUserDetails() async {
+    User currentUser = _firebaseAuth.currentUser!;
+
+    DocumentSnapshot documentSnapshot =
+        await _firestore.collection('users').doc(currentUser.uid).get();
+
+    return model.User.fromSnap(documentSnapshot);
+  }
 
   @override
   Future<void> login({required String email, required String password}) async {

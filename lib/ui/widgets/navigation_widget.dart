@@ -4,7 +4,7 @@ import 'package:health_tracker/bloc/auth/authentication_cubit.dart';
 import 'package:health_tracker/bloc/connectivity/connectivity_cubit.dart';
 import 'package:health_tracker/ui/screens/auth/welcome_screen.dart';
 import 'package:health_tracker/ui/screens/diary/diary_screen.dart';
-import 'package:health_tracker/ui/screens/home_screen.dart';
+import 'package:health_tracker/ui/screens/home/home_screen.dart';
 import 'package:health_tracker/ui/screens/plans_screen.dart';
 import 'package:health_tracker/ui/screens/recipes/recipes_screen.dart';
 import 'package:health_tracker/ui/screens/together_screen.dart';

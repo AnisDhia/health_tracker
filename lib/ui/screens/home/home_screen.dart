@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:health_tracker/ui/widgets/drawer_widget.dart';
+// import 'package:health_tracker/ui/widgets/drawer_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({ Key? key }) : super(key: key);
@@ -9,6 +9,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeState extends State<HomeScreen> {
+  // late List<Post> _posts;
+
+  // void _fetchPosts()  async {
+  //   _posts = 
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,8 +24,18 @@ class _HomeState extends State<HomeScreen> {
         title: const Text('Health Tracker'), 
         centerTitle: true,
       ),
-      body: Container(
-        child: const Text('Home'),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            const Text('home'),
+            // FutureBuilder(
+            //   future: _posts,
+            //   builder: ((context, snapshot) {
+              
+            // })),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),

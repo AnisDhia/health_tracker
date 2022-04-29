@@ -791,7 +791,9 @@ class _DiaryScreenState extends State<DiaryScreen> {
           fabCloseColor: Colors.red,
           children: [
             RawMaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const MeassureBPMScreen(),));
+              },
               shape: const CircleBorder(),
               padding: const EdgeInsets.all(24.0),
               child: const Icon(FontAwesomeIcons.heartbeat, color: Colors.white),
@@ -808,12 +810,16 @@ class _DiaryScreenState extends State<DiaryScreen> {
               child: const Icon(Icons.fitness_center, color: Colors.white),
             ),
             RawMaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const AddWeightScreen(),));
+                },
                 shape: const CircleBorder(),
                 padding: const EdgeInsets.all(24.0),
                 child: const Icon(Icons.monitor_weight, color: Colors.white)),
             RawMaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const AddWaterScreen(),));
+              },
               shape: const CircleBorder(),
               padding: const EdgeInsets.all(24.0),
               child: const Icon(Icons.water_drop, color: Colors.white),

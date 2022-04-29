@@ -8,5 +8,6 @@
     "editor.codeActionsOnSave": {
         "source.fixAll": true
     },
-    "cmake.sourceDirectory": "${workspaceFolder}/windows"
+    "cmake.sourceDirectory": "${workspaceFolder}/windows",
+    "cmake.configureOnOpen": true
 }
