@@ -22,37 +22,38 @@ class _HomeState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[700],
       // drawer: const NavDrawer(),
       appBar: AppBar(
         title: const Text('Health Tracker'),
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(top: 16.0),
         child: Column(
           children: [
             const Text('home'),
-            StreamBuilder(
-                stream:
-                    FirebaseFirestore.instance.collection('posts').snapshots(),
-                builder: ((context,
-                    AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>>
-                        snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const MyCircularIndicator();
-                  }
-                  return ListView.builder(
-                      itemCount: snapshot.data!.docs.length,
-                      itemBuilder: ((context, index) {
-                        return Container(
-                          margin: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 8),
-                          child:
-                              PostCard(snap: snapshot.data!.docs[index].data()),
-                        );
-                      }));
-                }))
+            Expanded(
+              child: StreamBuilder(
+                  stream:
+                      FirebaseFirestore.instance.collection('posts').snapshots(),
+                  builder: ((context,
+                      AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>>
+                          snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const MyCircularIndicator();
+                    }
+                    return ListView.builder(
+                        itemCount: snapshot.data!.docs.length,
+                        itemBuilder: ((context, index) {
+                          return Container(
+                            margin: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 8),
+                            child:
+                                PostCard(snap: snapshot.data!.docs[index].data()),
+                          );
+                        }));
+                  })),
+            )
           ],
         ),
       ),

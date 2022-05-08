@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:health_tracker/shared/services/user_provider.dart';
 import 'package:health_tracker/ui/screens/profile/profile_screen.dart';
+import 'package:provider/provider.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -12,6 +15,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final UserProvider userProvider = Provider.of<UserProvider>(context);
+    final user = userProvider.getUser;
     return AppBar(
       backgroundColor: Colors.transparent,
       title: Text(title),
@@ -25,10 +30,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const ProfileScreen()));
+                      builder: (context) => ProfileScreen(uid: FirebaseAuth.instance.currentUser!.uid)));
             },
-            child: const CircleAvatar(
-              backgroundImage: AssetImage('assets/images/profile.jpg'),
+            child: CircleAvatar(
+              // backgroundImage: AssetImage('assets/images/profile.jpg'),
+              backgroundImage: NetworkImage(user.photoUrl),
               backgroundColor: Colors.red,
             ),
           ),

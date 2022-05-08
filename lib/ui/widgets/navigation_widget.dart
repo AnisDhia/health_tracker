@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:health_tracker/bloc/auth/authentication_cubit.dart';
 import 'package:health_tracker/bloc/connectivity/connectivity_cubit.dart';
+import 'package:health_tracker/shared/services/user_provider.dart';
 import 'package:health_tracker/ui/screens/auth/welcome_screen.dart';
 import 'package:health_tracker/ui/screens/diary/diary_screen.dart';
 import 'package:health_tracker/ui/screens/home/home_screen.dart';
@@ -11,6 +12,7 @@ import 'package:health_tracker/ui/screens/together_screen.dart';
 import 'package:health_tracker/ui/widgets/drawer_widget.dart';
 import 'package:health_tracker/ui/widgets/indicator_widget.dart';
 import 'package:health_tracker/ui/widgets/snackbar_widget.dart';
+import 'package:provider/provider.dart';
 
 class Navigation extends StatefulWidget {
   const Navigation({Key? key}) : super(key: key);
@@ -35,7 +37,14 @@ class _NavigationState extends State<Navigation> {
   @override
   void initState() {
     super.initState();
+    addData();
     pageController = PageController(initialPage: 2);
+  }
+
+  addData() async {
+    UserProvider _userProvider =
+        Provider.of<UserProvider>(context, listen: false);
+    await _userProvider.refreshUser();
   }
 
   @override
@@ -65,9 +74,7 @@ class _NavigationState extends State<Navigation> {
                 listener: (context, state) {
               if (state is ConnectivityOnlineState) {
                 MySnackBar.error(
-                    message: 'Connected',
-                    color: Colors.blue,
-                    context: context);
+                    message: 'Connected', color: Colors.blue, context: context);
               } else {
                 MySnackBar.error(
                     message: 'Please Check Your Internet Connection',

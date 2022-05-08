@@ -60,7 +60,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
         });
   }
 
-  void postImage(String uid, String username, String profImage) async {
+  Future<void> postImage(String uid, String username, String profImage) async {
     setState(() {
       isLoading = true;
     });
@@ -99,86 +99,101 @@ class _AddPostScreenState extends State<AddPostScreen> {
   Widget build(BuildContext context) {
     final UserProvider userProvider = Provider.of<UserProvider>(context);
 
-    return _file == null
-        ? Center(
-            child: IconButton(
-              icon: const Icon(Icons.upload),
-              onPressed: () => _selectImage(context),
-            ),
-          )
-        : Scaffold(
-            appBar: AppBar(
-              leading: IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: clearImage,
-              ),
-              title: const Text(
-                'Post to',
-              ),
-              centerTitle: false,
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () => postImage(
-                    userProvider.getUser.uid,
-                    userProvider.getUser.username,
+    return Scaffold(
+      appBar: AppBar(
+        leading: const BackButton(),
+        title: const Text(
+          'Update Status',
+        ),
+        centerTitle: false,
+        actions: <Widget>[
+          _file == null
+              ? IconButton(
+                  icon: const Icon(Icons.upload),
+                  onPressed: () => _selectImage(context),
+                )
+              : IconButton(
+                  icon: const Icon(Icons.delete),
+                  onPressed: clearImage,
+                ),
+          IconButton(
+              onPressed: () async {
+                await postImage(
+                  userProvider.getUser.uid,
+                  userProvider.getUser.username,
+                  userProvider.getUser.photoUrl,
+                );
+                Navigator.of(context).pop();
+              },
+              icon: const Icon(Icons.send))
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(children: [
+            isLoading
+                ? const LinearProgressIndicator()
+                : const Padding(padding: EdgeInsets.only(top: 0)),
+            const Divider(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                CircleAvatar(
+                  backgroundImage: NetworkImage(
                     userProvider.getUser.photoUrl,
                   ),
-                  child: const Text(
-                    "Post",
-                    style: TextStyle(
-                        color: Colors.blueAccent,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16.0),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.3,
+                  child: TextField(
+                    controller: _descriptionController,
+                    decoration: const InputDecoration(
+                        hintText: "Write a caption...", border: InputBorder.none),
+                    maxLines: 8,
                   ),
-                )
+                ),
+                // SizedBox(
+                //   height: 45.0,
+                //   width: 45.0,
+                //   child: AspectRatio(
+                //     aspectRatio: 487 / 451,
+                //     child: _file == null
+                //         ? Center(
+                //             child: IconButton(
+                //               icon: const Icon(Icons.upload),
+                //               onPressed: () => _selectImage(context),
+                //             ),
+                //           )
+                //         : Container(
+                //             decoration: BoxDecoration(
+                //                 image: DecorationImage(
+                //               fit: BoxFit.fill,
+                //               alignment: FractionalOffset.topCenter,
+                //               image: MemoryImage(_file!),
+                //             )),
+                //           ),
+                //   ),
+                // ),
               ],
             ),
-            body: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(children: [
-                isLoading
-                    ? const LinearProgressIndicator()
-                    : const Padding(padding: EdgeInsets.only(top: 0)),
-                const Divider(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    CircleAvatar(
-                      backgroundImage: NetworkImage(
-                        userProvider.getUser.photoUrl,
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.3,
-                      child: TextField(
-                        controller: _descriptionController,
-                        decoration: const InputDecoration(
-                            hintText: "Write a caption...",
-                            border: InputBorder.none),
-                        maxLines: 8,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 45.0,
-                      width: 45.0,
-                      child: AspectRatio(
-                        aspectRatio: 487 / 451,
-                        child: Container(
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                            fit: BoxFit.fill,
-                            alignment: FractionalOffset.topCenter,
-                            image: MemoryImage(_file!),
-                          )),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const Divider(),
-              ]),
-            ),
-          );
+            _file != null ? SizedBox(
+              height: 350,
+              width: double.infinity,
+              child: Container(
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                  fit: BoxFit.fill,
+                  alignment: FractionalOffset.topCenter,
+                  image: MemoryImage(_file!),
+                )),
+              ),
+            ) : const SizedBox(),
+            const Divider(),
+          ]),
+        ),
+      ),
+    );
   }
 }
