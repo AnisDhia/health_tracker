@@ -1,17 +1,18 @@
 import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-class HeartDetailsScreen extends StatefulWidget {
-  const HeartDetailsScreen({Key? key}) : super(key: key);
+class SleepStatsScreen extends StatefulWidget {
+  const SleepStatsScreen({Key? key}) : super(key: key);
 
   @override
-  State<HeartDetailsScreen> createState() => _HeartDetailsScreenState();
+  State<SleepStatsScreen> createState() => _HeartDetailsScreenState();
 }
 
-class _HeartDetailsScreenState extends State<HeartDetailsScreen> {
+class _HeartDetailsScreenState extends State<SleepStatsScreen> {
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,12 +37,11 @@ class _HeartDetailsScreenState extends State<HeartDetailsScreen> {
                 ),
               ],
               indicator: BoxDecoration(
-                
-                borderRadius: BorderRadius.circular(24),
+                  borderRadius: BorderRadius.circular(24),
                   gradient: const LinearGradient(colors: [
-                Color.fromARGB(255, 255, 88, 128),
-                Color.fromARGB(255, 250, 124, 108),
-              ])),
+                    Color.fromARGB(255, 255, 88, 128),
+                    Color.fromARGB(255, 250, 124, 108),
+                  ])),
               // indicatorColor: Colors.red,
               labelPadding: const EdgeInsets.symmetric(horizontal: 40),
             ),
@@ -78,22 +78,48 @@ class _HeartDetailsScreenState extends State<HeartDetailsScreen> {
                     height: 24,
                   ),
                   SizedBox(
-                    height: 150,
+                    height: 180,
                     width: double.infinity,
                     child: LineChart(LineChartData(
                       gridData: FlGridData(show: false),
-                      titlesData: FlTitlesData(show: false),
-                      borderData: FlBorderData(show: false),
-                      minX: 0,
+                      titlesData: FlTitlesData(
+                        show: true,
+                        topTitles: AxisTitles(
+                          sideTitles: SideTitles(showTitles: false),
+                        ),
+                        rightTitles: AxisTitles(
+                          sideTitles: SideTitles(showTitles: false),
+                        ),
+                        bottomTitles: AxisTitles(
+                          sideTitles: SideTitles(
+                            showTitles: true,
+                            reservedSize: 30,
+                            interval: 1,
+                            getTitlesWidget: bottomTitleWidgets,
+                          ),
+                        ),
+                        leftTitles: AxisTitles(
+                          sideTitles: SideTitles(
+                            showTitles: true,
+                            interval: 1,
+                            getTitlesWidget: leftTitleWidgets,
+                            reservedSize: 42,
+                          ),
+                        ),
+                      ),
+                      // borderData: FlBorderData(
+                      //     show: true,
+                      //     border: Border.all(
+                      //         color: const Color(0xff37434d), width: 1)),
+                      minX: 2,
                       maxX: 24,
                       minY: 0,
                       maxY: 160,
                       lineBarsData: [
                         LineChartBarData(
                             spots: const [
-                              FlSpot(0, 0),
-                              FlSpot(5, 60),
-                              FlSpot(6.5, 70),
+                              FlSpot(2, 0),
+                              FlSpot(6, 70),
                               FlSpot(10, 65),
                               FlSpot(14, 140),
                               FlSpot(17, 75),
@@ -101,7 +127,6 @@ class _HeartDetailsScreenState extends State<HeartDetailsScreen> {
                               FlSpot(24, 120),
                             ],
                             isCurved: true,
-                            // color: const Color.fromARGB(255, 220, 18, 18),
                             gradient: const LinearGradient(
                               colors: [
                                 Colors.red,
@@ -123,22 +148,9 @@ class _HeartDetailsScreenState extends State<HeartDetailsScreen> {
                                     colors: [
                                       const Color.fromARGB(255, 220, 18, 18)
                                           .withOpacity(0.3),
-                                      // const Color(0xff02d39a)
-                                      //     .withOpacity(0.3),
                                       Colors.transparent
                                     ])
-                                // LinearGradient(
-                                //   colors: [
-                                //     const Color(0xff23b6e6)
-                                //         .withOpacity(0.3),
-                                //     const Color(0xff02d39a)
-                                //         .withOpacity(0.3),
-                                //     Colors.transparent
-                                //   ],
-                                //   begin: Alignment.topCenter,
-                                //   end: Alignment.bottomCenter,
-                                //   transform: GradientTransform.,
-                                // ),
+                                
                                 ))
                       ],
                     )),
@@ -345,8 +357,12 @@ class _HeartDetailsScreenState extends State<HeartDetailsScreen> {
                 ],
               ),
             ),
-            const Text('Week'),
-            const Text('Month'),
+            
+            ElevatedButton(
+                onPressed: () {
+                  // max30101.runSampler(onBeat);
+                },
+                child: const Text('Max 30101'))
           ]))
         ]),
       ),
@@ -388,4 +404,65 @@ class _HeartDetailsScreenState extends State<HeartDetailsScreen> {
       ],
     );
   }
+}
+
+Widget bottomTitleWidgets(double value, TitleMeta meta) {
+  const style = TextStyle(
+    color: Color(0xff727272),
+    fontWeight: FontWeight.bold,
+    fontSize: 16,
+  );
+  Widget text;
+  switch (value.toInt()) {
+    case 6:
+      text = const Text('6:00', style: style);
+      break;
+    case 10:
+      text = const Text('10:00', style: style);
+      break;
+    case 14:
+      text = const Text('02:00', style: style);
+      break;
+    case 18:
+      text = const Text('06:00', style: style);
+      break;
+    case 22:
+      text = const Text('10:00', style: style);
+      break;
+    default:
+      text = const Text('', style: style);
+      break;
+  }
+
+  return Padding(child: text, padding: const EdgeInsets.only(top: 8.0));
+}
+
+Widget leftTitleWidgets(double value, TitleMeta meta) {
+  const style = TextStyle(
+    color: Color(0xff67727d),
+    fontWeight: FontWeight.bold,
+    fontSize: 15,
+  );
+  String text;
+  switch (value.toInt()) {
+    case 0:
+      text = '0';
+      break;
+    case 40:
+      text = '40';
+      break;
+    case 80:
+      text = '80';
+      break;
+    case 120:
+      text = '120';
+      break;
+    case 160:
+      text = '160';
+      break;
+    default:
+      return Container();
+  }
+
+  return Text(text, style: style, textAlign: TextAlign.left);
 }

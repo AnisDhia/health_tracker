@@ -1,7 +1,10 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:health_tracker/bloc/auth/authentication_cubit.dart';
 import 'package:health_tracker/bloc/connectivity/connectivity_cubit.dart';
+import 'package:health_tracker/shared/utilities/utils.dart';
 import 'package:health_tracker/ui/screens/auth/login_screen.dart';
 import 'package:health_tracker/shared/constants/consts_variables.dart';
 import 'package:health_tracker/shared/styles/themes.dart';
@@ -10,6 +13,7 @@ import 'package:health_tracker/ui/widgets/indicator_widget.dart';
 import 'package:health_tracker/ui/widgets/navigation_widget.dart';
 import 'package:health_tracker/ui/widgets/snackbar_widget.dart';
 import 'package:health_tracker/ui/widgets/textfield_widget.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:sizer/sizer.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:health_tracker/shared/utilities/validators.dart';
@@ -27,6 +31,7 @@ class _LoginScreenState extends State<SignUpScreen> {
   late TextEditingController _emailController;
   late TextEditingController _passwordController;
   Sex? _sex = Sex.male;
+  Uint8List? _image;
 
   @override
   void initState() {
@@ -38,10 +43,18 @@ class _LoginScreenState extends State<SignUpScreen> {
 
   @override
   void dispose() {
-    super.dispose();
     _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+
+    super.dispose();
+  }
+
+  selectImage() async {
+    Uint8List image = await pickImage(ImageSource.gallery);
+    setState(() {
+      _image = image;
+    });
   }
 
   @override
@@ -82,7 +95,7 @@ class _LoginScreenState extends State<SignUpScreen> {
           if (state is! AuthenticationSuccessState) {
             return SafeArea(
               child: SingleChildScrollView(
-                physics: const NeverScrollableScrollPhysics(),
+                physics: const ScrollPhysics(),
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 40, vertical: 30),
@@ -117,7 +130,36 @@ class _LoginScreenState extends State<SignUpScreen> {
                                     ),
                           ),
                           SizedBox(
-                            height: 10.h,
+                            height: 6.h,
+                          ),
+                          Center(
+                            child: Stack(
+                              children: [
+                                _image != null
+                                    ? CircleAvatar(
+                                        radius: 54,
+                                        backgroundImage: MemoryImage(_image!),
+                                        backgroundColor: Colors.red,
+                                      )
+                                    : const CircleAvatar(
+                                        radius: 54,
+                                        backgroundImage: NetworkImage(
+                                            'https://i.stack.imgur.com/l60Hf.png'),
+                                        backgroundColor: Colors.red,
+                                      ),
+                                Positioned(
+                                  bottom: -10,
+                                  left: 70,
+                                  child: IconButton(
+                                    onPressed: selectImage,
+                                    icon: const Icon(Icons.add_a_photo),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 2.h,
                           ),
                           MyTextfield(
                             hint: 'Username',
@@ -270,7 +312,9 @@ class _LoginScreenState extends State<SignUpScreen> {
       cubit.register(
           username: _nameController.text,
           email: _emailController.text,
-          password: _passwordController.text);
+          password: _passwordController.text,
+          sex: _sex!,
+          file: _image!);
     }
   }
 }

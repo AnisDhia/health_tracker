@@ -1,3 +1,7 @@
+import 'dart:typed_data';
+
+import 'package:health_tracker/shared/constants/consts_variables.dart';
+
 abstract class UserRepository {
   const UserRepository();
 
@@ -6,7 +10,9 @@ abstract class UserRepository {
   Future<void> register(
       {required String username,
       required String email,
-      required String password});
+      required String password,
+      required Sex sex,
+      required Uint8List file});
 
   logout();
 }

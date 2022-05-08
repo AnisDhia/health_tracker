@@ -1,9 +1,12 @@
+import 'dart:typed_data';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:health_tracker/data/repositories/firebase_auth.dart';
+import 'package:health_tracker/shared/constants/consts_variables.dart';
 import 'package:health_tracker/ui/widgets/snackbar_widget.dart';
 
 part 'authentication_state.dart';
@@ -38,10 +41,17 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   register(
       {required String username,
       required String email,
-      required String password}) {
+      required String password,
+      required Sex sex,
+      required Uint8List file}) {
     emit(AuthenticationLoadingState());
     firebaseauthrepo
-        .register(username: username, email: email, password: password)
+        .register(
+            username: username,
+            email: email,
+            password: password,
+            sex: sex,
+            file: file)
         .then((value) {
       emit(AuthenticationSuccessState());
 

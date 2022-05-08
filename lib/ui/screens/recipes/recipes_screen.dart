@@ -14,6 +14,14 @@ class RecipesScreen extends StatefulWidget {
 
 class _RecipesScreenState extends State<RecipesScreen> {
   Future<List<Recipe>> recipeList = SpoonacularService.instance.getRandomRecipes(tags: "keto",number: 15);
+  // ScrollController _scrollController = new ScrollController();
+
+  // @override
+  // void dispose() {
+  //   _scrollController.dispose();
+    
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {

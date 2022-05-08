@@ -55,9 +55,11 @@ class AuthenticationService {
         uid: userCredential.user!.uid,
         photoUrl: '',
         email: email,
-        about: '',
+        bio: '',
         isDarkMode: true,
         bookmarkedRecipes: [],
+        followers: [],
+        following: [],
       );
 
       await _firestore
