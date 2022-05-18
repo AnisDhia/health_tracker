@@ -1,13 +1,18 @@
-class Food{
-  final String name;
-  final double weight;
-  final List nutrients;
+class Food {
+  final String name, id;
+  final List<dynamic> nutrients;
 
   Food({
+    required this.id,
     required this.name,
     required this.nutrients,
-    required this.weight,
   });
 
-
+  factory Food.fromJson(Map<String, dynamic> json) {
+    return Food(
+      id: json['fdcId'].toString(),
+      name: json['lowercaseDescription'] as String,
+      nutrients: json['foodNutrients'] as List<dynamic>
+    );
+  }
 }

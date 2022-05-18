@@ -6,14 +6,14 @@ import 'package:heart_bpm/chart.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:heart_bpm/heart_bpm.dart';
 
-class WaterStatsScreen extends StatefulWidget {
-  const WaterStatsScreen({Key? key}) : super(key: key);
+class CaloriesStatsScreen extends StatefulWidget {
+  const CaloriesStatsScreen({Key? key}) : super(key: key);
 
   @override
-  State<WaterStatsScreen> createState() => _HeartDetailsScreenState();
+  State<CaloriesStatsScreen> createState() => _HeartDetailsScreenState();
 }
 
-class _HeartDetailsScreenState extends State<WaterStatsScreen> {
+class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
   
 
   @override

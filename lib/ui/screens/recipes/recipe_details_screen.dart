@@ -243,12 +243,15 @@ class Preparation extends StatelessWidget {
           ListView.separated(
             physics: const ScrollPhysics(),
             shrinkWrap: true,
-            itemCount: recipeModel.preparation.isNotEmpty ? recipeModel.preparation[0]['steps'].length : 0,
+            itemCount: recipeModel.preparation.isNotEmpty
+                ? recipeModel.preparation[0]['steps'].length
+                : 0,
             itemBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 4),
-                child: Text(
-                    (index+1).toString() + ' - ' + recipeModel.preparation[0]['steps'][index]['step']),
+                child: Text((index + 1).toString() +
+                    ' - ' +
+                    recipeModel.preparation[0]['steps'][index]['step']),
               );
             },
             separatorBuilder: (BuildContext context, int index) {
