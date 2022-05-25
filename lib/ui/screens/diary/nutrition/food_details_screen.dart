@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:health_tracker/data/models/food_model.dart';
+import 'package:health_tracker/data/repositories/firestore.dart';
+import 'package:health_tracker/shared/services/firestore_service.dart';
 
 class FoodDetailsScreen extends StatefulWidget {
   const FoodDetailsScreen({Key? key, required this.food, required this.meal})
@@ -26,7 +28,14 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add Food'),
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.check))],
+        actions: [
+          IconButton(
+              onPressed: () {
+                FireStoreCrud().updateDiaryMeal(meal, widget.food.id, 'fdc');
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.check))
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -97,18 +106,22 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
             Row(
               children: [
                 const Expanded(child: Text('Number of Servings')),
-                TextButton(onPressed: (){
-                  // showDialog(context: context, builder: builder)
-                }, child: const Text('will be added soon'))
+                TextButton(
+                    onPressed: () {
+                      // showDialog(context: context, builder: builder)
+                    },
+                    child: const Text('will be added soon'))
               ],
             ),
             const Divider(),
             Row(
               children: [
                 const Expanded(child: Text('Serving Size')),
-                TextButton(onPressed: (){
-                  // showDialog(context: context, builder: builder)
-                }, child: const Text('will be added soon'))
+                TextButton(
+                    onPressed: () {
+                      // showDialog(context: context, builder: builder)
+                    },
+                    child: const Text('will be added soon'))
               ],
             ),
             const Divider(),

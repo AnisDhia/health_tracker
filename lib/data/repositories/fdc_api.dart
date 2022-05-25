@@ -15,6 +15,9 @@ class FoodDataCentralService {
   static const String _apiKey = 'gkWkb1cAcwybUkTpxX7RIBfadCfVigZQM7WUFPr2';
 
   Future<List<Food>> searchFood(String query) async {
+    if(query.isEmpty) {
+      return [];
+    }
     Map<String, String> parameters = {
       'api_key': _apiKey,
       'query': query,
