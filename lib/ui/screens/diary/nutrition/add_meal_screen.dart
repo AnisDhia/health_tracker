@@ -143,6 +143,18 @@ class _AddFoodScreenState extends State<AddMealScreen> {
                                       child: InkWell(
                                           borderRadius:
                                               BorderRadius.circular(20),
+                                          onTap: () {},
+                                          child: const Padding(
+                                            padding: EdgeInsets.all(16.0),
+                                            child: Icon(Icons., size: 50,),
+                                          ))),
+                                  Card(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
+                                      child: InkWell(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
                                           onTap: () async {
                                             await scanBarcodeNormal();
                                             log(_scanBarcode);
@@ -164,8 +176,8 @@ class _AddFoodScreenState extends State<AddMealScreen> {
                                           },
                                           child: const Padding(
                                             padding: EdgeInsets.all(16.0),
-                                            child: Icon(Icons.qr_code_scanner),
-                                          )))
+                                            child: Icon(Icons.qr_code_scanner, size: 50,),
+                                          ))),
                                 ],
                               ),
                               FutureBuilder(
