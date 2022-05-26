@@ -10,6 +10,7 @@ import 'package:health_tracker/data/repositories/fdc_api.dart';
 import 'package:health_tracker/data/repositories/firestore.dart';
 import 'package:health_tracker/data/repositories/off_api.dart';
 import 'package:health_tracker/ui/screens/diary/nutrition/food_details_screen.dart';
+import 'package:health_tracker/ui/screens/diary/nutrition/quick_add_screen.dart';
 import 'package:health_tracker/ui/screens/diary/nutrition/upc_details_screen.dart';
 import 'package:health_tracker/ui/widgets/search_field_widget.dart';
 import 'package:health_tracker/ui/widgets/snackbar_widget.dart';
@@ -136,48 +137,84 @@ class _AddFoodScreenState extends State<AddMealScreen> {
                             children: [
                               Row(
                                 children: [
-                                  Card(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20)),
-                                      child: InkWell(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          onTap: () {},
-                                          child: const Padding(
-                                            padding: EdgeInsets.all(16.0),
-                                            child: Icon(Icons., size: 50,),
-                                          ))),
-                                  Card(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20)),
-                                      child: InkWell(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          onTap: () async {
-                                            await scanBarcodeNormal();
-                                            log(_scanBarcode);
-                                            if (_scanBarcode == 'Unknown') {
-                                              MySnackBar.error(
-                                                  message: 'Failed, Try again',
-                                                  color: Colors.red,
-                                                  context: context);
-                                            } else {
+                                  Expanded(
+                                    child: Card(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(20)),
+                                        child: InkWell(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            onTap: () async {
+                                              await scanBarcodeNormal();
+                                              log(_scanBarcode);
+                                              if (_scanBarcode == 'Unknown') {
+                                                MySnackBar.error(
+                                                    message:
+                                                        'Failed, Try again',
+                                                    color: Colors.red,
+                                                    context: context);
+                                              } else {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            ProductDetailsScreen(
+                                                                upc:
+                                                                    _scanBarcode,
+                                                                meal: widget
+                                                                    .title)));
+                                              }
+                                            },
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(16.0),
+                                              child: Column(
+                                                children: const [
+                                                  Icon(
+                                                    Icons.qr_code_scanner,
+                                                    size: 50,
+                                                  ),
+                                                  SizedBox(
+                                                    height: 12,
+                                                  ),
+                                                  Text('Scan a Barcode')
+                                                ],
+                                              ),
+                                            ))),
+                                  ),
+                                  Expanded(
+                                    child: Card(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(20)),
+                                        child: InkWell(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            onTap: () {
                                               Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          ProductDetailsScreen(
-                                                              upc: _scanBarcode,
-                                                              meal: widget
-                                                                  .title)));
-                                            }
-                                          },
-                                          child: const Padding(
-                                            padding: EdgeInsets.all(16.0),
-                                            child: Icon(Icons.qr_code_scanner, size: 50,),
-                                          ))),
+                                                          const QuickAddScreen()));
+                                            },
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(16.0),
+                                              child: Column(
+                                                children: const [
+                                                  Icon(
+                                                    Icons.local_fire_department,
+                                                    size: 50,
+                                                  ),
+                                                  SizedBox(
+                                                    height: 12,
+                                                  ),
+                                                  Text('Quick Add')
+                                                ],
+                                              ),
+                                            ))),
+                                  ),
                                 ],
                               ),
                               FutureBuilder(

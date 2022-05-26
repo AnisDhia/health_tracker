@@ -1,6 +1,7 @@
 class Food {
   final String name, id;
-  final String? imageUrl, description;
+  final String? imageUrl, description, servingSizeUnit;
+  final double? servingSize;
   final List<dynamic> nutrients;
 
   Food({
@@ -8,14 +9,18 @@ class Food {
     required this.name,
     required this.nutrients,
     this.description,
-    this.imageUrl
+    this.imageUrl,
+    this.servingSize,
+    this.servingSizeUnit
   });
 
   factory Food.fromJson(Map<String, dynamic> json) {
     return Food(
       id: json['fdcId'].toString(),
       name: json['lowercaseDescription'] as String,
-      nutrients: json['foodNutrients'] as List<dynamic>
+      nutrients: json['foodNutrients'] as List<dynamic>,
+      servingSize: json['servingSize'],
+      servingSizeUnit: json['servingSizeUnit']
     );
   }
   factory Food.fromJsonUPC(Map<String, dynamic> json) {
