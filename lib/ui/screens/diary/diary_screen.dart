@@ -9,7 +9,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:health_tracker/shared/styles/colors.dart';
 import 'package:health_tracker/ui/screens/diary/heart/meassure_bpm_screen.dart';
 import 'package:health_tracker/ui/screens/diary/heart/heart_stats_screen.dart';
+import 'package:health_tracker/ui/screens/diary/nutrition/add_meal_screen.dart';
+import 'package:health_tracker/ui/screens/diary/nutrition/calories_stats_screen.dart';
+import 'package:health_tracker/ui/screens/diary/sleep/sleep_stats_screen.dart';
 import 'package:health_tracker/ui/screens/diary/water/add_water_screen.dart';
+import 'package:health_tracker/ui/screens/diary/water/water_stats_screen.dart';
 import 'package:health_tracker/ui/screens/diary/weight/add_weight_screen.dart';
 import 'package:health_tracker/ui/widgets/appbar_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -423,7 +427,14 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                       borderRadius: BorderRadius.circular(20)),
                                   child: InkWell(
                                     borderRadius: BorderRadius.circular(20),
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const CaloriesStatsScreen(),
+                                          ));
+                                    },
                                     child: Padding(
                                       padding: const EdgeInsets.all(16.0),
                                       child: Column(
@@ -516,7 +527,14 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                       borderRadius: BorderRadius.circular(20)),
                                   child: InkWell(
                                     borderRadius: BorderRadius.circular(20),
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const WaterStatsScreen(),
+                                          ));
+                                    },
                                     child: Padding(
                                       padding: const EdgeInsets.all(16.0),
                                       child: Column(
@@ -646,7 +664,14 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                       borderRadius: BorderRadius.circular(20)),
                                   child: InkWell(
                                     borderRadius: BorderRadius.circular(20),
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const SleepStatsScreen(),
+                                          ));
+                                    },
                                     child: Padding(
                                       padding: const EdgeInsets.all(16.0),
                                       child: Column(
@@ -785,21 +810,84 @@ class _DiaryScreenState extends State<DiaryScreen> {
         ),
         floatingActionButton: FabCircularMenu(
           ringColor: Colors.black,
-          fabOpenIcon: const Icon(Icons.add, color: Colors.white,),
-          fabCloseIcon: const Icon(Icons.close, color: Colors.white,),
+          fabOpenIcon: const Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
+          fabCloseIcon: const Icon(
+            Icons.close,
+            color: Colors.white,
+          ),
           ringWidth: 130,
           fabCloseColor: Colors.red,
           children: [
             RawMaterialButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const MeassureBPMScreen(),));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const MeassureBPMScreen(),
+                    ));
               },
               shape: const CircleBorder(),
               padding: const EdgeInsets.all(24.0),
-              child: const Icon(FontAwesomeIcons.heartbeat, color: Colors.white),
+              child:
+                  const Icon(FontAwesomeIcons.heartbeat, color: Colors.white),
             ),
             RawMaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return SimpleDialog(
+                          title: const Text('Meals'),
+                          children: [
+                            SimpleDialogOption(
+                                child: Text('Breakfast'),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const AddMealScreen(
+                                                title: 'Breakfast',
+                                              )));
+                                }),
+                            SimpleDialogOption(
+                                child: Text('Lunch'),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const AddMealScreen(
+                                                  title: 'Lunch')));
+                                }),
+                            SimpleDialogOption(
+                                child: Text('Dinner'),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const AddMealScreen(
+                                                  title: 'Dinner')));
+                                }),
+                            SimpleDialogOption(
+                                child: Text('Snacks'),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const AddMealScreen(
+                                                  title: 'Snacks')));
+                                }),
+                          ],
+                        );
+                      });
+                  // TODO: add food
+                },
                 shape: const CircleBorder(),
                 padding: const EdgeInsets.all(24.0),
                 child: const Icon(Icons.restaurant, color: Colors.white)),
@@ -811,14 +899,22 @@ class _DiaryScreenState extends State<DiaryScreen> {
             ),
             RawMaterialButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const AddWeightScreen(),));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AddWeightScreen(),
+                      ));
                 },
                 shape: const CircleBorder(),
                 padding: const EdgeInsets.all(24.0),
                 child: const Icon(Icons.monitor_weight, color: Colors.white)),
             RawMaterialButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const AddWaterScreen(),));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AddWaterScreen(),
+                    ));
               },
               shape: const CircleBorder(),
               padding: const EdgeInsets.all(24.0),

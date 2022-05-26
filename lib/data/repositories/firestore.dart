@@ -2,8 +2,10 @@ import 'dart:developer';
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:health_tracker/data/models/post_model.dart';
 import 'package:health_tracker/data/repositories/storage.dart';
+import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
 class FireStoreCrud {
@@ -123,6 +125,24 @@ class FireStoreCrud {
           'following': FieldValue.arrayUnion([followId])
         });
       }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<void> updateDiaryMeal(String meal, String foodId, String type) async {
+    try {
+      _firestore
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .collection('diary')
+          .doc(DateFormat('d-M-y').format(DateTime.now()))
+          .set({
+        meal: FieldValue.arrayUnion([
+          {'id': foodId, 'type': type}
+        ])
+      }, SetOptions(merge: true)).onError(
+              (error, stackTrace) => log('Error writing document: $error'));
     } catch (e) {
       log(e.toString());
     }

@@ -1,7 +1,7 @@
 {
-    "explorer.experimental.fileNesting.enabled": true,
-    "explorer.experimental.fileNesting.expand": false,
-    "explorer.experimental.fileNesting.patterns": {
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.expand": false,
+    "explorer.fileNesting.patterns": {
         "pubspec.yaml": ".packages, .metadata, pubspec.lock, analysis_options.yaml, flutter_native_splash.yaml, .flutter-plugins, .flutter-plugins-dependencies",
         "firebase.json": ".firebaserc, firestore-debug.log, firestore.indexes.json, firestore.rules, storage.rules"
     },

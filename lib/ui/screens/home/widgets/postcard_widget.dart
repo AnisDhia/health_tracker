@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/data/models/user_model.dart' as model;
 import 'package:health_tracker/data/repositories/firestore.dart';
@@ -143,6 +144,43 @@ class _PostCardState extends State<PostCard> {
             ],
           ),
         ),
+        // ? POST DESCRIPTION AND NUMBER OF COMMENTS
+        //DESCRIPTION AND NUMBER OF COMMENTS
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                child: Text(
+                  DateFormat.yMMMd()
+                      .format(widget.snap['datePublished'].toDate()),
+                  style: const TextStyle(
+                      // color: secondaryColor,
+                      ),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 4),
+              ),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.only(
+                  top: 8,
+                ),
+                child: RichText(
+                  text: TextSpan(
+                    style: const TextStyle(/*color: primaryColor*/),
+                    children: [
+                      TextSpan(
+                        text: ' ${widget.snap['description']}',
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
         // ?post image
         GestureDetector(
           onDoubleTap: () {
@@ -189,124 +227,85 @@ class _PostCardState extends State<PostCard> {
             ],
           ),
         ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: DefaultTextStyle(
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle2!
+                    .copyWith(fontWeight: FontWeight.w800),
+                child: Text(
+                  '${widget.snap['likes'].length} likes',
+                  style: Theme.of(context).textTheme.bodyText2,
+                )),
+          ),
+        ),
 
-        // ?post descrition
+        const Divider(),
+        // ? LIKE | COMMENT
         Row(
           children: <Widget>[
-            LikeAnimation(
-              isAnimating: widget.snap['likes'].contains(user.uid),
-              smallLike: true,
-              child: IconButton(
-                icon: widget.snap['likes'].contains(user.uid)
-                    ? const Icon(
-                        Icons.favorite,
-                        color: Colors.red,
-                      )
-                    : const Icon(
-                        Icons.favorite_border,
-                      ),
-                onPressed: () => FireStoreCrud().likePost(
-                  widget.snap['postId'].toString(),
-                  user.uid,
-                  widget.snap['likes'],
-                ),
-              ),
-            ),
-            IconButton(
-              icon: const Icon(
-                Icons.comment_outlined,
-              ),
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => CommentsScreen(
-                    postId: widget.snap['postId'].toString(),
-                  ),
-                ),
-              ),
-            ),
-            IconButton(
-                icon: const Icon(
-                  Icons.send,
-                ),
-                onPressed: () {}),
             Expanded(
-                child: Align(
-              alignment: Alignment.bottomRight,
-              child: IconButton(
-                  icon: const Icon(Icons.bookmark_border), onPressed: () {}),
-            ))
-          ],
-        ),
-        //DESCRIPTION AND NUMBER OF COMMENTS
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              DefaultTextStyle(
-                  style: Theme.of(context)
-                      .textTheme
-                      .subtitle2!
-                      .copyWith(fontWeight: FontWeight.w800),
-                  child: Text(
-                    '${widget.snap['likes'].length} likes',
-                    style: Theme.of(context).textTheme.bodyText2,
-                  )),
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.only(
-                  top: 8,
-                ),
-                child: RichText(
-                  text: TextSpan(
-                    style: const TextStyle(/*color: primaryColor*/),
+              flex: 1,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      TextSpan(
-                        text: widget.snap['username'].toString(),
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
+                      LikeAnimation(
+                        isAnimating: widget.snap['likes'].contains(user.uid),
+                        smallLike: true,
+                        child: IconButton(
+                          icon: widget.snap['likes'].contains(user.uid)
+                              ? const Icon(
+                                  Icons.favorite,
+                                  color: Colors.red,
+                                )
+                              : const Icon(
+                                  Icons.favorite_border,
+                                ),
+                          onPressed: () => FireStoreCrud().likePost(
+                            widget.snap['postId'].toString(),
+                            user.uid,
+                            widget.snap['likes'],
+                          ),
                         ),
                       ),
-                      TextSpan(
-                        text: ' ${widget.snap['description']}',
-                      ),
+                      const Text('Like')
                     ],
                   ),
-                ),
+                ],
               ),
-              InkWell(
-                child: Container(
-                  child: Text(
-                    'View all $commentLen comments',
-                    style: const TextStyle(
-                      fontSize: 16,
-                      // color: secondaryColor,
-                    ),
-                  ),
-                  padding: const EdgeInsets.symmetric(vertical: 4),
-                ),
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => CommentsScreen(
-                      postId: widget.snap['postId'].toString(),
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                child: Text(
-                  DateFormat.yMMMd()
-                      .format(widget.snap['datePublished'].toDate()),
-                  style: const TextStyle(
-                      // color: secondaryColor,
+            ),
+            Expanded(
+              flex: 1,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        icon: const Icon(
+                          CupertinoIcons.text_bubble,
+                        ),
+                        onPressed: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => CommentsScreen(
+                              postId: widget.snap['postId'].toString(),
+                            ),
+                          ),
+                        ),
                       ),
-                ),
-                padding: const EdgeInsets.symmetric(vertical: 4),
+                      const Text('Comment')
+                    ],
+                  ),
+                ],
               ),
-            ],
-          ),
-        )
+            ),
+          ],
+        ),
       ]),
     );
   }

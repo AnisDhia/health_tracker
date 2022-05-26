@@ -11,8 +11,15 @@ class _MeassureBPMScreenState extends State<AddWaterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Container(),
+      appBar: AppBar(
+        title: const Text('Add Water'),
+        centerTitle: true,
+      ),
+      body: Column(
+        children: [
+          
+        ],
+      ),
     );
   }
 }
