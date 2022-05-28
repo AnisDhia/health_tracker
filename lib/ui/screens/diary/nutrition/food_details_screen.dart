@@ -47,7 +47,8 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
   }
 
   double macroPercentage(double value, int type) {
-    double calories = protein['value'] * 4 + carbs['value'] * 4 + fat['value'] * 9;
+    double calories =
+        protein['value'] * 4 + carbs['value'] * 4 + fat['value'] * 9;
     if (type == 1) {
       return (value * 4 / calories) * 100;
     } else {
@@ -63,7 +64,15 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
         actions: [
           IconButton(
               onPressed: () {
-                FireStoreCrud().updateDiaryMeal(meal, widget.food.id, 'fdc');
+                FireStoreCrud().updateDiaryMeal(
+                  meal,
+                  widget.food.id,
+                  'fdc',
+                  calories['value'].toDouble(),
+                  carbs['value'].toDouble(),
+                  fat['value'].toDouble(),
+                  protein['value'].toDouble(),
+                );
                 Navigator.pop(context);
               },
               icon: const Icon(Icons.check))
@@ -211,7 +220,6 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                         chartValuesOptions: const pie.ChartValuesOptions(
                             showChartValues: false),
                         ringStrokeWidth: 6,
-                        
                       ),
                     ),
                   ],

@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:math' as math;
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -16,6 +18,7 @@ import 'package:health_tracker/ui/screens/diary/water/add_water_screen.dart';
 import 'package:health_tracker/ui/screens/diary/water/water_stats_screen.dart';
 import 'package:health_tracker/ui/screens/diary/weight/add_weight_screen.dart';
 import 'package:health_tracker/ui/widgets/appbar_widget.dart';
+import 'package:health_tracker/ui/widgets/indicator_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:pedometer/pedometer.dart';
@@ -179,6 +182,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                         radius: 50,
                                         lineWidth: 7,
                                         animation: true,
+                                        animateFromLastPercent: true,
                                         percent: _todaySteps < 12000
                                             ? _todaySteps / 12000
                                             : 1,
@@ -437,81 +441,120 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                     },
                                     child: Padding(
                                       padding: const EdgeInsets.all(16.0),
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            children: const [
-                                              Expanded(
-                                                  child: Text('Calories',
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 20))),
-                                              Align(
-                                                alignment:
-                                                    Alignment.centerRight,
-                                                child: Icon(
-                                                  Icons.local_fire_department,
-                                                  color: Color.fromARGB(
-                                                      255, 248, 105, 51),
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                          const SizedBox(
-                                            height: 16,
-                                          ),
-                                          SizedBox(
-                                            height: 100,
-                                            width: 150,
-                                            child: CircularPercentIndicator(
-                                              reverse: true,
-                                              radius: 45,
-                                              lineWidth: 7,
-                                              animation: true,
-                                              percent: 0.7,
-                                              center: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
+                                      child: StreamBuilder<Object>(
+                                          stream: FirebaseFirestore.instance
+                                              .collection('users')
+                                              .doc(FirebaseAuth
+                                                  .instance.currentUser!.uid)
+                                              .collection('diary')
+                                              .doc(DateFormat('d-M-y')
+                                                  .format(DateTime.now()))
+                                              .snapshots(),
+                                          builder: (context,
+                                              AsyncSnapshot snapshot) {
+                                            if (!snapshot.hasData) {
+                                              return const MyCircularIndicator();
+                                            } else {
+                                              late double calories;
+                                              if (!snapshot.data!.exists) {
+                                                calories = 0;
+                                              } else {
+                                                calories = snapshot.data!
+                                                    .get('totalCalories');
+                                              }
+                                              return Column(
                                                 children: [
-                                                  const Text(
-                                                    '512',
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 22),
+                                                  Row(
+                                                    children: const [
+                                                      Expanded(
+                                                          child: Text(
+                                                              'Calories',
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize:
+                                                                      20))),
+                                                      Align(
+                                                        alignment: Alignment
+                                                            .centerRight,
+                                                        child: Icon(
+                                                          Icons
+                                                              .local_fire_department,
+                                                          color: Color.fromARGB(
+                                                              255,
+                                                              248,
+                                                              105,
+                                                              51),
+                                                        ),
+                                                      )
+                                                    ],
                                                   ),
                                                   const SizedBox(
-                                                    height: 2,
+                                                    height: 16,
                                                   ),
-                                                  Text('Kcal',
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 12,
-                                                          color: Colors
-                                                              .grey.shade500)),
+                                                  SizedBox(
+                                                    height: 100,
+                                                    width: 150,
+                                                    child:
+                                                        CircularPercentIndicator(
+                                                      reverse: true,
+                                                      radius: 45,
+                                                      lineWidth: 7,
+                                                      animation: true,
+                                                      percent: calories < 2100
+                                                          ? calories / 2100
+                                                          : 1,
+                                                      center: Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Text(
+                                                            calories.toString(),
+                                                            style: const TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 22),
+                                                          ),
+                                                          const SizedBox(
+                                                            height: 2,
+                                                          ),
+                                                          Text('Kcal',
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize: 12,
+                                                                  color: Colors
+                                                                      .grey
+                                                                      .shade500)),
+                                                        ],
+                                                      ),
+                                                      backgroundColor:
+                                                          Colors.grey.shade800,
+                                                      linearGradient:
+                                                          const LinearGradient(
+                                                              colors: [
+                                                            Color.fromARGB(255,
+                                                                255, 209, 59),
+                                                            Color.fromARGB(255,
+                                                                248, 105, 51),
+                                                          ],
+                                                              begin: Alignment
+                                                                  .topLeft,
+                                                              end: Alignment
+                                                                  .bottomLeft),
+                                                      circularStrokeCap:
+                                                          CircularStrokeCap
+                                                              .round,
+                                                    ),
+                                                  ),
                                                 ],
-                                              ),
-                                              backgroundColor:
-                                                  Colors.grey.shade800,
-                                              linearGradient:
-                                                  const LinearGradient(
-                                                      colors: [
-                                                    Color.fromARGB(
-                                                        255, 255, 209, 59),
-                                                    Color.fromARGB(
-                                                        255, 248, 105, 51),
-                                                  ],
-                                                      begin: Alignment.topLeft,
-                                                      end:
-                                                          Alignment.bottomLeft),
-                                              circularStrokeCap:
-                                                  CircularStrokeCap.round,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                              );
+                                            }
+                                          }),
                                     ),
                                   ),
                                 ),

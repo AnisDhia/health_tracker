@@ -14,8 +14,6 @@ class CaloriesStatsScreen extends StatefulWidget {
 }
 
 class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,6 +49,7 @@ class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
           ),
           Expanded(
               child: TabBarView(children: [
+            // ? DAY VIEW
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -375,12 +374,11 @@ class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
                 ],
               ),
             ),
+
+            // ? WEEK VIEW
             const Text('Weekly data'),
-            ElevatedButton(
-                onPressed: () {
-                  // max30101.runSampler(onBeat);
-                },
-                child: const Text('Max 30101'))
+            // ? MONTH VIEW
+            const Text('Monthly data'),
           ]))
         ]),
       ),
@@ -392,7 +390,7 @@ class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
       centerTitle: true,
       backgroundColor: Colors.transparent,
       title: const Text(
-        'Heart rate',
+        'Calories',
         style: TextStyle(fontSize: 20),
       ),
       leading: TextButton(
