@@ -89,11 +89,11 @@ class _HeartDetailsScreenState extends State<WaterStatsScreen> {
                               const SizedBox(
                                 width: 8,
                               ),
-                              Text(
+                              const Text(
                                 'ml',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.grey.shade700,
+                                    color: Color.fromARGB(255, 139, 139, 139),
                                     fontSize: 18),
                               ),
                             ],

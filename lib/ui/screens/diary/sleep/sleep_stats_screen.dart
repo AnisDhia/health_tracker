@@ -11,8 +11,6 @@ class SleepStatsScreen extends StatefulWidget {
 }
 
 class _HeartDetailsScreenState extends State<SleepStatsScreen> {
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,13 +25,13 @@ class _HeartDetailsScreenState extends State<SleepStatsScreen> {
               isScrollable: true,
               tabs: const [
                 Tab(
-                  text: 'Day',
-                ),
-                Tab(
                   text: 'Week',
                 ),
                 Tab(
                   text: 'Month',
+                ),
+                Tab(
+                  text: 'Year',
                 ),
               ],
               indicator: BoxDecoration(
@@ -149,9 +147,7 @@ class _HeartDetailsScreenState extends State<SleepStatsScreen> {
                                       const Color.fromARGB(255, 220, 18, 18)
                                           .withOpacity(0.3),
                                       Colors.transparent
-                                    ])
-                                
-                                ))
+                                    ])))
                       ],
                     )),
                   ),
@@ -357,12 +353,8 @@ class _HeartDetailsScreenState extends State<SleepStatsScreen> {
                 ],
               ),
             ),
-            
-            ElevatedButton(
-                onPressed: () {
-                  // max30101.runSampler(onBeat);
-                },
-                child: const Text('Max 30101'))
+            const Text('Monthly'),
+            const Text('Yearly'),
           ]))
         ]),
       ),

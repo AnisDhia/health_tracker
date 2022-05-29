@@ -8,7 +8,7 @@ import 'package:health_tracker/ui/screens/diary/diary_screen.dart';
 import 'package:health_tracker/ui/screens/home/home_screen.dart';
 import 'package:health_tracker/ui/screens/plans_screen.dart';
 import 'package:health_tracker/ui/screens/recipes/recipes_screen.dart';
-import 'package:health_tracker/ui/screens/together_screen.dart';
+import 'package:health_tracker/ui/screens/together/together_screen.dart';
 import 'package:health_tracker/ui/widgets/drawer_widget.dart';
 import 'package:health_tracker/ui/widgets/indicator_widget.dart';
 import 'package:health_tracker/ui/widgets/snackbar_widget.dart';

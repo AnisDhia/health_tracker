@@ -153,6 +153,7 @@ class _PostCardState extends State<PostCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
+                padding: const EdgeInsets.symmetric(vertical: 4),
                 child: Text(
                   DateFormat.yMMMd()
                       .format(widget.snap['datePublished'].toDate()),
@@ -160,23 +161,13 @@ class _PostCardState extends State<PostCard> {
                       // color: secondaryColor,
                       ),
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 4),
               ),
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.only(
                   top: 8,
                 ),
-                child: RichText(
-                  text: TextSpan(
-                    style: const TextStyle(/*color: primaryColor*/),
-                    children: [
-                      TextSpan(
-                        text: ' ${widget.snap['description']}',
-                      ),
-                    ],
-                  ),
-                ),
+                child: Text(' ${widget.snap['description']}'),
               ),
             ],
           ),
