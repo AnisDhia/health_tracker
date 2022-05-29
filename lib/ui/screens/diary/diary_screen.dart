@@ -580,124 +580,155 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                     },
                                     child: Padding(
                                       padding: const EdgeInsets.all(16.0),
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            children: const [
-                                              Expanded(
-                                                  child: Text(
-                                                'Water',
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 20),
-                                              )),
-                                              Align(
-                                                alignment:
-                                                    Alignment.centerRight,
-                                                child: Icon(
-                                                  Icons.water_drop,
-                                                  color: Color.fromARGB(
-                                                      255, 84, 184, 252),
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 100,
-                                            width: 150,
-                                            child: LineChart(LineChartData(
-                                              gridData: FlGridData(show: false),
-                                              titlesData:
-                                                  FlTitlesData(show: false),
-                                              borderData:
-                                                  FlBorderData(show: false),
-                                              minX: 0,
-                                              maxX: 11,
-                                              minY: 0,
-                                              maxY: 6,
-                                              lineBarsData: [
-                                                LineChartBarData(
-                                                    spots: const [
-                                                      FlSpot(0, 3),
-                                                      FlSpot(2.6, 2),
-                                                      FlSpot(4.9, 5),
-                                                      FlSpot(6.8, 3.1),
-                                                      FlSpot(8, 4),
-                                                      FlSpot(9.5, 3),
-                                                      FlSpot(11, 4),
+                                      child: StreamBuilder<Object>(
+                                          stream: FirebaseFirestore.instance
+                                              .collection('users')
+                                              .doc(FirebaseAuth
+                                                  .instance.currentUser!.uid)
+                                              .collection('diary')
+                                              .doc(DateFormat('d-M-y')
+                                                  .format(DateTime.now()))
+                                              .snapshots(),
+                                          builder: (context,
+                                              AsyncSnapshot snapshot) {
+                                            if (!snapshot.hasData) {
+                                              return const MyCircularIndicator();
+                                            } else {
+                                              late dynamic water;
+                                              if (!snapshot.data!.data()!.containsKey('water')) {
+                                                water = 0;
+                                              } else {
+                                                water = snapshot.data!
+                                                    .get('water') / 1000;
+                                              }
+                                              return Column(
+                                                children: [
+                                                  Row(
+                                                    children: const [
+                                                      Expanded(
+                                                          child: Text(
+                                                        'Water',
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 20),
+                                                      )),
+                                                      Align(
+                                                        alignment: Alignment
+                                                            .centerRight,
+                                                        child: Icon(
+                                                          Icons.water_drop,
+                                                          color: Color.fromARGB(
+                                                              255,
+                                                              84,
+                                                              184,
+                                                              252),
+                                                        ),
+                                                      )
                                                     ],
-                                                    isCurved: true,
-                                                    gradient:
-                                                        const LinearGradient(
-                                                      colors: [
-                                                        Color(0xff23b6e6),
-                                                        Color(0xff02d39a)
+                                                  ),
+                                                  SizedBox(
+                                                    height: 100,
+                                                    width: 150,
+                                                    child:
+                                                        LineChart(LineChartData(
+                                                      gridData: FlGridData(
+                                                          show: false),
+                                                      titlesData: FlTitlesData(
+                                                          show: false),
+                                                      borderData: FlBorderData(
+                                                          show: false),
+                                                      minX: 0,
+                                                      maxX: 11,
+                                                      minY: 0,
+                                                      maxY: 6,
+                                                      lineBarsData: [
+                                                        LineChartBarData(
+                                                            spots: const [
+                                                              FlSpot(0, 3),
+                                                              FlSpot(2.6, 2),
+                                                              FlSpot(4.9, 5),
+                                                              FlSpot(6.8, 3.1),
+                                                              FlSpot(8, 4),
+                                                              FlSpot(9.5, 3),
+                                                              FlSpot(11, 4),
+                                                            ],
+                                                            isCurved: true,
+                                                            gradient:
+                                                                const LinearGradient(
+                                                              colors: [
+                                                                Color(
+                                                                    0xff23b6e6),
+                                                                Color(
+                                                                    0xff02d39a)
+                                                              ],
+                                                              begin: Alignment
+                                                                  .centerLeft,
+                                                              end: Alignment
+                                                                  .centerRight,
+                                                            ),
+                                                            barWidth: 5,
+                                                            isStrokeCapRound:
+                                                                true,
+                                                            dotData: FlDotData(
+                                                              show: false,
+                                                            ),
+                                                            belowBarData: BarAreaData(
+                                                                show: true,
+                                                                gradient: RadialGradient(radius: 1.2, center: Alignment.topCenter, colors: [
+                                                                  const Color(
+                                                                          0xff23b6e6)
+                                                                      .withOpacity(
+                                                                          0.3),
+                                                                  const Color(
+                                                                          0xff02d39a)
+                                                                      .withOpacity(
+                                                                          0.3),
+                                                                  Colors
+                                                                      .transparent
+                                                                ])
+                                                                // LinearGradient(
+                                                                //   colors: [
+                                                                //     const Color(0xff23b6e6)
+                                                                //         .withOpacity(0.3),
+                                                                //     const Color(0xff02d39a)
+                                                                //         .withOpacity(0.3),
+                                                                //     Colors.transparent
+                                                                //   ],
+                                                                //   begin: Alignment.topCenter,
+                                                                //   end: Alignment.bottomCenter,
+                                                                //   transform: GradientTransform.,
+                                                                // ),
+                                                                ))
                                                       ],
-                                                      begin:
-                                                          Alignment.centerLeft,
-                                                      end:
-                                                          Alignment.centerRight,
-                                                    ),
-                                                    barWidth: 5,
-                                                    isStrokeCapRound: true,
-                                                    dotData: FlDotData(
-                                                      show: false,
-                                                    ),
-                                                    belowBarData: BarAreaData(
-                                                        show: true,
-                                                        gradient: RadialGradient(
-                                                            radius: 1.2,
-                                                            center: Alignment
-                                                                .topCenter,
-                                                            colors: [
-                                                              const Color(
-                                                                      0xff23b6e6)
-                                                                  .withOpacity(
-                                                                      0.3),
-                                                              const Color(
-                                                                      0xff02d39a)
-                                                                  .withOpacity(
-                                                                      0.3),
-                                                              Colors.transparent
-                                                            ])
-                                                        // LinearGradient(
-                                                        //   colors: [
-                                                        //     const Color(0xff23b6e6)
-                                                        //         .withOpacity(0.3),
-                                                        //     const Color(0xff02d39a)
-                                                        //         .withOpacity(0.3),
-                                                        //     Colors.transparent
-                                                        //   ],
-                                                        //   begin: Alignment.topCenter,
-                                                        //   end: Alignment.bottomCenter,
-                                                        //   transform: GradientTransform.,
-                                                        // ),
-                                                        ))
-                                              ],
-                                            )),
-                                          ),
-                                          Row(
-                                            children: [
-                                              const Text(
-                                                '2.2',
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 24),
-                                              ),
-                                              const SizedBox(
-                                                width: 4,
-                                              ),
-                                              Text(
-                                                'ltr',
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    color:
-                                                        Colors.grey.shade600),
-                                              ),
-                                            ],
-                                          )
-                                        ],
-                                      ),
+                                                    )),
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      Text(
+                                                        water.toString(),
+                                                        style: const TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 24),
+                                                      ),
+                                                      const SizedBox(
+                                                        width: 4,
+                                                      ),
+                                                      Text(
+                                                        'ltr',
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color: Colors
+                                                                .grey.shade600),
+                                                      ),
+                                                    ],
+                                                  )
+                                                ],
+                                              );
+                                            }
+                                          }),
                                     ),
                                   ),
                                 ),

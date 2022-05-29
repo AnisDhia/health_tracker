@@ -18,6 +18,7 @@ class ProductDetailsScreen extends StatefulWidget {
 class _FoodDetailsScreenState extends State<ProductDetailsScreen> {
   late String meal;
   late double calories, fat, protein, carbs;
+  late String name;
 
   @override
   void initState() {
@@ -34,7 +35,7 @@ class _FoodDetailsScreenState extends State<ProductDetailsScreen> {
           IconButton(
               onPressed: () {
                 FireStoreCrud()
-                    .updateDiaryMeal(meal, widget.upc, 'upc', calories, carbs, fat, protein);
+                    .updateDiaryMeal(meal, widget.upc, 'upc', name, calories, carbs, fat, protein);
                 Navigator.pop(context);
               },
               icon: const Icon(Icons.check))
@@ -51,6 +52,7 @@ class _FoodDetailsScreenState extends State<ProductDetailsScreen> {
                 protein = snapshot.data.nutrients['proteins'];
                 carbs = snapshot.data.nutrients['carbohydrates'];
                 fat = snapshot.data.nutrients['fat'];
+                name = snapshot.data.name;
               });
               return Padding(
                 padding: const EdgeInsets.all(16.0),

@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/data/models/recipe_model.dart';
 import 'package:health_tracker/ui/screens/recipes/recipe_details_screen.dart';
-import 'package:health_tracker/shared/services/firestore_service.dart';
 import 'package:provider/provider.dart';
 import 'package:health_tracker/data/models/user_model.dart' as model;
 

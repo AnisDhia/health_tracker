@@ -131,7 +131,14 @@ class FireStoreCrud {
   }
 
   Future<void> updateDiaryMeal(
-      String meal, String foodId, String type, double calories, double carbs, double fat, double protein) async {
+      String meal,
+      String foodId,
+      String type,
+      String name,
+      double calories,
+      double carbs,
+      double fat,
+      double protein) async {
     try {
       _firestore
           .collection('users')
@@ -149,7 +156,52 @@ class FireStoreCrud {
           '${meal.toLowerCase()}Fat': FieldValue.increment(fat),
           '${meal.toLowerCase()}Carbs': FieldValue.increment(carbs),
           'foods': FieldValue.arrayUnion([
-            {'id': foodId, 'type': type}
+            {
+              'id': foodId,
+              'name': name,
+              'calories': calories,
+              'carbs': carbs,
+              'protein': protein,
+              'fat': fat,
+              'source': type
+            }
+          ])
+        }
+      }, SetOptions(merge: true)).onError(
+              (error, stackTrace) => log('Error writing document: $error'));
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<void> removeDiaryMealFood(String meal, String foodId, String name, double calories,
+      double carbs, double fat, double protein, String type) async {
+    try {
+      _firestore
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .collection('diary')
+          .doc(DateFormat('d-M-y').format(DateTime.now()))
+          .set({
+        'totalCalories': FieldValue.increment(-calories),
+        'totalProtein': FieldValue.increment(-protein),
+        'totalCarbs': FieldValue.increment(-carbs),
+        'totalFat': FieldValue.increment(-fat),
+        meal: {
+          '${meal.toLowerCase()}Calories': FieldValue.increment(-calories),
+          '${meal.toLowerCase()}Protein': FieldValue.increment(-protein),
+          '${meal.toLowerCase()}Fat': FieldValue.increment(-fat),
+          '${meal.toLowerCase()}Carbs': FieldValue.increment(-carbs),
+          'foods': FieldValue.arrayRemove([
+            {
+              'id': foodId,
+              'name': name,
+              'calories': calories,
+              'carbs': carbs,
+              'protein': protein,
+              'fat': fat,
+              'source': type
+            }
           ])
         }
       }, SetOptions(merge: true)).onError(
@@ -192,7 +244,7 @@ class FireStoreCrud {
           .collection('diary')
           .doc(DateFormat('d-M-y').format(DateTime.now()))
           .set({
-        'water': FieldValue.increment(waterValue)
+        'water': waterValue
       }, SetOptions(merge: true)).onError(
               (error, stackTrace) => log('Error writing document: $error'));
     } catch (e) {
