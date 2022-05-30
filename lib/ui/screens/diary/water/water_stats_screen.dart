@@ -69,7 +69,8 @@ class _HeartDetailsScreenState extends State<WaterStatsScreen> {
                       return const MyCircularIndicator();
                     } else {
                       dynamic water;
-                      if (!snapshot.data!.data()!.containsKey('water')) {
+                      if (!snapshot.data!.exists ||
+                          !snapshot.data!.data()!.containsKey('water')) {
                         water = 0;
                       } else {
                         water = snapshot.data!.get('water');
@@ -106,6 +107,7 @@ class _HeartDetailsScreenState extends State<WaterStatsScreen> {
                               width: double.infinity,
                               child: BarChart(
                                 BarChartData(
+                                    borderData: FlBorderData(show: false),
                                     barGroups: [
                                       BarChartGroupData(
                                           x: 1,

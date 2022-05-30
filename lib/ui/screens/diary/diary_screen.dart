@@ -595,7 +595,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                               return const MyCircularIndicator();
                                             } else {
                                               late dynamic water;
-                                              if (!snapshot.data!.data()!.containsKey('water')) {
+                                              if (!snapshot.data!.exists || !snapshot.data!.data()!.containsKey('water')) {
                                                 water = 0;
                                               } else {
                                                 water = snapshot.data!

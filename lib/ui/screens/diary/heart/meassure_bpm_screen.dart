@@ -20,11 +20,22 @@ class _MeassureBPMScreenState extends State<MeassureBPMScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text('Measure heart rate'),
+        centerTitle: true,
+      ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
+            Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(children: []),
+              ),
+            ),
             isBPMEnabled
                 ? dialog = HeartBPMDialog(
                     context: context,

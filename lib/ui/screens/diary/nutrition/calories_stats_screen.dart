@@ -71,16 +71,42 @@ class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
                       if (!snapshot.hasData) {
                         return const MyCircularIndicator();
                       } else {
-                        double totalCalories =
-                            snapshot.data!.get('totalCalories') ?? 0;
-                        Map<String, dynamic> breakfast =
-                            snapshot.data!.get('Breakfast');
-                        Map<String, dynamic> lunch =
-                            snapshot.data!.get('Lunch');
-                        Map<String, dynamic> dinner =
-                            snapshot.data!.get('Dinner');
-                        Map<String, dynamic> snacks =
-                            snapshot.data!.get('Snacks');
+                        Map<String, dynamic> breakfast = {
+                              'breakfastCalories': 0,
+                              'foods': [],
+                            },
+                            lunch = {
+                              'lunchCalories': 0,
+                              'foods': [],
+                            },
+                            dinner = {
+                              'dinnerCalories': 0,
+                              'foods': [],
+                            },
+                            snacks = {
+                              'snacksCalories': 0,
+                              'foods': [],
+                            };
+                        double totalCalories = 0;
+                        if (snapshot.data!.exists) {
+                          if (snapshot.data!
+                              .data()!
+                              .containsKey('totalCalories')) {
+                            totalCalories = snapshot.data!.get('totalCalories');
+                          }
+                          if (snapshot.data!.data()!.containsKey('Breakfast')) {
+                            breakfast = snapshot.data!.get('Breakfast');
+                          }
+                          if (snapshot.data!.data()!.containsKey('Lunch')) {
+                            lunch = snapshot.data!.get('Lunch');
+                          }
+                          if (snapshot.data!.data()!.containsKey('Dinner')) {
+                            dinner = snapshot.data!.get('Dinner');
+                          }
+                          if (snapshot.data!.data()!.containsKey('Snacks')) {
+                            snacks = snapshot.data!.get('Snacks');
+                          }
+                        }
                         return Column(
                           children: [
                             const SizedBox(
@@ -143,137 +169,137 @@ class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
                             const SizedBox(
                               height: 24,
                             ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Card(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
-                                    child: InkWell(
-                                      borderRadius: BorderRadius.circular(20),
-                                      onTap: () {},
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(16.0),
-                                        child: Column(
-                                          children: [
-                                            Row(
-                                              children: const [
-                                                Expanded(
-                                                    child: Text(
-                                                  'Bpm range',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 20),
-                                                )),
-                                                Align(
-                                                  alignment:
-                                                      Alignment.centerRight,
-                                                  child: Icon(
-                                                    FontAwesomeIcons.heartPulse,
-                                                    color: Colors.red,
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                            const SizedBox(
-                                              height: 32,
-                                            ),
-                                            Row(
-                                              children: [
-                                                const Text(
-                                                  '60 - 100',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 24),
-                                                ),
-                                                const SizedBox(
-                                                  width: 4,
-                                                ),
-                                                Text(
-                                                  'bpm',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color:
-                                                          Colors.grey.shade600),
-                                                ),
-                                              ],
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Card(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
-                                    child: InkWell(
-                                      borderRadius: BorderRadius.circular(20),
-                                      onTap: () {},
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(16.0),
-                                        child: Column(
-                                          children: [
-                                            Row(
-                                              children: const [
-                                                Expanded(
-                                                    child: Text(
-                                                  'Resting',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 20),
-                                                )),
-                                                Align(
-                                                  alignment:
-                                                      Alignment.centerRight,
-                                                  child: Icon(
-                                                    FontAwesomeIcons.bed,
-                                                    color: Color.fromARGB(
-                                                        255, 152, 162, 255),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                            const SizedBox(
-                                              height: 32,
-                                            ),
-                                            Row(
-                                              children: [
-                                                const Text(
-                                                  '40',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 24),
-                                                ),
-                                                const SizedBox(
-                                                  width: 4,
-                                                ),
-                                                Text(
-                                                  'bpm',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color:
-                                                          Colors.grey.shade600),
-                                                ),
-                                              ],
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                            // Row(
+                            //   children: [
+                            //     Expanded(
+                            //       child: Card(
+                            //         shape: RoundedRectangleBorder(
+                            //             borderRadius:
+                            //                 BorderRadius.circular(20)),
+                            //         child: InkWell(
+                            //           borderRadius: BorderRadius.circular(20),
+                            //           onTap: () {},
+                            //           child: Padding(
+                            //             padding: const EdgeInsets.all(16.0),
+                            //             child: Column(
+                            //               children: [
+                            //                 Row(
+                            //                   children: const [
+                            //                     Expanded(
+                            //                         child: Text(
+                            //                       'Bpm range',
+                            //                       style: TextStyle(
+                            //                           fontWeight:
+                            //                               FontWeight.bold,
+                            //                           fontSize: 20),
+                            //                     )),
+                            //                     Align(
+                            //                       alignment:
+                            //                           Alignment.centerRight,
+                            //                       child: Icon(
+                            //                         FontAwesomeIcons.heartPulse,
+                            //                         color: Colors.red,
+                            //                       ),
+                            //                     )
+                            //                   ],
+                            //                 ),
+                            //                 const SizedBox(
+                            //                   height: 32,
+                            //                 ),
+                            //                 Row(
+                            //                   children: [
+                            //                     const Text(
+                            //                       '60 - 100',
+                            //                       style: TextStyle(
+                            //                           fontWeight:
+                            //                               FontWeight.bold,
+                            //                           fontSize: 24),
+                            //                     ),
+                            //                     const SizedBox(
+                            //                       width: 4,
+                            //                     ),
+                            //                     Text(
+                            //                       'bpm',
+                            //                       style: TextStyle(
+                            //                           fontWeight:
+                            //                               FontWeight.bold,
+                            //                           color:
+                            //                               Colors.grey.shade600),
+                            //                     ),
+                            //                   ],
+                            //                 )
+                            //               ],
+                            //             ),
+                            //           ),
+                            //         ),
+                            //       ),
+                            //     ),
+                            //     Expanded(
+                            //       child: Card(
+                            //         shape: RoundedRectangleBorder(
+                            //             borderRadius:
+                            //                 BorderRadius.circular(20)),
+                            //         child: InkWell(
+                            //           borderRadius: BorderRadius.circular(20),
+                            //           onTap: () {},
+                            //           child: Padding(
+                            //             padding: const EdgeInsets.all(16.0),
+                            //             child: Column(
+                            //               children: [
+                            //                 Row(
+                            //                   children: const [
+                            //                     Expanded(
+                            //                         child: Text(
+                            //                       'Resting',
+                            //                       style: TextStyle(
+                            //                           fontWeight:
+                            //                               FontWeight.bold,
+                            //                           fontSize: 20),
+                            //                     )),
+                            //                     Align(
+                            //                       alignment:
+                            //                           Alignment.centerRight,
+                            //                       child: Icon(
+                            //                         FontAwesomeIcons.bed,
+                            //                         color: Color.fromARGB(
+                            //                             255, 152, 162, 255),
+                            //                       ),
+                            //                     )
+                            //                   ],
+                            //                 ),
+                            //                 const SizedBox(
+                            //                   height: 32,
+                            //                 ),
+                            //                 Row(
+                            //                   children: [
+                            //                     const Text(
+                            //                       '40',
+                            //                       style: TextStyle(
+                            //                           fontWeight:
+                            //                               FontWeight.bold,
+                            //                           fontSize: 24),
+                            //                     ),
+                            //                     const SizedBox(
+                            //                       width: 4,
+                            //                     ),
+                            //                     Text(
+                            //                       'bpm',
+                            //                       style: TextStyle(
+                            //                           fontWeight:
+                            //                               FontWeight.bold,
+                            //                           color:
+                            //                               Colors.grey.shade600),
+                            //                     ),
+                            //                   ],
+                            //                 )
+                            //               ],
+                            //             ),
+                            //           ),
+                            //         ),
+                            //       ),
+                            //     ),
+                            //   ],
+                            // ),
                             const SizedBox(
                               height: 24,
                             ),
@@ -381,7 +407,7 @@ class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
                                               onPressed: () {
                                                 FireStoreCrud()
                                                     .removeDiaryMealFood(
-                                                  'Breakfast',
+                                                  'Lunch',
                                                   lunch['foods'][index]['id'],
                                                   lunch['foods'][index]['name'],
                                                   lunch['foods'][index]
@@ -442,7 +468,7 @@ class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
                                               onPressed: () {
                                                 FireStoreCrud()
                                                     .removeDiaryMealFood(
-                                                  'Breakfast',
+                                                  'Dinner',
                                                   dinner['foods'][index]['id'],
                                                   dinner['foods'][index]
                                                       ['name'],
@@ -504,7 +530,7 @@ class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
                                               onPressed: () {
                                                 FireStoreCrud()
                                                     .removeDiaryMealFood(
-                                                  'Breakfast',
+                                                  'Snacks',
                                                   snacks['foods'][index]['id'],
                                                   snacks['foods'][index]
                                                       ['name'],
