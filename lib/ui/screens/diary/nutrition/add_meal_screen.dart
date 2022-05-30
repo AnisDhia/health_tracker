@@ -155,13 +155,21 @@ class _AddFoodScreenState extends State<AddMealScreen> {
                                                     color: Colors.red,
                                                     context: context);
                                               } else {
+                                                Product product =
+                                                    await OpenFoodFactsAPI
+                                                        .instance
+                                                        .fetchProductByUPC(
+                                                            _scanBarcode /*'6134082000017'*/);
+                                                if (!mounted) {
+                                                  return;
+                                                }
                                                 Navigator.push(
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (context) =>
                                                             ProductDetailsScreen(
-                                                                upc:
-                                                                    _scanBarcode,
+                                                                product:
+                                                                    product,
                                                                 meal: widget
                                                                     .title)));
                                               }

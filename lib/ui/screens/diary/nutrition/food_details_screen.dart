@@ -187,6 +187,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
               ],
             ),
             const Divider(),
+            // ? CHART
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
