@@ -58,7 +58,6 @@ class _HomeState extends State<HomeScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
         backgroundColor: Colors.red,
         foregroundColor: Colors.white,
         onPressed: () {
@@ -68,6 +67,7 @@ class _HomeState extends State<HomeScreen> {
                 builder: (context) => const AddPostScreen(),
               ));
         },
+        child: const Icon(Icons.add),
       ),
     );
   }

@@ -42,9 +42,9 @@ class _NavigationState extends State<Navigation> {
   }
 
   addData() async {
-    UserProvider _userProvider =
+    UserProvider userProvider =
         Provider.of<UserProvider>(context, listen: false);
-    await _userProvider.refreshUser();
+    await userProvider.refreshUser();
   }
 
   @override

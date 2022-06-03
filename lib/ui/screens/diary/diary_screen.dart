@@ -1,12 +1,10 @@
 import 'dart:async';
 import 'dart:developer';
-import 'dart:math' as math;
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:health_tracker/shared/styles/colors.dart';
 import 'package:health_tracker/ui/screens/diary/heart/meassure_bpm_screen.dart';
@@ -20,7 +18,6 @@ import 'package:health_tracker/ui/screens/diary/weight/add_weight_screen.dart';
 import 'package:health_tracker/ui/widgets/appbar_widget.dart';
 import 'package:health_tracker/ui/widgets/indicator_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:table_calendar/table_calendar.dart';
 import 'package:pedometer/pedometer.dart';
 import 'package:intl/intl.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -68,15 +65,15 @@ class _DiaryScreenState extends State<DiaryScreen> {
   }
 
   void onPedestrianStatusError(error) {
-    print('onPedestrianStatusError: $error');
+    log('onPedestrianStatusError: $error');
     setState(() {
       _status = 'Pedestrian Status not available';
     });
-    print(_status);
+    log(_status);
   }
 
   void onStepCountError(error) {
-    print('onStepCountError: $error');
+    log('onStepCountError: $error');
     setState(() {
       // _todaySteps = 'Step Count not available';
     });
@@ -303,7 +300,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                                 alignment:
                                                     Alignment.centerRight,
                                                 child: Icon(
-                                                  FontAwesomeIcons.heartbeat,
+                                                  FontAwesomeIcons.heartPulse,
                                                   color: Colors.red,
                                                 ),
                                               )
@@ -906,7 +903,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
               shape: const CircleBorder(),
               padding: const EdgeInsets.all(24.0),
               child:
-                  const Icon(FontAwesomeIcons.heartbeat, color: Colors.white),
+                  const Icon(FontAwesomeIcons.heartPulse, color: Colors.white),
             ),
             RawMaterialButton(
                 onPressed: () {
@@ -917,7 +914,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                           title: const Text('Meals'),
                           children: [
                             SimpleDialogOption(
-                                child: Text('Breakfast'),
+                                child: const Text('Breakfast'),
                                 onPressed: () {
                                   Navigator.push(
                                       context,
@@ -928,7 +925,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                               )));
                                 }),
                             SimpleDialogOption(
-                                child: Text('Lunch'),
+                                child: const Text('Lunch'),
                                 onPressed: () {
                                   Navigator.push(
                                       context,
@@ -938,7 +935,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                                   title: 'Lunch')));
                                 }),
                             SimpleDialogOption(
-                                child: Text('Dinner'),
+                                child: const Text('Dinner'),
                                 onPressed: () {
                                   Navigator.push(
                                       context,
@@ -948,7 +945,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                                   title: 'Dinner')));
                                 }),
                             SimpleDialogOption(
-                                child: Text('Snacks'),
+                                child: const Text('Snacks'),
                                 onPressed: () {
                                   Navigator.push(
                                       context,

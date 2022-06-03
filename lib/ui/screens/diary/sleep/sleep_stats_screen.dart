@@ -1,14 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:health_tracker/ui/widgets/indicator_widget.dart';
-import 'package:heart_bpm/chart.dart';
-import 'package:intl/intl.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:heart_bpm/heart_bpm.dart';
 
 class SleepStatsScreen extends StatefulWidget {
   const SleepStatsScreen({Key? key}) : super(key: key);

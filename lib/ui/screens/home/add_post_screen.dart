@@ -72,6 +72,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
         setState(() {
           isLoading = false;
         });
+        if (!mounted) {
+          return;
+        }
         showSnackBar(context, 'Posted!');
         clearImage();
       }
@@ -123,6 +126,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
                   userProvider.getUser.username,
                   userProvider.getUser.photoUrl,
                 );
+                if (!mounted) {
+                  return;
+                }
                 Navigator.of(context).pop();
               },
               icon: const Icon(Icons.send))
@@ -150,7 +156,8 @@ class _AddPostScreenState extends State<AddPostScreen> {
                   child: TextField(
                     controller: _descriptionController,
                     decoration: const InputDecoration(
-                        hintText: "Write a caption...", border: InputBorder.none),
+                        hintText: "Write a caption...",
+                        border: InputBorder.none),
                     maxLines: 8,
                   ),
                 ),
@@ -178,18 +185,20 @@ class _AddPostScreenState extends State<AddPostScreen> {
                 // ),
               ],
             ),
-            _file != null ? SizedBox(
-              height: 350,
-              width: double.infinity,
-              child: Container(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                  fit: BoxFit.fill,
-                  alignment: FractionalOffset.topCenter,
-                  image: MemoryImage(_file!),
-                )),
-              ),
-            ) : const SizedBox(),
+            _file != null
+                ? SizedBox(
+                    height: 350,
+                    width: double.infinity,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                        fit: BoxFit.fill,
+                        alignment: FractionalOffset.topCenter,
+                        image: MemoryImage(_file!),
+                      )),
+                    ),
+                  )
+                : const SizedBox(),
             const Divider(),
           ]),
         ),

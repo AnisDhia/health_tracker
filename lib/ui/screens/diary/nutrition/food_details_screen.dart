@@ -1,8 +1,6 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/data/models/food_model.dart';
 import 'package:health_tracker/data/repositories/firestore.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 import 'package:pie_chart/pie_chart.dart' as pie;
 
 class FoodDetailsScreen extends StatefulWidget {

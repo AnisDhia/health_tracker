@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:health_tracker/data/repositories/firestore.dart';
 import 'package:intl/intl.dart';
 import 'package:numberpicker/numberpicker.dart';

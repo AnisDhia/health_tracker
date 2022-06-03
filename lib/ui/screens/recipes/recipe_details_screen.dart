@@ -116,7 +116,7 @@ class RecipeDetails extends StatelessWidget {
                       const SizedBox(
                         width: 5,
                       ),
-                      Text(recipeModel.cookingTime.toString() + '\''),
+                      Text('${recipeModel.cookingTime}\''),
                       const SizedBox(
                         width: 20,
                       ),
@@ -184,9 +184,7 @@ class RecipeDetails extends StatelessWidget {
                             Preparation(
                               recipeModel: recipeModel,
                             ),
-                            Container(
-                              child: Text('Reviews'),
-                            ),
+                            const Text('Reviews'),
                           ],
                         )),
                       ],
@@ -215,7 +213,7 @@ class Ingredients extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 4),
-                child: Text('⚫ ' + recipeModel.ingredients[index]['original']),
+                child: Text('⚫ ${recipeModel.ingredients[index]['original']}'),
               );
             },
             separatorBuilder: (BuildContext context, int index) {
@@ -249,9 +247,8 @@ class Preparation extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 4),
-                child: Text((index + 1).toString() +
-                    ' - ' +
-                    recipeModel.preparation[0]['steps'][index]['step']),
+                child: Text(
+                    '${index + 1} - ${recipeModel.preparation[0]['steps'][index]['step']}'),
               );
             },
             separatorBuilder: (BuildContext context, int index) {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:health_tracker/ui/widgets/drawer_widget.dart';
 
 class PlansScreen extends StatelessWidget {
   const PlansScreen({ Key? key }) : super(key: key);
@@ -13,9 +12,7 @@ class PlansScreen extends StatelessWidget {
         title: const Text('Plans'), 
         centerTitle: true,
       ),
-      body: Container(
-        child: const Text('Plans'),
-      ),
+      body: const Text('Plans'),
     );
   }
 }

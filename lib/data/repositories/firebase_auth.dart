@@ -53,7 +53,7 @@ class FirebaseAuthRepo implements UserRepository {
       String photoUrl =
           await FireStorage().uploadImageToStorage('profilePics', file, false);
 
-      model.User _user = model.User(
+      model.User user = model.User(
         username: username,
         uid: cred.user!.uid,
         sex: sex,
@@ -69,7 +69,7 @@ class FirebaseAuthRepo implements UserRepository {
       await _firestore
           .collection('users')
           .doc(cred.user!.uid)
-          .set(_user.toJson());
+          .set(user.toJson());
 
       // res = 'success';
     } on FirebaseAuthException catch (e) {

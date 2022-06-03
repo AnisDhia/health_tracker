@@ -47,8 +47,8 @@ class ConnectivityCubit extends Cubit<ConnectivityState> {
     return hasConnection;
   }
 
-  void _connectionChangeController(bool _hasConnection) {
-    if (_hasConnection) {
+  void _connectionChangeController(bool hasConnection) {
+    if (hasConnection) {
       emit(ConnectivityOnlineState());
     } else {
       emit(ConnectivityOfflineState());

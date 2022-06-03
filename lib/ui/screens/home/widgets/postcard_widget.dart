@@ -200,11 +200,6 @@ class _PostCardState extends State<PostCard> {
                 opacity: isLikeAnimating ? 1 : 0,
                 child: LikeAnimation(
                   isAnimating: isLikeAnimating,
-                  child: const Icon(
-                    Icons.favorite,
-                    color: Colors.white,
-                    size: 100,
-                  ),
                   duration: const Duration(
                     milliseconds: 400,
                   ),
@@ -213,6 +208,11 @@ class _PostCardState extends State<PostCard> {
                       isLikeAnimating = false;
                     });
                   },
+                  child: const Icon(
+                    Icons.favorite,
+                    color: Colors.white,
+                    size: 100,
+                  ),
                 ),
               ),
             ],

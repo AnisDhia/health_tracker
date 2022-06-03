@@ -109,15 +109,15 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             onPressed: () {
               introKey.currentState?.animateScroll(0);
             },
-            child: const Text(
-              'FooButton',
-              style: TextStyle(color: Colors.white),
-            ),
             style: ElevatedButton.styleFrom(
               primary: Colors.lightBlue,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),
               ),
+            ),
+            child: const Text(
+              'FooButton',
+              style: TextStyle(color: Colors.white),
             ),
           ),
           decoration: pageDecoration,

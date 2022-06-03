@@ -1,4 +1,3 @@
-// TODO: finish meal model
 import 'package:health_tracker/data/models/food_model.dart';
 
 class Meal {

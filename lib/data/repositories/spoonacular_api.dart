@@ -11,7 +11,7 @@ class SpoonacularService {
   static final SpoonacularService instance = SpoonacularService._instantiate();
 
   final String _baseUrl = 'api.spoonacular.com';
-  static const String _API_KEY = '73071387df1246538cb0d2678f85ec94';
+  static const String _apiKey = '73071387df1246538cb0d2678f85ec94';
 
   // Generate Meal Plan
   Future<MealPlan> generateMealPlan({int? targetCalories, String? diet}) async {
@@ -20,7 +20,7 @@ class SpoonacularService {
       'timeFrame': 'day',
       'targetCalories': targetCalories.toString(),
       'diet': diet!,
-      'apiKey': _API_KEY,
+      'apiKey': _apiKey,
     };
     Uri uri = Uri.https(_baseUrl, '/recipes/mealplanner/generate', parameters);
     Map<String, String> headers = {
@@ -44,7 +44,7 @@ class SpoonacularService {
       'limitedLicense': 'true',
       'tags': tags,
       'number': number.toString(),
-      'apiKey': _API_KEY,
+      'apiKey': _apiKey,
     };
     Uri uri = Uri.https(_baseUrl, '/recipes/random', parameters);
     Map<String, String> headers = {
@@ -57,7 +57,7 @@ class SpoonacularService {
       var response = await http.get(uri, headers: headers);
       List<dynamic> data = jsonDecode(response.body)['recipes'];
       List<Recipe> recipes = [];
-      if(response.body != null) {
+      if(response.body.isNotEmpty) {
         recipes = data.map((json) => Recipe.fromJson(json)).toList();
       } 
       return recipes;
@@ -69,7 +69,7 @@ class SpoonacularService {
       // return recipes;
     } catch (e) {
       log(e.toString());
-      throw 'POOP ==> '  + e.toString();
+      throw 'POOP ==> $e';
     }
   }
 

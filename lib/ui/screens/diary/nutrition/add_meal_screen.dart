@@ -1,20 +1,16 @@
 import 'dart:developer';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:health_tracker/data/models/food_model.dart';
 import 'package:health_tracker/data/models/product_model.dart';
 import 'package:health_tracker/data/repositories/fdc_api.dart';
-import 'package:health_tracker/data/repositories/firestore.dart';
 import 'package:health_tracker/data/repositories/off_api.dart';
 import 'package:health_tracker/ui/screens/diary/nutrition/food_details_screen.dart';
 import 'package:health_tracker/ui/screens/diary/nutrition/quick_add_screen.dart';
 import 'package:health_tracker/ui/screens/diary/nutrition/upc_details_screen.dart';
-import 'package:health_tracker/ui/widgets/search_field_widget.dart';
 import 'package:health_tracker/ui/widgets/snackbar_widget.dart';
-import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class AddMealScreen extends StatefulWidget {
   const AddMealScreen({Key? key, required this.title}) : super(key: key);
@@ -272,15 +268,9 @@ class _AddFoodScreenState extends State<AddMealScreen> {
                             ],
                           ),
                         ),
-                        Container(
-                          child: const Center(child: Text("My Meals")),
-                        ),
-                        Container(
-                          child: const Center(child: Text("My Recipes")),
-                        ),
-                        Container(
-                          child: const Center(child: Text("My Foods")),
-                        )
+                        const Center(child: Text("My Meals")),
+                        const Center(child: Text("My Recipes")),
+                        const Center(child: Text("My Foods"))
                       ],
                     ))
                   ],
