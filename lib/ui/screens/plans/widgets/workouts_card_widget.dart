@@ -1,13 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:health_tracker/shared/services/workoutsFromJsonToModel.dart';
 import 'package:health_tracker/data/models/exercises/workout.dart';
-import 'package:health_tracker/ui/screens/workouts/workouts_deatails.dart';
-import 'package:health_tracker/shared/services/firestore_service.dart';
-import 'package:provider/provider.dart';
-import 'package:health_tracker/data/models/user_model.dart' as model;
-
-import '../../../../data/models/exercises/exercise.dart';
+import 'package:health_tracker/ui/screens/plans/workouts_details.dart';
 
 class NewWorkout extends StatelessWidget {
   final Future<List<Workouts>> newWorkoutsList;

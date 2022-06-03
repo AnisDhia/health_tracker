@@ -24,7 +24,7 @@ class MyTextfield extends StatelessWidget {
       this.showicon = true,
       this.ontap,
       this.keyboardtype = TextInputType.text,
-      this.maxlenght = 0})
+      this.maxlenght = null})
       : super(key: key);
 
   @override

@@ -5,17 +5,16 @@ import 'package:health_tracker/shared/services/workoutsFromJsonToModel.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 // import 'package:firebase_storage/firebase_storage.dart';
 
-import 'package:health_tracker/ui/widgets/appbar_widget.dart';
 
 
-class WorkoutsScreen extends StatefulWidget {
-  const WorkoutsScreen({Key? key}): super(key: key);
+class PlansScreen extends StatefulWidget {
+  const PlansScreen({Key? key}): super(key: key);
 
   @override
-  State<WorkoutsScreen> createState() => _WorkoutScreenState();
+  State<PlansScreen> createState() => _WorkoutScreenState();
 }
 
-class _WorkoutScreenState extends State<WorkoutsScreen> {
+class _WorkoutScreenState extends State<PlansScreen> {
   Future<List<Workouts>> workoutList = FetchWorkoutsJsonData();
 
   @override

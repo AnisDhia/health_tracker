@@ -6,7 +6,7 @@ import 'package:health_tracker/shared/services/user_provider.dart';
 import 'package:health_tracker/ui/screens/auth/welcome_screen.dart';
 import 'package:health_tracker/ui/screens/diary/diary_screen.dart';
 import 'package:health_tracker/ui/screens/home/home_screen.dart';
-import 'package:health_tracker/ui/screens/plans_screen.dart';
+import 'package:health_tracker/ui/screens/plans/plans_screen.dart';
 import 'package:health_tracker/ui/screens/recipes/recipes_screen.dart';
 import 'package:health_tracker/ui/screens/together/together_screen.dart';
 import 'package:health_tracker/ui/widgets/drawer_widget.dart';

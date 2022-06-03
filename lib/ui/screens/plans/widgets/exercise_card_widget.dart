@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:health_tracker/data/models/exercises/exercise.dart';
-import 'package:health_tracker/ui/screens/workouts/widgets/exercise_Details.dart';
+import 'package:health_tracker/ui/screens/plans/widgets/exercise_details.dart';
 
 class NewExercise extends StatelessWidget {
   final List<Exercise> newExercisesList;
