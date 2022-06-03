@@ -122,8 +122,8 @@ class _NavigationState extends State<Navigation> {
             label: 'Plans',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.explore),
-            label: 'Explore',
+            icon: Icon(Icons.home),
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.leaderboard),
