@@ -50,17 +50,17 @@ class Exercise {
   //   return data;
   // }
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['force'] = this.force;
-    data['level'] = this.level;
-    data['mechanic'] = this.mechanic;
-    data['equipment'] = this.equipment;
-    data['primaryMuscles'] = this.primaryMuscles;
-    data['secondaryMuscles'] = this.secondaryMuscles;
-    data['instructions'] = this.instructions;
-    data['img'] = this.imgs;
-    data['category'] = this.category;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = name;
+    data['force'] = force;
+    data['level'] = level;
+    data['mechanic'] = mechanic;
+    data['equipment'] = equipment;
+    data['primaryMuscles'] = primaryMuscles;
+    data['secondaryMuscles'] = secondaryMuscles;
+    data['instructions'] = instructions;
+    data['img'] = imgs;
+    data['category'] = category;
     return data;
   }
 }

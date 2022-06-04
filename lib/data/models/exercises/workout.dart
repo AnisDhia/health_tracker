@@ -28,17 +28,16 @@ class Workouts {
         exercises.add(Exercise.fromJson(v));
       });
     }
-
-    Map<String, dynamic> toJson() {
-      final Map<String, dynamic> data = <String, dynamic>{};
-      data['name'] = name;
-      data['level'] = level;
-      data['time'] = time;
-      data['burned calories'] = burnedCalories;
-      data['imgUrl'] = imgUrl;
-      data['exercises'] = exercises.map((v) => v.toJson()).toList();
-
-      return data;
-    }
   }
+  // Map<String, dynamic> toJson() {
+  //   final Map<String, dynamic> data = <String, dynamic>{};
+  //   data['name'] = name;
+  //   data['level'] = level;
+  //   data['time'] = time;
+  //   data['burned calories'] = burnedCalories;
+  //   data['imgUrl'] = imgUrl;
+  //   data['exercises'] = exercises.map((v) => v.toJson()).toList();
+
+  //   return data;
+  // }
 }

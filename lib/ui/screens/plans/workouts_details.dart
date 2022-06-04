@@ -11,9 +11,6 @@ class WorkoutDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    final _textTheme = Theme.of(context).textTheme;
-
     return Scaffold(
       appBar: AppBar(
         elevation: 0,

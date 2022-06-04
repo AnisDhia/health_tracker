@@ -155,7 +155,7 @@ class _WorkoutCardState extends State<WorkoutCard> {
                           const SizedBox(
                             width: 4,
                           ),
-                          Text(widget.workout.time.toString() + '\''+'minutes'),
+                          Text('${widget.workout.time}\'minutes'),
                        ],
                      ),
                       // const Spacer(),

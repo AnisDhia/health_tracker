@@ -85,11 +85,11 @@ class _ExerciseCardState extends State<ExerciseCard> {
                         height: 8,
                       ),
                       Text(
-                        'Level: ' + widget.exercise.level,
+                        'Level: ${widget.exercise.level}',
                         style: Theme.of(context).textTheme.caption,
                       ),
                       Text(
-                        'Equipment: '+ widget.exercise.equipment.toString(),
+                        'Equipment: ${widget.exercise.equipment}',
                         style: Theme.of(context).textTheme.caption,
                       ),
                     ],
@@ -102,7 +102,7 @@ class _ExerciseCardState extends State<ExerciseCard> {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
+                        children: const[
                           // const Icon(Icons.timer_outlined),
                           // const SizedBox(
                           //   width: 4,

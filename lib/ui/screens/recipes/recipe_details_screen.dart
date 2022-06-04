@@ -13,7 +13,7 @@ class RecipeDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final _textTheme = Theme.of(context).textTheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
         // appBar: AppBar(),
@@ -84,14 +84,14 @@ class RecipeDetails extends StatelessWidget {
                   ),
                   Text(
                     recipeModel.title,
-                    style: _textTheme.headline6,
+                    style: textTheme.headline6,
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   Text(
                     recipeModel.author,
-                    style: _textTheme.caption,
+                    style: textTheme.caption,
                   ),
                   const SizedBox(
                     height: 10,

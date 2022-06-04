@@ -1,12 +1,11 @@
 import 'dart:convert';
-import 'dart:io';
 import 'dart:async';
-import 'package:flutter/services.dart' as rootBundle;
+import 'package:flutter/services.dart' as root_bundle;
 import 'package:health_tracker/data/models/exercises/workout.dart';
 
-Future<List<Workouts>> FetchWorkoutsJsonData() async {
+Future<List<Workouts>> fetchWorkoutsJsonData() async {
   final data =
-      await rootBundle.rootBundle.loadString('assets/json/workouts.json');
+      await root_bundle.rootBundle.loadString('assets/json/workouts.json');
   final workoutsMap = json.decode(data) as Map<String, dynamic>;
   List<dynamic> workoutsList = workoutsMap["workouts"];
 

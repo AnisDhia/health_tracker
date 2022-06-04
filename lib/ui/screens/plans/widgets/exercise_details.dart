@@ -15,7 +15,7 @@ class ExerciseDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final _textTheme = Theme.of(context).textTheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
         appBar: AppBar(),
@@ -68,14 +68,14 @@ class ExerciseDetails extends StatelessWidget {
                   ),
                   Text(
                     exerciseDeatails.name,
-                    style: _textTheme.headline6,
+                    style: textTheme.headline6,
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   Text(
                     exerciseDeatails.category,
-                    style: _textTheme.caption,
+                    style: textTheme.caption,
                   ),
                   const SizedBox(
                     height: 10,
@@ -89,9 +89,7 @@ class ExerciseDetails extends StatelessWidget {
                       // const SizedBox(
                       //   width: 5,
                       // ),
-                      Text('Level: ' +
-                          exerciseDeatails.level.toUpperCase() +
-                          ','),
+                      Text('Level: ${exerciseDeatails.level.toUpperCase()},'),
                       // const SizedBox(
                       //   width: 60,
                       // ),
@@ -107,8 +105,7 @@ class ExerciseDetails extends StatelessWidget {
                       const SizedBox(
                         width: 5,
                       ),
-                      Text('Equipment: ' +
-                          exerciseDeatails.equipment.toUpperCase()),
+                      Text('Equipment: ${exerciseDeatails.equipment.toUpperCase()}'),
                       const SizedBox(
                         width: 20,
                       ),
@@ -168,9 +165,7 @@ class ExerciseDetails extends StatelessWidget {
                             // Preparation(
                             //   exerciseDeatails: exerciseDeatails,
                             // ),
-                            Container(
-                              child: const Text('Reviews'),
-                            ),
+                            const Text('Reviews'),
                           ],
                         )),
                       ],
@@ -209,7 +204,7 @@ class Instructions extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 4),
-                child: Text('⚫ ' + exerciseDeatails.instructions[index]),
+                child: Text('⚫ ${exerciseDeatails.instructions[index]}'),
               );
             },
             separatorBuilder: (BuildContext context, int index) {

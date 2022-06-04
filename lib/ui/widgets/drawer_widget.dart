@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/bloc/auth/authentication_cubit.dart';
-import 'package:health_tracker/data/models/user_model.dart';
 import 'package:health_tracker/shared/services/user_provider.dart';
 import 'package:health_tracker/shared/styles/themes.dart';
 import 'package:health_tracker/ui/screens/profile/profile_screen.dart';

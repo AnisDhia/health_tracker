@@ -68,13 +68,9 @@ class _RecipesScreenState extends State<RecipesScreen> {
                     NewRecipe(
                       newRecipesList: recipeList,
                     ),
-                    Container(
-                      child: const Center(child: Text("New")),
-                    ),
+                    const Center(child: Text("New")),
                     // NewRecipe(),
-                    Container(
-                      child: const Center(child: Text("Categories")),
-                    ),
+                    const Center(child: Text("Categories")),
                   ]),
                 )
               ],
