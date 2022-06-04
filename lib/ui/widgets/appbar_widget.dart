@@ -23,6 +23,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       elevation: 0,
       actions: [
+        IconButton(onPressed: (){}, icon: const Icon(Icons.notifications)),
         Container(
           margin: const EdgeInsets.fromLTRB(0, 0, 4, 0),
           child: TextButton(

@@ -95,7 +95,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         // drawer: const NavDrawer(),
-        appBar: CustomAppBar(title: "Diary"),
+        // appBar: CustomAppBar(title: "Diary"),
         body: Stack(
           children: [
             Align(
@@ -117,12 +117,12 @@ class _DiaryScreenState extends State<DiaryScreen> {
                   child: Column(
                     children: [
                       Row(
-                        children: const [
+                        children: [
                           Text(
-                            'Good morning, ',
-                            style: TextStyle(fontSize: 22),
+                            DateTime.now().hour >= 12 && DateTime.now().hour <= 3 ? 'Good evening, ' : 'Good morning, ',
+                            style: const TextStyle(fontSize: 22),
                           ),
-                          Text(
+                          const Text(
                             'Anis !',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 22),
@@ -262,7 +262,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                       const SizedBox(
                         height: 22,
                       ),
-                      // ? DOUBLE COLLUMN
+                      // ? DOUBLE COLUMN
                       Row(
                         // mainAxisAlignment: MainAxisAlignment.center,
                         children: [

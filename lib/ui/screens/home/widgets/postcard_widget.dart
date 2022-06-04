@@ -61,6 +61,7 @@ class _PostCardState extends State<PostCard> {
     final model.User user = Provider.of<UserProvider>(context).getUser;
     return Container(
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
         color: Theme.of(context).brightness == Brightness.dark
             ? const Color.fromARGB(255, 15, 15, 15)
             : Colors.grey.shade200,

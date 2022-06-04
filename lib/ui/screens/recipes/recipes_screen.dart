@@ -28,11 +28,11 @@ class _RecipesScreenState extends State<RecipesScreen> {
     // final List<Recipe> recipesFromAPI = APIService.instance.getRandomRecipes(number: 3) as List<Recipe>;
     return Scaffold(
         // drawer: const NavDrawer(),
-        appBar: AppBar(
-          elevation: 0,
-          title: const Text('Recipes'),
-          centerTitle: true,
-        ),
+        // appBar: AppBar(
+        //   elevation: 0,
+        //   title: const Text('Recipes'),
+        //   centerTitle: true,
+        // ),
         body: DefaultTabController(
             length: 3,
             initialIndex: 0,

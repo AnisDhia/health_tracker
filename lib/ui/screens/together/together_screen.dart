@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:health_tracker/ui/screens/together/meditation_screen.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class TogetherScreen extends StatelessWidget {
@@ -9,10 +10,13 @@ class TogetherScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // drawer: const NavDrawer(),
-      appBar: AppBar(
-        title: const Text('Together'),
-        centerTitle: true,
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Together'),
+      //   centerTitle: true,
+      //   actions: [
+      //     IconButton(onPressed: () {}, icon: const Icon(Icons.notifications))
+      //   ],
+      // ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -202,8 +206,181 @@ class TogetherScreen extends StatelessWidget {
               // ? DOUBLE COLUMN
               Row(
                 children: [
-                  Column(children: [],),
-                  Column(children: [],)
+                  Expanded(
+                      child: Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: Column(
+                      children: [
+                        Card(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            child: InkWell(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Padding(
+                                padding: const EdgeInsets.all(32.0),
+                                child: Row(
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: const [
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Text(
+                                          '30',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 24),
+                                        ),
+                                        SizedBox(
+                                          height: 14,
+                                        ),
+                                        Text(
+                                          '# In rating',
+                                          style: TextStyle(color: Colors.grey),
+                                        ),
+                                        SizedBox(
+                                          height: 36,
+                                        ),
+                                        Text(
+                                          '46%',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 24),
+                                        ),
+                                        SizedBox(
+                                          height: 14,
+                                        ),
+                                        Text(
+                                          'Completed',
+                                          style: TextStyle(color: Colors.grey),
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Image(
+                                          image: AssetImage(
+                                              'assets/illustrations/Personal goals-amico.png'),
+                                          width: 100,
+                                          height: 100,
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )),
+                      ],
+                    ),
+                  )),
+                  Expanded(
+                      child: Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Column(
+                      children: [
+                        Card(
+                            color: const Color.fromARGB(255, 207, 80, 232),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const MeditationScreen()));
+                              },
+                              borderRadius: BorderRadius.circular(20),
+                              child: Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: Row(
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: const [
+                                        Text(
+                                          'Exercise',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 26,
+                                              color: Colors.white),
+                                        ),
+                                        SizedBox(
+                                          height: 14,
+                                        ),
+                                        Text(
+                                          'Breathing',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 26,
+                                              color: Colors.white),
+                                        ),
+                                        SizedBox(
+                                          height: 14,
+                                        ),
+                                        Icon(
+                                          Icons.self_improvement,
+                                          size: 26,
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        Card(
+                            color: const Color.fromARGB(255, 252, 103, 39),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            child: InkWell(
+                              onTap: () {},
+                              borderRadius: BorderRadius.circular(20),
+                              child: Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: Row(
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: const [
+                                        Text(
+                                          'Start',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 26,
+                                              color: Colors.white),
+                                        ),
+                                        SizedBox(
+                                          height: 14,
+                                        ),
+                                        Text(
+                                          'challenge',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 26,
+                                              color: Colors.white),
+                                        ),
+                                        SizedBox(
+                                          height: 14,
+                                        ),
+                                        Icon(
+                                          Icons.arrow_forward,
+                                          size: 26,
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )),
+                      ],
+                    ),
+                  ))
                 ],
               )
             ],

@@ -9,6 +9,7 @@ import 'package:health_tracker/ui/screens/home/home_screen.dart';
 import 'package:health_tracker/ui/screens/plans/plans_screen.dart';
 import 'package:health_tracker/ui/screens/recipes/recipes_screen.dart';
 import 'package:health_tracker/ui/screens/together/together_screen.dart';
+import 'package:health_tracker/ui/widgets/appbar_widget.dart';
 import 'package:health_tracker/ui/widgets/drawer_widget.dart';
 import 'package:health_tracker/ui/widgets/indicator_widget.dart';
 import 'package:health_tracker/ui/widgets/snackbar_widget.dart';
@@ -32,6 +33,14 @@ class _NavigationState extends State<Navigation> {
     DiaryScreen(),
     // FitnessNutritionMainPage(),
     TogetherScreen(),
+  ];
+
+  final List<String> _screenTitles = const <String>[
+    'Recipes',
+    'Plans',
+    'Health Tracker',
+    'Diary',
+    'Together',
   ];
 
   @override
@@ -67,6 +76,7 @@ class _NavigationState extends State<Navigation> {
 
     return Scaffold(
       // extendBody: true,
+      appBar: CustomAppBar(title: _screenTitles[_selectedIndex]),
       drawer: NavDrawer(authenticationCubit: authenticationCubit),
       body: MultiBlocListener(
           listeners: [

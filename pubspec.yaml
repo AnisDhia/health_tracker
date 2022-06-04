@@ -118,6 +118,7 @@ flutter:
     - assets/icons/
     - assets/svgs/
     - assets/json/
+    - assets/illustrations/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

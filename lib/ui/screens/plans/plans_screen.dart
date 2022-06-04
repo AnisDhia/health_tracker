@@ -20,51 +20,46 @@ class _WorkoutScreenState extends State<PlansScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          title: const Text('Workouts'),
-          centerTitle: true,
-        ),
-        body: Container(
-          child: DefaultTabController(
-              length: 2,
-              initialIndex: 0,
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 20,
+        // appBar: AppBar(
+        //   elevation: 0,
+        //   title: const Text('Workouts'),
+        //   centerTitle: true,
+        // ),
+        body: DefaultTabController(
+            length: 2,
+            initialIndex: 0,
+            child: Column(
+              children: [
+                TabBar(
+                  isScrollable: true,
+                  labelColor: Theme.of(context)
+                      .tabBarTheme
+                      .labelColor, //Colors.black,
+                  indicator: DotIndicator(
+                    color: Colors.red,
+                    distanceFromCenter: 16,
+                    radius: 3,
+                    paintingStyle: PaintingStyle.fill,
                   ),
-                  TabBar(
-                    isScrollable: true,
-                    labelColor: Theme.of(context)
-                        .tabBarTheme
-                        .labelColor, //Colors.black,
-                    indicator: DotIndicator(
-                      color: Colors.blue,
-                      distanceFromCenter: 16,
-                      radius: 3,
-                      paintingStyle: PaintingStyle.fill,
-                    ),
-                    unselectedLabelColor:
-                        Theme.of(context).tabBarTheme.unselectedLabelColor,
-                    labelPadding: const EdgeInsets.symmetric(horizontal: 60),
+                  unselectedLabelColor:
+                      Theme.of(context).tabBarTheme.unselectedLabelColor,
+                  labelPadding: const EdgeInsets.symmetric(horizontal: 60),
 
-                    tabs: const [
-                      Tab(
-                        text: "WORKOUTS",
-                      ),
-                      Tab(
-                        text: "Saved",
-                      )
-                    ],
-                  ),
-                  Expanded(
-                      child: TabBarView(children: [
-                    NewWorkout(newWorkoutsList: workoutList),
-                    Container()
-                  ]))
-                ],
-              )),
-        ));
+                  tabs: const [
+                    Tab(
+                      text: "WORKOUTS",
+                    ),
+                    Tab(
+                      text: "Saved",
+                    )
+                  ],
+                ),
+                Expanded(
+                    child: TabBarView(children: [
+                  NewWorkout(newWorkoutsList: workoutList),
+                  Container()
+                ]))
+              ],
+            )));
   }
 }
