@@ -79,11 +79,16 @@ class _RecipesScreenState extends State<RecipesScreen> {
   }
 }
 
-class RecipeCategories extends StatelessWidget {
+class RecipeCategories extends StatefulWidget {
   const RecipeCategories({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<RecipeCategories> createState() => _RecipeCategoriesState();
+}
+
+class _RecipeCategoriesState extends State<RecipeCategories> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -93,29 +98,73 @@ class RecipeCategories extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: 200,
+              height: 230,
               child: FutureBuilder(
-                future: SpoonacularService.instance.getRandomRecipes(number: 15, tags: 'keto'),
-                builder: (context, AsyncSnapshot<List<Recipe>> snapshot) {
-                  if(snapshot.hasData) {
-                    return const MyCircularIndicator();
-                  }
-                  return ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    physics: const ScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        height: 100,
-                        width: 100,
-                        color: Colors.red,
-                        child: Text('Container $index'),
+                  future: SpoonacularService.instance
+                      .getRandomRecipes(number: 15, tags: "keto"),
+                  builder: (context, AsyncSnapshot<List<Recipe>> snapshot) {
+                    if (!snapshot.hasData) {
+                      return const MyCircularIndicator();
+                    } else {
+                      // List<Recipe> recipes = snapshot.data!;
+                      return ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        physics: const ScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (context, index) {
+                          bool bookmarked = false;
+                          return Card(
+                            clipBehavior: Clip.antiAlias,
+                            elevation: 10,
+                            // margin: const EdgeInsets.all(8.0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            child: SizedBox(
+                              width: 150,
+                              // height: 250,
+                              child: Column(children: [
+                                Image(
+                                    // width: 150,
+                                    // height: 100,
+                                    image: NetworkImage(
+                                        snapshot.data![index].imageUrl)),
+                                const SizedBox(
+                                  height: 12,
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        snapshot.data![index].title,
+                                        // softWrap: false,
+                                        // overflow: TextOverflow.fade,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 12,
+                                ),
+                                Row(children: [
+                                  IconButton(
+                                      onPressed: () {
+                                        bookmarked = !bookmarked;
+                                        // setState(() {
+                                          
+                                        // });
+                                      },
+                                      icon: Icon(bookmarked
+                                          ? Icons.bookmark
+                                          : Icons.bookmark_border))
+                                ])
+                              ]),
+                            ),
+                          );
+                        },
                       );
-                    },
-                  );
-                }
-              ),
+                    }
+                  }),
             )
           ],
         ),
