@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:health_tracker/data/repositories/firestore.dart';
@@ -156,7 +155,8 @@ class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
                                     SizedBox(
                                       height: 8,
                                     ),
-                                    Text('Goal', style: TextStyle(color: Colors.grey)),
+                                    Text('Goal',
+                                        style: TextStyle(color: Colors.grey)),
                                   ],
                                 ),
                                 const Text('-',
@@ -176,7 +176,8 @@ class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
                                     const SizedBox(
                                       height: 8,
                                     ),
-                                    const Text('Food', style: TextStyle(color: Colors.grey)),
+                                    const Text('Food',
+                                        style: TextStyle(color: Colors.grey)),
                                   ],
                                 ),
                                 const Text('=',
@@ -193,28 +194,19 @@ class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
                                           fontWeight: FontWeight.bold,
                                           fontSize: 24),
                                     ),
-                                    const Text('Left', style: TextStyle(color: Colors.grey)),
+                                    const Text('Left',
+                                        style: TextStyle(color: Colors.grey)),
                                   ],
                                 ),
-
-                                // Text(
-                                //   '2000 - ${totalCalories.round()} = ${2000 - totalCalories.round()} left',
-                                //   style: const TextStyle(
-                                //       fontWeight: FontWeight.bold,
-                                //       fontSize: 24),
-                                // ),
-                                // const SizedBox(
-                                //   width: 8,
-                                // ),
-                                // Text(
-                                //   'kcal',
-                                //   style: TextStyle(
-                                //       fontWeight: FontWeight.bold,
-                                //       color: Colors.grey.shade700,
-                                //       fontSize: 18),
-                                // ),
                               ],
                             ),
+                            const SizedBox(
+                              height: 6,
+                            ),
+                            LinearPercentIndicator(
+                                percent: totalCalories >= 2000
+                                    ? 1
+                                    : totalCalories / 2000,lineHeight: 1,),
                             const SizedBox(
                               height: 24,
                             ),
@@ -240,7 +232,8 @@ class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
                                           'Protein': totalProtein,
                                         },
                                         chartType: pie.ChartType.ring,
-                                        baseChartColor: Colors.grey.shade900.withOpacity(0.3),
+                                        baseChartColor: Colors.grey.shade900
+                                            .withOpacity(0.3),
                                         colorList: const [
                                           Color.fromARGB(255, 0, 210, 124),
                                           Color.fromARGB(255, 128, 71, 246),
@@ -298,171 +291,11 @@ class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
                                 ),
                               ],
                             ),
-                            // Expanded(
-                            //     child: AspectRatio(
-                            //   aspectRatio: 1,
-                            //   child: PieChart(PieChartData(
-                            //       centerSpaceRadius: 0,
-                            //       sectionsSpace: 1,
-                            //       startDegreeOffset: 180,
-                            //       borderData: FlBorderData(show: false),
-                            //       sections: [
-                            //         PieChartSectionData(
-                            //             radius: 80,
-                            //             color: Colors.blue,
-                            //             value: 200,
-                            //             title: 'Breakfast'),
-                            //         PieChartSectionData(
-                            //             radius: 80,
-                            //             color: Colors.red,
-                            //             value: 400,
-                            //             title: 'Lunch'),
-                            //         PieChartSectionData(
-                            //             radius: 80,
-                            //             color: Colors.purple,
-                            //             value: 40,
-                            //             title: 'Dinner'),
-                            //         PieChartSectionData(
-                            //             radius: 80,
-                            //             color: Colors.amber,
-                            //             value: 100,
-                            //             title: 'Snacks'),
-                            //       ])),
-                            // )),
+
                             const SizedBox(
                               height: 24,
                             ),
-                            // Row(
-                            //   children: [
-                            //     Expanded(
-                            //       child: Card(
-                            //         shape: RoundedRectangleBorder(
-                            //             borderRadius:
-                            //                 BorderRadius.circular(20)),
-                            //         child: InkWell(
-                            //           borderRadius: BorderRadius.circular(20),
-                            //           onTap: () {},
-                            //           child: Padding(
-                            //             padding: const EdgeInsets.all(16.0),
-                            //             child: Column(
-                            //               children: [
-                            //                 Row(
-                            //                   children: const [
-                            //                     Expanded(
-                            //                         child: Text(
-                            //                       'Bpm range',
-                            //                       style: TextStyle(
-                            //                           fontWeight:
-                            //                               FontWeight.bold,
-                            //                           fontSize: 20),
-                            //                     )),
-                            //                     Align(
-                            //                       alignment:
-                            //                           Alignment.centerRight,
-                            //                       child: Icon(
-                            //                         FontAwesomeIcons.heartPulse,
-                            //                         color: Colors.red,
-                            //                       ),
-                            //                     )
-                            //                   ],
-                            //                 ),
-                            //                 const SizedBox(
-                            //                   height: 32,
-                            //                 ),
-                            //                 Row(
-                            //                   children: [
-                            //                     const Text(
-                            //                       '60 - 100',
-                            //                       style: TextStyle(
-                            //                           fontWeight:
-                            //                               FontWeight.bold,
-                            //                           fontSize: 24),
-                            //                     ),
-                            //                     const SizedBox(
-                            //                       width: 4,
-                            //                     ),
-                            //                     Text(
-                            //                       'bpm',
-                            //                       style: TextStyle(
-                            //                           fontWeight:
-                            //                               FontWeight.bold,
-                            //                           color:
-                            //                               Colors.grey.shade600),
-                            //                     ),
-                            //                   ],
-                            //                 )
-                            //               ],
-                            //             ),
-                            //           ),
-                            //         ),
-                            //       ),
-                            //     ),
-                            //     Expanded(
-                            //       child: Card(
-                            //         shape: RoundedRectangleBorder(
-                            //             borderRadius:
-                            //                 BorderRadius.circular(20)),
-                            //         child: InkWell(
-                            //           borderRadius: BorderRadius.circular(20),
-                            //           onTap: () {},
-                            //           child: Padding(
-                            //             padding: const EdgeInsets.all(16.0),
-                            //             child: Column(
-                            //               children: [
-                            //                 Row(
-                            //                   children: const [
-                            //                     Expanded(
-                            //                         child: Text(
-                            //                       'Resting',
-                            //                       style: TextStyle(
-                            //                           fontWeight:
-                            //                               FontWeight.bold,
-                            //                           fontSize: 20),
-                            //                     )),
-                            //                     Align(
-                            //                       alignment:
-                            //                           Alignment.centerRight,
-                            //                       child: Icon(
-                            //                         FontAwesomeIcons.bed,
-                            //                         color: Color.fromARGB(
-                            //                             255, 152, 162, 255),
-                            //                       ),
-                            //                     )
-                            //                   ],
-                            //                 ),
-                            //                 const SizedBox(
-                            //                   height: 32,
-                            //                 ),
-                            //                 Row(
-                            //                   children: [
-                            //                     const Text(
-                            //                       '40',
-                            //                       style: TextStyle(
-                            //                           fontWeight:
-                            //                               FontWeight.bold,
-                            //                           fontSize: 24),
-                            //                     ),
-                            //                     const SizedBox(
-                            //                       width: 4,
-                            //                     ),
-                            //                     Text(
-                            //                       'bpm',
-                            //                       style: TextStyle(
-                            //                           fontWeight:
-                            //                               FontWeight.bold,
-                            //                           color:
-                            //                               Colors.grey.shade600),
-                            //                     ),
-                            //                   ],
-                            //                 )
-                            //               ],
-                            //             ),
-                            //           ),
-                            //         ),
-                            //       ),
-                            //     ),
-                            //   ],
-                            // ),
+
                             const SizedBox(
                               height: 24,
                             ),
@@ -737,86 +570,7 @@ class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
                             const SizedBox(
                               height: 24,
                             ),
-                            const Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  'High today',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 24),
-                                )),
-                            const SizedBox(
-                              height: 14,
-                            ),
-                            LinearPercentIndicator(
-                              // linearStrokeCap: LinearStrokeCap.round,
-                              barRadius: const Radius.circular(26),
-                              trailing: Row(
-                                children: [
-                                  const Text(
-                                    '150',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 24),
-                                  ),
-                                  const SizedBox(
-                                    width: 4,
-                                  ),
-                                  Text(
-                                    'bpm',
-                                    style:
-                                        TextStyle(color: Colors.grey.shade700),
-                                  ),
-                                ],
-                              ),
-                              animation: true,
-                              percent: 1,
-                              lineHeight: 18,
-                              linearGradient: const LinearGradient(
-                                colors: [
-                                  Color.fromARGB(255, 250, 124, 108),
-                                  Color.fromARGB(255, 255, 88, 128)
-                                ],
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 24,
-                            ),
-                            const Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  'Low today',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 24),
-                                )),
-                            LinearPercentIndicator(
-                              // linearStrokeCap: LinearStrokeCap.round,
-                              barRadius: const Radius.circular(26),
-                              trailing: Row(
-                                children: [
-                                  const Text(
-                                    '68',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 24),
-                                  ),
-                                  const SizedBox(
-                                    width: 4,
-                                  ),
-                                  Text(
-                                    'bpm',
-                                    style:
-                                        TextStyle(color: Colors.grey.shade700),
-                                  ),
-                                ],
-                              ),
-                              backgroundColor: Colors.grey.shade800,
-                              animation: true,
-                              percent: 0.5,
-                              lineHeight: 18,
-                              progressColor: Colors.white,
-                            ),
+                            //
                           ],
                         );
                       }

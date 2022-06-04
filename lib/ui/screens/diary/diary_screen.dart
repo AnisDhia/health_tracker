@@ -119,7 +119,9 @@ class _DiaryScreenState extends State<DiaryScreen> {
                       Row(
                         children: [
                           Text(
-                            DateTime.now().hour >= 12 && DateTime.now().hour <= 3 ? 'Good evening, ' : 'Good morning, ',
+                            DateTime.now().hour > 12 || DateTime.now().hour < 3
+                                ? 'Good evening, '
+                                : 'Good morning, ',
                             style: const TextStyle(fontSize: 22),
                           ),
                           const Text(
@@ -157,7 +159,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                   children: const [
                                     Expanded(
                                         flex: 2,
-                                        child: Text('Walking record',
+                                        child: Text('Activity',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold))),
                                     Align(
@@ -204,7 +206,8 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                                         Colors.grey.shade500)),
                                           ],
                                         ),
-                                        backgroundColor: Colors.grey.shade800.withOpacity(0.3),
+                                        backgroundColor: Colors.grey.shade800
+                                            .withOpacity(0.3),
                                         linearGradient:
                                             const LinearGradient(colors: [
                                           Color.fromARGB(255, 224, 139, 27),
@@ -220,29 +223,40 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                         radius: 50,
                                         lineWidth: 7,
                                         animation: true,
-                                        percent: 0.4,
+                                        percent: _todaySteps * 0.04 / 1000,
                                         center: Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            const Text(
-                                              '102',
-                                              style: TextStyle(
+                                            Text(
+                                              '${_todaySteps * 0.04}',
+                                              style: const TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 22),
                                             ),
                                             const SizedBox(
                                               height: 2,
                                             ),
-                                            Text('Min',
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 12,
-                                                    color:
-                                                        Colors.grey.shade500)),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                const Icon(
+                                                    Icons.local_fire_department,
+                                                    size: 12),
+                                                Text('kcal',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 12,
+                                                        color: Colors
+                                                            .grey.shade500)),
+                                              ],
+                                            ),
                                           ],
                                         ),
-                                        backgroundColor: Colors.grey.shade800.withOpacity(0.3),
+                                        backgroundColor: Colors.grey.shade800
+                                            .withOpacity(0.3),
                                         linearGradient: const LinearGradient(
                                             colors: [
                                               Color.fromARGB(255, 224, 139, 27),
@@ -253,15 +267,114 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                       ),
                                     ),
                                   ],
-                                )
+                                ),
+                                const SizedBox(
+                                  height: 16,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Column(
+                                      children: [
+                                        const Icon(Icons.location_on,
+                                            color: Color.fromARGB(
+                                                255, 255, 150, 128)),
+                                        const SizedBox(
+                                          height: 8,
+                                        ),
+                                        const Text('Distance'),
+                                        const SizedBox(
+                                          height: 4,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              (_todaySteps * 0.0007)
+                                                  .toStringAsFixed(2),
+                                              style: const TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            const Text(
+                                              'km',
+                                              style: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontSize: 10),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                    Column(
+                                      children: [
+                                        const Icon(
+                                            FontAwesomeIcons.personWalking,
+                                            color: Color.fromARGB(
+                                                255, 249, 149, 76)),
+                                        const SizedBox(
+                                          height: 8,
+                                        ),
+                                        const Text('Walking'),
+                                        const SizedBox(
+                                          height: 4,
+                                        ),
+                                        Row(
+                                          children: const [
+                                            Text(
+                                              '76',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            Text(
+                                              '%',
+                                              style: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontSize: 14),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                    Column(
+                                      children: [
+                                        const Icon(
+                                            FontAwesomeIcons.personRunning,
+                                            color: Color.fromARGB(
+                                                255, 247, 105, 132)),
+                                        const SizedBox(
+                                          height: 8,
+                                        ),
+                                        const Text('Running'),
+                                        const SizedBox(
+                                          height: 4,
+                                        ),
+                                        Row(
+                                          children: const [
+                                            Text(
+                                              '24',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            Text(
+                                              '%',
+                                              style: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontSize: 14),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ],
                             ),
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 22,
-                      ),
+                      // const SizedBox(
+                      //   height: 12,
+                      // ),
                       // ? DOUBLE COLUMN
                       Row(
                         // mainAxisAlignment: MainAxisAlignment.center,
@@ -422,145 +535,6 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                     ),
                                   ),
                                 ),
-                                // ? CALORIES CARD
-                                Card(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
-                                  child: InkWell(
-                                    borderRadius: BorderRadius.circular(20),
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                const CaloriesStatsScreen(),
-                                          ));
-                                    },
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(16.0),
-                                      child: StreamBuilder<Object>(
-                                          stream: FirebaseFirestore.instance
-                                              .collection('users')
-                                              .doc(FirebaseAuth
-                                                  .instance.currentUser!.uid)
-                                              .collection('diary')
-                                              .doc(DateFormat('d-M-y')
-                                                  .format(DateTime.now()))
-                                              .snapshots(),
-                                          builder: (context,
-                                              AsyncSnapshot snapshot) {
-                                            if (!snapshot.hasData) {
-                                              return const MyCircularIndicator();
-                                            } else {
-                                              late double calories;
-                                              if (!snapshot.data!.exists) {
-                                                calories = 0;
-                                              } else {
-                                                calories = snapshot.data!
-                                                    .get('totalCalories');
-                                              }
-                                              return Column(
-                                                children: [
-                                                  Row(
-                                                    children: const [
-                                                      Expanded(
-                                                          child: Text(
-                                                              'Calories',
-                                                              style: TextStyle(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  fontSize:
-                                                                      20))),
-                                                      Align(
-                                                        alignment: Alignment
-                                                            .centerRight,
-                                                        child: Icon(
-                                                          Icons
-                                                              .local_fire_department,
-                                                          color: Color.fromARGB(
-                                                              255,
-                                                              248,
-                                                              105,
-                                                              51),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  const SizedBox(
-                                                    height: 16,
-                                                  ),
-                                                  SizedBox(
-                                                    height: 100,
-                                                    width: 150,
-                                                    child:
-                                                        CircularPercentIndicator(
-                                                      reverse: true,
-                                                      radius: 45,
-                                                      lineWidth: 7,
-                                                      animation: true,
-                                                      percent: calories < 2100
-                                                          ? calories / 2100
-                                                          : 1,
-                                                      center: Column(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Text(
-                                                            calories.toString(),
-                                                            style: const TextStyle(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                fontSize: 22),
-                                                          ),
-                                                          const SizedBox(
-                                                            height: 2,
-                                                          ),
-                                                          Text('Kcal',
-                                                              style: TextStyle(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  fontSize: 12,
-                                                                  color: Colors
-                                                                      .grey
-                                                                      .shade500)),
-                                                        ],
-                                                      ),
-                                                      backgroundColor:
-                                                          Colors.grey.shade800.withOpacity(0.3),
-                                                      linearGradient:
-                                                          const LinearGradient(
-                                                              colors: [
-                                                            Color.fromARGB(255,
-                                                                255, 209, 59),
-                                                            Color.fromARGB(255,
-                                                                248, 105, 51),
-                                                          ],
-                                                              begin: Alignment
-                                                                  .topLeft,
-                                                              end: Alignment
-                                                                  .bottomLeft),
-                                                      circularStrokeCap:
-                                                          CircularStrokeCap
-                                                              .round,
-                                                    ),
-                                                  ),
-                                                ],
-                                              );
-                                            }
-                                          }),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            child: Column(
-                              children: [
                                 // ? WATER CARD
                                 Card(
                                   shape: RoundedRectangleBorder(
@@ -592,11 +566,15 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                               return const MyCircularIndicator();
                                             } else {
                                               late dynamic water;
-                                              if (!snapshot.data!.exists || !snapshot.data!.data()!.containsKey('water')) {
+                                              if (!snapshot.data!.exists ||
+                                                  !snapshot.data!
+                                                      .data()!
+                                                      .containsKey('water')) {
                                                 water = 0;
                                               } else {
                                                 water = snapshot.data!
-                                                    .get('water') / 1000;
+                                                        .get('water') /
+                                                    1000;
                                               }
                                               return Column(
                                                 children: [
@@ -722,6 +700,291 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                                       ),
                                                     ],
                                                   )
+                                                ],
+                                              );
+                                            }
+                                          }),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            child: Column(
+                              children: [
+                                // ? NUTRITION CARD
+                                Card(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: InkWell(
+                                    borderRadius: BorderRadius.circular(20),
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const CaloriesStatsScreen(),
+                                          ));
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(16.0),
+                                      child: StreamBuilder<Object>(
+                                          stream: FirebaseFirestore.instance
+                                              .collection('users')
+                                              .doc(FirebaseAuth
+                                                  .instance.currentUser!.uid)
+                                              .collection('diary')
+                                              .doc(DateFormat('d-M-y')
+                                                  .format(DateTime.now()))
+                                              .snapshots(),
+                                          builder: (context,
+                                              AsyncSnapshot snapshot) {
+                                            if (!snapshot.hasData) {
+                                              return const MyCircularIndicator();
+                                            } else {
+                                              late double calories,
+                                                  protein = 0,
+                                                  carbs = 0,
+                                                  fat = 0;
+                                              if (!snapshot.data!.exists) {
+                                                calories = 0;
+                                              } else {
+                                                calories = snapshot.data!
+                                                    .get('totalCalories');
+                                                protein = snapshot.data!
+                                                    .get('totalProtein');
+                                                carbs = snapshot.data!
+                                                    .get('totalCarbs');
+                                                fat = snapshot.data!
+                                                    .get('totalFat');
+                                              }
+                                              return Column(
+                                                children: [
+                                                  Row(
+                                                    children: const [
+                                                      Expanded(
+                                                          child: Text(
+                                                              'Calories',
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize:
+                                                                      20))),
+                                                      Align(
+                                                        alignment: Alignment
+                                                            .centerRight,
+                                                        child: Icon(
+                                                          Icons
+                                                              .local_fire_department,
+                                                          color: Color.fromARGB(
+                                                              255,
+                                                              248,
+                                                              105,
+                                                              51),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                  const SizedBox(
+                                                    height: 16,
+                                                  ),
+                                                  SizedBox(
+                                                    height: 100,
+                                                    width: 150,
+                                                    child:
+                                                        CircularPercentIndicator(
+                                                      reverse: true,
+                                                      radius: 45,
+                                                      lineWidth: 7,
+                                                      animation: true,
+                                                      percent: calories < 2100
+                                                          ? calories / 2100
+                                                          : 1,
+                                                      center: Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Text(
+                                                            calories.toString(),
+                                                            style: const TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 22),
+                                                          ),
+                                                          const SizedBox(
+                                                            height: 2,
+                                                          ),
+                                                          Text('Kcal',
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize: 12,
+                                                                  color: Colors
+                                                                      .grey
+                                                                      .shade500)),
+                                                        ],
+                                                      ),
+                                                      backgroundColor: Colors
+                                                          .grey.shade800
+                                                          .withOpacity(0.3),
+                                                      linearGradient:
+                                                          const LinearGradient(
+                                                              colors: [
+                                                            Color.fromARGB(255,
+                                                                255, 209, 59),
+                                                            Color.fromARGB(255,
+                                                                248, 105, 51),
+                                                          ],
+                                                              begin: Alignment
+                                                                  .topLeft,
+                                                              end: Alignment
+                                                                  .bottomLeft),
+                                                      circularStrokeCap:
+                                                          CircularStrokeCap
+                                                              .round,
+                                                    ),
+                                                  ),
+                                                  const SizedBox(
+                                                    height: 8,
+                                                  ),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
+                                                    children: [
+                                                      Column(
+                                                        children: [
+                                                          const Icon(
+                                                              FontAwesomeIcons
+                                                                  .bowlRice,
+                                                              color: Color
+                                                                  .fromARGB(
+                                                                      255,
+                                                                      250,
+                                                                      109,
+                                                                      77),
+                                                              size: 16),
+                                                          const SizedBox(
+                                                            height: 8,
+                                                          ),
+                                                          const Text('Carbs'),
+                                                          const SizedBox(
+                                                            height: 4,
+                                                          ),
+                                                          Row(
+                                                            children: [
+                                                              Text(
+                                                                carbs
+                                                                    .toString(),
+                                                                style: const TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    fontSize:
+                                                                        11),
+                                                              ),
+                                                              const Text(
+                                                                'g',
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    fontSize:
+                                                                        10),
+                                                              ),
+                                                            ],
+                                                          )
+                                                        ],
+                                                      ),
+                                                      Column(
+                                                        children: [
+                                                          const Icon(FontAwesomeIcons.cheese,
+                                                              color: Color
+                                                                  .fromARGB(
+                                                                      255,
+                                                                      151,
+                                                                      161,
+                                                                      255),
+                                                              size: 16),
+                                                          const SizedBox(
+                                                            height: 8,
+                                                          ),
+                                                          const Text('Fat'),
+                                                          const SizedBox(
+                                                            height: 4,
+                                                          ),
+                                                          Row(
+                                                            children: [
+                                                              Text(
+                                                                fat.toString(),
+                                                                style: const TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    fontSize:
+                                                                        11),
+                                                              ),
+                                                              const Text(
+                                                                'g',
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    fontSize:
+                                                                        10),
+                                                              ),
+                                                            ],
+                                                          )
+                                                        ],
+                                                      ),
+                                                      Column(
+                                                        children: [
+                                                          const Icon(
+                                                              FontAwesomeIcons
+                                                                  .fish,
+                                                              color: Color
+                                                                  .fromARGB(
+                                                                      255,
+                                                                      247,
+                                                                      105,
+                                                                      132),
+                                                              size: 16),
+                                                          const SizedBox(
+                                                            height: 8,
+                                                          ),
+                                                          const Text('Protein'),
+                                                          const SizedBox(
+                                                            height: 4,
+                                                          ),
+                                                          Row(
+                                                            children: [
+                                                              Text(
+                                                                protein
+                                                                    .toString(),
+                                                                style: const TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    fontSize:
+                                                                        11),
+                                                              ),
+                                                              const Text(
+                                                                'g',
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    fontSize:
+                                                                        10),
+                                                              ),
+                                                            ],
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ],
                                               );
                                             }

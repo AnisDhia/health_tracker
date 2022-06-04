@@ -11,8 +11,6 @@ class HeartStatsScreen extends StatefulWidget {
 }
 
 class _HeartDetailsScreenState extends State<HeartStatsScreen> {
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,6 +80,7 @@ class _HeartDetailsScreenState extends State<HeartStatsScreen> {
                     width: double.infinity,
                     child: LineChart(LineChartData(
                       gridData: FlGridData(show: false),
+                      borderData: FlBorderData(show: false),
                       titlesData: FlTitlesData(
                         show: true,
                         topTitles: AxisTitles(
@@ -324,6 +323,7 @@ class _HeartDetailsScreenState extends State<HeartStatsScreen> {
                         ),
                       ],
                     ),
+                    backgroundColor: Colors.grey.shade800.withOpacity(0.3),
                     animation: true,
                     percent: 1,
                     lineHeight: 18,
@@ -363,7 +363,7 @@ class _HeartDetailsScreenState extends State<HeartStatsScreen> {
                         ),
                       ],
                     ),
-                    backgroundColor: Colors.grey.shade800,
+                    backgroundColor: Colors.grey.shade800.withOpacity(0.3),
                     animation: true,
                     percent: 0.5,
                     lineHeight: 18,

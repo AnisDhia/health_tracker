@@ -334,7 +334,7 @@ class _HeartDetailsScreenState extends State<SleepStatsScreen> {
                                 style: TextStyle(
                                     fontSize: 24, fontWeight: FontWeight.bold),
                               ),
-                              backgroundColor: Colors.grey.shade800,
+                              backgroundColor: Colors.grey.shade800.withOpacity(0.3),
                               linearGradient: const LinearGradient(
                                   colors: [
                                     Color.fromARGB(255, 255, 209, 59),
