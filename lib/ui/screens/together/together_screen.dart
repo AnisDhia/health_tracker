@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:health_tracker/shared/services/user_provider.dart';
 import 'package:health_tracker/ui/screens/together/meditation_screen.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:provider/provider.dart';
 
 class TogetherScreen extends StatelessWidget {
   const TogetherScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final UserProvider userProvider = Provider.of<UserProvider>(context);
+    final user = userProvider.getUser;
     return Scaffold(
       // drawer: const NavDrawer(),
       // appBar: AppBar(
@@ -51,12 +55,12 @@ class TogetherScreen extends StatelessWidget {
                     percent: 0.5,
                     backgroundColor: Colors.transparent,
                     animation: true,
-                    center: const SizedBox(
+                    center: SizedBox(
                       height: 80,
                       width: 80,
                       child: CircleAvatar(
-                        backgroundImage:
-                            AssetImage('assets/images/profile.jpg'),
+                        backgroundImage: NetworkImage(user.photoUrl),
+                            // AssetImage('assets/images/profile.jpg'),
                         backgroundColor: Colors.red,
                       ),
                     ),
@@ -81,9 +85,9 @@ class TogetherScreen extends StatelessWidget {
               const SizedBox(
                 height: 24,
               ),
-              const Text(
-                'Anis Dhia',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+              Text(
+                user.username,
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
               ),
               const SizedBox(
                 height: 24,

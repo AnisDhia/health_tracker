@@ -6,6 +6,7 @@ class MyThemes {
   static final primaryColor = Colors.red.shade300;
 
   static final darkTheme = ThemeData.dark().copyWith(
+    drawerTheme: const DrawerThemeData(backgroundColor: Color.fromARGB(255, 15, 15, 15)),
     appBarTheme: const AppBarTheme(
       color: /*Colors.grey.shade900*/ Colors.black,
       elevation: 0,
