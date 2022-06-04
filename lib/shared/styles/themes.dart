@@ -26,6 +26,7 @@ class MyThemes {
     //     const FloatingActionButtonThemeData(backgroundColor: primary),
     listTileTheme: const ListTileThemeData(textColor: Colors.white),
     cardColor: const Color.fromARGB(255, 15, 15, 15),
+    dialogBackgroundColor: const Color.fromARGB(255, 15, 15, 15),
     textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
       foregroundColor: MaterialStateProperty.all(Colors.white),

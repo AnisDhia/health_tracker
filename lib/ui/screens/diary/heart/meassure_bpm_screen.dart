@@ -114,23 +114,27 @@ class _MeassureBPMScreenState extends State<MeassureBPMScreen> {
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(children: const [
-                              Icon(Icons.circle, size: 6),
-                              Text(' Don\'t press too hard.')
-                            ]),
-                            Row(children: const [
-                              Icon(Icons.circle, size: 6),
-                              Text(' Remain still and quiet.')
-                            ]),
-                            Row(children: const [
-                              Icon(Icons.circle, size: 6),
-                              Text(
-                                  ' You\'ll see a steady wave while your finger is in the\n correct position on the camera.')
-                            ]),
-                          ],
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(children: const [
+                                Icon(Icons.circle, size: 6),
+                                Text(' Don\'t press too hard.')
+                              ]),
+                              Row(children: const [
+                                Icon(Icons.circle, size: 6),
+                                Text(' Remain still and quiet.')
+                              ]),
+                              Row(children: const [
+                                Icon(Icons.circle, size: 6),
+                                Expanded(
+                                  child: Text(
+                                      ' You\'ll see a steady wave while your finger is in the correct position on the camera.'),
+                                )
+                              ]),
+                            ],
+                          ),
                         )
                       ]),
                 ),

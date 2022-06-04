@@ -204,7 +204,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                                         Colors.grey.shade500)),
                                           ],
                                         ),
-                                        backgroundColor: Colors.grey.shade800,
+                                        backgroundColor: Colors.grey.shade800.withOpacity(0.3),
                                         linearGradient:
                                             const LinearGradient(colors: [
                                           Color.fromARGB(255, 224, 139, 27),
@@ -242,7 +242,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                                         Colors.grey.shade500)),
                                           ],
                                         ),
-                                        backgroundColor: Colors.grey.shade800,
+                                        backgroundColor: Colors.grey.shade800.withOpacity(0.3),
                                         linearGradient: const LinearGradient(
                                             colors: [
                                               Color.fromARGB(255, 224, 139, 27),
@@ -530,7 +530,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                                         ],
                                                       ),
                                                       backgroundColor:
-                                                          Colors.grey.shade800,
+                                                          Colors.grey.shade800.withOpacity(0.3),
                                                       linearGradient:
                                                           const LinearGradient(
                                                               colors: [
@@ -892,6 +892,19 @@ class _DiaryScreenState extends State<DiaryScreen> {
           ringWidth: 130,
           fabCloseColor: Colors.red,
           children: [
+            RawMaterialButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const MeassureBPMScreen(),
+                    ));
+              },
+              shape: const CircleBorder(),
+              padding: const EdgeInsets.all(24.0),
+              child:
+                  const Icon(FontAwesomeIcons.heartPulse, color: Colors.white),
+            ),
             RawMaterialButton(
               onPressed: () {
                 Navigator.push(

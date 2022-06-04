@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:health_tracker/data/models/recipe_model.dart';
 import 'package:health_tracker/data/repositories/spoonacular_api.dart';
 import 'package:health_tracker/ui/screens/recipes/widgets/recipe_card_widget.dart';
+import 'package:health_tracker/ui/widgets/indicator_widget.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class RecipesScreen extends StatefulWidget {
@@ -70,10 +71,55 @@ class _RecipesScreenState extends State<RecipesScreen> {
                     ),
                     const Center(child: Text("New")),
                     // NewRecipe(),
-                    const Center(child: Text("Categories")),
+                    const RecipeCategories(),
                   ]),
                 )
               ],
             )));
+  }
+}
+
+class RecipeCategories extends StatelessWidget {
+  const RecipeCategories({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Expanded(
+          child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 200,
+              child: FutureBuilder(
+                future: SpoonacularService.instance.getRandomRecipes(number: 15, tags: 'keto'),
+                builder: (context, AsyncSnapshot<List<Recipe>> snapshot) {
+                  if(snapshot.hasData) {
+                    return const MyCircularIndicator();
+                  }
+                  return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    physics: const ScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: 5,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        height: 100,
+                        width: 100,
+                        color: Colors.red,
+                        child: Text('Container $index'),
+                      );
+                    },
+                  );
+                }
+              ),
+            )
+          ],
+        ),
+      )),
+    );
   }
 }

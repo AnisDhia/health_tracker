@@ -315,7 +315,7 @@ class TogetherScreen extends StatelessWidget {
                                           height: 14,
                                         ),
                                         Text(
-                                          'Breathing',
+                                          'breathing',
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 26,
@@ -353,7 +353,7 @@ class TogetherScreen extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: const [
                                         Text(
-                                          'Start',
+                                          'Start a',
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 26,
