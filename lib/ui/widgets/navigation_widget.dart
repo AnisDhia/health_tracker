@@ -31,7 +31,6 @@ class _NavigationState extends State<Navigation> {
     PlansScreen(),
     HomeScreen(),
     DiaryScreen(),
-    // FitnessNutritionMainPage(),
     TogetherScreen(),
   ];
 

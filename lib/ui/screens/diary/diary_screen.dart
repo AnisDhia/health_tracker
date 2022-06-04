@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:ui';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -1065,85 +1066,15 @@ class _DiaryScreenState extends State<DiaryScreen> {
                         ],
                       )
                     ],
-                  )
-
-                  // Column(
-                  //   children: [
-                  //     TableCalendar(
-                  //       firstDay: DateTime.utc(2010, 10, 16),
-                  //       lastDay: DateTime.utc(2030, 3, 14),
-                  //       focusedDay: _focusedDate,
-                  //       calendarFormat: _calendarFormat,
-                  //       calendarStyle: CalendarStyle(
-                  //           selectedDecoration: const BoxDecoration(
-                  //             shape: BoxShape.circle,
-                  //             color: Colors.red,
-                  //           ),
-                  //           todayDecoration: BoxDecoration(
-                  //             shape: BoxShape.circle,
-                  //             color: Colors.red.shade200,
-                  //           )),
-                  //       selectedDayPredicate: (day) {
-                  //         return isSameDay(_selectedDate, day);
-                  //       },
-                  //       onDaySelected: (selectedDay, focusedDay) {
-                  //         setState(() {
-                  //           _selectedDate = selectedDay;
-                  //           _focusedDate = focusedDay;
-                  //         });
-                  //       },
-                  //       onFormatChanged: (format) {
-                  //         setState(() {
-                  //           _calendarFormat = format;
-                  //         });
-                  //       },
-                  //       onPageChanged: (focusedDay) {
-                  //         _focusedDate = focusedDay;
-                  //       },
-                  //     ),
-                  //     const SizedBox(
-                  //       height: 14,
-                  //     ),
-                  //     InkWell(
-                  //         onDoubleTap: () {
-                  //           // log('wow');
-                  //         },
-                  //         child: GoalCard(title: "Steps", value: _todaySteps, goal: 6000)),
-                  //     const SizedBox(
-                  //       height: 14,
-                  //     ),
-                  //     const GoalCard(
-                  //       title: "Calories",
-                  //       value: 1800,
-                  //       goal: 2000,
-                  //     ),
-                  //     const SizedBox(
-                  //       height: 14,
-                  //     ),
-                  //     const DiaryMealCard(
-                  //       title: "Dinner",
-                  //     ),
-                  //     const SizedBox(
-                  //       height: 14,
-                  //     ),
-                  //     ListView.builder(
-                  //         physics: const ScrollPhysics(),
-                  //         shrinkWrap: true,
-                  //         itemCount: 15,
-                  //         itemBuilder: (BuildContext context, int index) {
-                  //           return ListTile(title: Text("item ${index + 1}"));
-                  //         }),
-                  //     const SizedBox(
-                  //       height: 14,
-                  //     ),
-                  //   ],
-                  // ),
-                  ),
+                  )),
             ),
           ],
         ),
         floatingActionButton: FabCircularMenu(
-          ringColor: Colors.black,
+          onDisplayChange: (isOpen) {
+            BackdropFilter(filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10));
+          },
+          ringColor: Theme.of(context).scaffoldBackgroundColor,
           fabOpenIcon: const Icon(
             Icons.add,
             color: Colors.white,
@@ -1154,6 +1085,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
           ),
           ringWidth: 130,
           fabCloseColor: Colors.red,
+          fabOpenColor: Colors.grey.shade800,
           children: [
             RawMaterialButton(
               onPressed: () {
@@ -1165,8 +1097,9 @@ class _DiaryScreenState extends State<DiaryScreen> {
               },
               shape: const CircleBorder(),
               padding: const EdgeInsets.all(24.0),
-              child:
-                  const Icon(FontAwesomeIcons.heartPulse, color: Colors.white),
+              child: const Icon(
+                FontAwesomeIcons.heartPulse,
+              ),
             ),
             RawMaterialButton(
               onPressed: () {
@@ -1178,8 +1111,9 @@ class _DiaryScreenState extends State<DiaryScreen> {
               },
               shape: const CircleBorder(),
               padding: const EdgeInsets.all(24.0),
-              child:
-                  const Icon(FontAwesomeIcons.heartPulse, color: Colors.white),
+              child: const Icon(
+                FontAwesomeIcons.heartPulse,
+              ),
             ),
             RawMaterialButton(
                 onPressed: () {
@@ -1237,12 +1171,16 @@ class _DiaryScreenState extends State<DiaryScreen> {
                 },
                 shape: const CircleBorder(),
                 padding: const EdgeInsets.all(24.0),
-                child: const Icon(Icons.restaurant, color: Colors.white)),
+                child: const Icon(
+                  Icons.restaurant,
+                )),
             RawMaterialButton(
               onPressed: () {},
               shape: const CircleBorder(),
               padding: const EdgeInsets.all(24.0),
-              child: const Icon(Icons.fitness_center, color: Colors.white),
+              child: const Icon(
+                Icons.fitness_center,
+              ),
             ),
             RawMaterialButton(
                 onPressed: () {
@@ -1254,7 +1192,9 @@ class _DiaryScreenState extends State<DiaryScreen> {
                 },
                 shape: const CircleBorder(),
                 padding: const EdgeInsets.all(24.0),
-                child: const Icon(Icons.monitor_weight, color: Colors.white)),
+                child: const Icon(
+                  Icons.monitor_weight,
+                )),
             RawMaterialButton(
               onPressed: () {
                 Navigator.push(
@@ -1265,61 +1205,12 @@ class _DiaryScreenState extends State<DiaryScreen> {
               },
               shape: const CircleBorder(),
               padding: const EdgeInsets.all(24.0),
-              child: const Icon(Icons.water_drop, color: Colors.white),
+              child: const Icon(
+                Icons.water_drop,
+              ),
             ),
           ],
-        )
-        // const CircularFabWidget(),
-        // SpeedDial(
-        //     icon: Icons.add,
-        //     foregroundColor: Colors.white,
-        //     backgroundColor: Colors.red,
-        //     shape: const CircleBorder(),
-        //     // direction: ,
-        //     overlayOpacity: 0.6,
-        //     overlayColor: Colors.black,
-        //     spaceBetweenChildren: 10,
-        //     useRotationAnimation: true,
-        //     children: [
-        //       SpeedDialChild(
-        //         child: const Icon(Icons.restaurant),
-        //         label: 'Food',
-        //         // backgroundColor: Colors.amberAccent,
-        //         onTap: () {/* Do someting */},
-        //       ),
-        //       SpeedDialChild(
-        //         child: const Icon(Icons.water_drop),
-        //         label: 'Water',
-        //         // backgroundColor: Colors.amberAccent,
-        //         onTap: () {
-        //           Navigator.push(context, MaterialPageRoute(builder: (context) => const AddWaterScreen(),));
-        //         },
-        //       ),
-        //       SpeedDialChild(
-        //         child: const Icon(Icons.monitor_weight_outlined),
-        //         label: 'Weight',
-        //         // backgroundColor: Colors.amberAccent,
-        //         onTap: () {
-        //           Navigator.push(context, MaterialPageRoute(builder: (context) => const AddWeightScreen(),));
-        //         },
-        //       ),
-        //       SpeedDialChild(
-        //         child: const Icon(Icons.fitness_center),
-        //         label: 'Exercise',
-        //         // backgroundColor: Colors.amberAccent,
-        //         onTap: () {/* Do something */},
-        //       ),
-        //       SpeedDialChild(
-        //         child: const Icon(FontAwesomeIcons.heartbeat),
-        //         label: 'BPM',
-        //         // backgroundColor: Colors.amberAccent,
-        //         onTap: () {
-        //           Navigator.push(context, MaterialPageRoute(builder: (context) => const MeassureBPMScreen(),));
-        //         },
-        //       ),
-        //     ]),
-        // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        );
+        ));
   }
 }
 
@@ -1350,101 +1241,3 @@ class MyClipper extends CustomClipper<Path> {
     return true;
   }
 }
-
-// const double buttonSize = 60;
-
-// class CircularFabWidget extends StatefulWidget {
-//   const CircularFabWidget({Key? key}) : super(key: key);
-
-//   @override
-//   State<CircularFabWidget> createState() => _CircularFabWidgetState();
-// }
-
-// class _CircularFabWidgetState extends State<CircularFabWidget>
-//     with SingleTickerProviderStateMixin {
-//   late AnimationController controller;
-
-//   @override
-//   void initState() {
-//     super.initState();
-
-//     controller = AnimationController(
-//         vsync: this, duration: const Duration(milliseconds: 250));
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Flow(
-//       delegate: FlowMenuDelegate(controller: controller),
-//       children: <IconData>[
-//         Icons.water_drop,
-//         Icons.restaurant,
-//         Icons.fitness_center,
-//         Icons.monitor_weight,
-//         Icons.add,
-//       ].map<Widget>(buildFAB).toList(),
-//     );
-//   }
-
-//   Widget buildFAB(IconData icon) => SizedBox(
-//         width: buttonSize,
-//         height: buttonSize,
-//         child: FloatingActionButton(
-//           backgroundColor: Colors.red,
-//           elevation: 0,
-//           splashColor: Colors.black,
-//           child: Icon(
-//             icon,
-//             color: Colors.white,
-//             size: 35,
-//           ),
-//           onPressed: () {
-//             if (controller.status == AnimationStatus.completed) {
-//               controller.reverse();
-//             } else {
-//               controller.forward();
-//             }
-//           },
-//         ),
-//       );
-// }
-
-// class FlowMenuDelegate extends FlowDelegate {
-//   final Animation<double> controller;
-
-//   const FlowMenuDelegate({required this.controller})
-//       : super(repaint: controller);
-
-//   @override
-//   void paintChildren(FlowPaintingContext context) {
-//     final size = context.size;
-//     final xStart = size.width - buttonSize;
-//     final yStart = size.height - buttonSize;
-
-//     final n = context.childCount;
-//     for (int i = 0; i < n; i++) {
-//       final isLastItem = i == context.childCount - 1,
-//           setValue = (value) => isLastItem ? 0.0 : value,
-//           radius = 180 * controller.value,
-//           theta = i * math.pi * 0.5 / (n - 2),
-//           x = xStart - setValue(radius * math.cos(theta)),
-//           y = yStart - setValue(radius * math.sin(theta));
-
-//       context.paintChild(
-//         i,
-//         transform: Matrix4.identity()
-//           ..translate(x, y, 0)
-//           ..translate(buttonSize / 2, buttonSize / 2)
-//           ..rotateZ(
-//               isLastItem ? 0.0 : 180 * (1 - controller.value) * math.pi / 180)
-//           ..scale(isLastItem ? 1.0 : math.max(controller.value, 0.5))
-//           ..translate(-buttonSize / 2, -buttonSize / 2),
-//       );
-//     }
-//   }
-
-//   @override
-//   bool shouldRepaint(covariant FlowDelegate oldDelegate) {
-//     return false;
-//   }
-// }
