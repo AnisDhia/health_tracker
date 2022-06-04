@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
@@ -176,7 +177,8 @@ class _AddFoodScreenState extends State<AddMealScreen> {
                                               child: Column(
                                                 children: const [
                                                   Icon(
-                                                    Icons.qr_code_scanner,
+                                                    // Icons.qr_code_scanner,
+                                                    CupertinoIcons.barcode_viewfinder,
                                                     size: 50,
                                                   ),
                                                   SizedBox(
