@@ -65,7 +65,7 @@ class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
                     builder: (context,
                         AsyncSnapshot<DocumentSnapshot<Map<String, dynamic>>>
                             snapshot) {
-                      if (!snapshot.hasData) {
+                      if (!snapshot.hasData || !snapshot.data!.exists) {
                         return const MyCircularIndicator();
                       } else {
                         Map<String, dynamic> breakfast = {

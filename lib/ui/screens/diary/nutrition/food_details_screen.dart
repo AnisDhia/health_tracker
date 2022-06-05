@@ -43,13 +43,16 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
     super.dispose();
   }
 
-  double macroPercentage(double value, int type) {
+  dynamic macroPercentage(double value, int type) {
     double calories =
-        protein['value'] * 4 + carbs['value'] * 4 + fat['value'] * 9;
-    if (type == 1) {
-      return (value * 4 / calories) * 100;
+        (protein['value'] * 4 + carbs['value'] * 4 + fat['value'] * 9)
+            .toDouble();
+    if (calories == 0) {
+      return 0.toDouble();
+    } else if (type == 1) {
+      return ((value * 4 / calories) * 100).round();
     } else {
-      return (value * 9 / calories) * 100;
+      return ((value * 9 / calories) * 100).round();
     }
   }
 
@@ -203,9 +206,9 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                       width: 90,
                       child: pie.PieChart(
                         dataMap: {
-                          'Carbs': carbs['value'],
-                          'Fat': fat['value'],
-                          'Protein': protein['value'],
+                          'Carbs': carbs['value'].toDouble(),
+                          'Fat': fat['value'].toDouble(),
+                          'Protein': protein['value'].toDouble(),
                         },
                         chartType: pie.ChartType.ring,
                         baseChartColor: Colors.grey.shade900,
@@ -226,7 +229,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                 Column(
                   children: [
                     Text(
-                      '${macroPercentage(carbs['value'], 1).ceil()}%',
+                      '${macroPercentage(carbs['value'].toDouble(), 1)}%',
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Color.fromARGB(255, 0, 210, 124)),
@@ -238,7 +241,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                 ),
                 Column(
                   children: [
-                    Text('${macroPercentage(fat['value'], 2).floor()}%',
+                    Text('${macroPercentage(fat['value'].toDouble(), 2)}%',
                         style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 128, 71, 246))),
@@ -249,7 +252,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                 ),
                 Column(
                   children: [
-                    Text('${macroPercentage(protein['value'], 1).ceil()}%',
+                    Text('${macroPercentage(protein['value'].toDouble(), 1)}%',
                         style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 254, 164, 44))),
