@@ -1,0 +1,1106 @@
+{
+    "code": "6134082000017",
+    "product": {
+        "_id": "6134082000017",
+        "_keywords": [
+            "eau",
+            "bessbessa",
+            "ezarga",
+            "source",
+            "naturelle",
+            "sarl",
+            "diar",
+            "eaux",
+            "de",
+            "alcool",
+            "boisson",
+            "minerale",
+            "san"
+        ],
+        "added_countries_tags": [],
+        "additives_debug_tags": [],
+        "additives_old_tags": [],
+        "additives_original_tags": [],
+        "additives_prev_original_tags": [],
+        "additives_tags": [],
+        "allergens": "",
+        "allergens_from_ingredients": "",
+        "allergens_from_user": "(fr) ",
+        "allergens_hierarchy": [],
+        "allergens_tags": [],
+        "amino_acids_prev_tags": [],
+        "amino_acids_tags": [],
+        "brands": "Sarl diar ezarga",
+        "brands_tags": [
+            "sarl-diar-ezarga"
+        ],
+        "categories": "Boissons, Eaux, Eaux de sources, Eaux minérales, Boissons sans alcool, Eaux minérales naturelles",
+        "categories_hierarchy": [
+            "en:beverages",
+            "en:waters",
+            "en:spring-waters",
+            "en:mineral-waters",
+            "en:non-alcoholic-beverages",
+            "en:natural-mineral-waters"
+        ],
+        "categories_lc": "fr",
+        "categories_old": "Boissons, Eaux, Eaux de sources, Eaux minérales, Boissons sans alcool, Eaux minérales naturelles",
+        "categories_properties": {
+            "agribalyse_food_code:en": "18430",
+            "agribalyse_proxy_food_code:en": "76000",
+            "ciqual_food_code:en": "18029"
+        },
+        "categories_properties_tags": [
+            "all-products",
+            "categories-known",
+            "agribalyse-food-code-18430",
+            "agribalyse-food-code-known",
+            "agribalyse-proxy-food-code-76000",
+            "agribalyse-proxy-food-code-known",
+            "ciqual-food-code-18029",
+            "ciqual-food-code-known",
+            "agribalyse-known",
+            "agribalyse-18430"
+        ],
+        "categories_tags": [
+            "en:beverages",
+            "en:waters",
+            "en:spring-waters",
+            "en:mineral-waters",
+            "en:non-alcoholic-beverages",
+            "en:natural-mineral-waters"
+        ],
+        "category_properties": {
+            "ciqual_food_name:en": "Non-alcoholic beverage -average-",
+            "ciqual_food_name:fr": "Boisson rafraîchissante sans alcool -aliment moyen-"
+        },
+        "checkers_tags": [],
+        "ciqual_food_name_tags": [
+            "non-alcoholic-beverage-average"
+        ],
+        "cities_tags": [],
+        "code": "6134082000017",
+        "codes_tags": [
+            "code-13",
+            "6134082000xxx",
+            "613408200xxxx",
+            "61340820xxxxx",
+            "6134082xxxxxx",
+            "613408xxxxxxx",
+            "61340xxxxxxxx",
+            "6134xxxxxxxxx",
+            "613xxxxxxxxxx",
+            "61xxxxxxxxxxx",
+            "6xxxxxxxxxxxx"
+        ],
+        "compared_to_category": "en:natural-mineral-waters",
+        "complete": 0,
+        "completeness": 0.5875,
+        "correctors_tags": [
+            "openfoodfacts-contributors",
+            "djallil-med",
+            "yuka.RnZ3c05hWUhoT1JTbU04SHJ5dks1dlYvN2JxWWNuRzVkdFEzSVE9PQ",
+            "inf",
+            "tacite",
+            "yuka.VbRJNYXWRswkQfDC0I5uzmGWMODABeF1NmJQow",
+            "kiliweb",
+            "yuka.sY2b0xO6T85zoF3NwEKvln1fCsePqQLDOBzum0q37eeHPpHTTvZ9uIHGFas",
+            "yuka.sY2b0xO6T85zoF3NwEKvlnZuCt7jvDLpJ0X6wxzS28WgPIPJXuoj_qrVF6s",
+            "off.ae140626-9e6f-4b35-a445-345f98887108",
+            "gluten-scan"
+        ],
+        "countries": "Algérie, France",
+        "countries_debug_tags": [],
+        "countries_hierarchy": [
+            "en:algeria",
+            "en:france"
+        ],
+        "countries_lc": "fr",
+        "countries_tags": [
+            "en:algeria",
+            "en:france"
+        ],
+        "created_t": 1526694202,
+        "creator": "kiliweb",
+        "data_quality_bugs_tags": [],
+        "data_quality_errors_tags": [],
+        "data_quality_info_tags": [
+            "en:no-packaging-data",
+            "en:ecoscore-extended-data-not-computed",
+            "en:food-groups-1-known",
+            "en:food-groups-2-known",
+            "en:food-groups-3-unknown"
+        ],
+        "data_quality_tags": [
+            "en:no-packaging-data",
+            "en:ecoscore-extended-data-not-computed",
+            "en:food-groups-1-known",
+            "en:food-groups-2-known",
+            "en:food-groups-3-unknown"
+        ],
+        "data_quality_warnings_tags": [],
+        "data_sources": "App - yuka, Apps, App - InFood, App - Open Food Facts",
+        "data_sources_tags": [
+            "app-yuka",
+            "apps",
+            "app-infood",
+            "app-open-food-facts"
+        ],
+        "ecoscore_data": {
+            "adjustments": {},
+            "ecoscore_not_applicable_for_category": "en:waters",
+            "status": "unknown"
+        },
+        "ecoscore_grade": "not-applicable",
+        "ecoscore_tags": [
+            "not-applicable"
+        ],
+        "editors_tags": [
+            "yuka.VbRJNYXWRswkQfDC0I5uzmGWMODABeF1NmJQow",
+            "kiliweb",
+            "yuka.RnZ3c05hWUhoT1JTbU04SHJ5dks1dlYvN2JxWWNuRzVkdFEzSVE9PQ",
+            "yuka.VoEcDNOmL-M5J8Df25wP9iaROeTeBv5pNVINog",
+            "yuka.sY2b0xO6T85zoF3NwEKvlnZuCt7jvDLpJ0X6wxzS28WgPIPJXuoj_qrVF6s",
+            "yuka.sY2b0xO6T85zoF3NwEKvlhdnWMvenjn-PUL6vk2J5_6RJ7-xSs9-49WiK6s",
+            "tacite",
+            "yuka.sY2b0xO6T85zoF3NwEKvlmJLUfOFmRb6DjbfkkjbxOerAp7NWOx2w4LnLqs",
+            "openfoodfacts-contributors",
+            "gluten-scan",
+            "djallil-med",
+            "yuka.sY2b0xO6T85zoF3NwEKvln1fCsePqQLDOBzum0q37eeHPpHTTvZ9uIHGFas",
+            "off.ae140626-9e6f-4b35-a445-345f98887108",
+            "yuka.sY2b0xO6T85zoF3NwEKvll5sC4Dkogn8NjPRhFC69N6cNYKzQuFUwYzTA6s",
+            "inf",
+            "yuka.R1l4ZUNwczRuL3d4d3NaaTBoelB3TzVlNjZTMmRGS2VDUEVoSVE9PQ"
+        ],
+        "emb_codes": "",
+        "emb_codes_debug_tags": [],
+        "emb_codes_tags": [],
+        "entry_dates_tags": [
+            "2018-05-19",
+            "2018-05",
+            "2018"
+        ],
+        "food_groups": "en:waters-and-flavored-waters",
+        "food_groups_tags": [
+            "en:beverages",
+            "en:waters-and-flavored-waters"
+        ],
+        "id": "6134082000017",
+        "image_front_small_url": "https://images.openfoodfacts.org/images/products/613/408/200/0017/front_en.40.200.jpg",
+        "image_front_thumb_url": "https://images.openfoodfacts.org/images/products/613/408/200/0017/front_en.40.100.jpg",
+        "image_front_url": "https://images.openfoodfacts.org/images/products/613/408/200/0017/front_en.40.400.jpg",
+        "image_ingredients_small_url": "https://images.openfoodfacts.org/images/products/613/408/200/0017/ingredients_fr.44.200.jpg",
+        "image_ingredients_thumb_url": "https://images.openfoodfacts.org/images/products/613/408/200/0017/ingredients_fr.44.100.jpg",
+        "image_ingredients_url": "https://images.openfoodfacts.org/images/products/613/408/200/0017/ingredients_fr.44.400.jpg",
+        "image_nutrition_small_url": "https://images.openfoodfacts.org/images/products/613/408/200/0017/nutrition_fr.35.200.jpg",
+        "image_nutrition_thumb_url": "https://images.openfoodfacts.org/images/products/613/408/200/0017/nutrition_fr.35.100.jpg",
+        "image_nutrition_url": "https://images.openfoodfacts.org/images/products/613/408/200/0017/nutrition_fr.35.400.jpg",
+        "image_packaging_small_url": "https://images.openfoodfacts.org/images/products/613/408/200/0017/packaging_en.37.200.jpg",
+        "image_packaging_thumb_url": "https://images.openfoodfacts.org/images/products/613/408/200/0017/packaging_en.37.100.jpg",
+        "image_packaging_url": "https://images.openfoodfacts.org/images/products/613/408/200/0017/packaging_en.37.400.jpg",
+        "image_small_url": "https://images.openfoodfacts.org/images/products/613/408/200/0017/front_en.40.200.jpg",
+        "image_thumb_url": "https://images.openfoodfacts.org/images/products/613/408/200/0017/front_en.40.100.jpg",
+        "image_url": "https://images.openfoodfacts.org/images/products/613/408/200/0017/front_en.40.400.jpg",
+        "images": {
+            "1": {
+                "sizes": {
+                    "100": {
+                        "h": 100,
+                        "w": 75
+                    },
+                    "400": {
+                        "h": 400,
+                        "w": 300
+                    },
+                    "full": {
+                        "h": 1200,
+                        "w": 901
+                    }
+                },
+                "uploaded_t": "1526694205",
+                "uploader": "kiliweb"
+            },
+            "10": {
+                "sizes": {
+                    "100": {
+                        "h": 75,
+                        "w": 100
+                    },
+                    "400": {
+                        "h": 300,
+                        "w": 400
+                    },
+                    "full": {
+                        "h": 3024,
+                        "w": 4032
+                    }
+                },
+                "uploaded_t": 1637565771,
+                "uploader": "openfoodfacts-contributors"
+            },
+            "11": {
+                "sizes": {
+                    "100": {
+                        "h": 100,
+                        "w": 75
+                    },
+                    "400": {
+                        "h": 400,
+                        "w": 300
+                    },
+                    "full": {
+                        "h": 4000,
+                        "w": 3000
+                    }
+                },
+                "uploaded_t": 1649738844,
+                "uploader": "openfoodfacts-contributors"
+            },
+            "12": {
+                "sizes": {
+                    "100": {
+                        "h": 100,
+                        "w": 75
+                    },
+                    "400": {
+                        "h": 400,
+                        "w": 300
+                    },
+                    "full": {
+                        "h": 3264,
+                        "w": 2448
+                    }
+                },
+                "uploaded_t": 1649779434,
+                "uploader": "openfoodfacts-contributors"
+            },
+            "13": {
+                "sizes": {
+                    "100": {
+                        "h": 100,
+                        "w": 61
+                    },
+                    "400": {
+                        "h": 400,
+                        "w": 244
+                    },
+                    "full": {
+                        "h": 2188,
+                        "w": 1333
+                    }
+                },
+                "uploaded_t": 1650741032,
+                "uploader": "gluten-scan"
+            },
+            "2": {
+                "sizes": {
+                    "100": {
+                        "h": 100,
+                        "w": 24
+                    },
+                    "400": {
+                        "h": 400,
+                        "w": 96
+                    },
+                    "full": {
+                        "h": 1200,
+                        "w": 288
+                    }
+                },
+                "uploaded_t": "1526694217",
+                "uploader": "kiliweb"
+            },
+            "3": {
+                "sizes": {
+                    "100": {
+                        "h": 71,
+                        "w": 100
+                    },
+                    "400": {
+                        "h": 286,
+                        "w": 400
+                    },
+                    "full": {
+                        "h": 1430,
+                        "w": 2002
+                    }
+                },
+                "uploaded_t": 1537460578,
+                "uploader": "djallil-med"
+            },
+            "4": {
+                "sizes": {
+                    "100": {
+                        "h": 59,
+                        "w": 100
+                    },
+                    "400": {
+                        "h": 237,
+                        "w": 400
+                    },
+                    "full": {
+                        "h": 884,
+                        "w": 1492
+                    }
+                },
+                "uploaded_t": 1591693243,
+                "uploader": "kiliweb"
+            },
+            "6": {
+                "sizes": {
+                    "100": {
+                        "h": 100,
+                        "w": 75
+                    },
+                    "400": {
+                        "h": 400,
+                        "w": 300
+                    },
+                    "full": {
+                        "h": 1200,
+                        "w": 901
+                    }
+                },
+                "uploaded_t": 1603121461,
+                "uploader": "kiliweb"
+            },
+            "7": {
+                "sizes": {
+                    "100": {
+                        "h": 60,
+                        "w": 100
+                    },
+                    "400": {
+                        "h": 238,
+                        "w": 400
+                    },
+                    "full": {
+                        "h": 904,
+                        "w": 1519
+                    }
+                },
+                "uploaded_t": 1603121462,
+                "uploader": "kiliweb"
+            },
+            "8": {
+                "sizes": {
+                    "100": {
+                        "h": 100,
+                        "w": 76
+                    },
+                    "400": {
+                        "h": 400,
+                        "w": 303
+                    },
+                    "full": {
+                        "h": 1200,
+                        "w": 909
+                    }
+                },
+                "uploaded_t": 1608827807,
+                "uploader": "kiliweb"
+            },
+            "9": {
+                "sizes": {
+                    "100": {
+                        "h": 81,
+                        "w": 100
+                    },
+                    "400": {
+                        "h": 324,
+                        "w": 400
+                    },
+                    "full": {
+                        "h": 1003,
+                        "w": 1237
+                    }
+                },
+                "uploaded_t": 1613141948,
+                "uploader": "kiliweb"
+            },
+            "front_en": {
+                "angle": 0,
+                "coordinates_image_size": "full",
+                "geometry": "0x0--1--1",
+                "imgid": "11",
+                "normalize": null,
+                "rev": "40",
+                "sizes": {
+                    "100": {
+                        "h": 100,
+                        "w": 75
+                    },
+                    "200": {
+                        "h": 200,
+                        "w": 150
+                    },
+                    "400": {
+                        "h": 400,
+                        "w": 300
+                    },
+                    "full": {
+                        "h": 4000,
+                        "w": 3000
+                    }
+                },
+                "white_magic": null,
+                "x1": "-1",
+                "x2": "-1",
+                "y1": "-1",
+                "y2": "-1"
+            },
+            "front_fr": {
+                "angle": 0,
+                "coordinates_image_size": "full",
+                "geometry": "0x0--1--1",
+                "imgid": "12",
+                "normalize": null,
+                "rev": "42",
+                "sizes": {
+                    "100": {
+                        "h": 100,
+                        "w": 75
+                    },
+                    "200": {
+                        "h": 200,
+                        "w": 150
+                    },
+                    "400": {
+                        "h": 400,
+                        "w": 300
+                    },
+                    "full": {
+                        "h": 3264,
+                        "w": 2448
+                    }
+                },
+                "white_magic": null,
+                "x1": "-1",
+                "x2": "-1",
+                "y1": "-1",
+                "y2": "-1"
+            },
+            "ingredients_fr": {
+                "angle": 0,
+                "coordinates_image_size": "full",
+                "geometry": "0x0--1--1",
+                "imgid": "13",
+                "normalize": null,
+                "rev": "44",
+                "sizes": {
+                    "100": {
+                        "h": 100,
+                        "w": 61
+                    },
+                    "200": {
+                        "h": 200,
+                        "w": 122
+                    },
+                    "400": {
+                        "h": 400,
+                        "w": 244
+                    },
+                    "full": {
+                        "h": 2188,
+                        "w": 1333
+                    }
+                },
+                "white_magic": null,
+                "x1": "-1",
+                "x2": "-1",
+                "y1": "-1",
+                "y2": "-1"
+            },
+            "nutrition_fr": {
+                "angle": 0,
+                "coordinates_image_size": "full",
+                "geometry": "0x0--1--1",
+                "imgid": "9",
+                "normalize": null,
+                "rev": "35",
+                "sizes": {
+                    "100": {
+                        "h": 81,
+                        "w": 100
+                    },
+                    "200": {
+                        "h": 162,
+                        "w": 200
+                    },
+                    "400": {
+                        "h": 324,
+                        "w": 400
+                    },
+                    "full": {
+                        "h": 1003,
+                        "w": 1237
+                    }
+                },
+                "white_magic": null,
+                "x1": "-1",
+                "x2": "-1",
+                "y1": "-1",
+                "y2": "-1"
+            },
+            "packaging_en": {
+                "angle": 0,
+                "coordinates_image_size": "full",
+                "geometry": "0x0--1--1",
+                "imgid": "10",
+                "normalize": null,
+                "rev": "37",
+                "sizes": {
+                    "100": {
+                        "h": 75,
+                        "w": 100
+                    },
+                    "200": {
+                        "h": 150,
+                        "w": 200
+                    },
+                    "400": {
+                        "h": 300,
+                        "w": 400
+                    },
+                    "full": {
+                        "h": 3024,
+                        "w": 4032
+                    }
+                },
+                "white_magic": null,
+                "x1": "-1",
+                "x2": "-1",
+                "y1": "-1",
+                "y2": "-1"
+            }
+        },
+        "informers_tags": [
+            "yuka.R1l4ZUNwczRuL3d4d3NaaTBoelB3TzVlNjZTMmRGS2VDUEVoSVE9PQ",
+            "kiliweb",
+            "djallil-med",
+            "yuka.RnZ3c05hWUhoT1JTbU04SHJ5dks1dlYvN2JxWWNuRzVkdFEzSVE9PQ",
+            "inf",
+            "openfoodfacts-contributors"
+        ],
+        "ingredients_debug": [
+            "en mg",
+            "/",
+            null,
+            null,
+            "/",
+            "l\ncalcium",
+            ":",
+            ":",
+            null,
+            null,
+            " 54.16 \nmagnésium",
+            ":",
+            ":",
+            null,
+            null,
+            " 2.64\npotassium",
+            ":",
+            ":",
+            null,
+            null,
+            " 2.00\nsodium ",
+            ":",
+            ":",
+            null,
+            null,
+            " 5.00\nbicarbonate",
+            ":",
+            ":",
+            null,
+            null,
+            " 164.70\nsulfate",
+            ":",
+            ":",
+            null,
+            null,
+            " 4.00\nchlorure",
+            ":",
+            ":",
+            null,
+            null,
+            " 10.00\nnitrates",
+            ":",
+            ":",
+            null,
+            null,
+            " 9.00\nnitrites",
+            ":",
+            ":",
+            null,
+            null,
+            " &lt",
+            ";",
+            ";",
+            null,
+            null,
+            "0.01\nrésidus sec à 180° ",
+            ":",
+            ":",
+            null,
+            null,
+            " 2.06\npH",
+            ":",
+            ":",
+            null,
+            null,
+            " 7.29"
+        ],
+        "ingredients_from_or_that_may_be_from_palm_oil_n": 0,
+        "ingredients_from_palm_oil_tags": [],
+        "ingredients_hierarchy": [],
+        "ingredients_ids_debug": [
+            "en-mg",
+            "l-calcium",
+            "54-16-magnesium",
+            "2-64-potassium",
+            "2-00-sodium",
+            "5-00-bicarbonate",
+            "164-70-sulfate",
+            "4-00-chlorure",
+            "10-00-nitrates",
+            "9-00-nitrites",
+            "lt",
+            "0-01-residus-sec-a-180",
+            "2-06-ph",
+            "7-29"
+        ],
+        "ingredients_text": "",
+        "ingredients_text_debug": "en mg/l\ncalcium: 54.16 \nmagnésium: 2.64\npotassium: 2.00\nsodium : 5.00\nbicarbonate: 164.70\nsulfate: 4.00\nchlorure: 10.00\nnitrates: 9.00\nnitrites: &lt;0.01\nrésidus sec à 180° : 2.06\npH: 7.29",
+        "ingredients_text_en": "in mg/l\ncalcium: 54,16 \nmagnesium: 2,64\npotassium: 2,00\nsodium : 5,00\nbaking: 164,70\nsulfate: 4,00\nchloride: 10,00\nnitrates: 9,00\nnitrites: ,lt,0,01\nresidues dry at 180° : 2,06\nph: 7,29",
+        "ingredients_text_fr": "",
+        "ingredients_text_with_allergens": "",
+        "ingredients_text_with_allergens_en": "in mg/l\ncalcium: 54,16 \nmagnesium: 2,64\npotassium: 2,00\nsodium : 5,00\nbaking: 164,70\nsulfate: 4,00\nchloride: 10,00\nnitrates: 9,00\nnitrites: ,lt,0,01\nresidues dry at 180° : 2,06\nph: 7,29",
+        "ingredients_text_with_allergens_fr": "",
+        "ingredients_that_may_be_from_palm_oil_tags": [],
+        "interface_version_created": "20150316.jqm2",
+        "interface_version_modified": "20150316.jqm2",
+        "labels": "",
+        "labels_hierarchy": [],
+        "labels_lc": "fr",
+        "labels_old": "",
+        "labels_tags": [],
+        "lang": "fr",
+        "languages": {
+            "en:english": 2,
+            "en:french": 4
+        },
+        "languages_codes": {
+            "en": 2,
+            "fr": 4
+        },
+        "languages_hierarchy": [
+            "en:french",
+            "en:english"
+        ],
+        "languages_tags": [
+            "en:french",
+            "en:english",
+            "en:2",
+            "en:multilingual"
+        ],
+        "last_edit_dates_tags": [
+            "2022-04-23",
+            "2022-04",
+            "2022"
+        ],
+        "last_editor": "gluten-scan",
+        "last_image_dates_tags": [
+            "2022-04-23",
+            "2022-04",
+            "2022"
+        ],
+        "last_image_t": 1650741033,
+        "last_modified_by": "gluten-scan",
+        "last_modified_t": 1650741033,
+        "lc": "fr",
+        "link": "",
+        "link_debug_tags": [],
+        "main_countries_tags": [],
+        "manufacturing_places": "Algérie",
+        "manufacturing_places_debug_tags": [],
+        "manufacturing_places_tags": [
+            "algerie"
+        ],
+        "max_imgid": "13",
+        "minerals_prev_tags": [],
+        "minerals_tags": [],
+        "misc_tags": [
+            "en:nutrition-no-fruits-vegetables-nuts",
+            "en:nutrition-no-fiber-or-fruits-vegetables-nuts",
+            "en:nutriscore-computed",
+            "en:ecoscore-not-computed",
+            "en:ecoscore-extended-data-not-computed",
+            "en:ecoscore-not-applicable",
+            "en:main-countries-dz-ingredients-not-in-country-language",
+            "en:main-countries-dz-only-1-field-in-country-language",
+            "en:main-countries-fr-unexpectedly-low-scans",
+            "en:main-countries-fr-unexpectedly-low-scans-0-10-percent-of-expected",
+            "en:main-countries-fr-unexpectedly-low-scans-and-only-1-field-in-country-language",
+            "en:main-countries-fr-ingredients-not-in-country-language",
+            "en:main-countries-fr-only-1-field-in-country-language"
+        ],
+        "no_nutrition_data": "",
+        "nova_group": 1,
+        "nova_group_debug": "",
+        "nova_group_tags": [
+            "not-applicable"
+        ],
+        "nova_groups": "1",
+        "nova_groups_tags": [
+            "en:1-unprocessed-or-minimally-processed-foods"
+        ],
+        "nucleotides_prev_tags": [],
+        "nucleotides_tags": [],
+        "nutrient_levels": {
+            "fat": "low",
+            "salt": "low",
+            "saturated-fat": "low",
+            "sugars": "low"
+        },
+        "nutrient_levels_tags": [
+            "en:fat-in-low-quantity",
+            "en:saturated-fat-in-low-quantity",
+            "en:sugars-in-low-quantity",
+            "en:salt-in-low-quantity"
+        ],
+        "nutriments": {
+            "alcohol": 0,
+            "alcohol_100g": 0,
+            "alcohol_serving": 0,
+            "alcohol_unit": "% vol",
+            "alcohol_value": 0,
+            "bicarbonate": 0.1647,
+            "bicarbonate_100g": 0.1647,
+            "bicarbonate_unit": "mg",
+            "bicarbonate_value": 164.7,
+            "calcium": 0.05416,
+            "calcium_100g": 0.05416,
+            "calcium_unit": "mg",
+            "calcium_value": 54.16,
+            "carbohydrates": 0,
+            "carbohydrates_100g": 0,
+            "carbohydrates_unit": "g",
+            "carbohydrates_value": 0,
+            "chloride": 0.01,
+            "chloride_100g": 0.01,
+            "chloride_unit": "mg",
+            "chloride_value": 10,
+            "energy": 0,
+            "energy-kcal": 0,
+            "energy-kcal_100g": 0,
+            "energy-kcal_unit": "kcal",
+            "energy-kcal_value": 0,
+            "energy_100g": 0,
+            "energy_unit": "kcal",
+            "energy_value": 0,
+            "fat": 0,
+            "fat_100g": 0,
+            "fat_unit": "g",
+            "fat_value": 0,
+            "fiber": 0,
+            "fiber_100g": 0,
+            "fiber_unit": "g",
+            "fiber_value": 0,
+            "magnesium": 0.00264,
+            "magnesium_100g": 0.00264,
+            "magnesium_unit": "mg",
+            "magnesium_value": 2.64,
+            "manganese": 0,
+            "manganese_100g": 0,
+            "manganese_unit": "mg",
+            "manganese_value": 0,
+            "nova-group": 1,
+            "nova-group_100g": 1,
+            "nova-group_serving": 1,
+            "nutrition-score-fr": 0,
+            "nutrition-score-fr_100g": 0,
+            "potassium": 0.002,
+            "potassium_100g": 0.002,
+            "potassium_unit": "mg",
+            "potassium_value": 2,
+            "proteins": 0,
+            "proteins_100g": 0,
+            "proteins_unit": "g",
+            "proteins_value": 0,
+            "salt": 0,
+            "salt_100g": 0,
+            "salt_unit": "g",
+            "salt_value": 0,
+            "saturated-fat": 0,
+            "saturated-fat_100g": 0,
+            "saturated-fat_unit": "g",
+            "saturated-fat_value": 0,
+            "sodium": 0,
+            "sodium_100g": 0,
+            "sodium_unit": "g",
+            "sodium_value": 0,
+            "sugars": 0,
+            "sugars_100g": 0,
+            "sugars_unit": "g",
+            "sugars_value": 0
+        },
+        "nutriscore_data": {
+            "energy": 0,
+            "energy_points": 0,
+            "energy_value": 0,
+            "fiber": 0,
+            "fiber_points": 0,
+            "fiber_value": 0,
+            "fruits_vegetables_nuts_colza_walnut_olive_oils": 0,
+            "fruits_vegetables_nuts_colza_walnut_olive_oils_points": 0,
+            "fruits_vegetables_nuts_colza_walnut_olive_oils_value": 0,
+            "grade": "a",
+            "is_beverage": 1,
+            "is_cheese": 0,
+            "is_fat": 0,
+            "is_water": "1",
+            "negative_points": 0,
+            "positive_points": 0,
+            "proteins": 0,
+            "proteins_points": 0,
+            "proteins_value": 0,
+            "saturated_fat": 0,
+            "saturated_fat_points": 0,
+            "saturated_fat_ratio": 0,
+            "saturated_fat_ratio_points": 0,
+            "saturated_fat_ratio_value": 0,
+            "saturated_fat_value": 0,
+            "score": 0,
+            "sodium": 0,
+            "sodium_points": 0,
+            "sodium_value": 0,
+            "sugars": 0,
+            "sugars_points": 0,
+            "sugars_value": 0
+        },
+        "nutriscore_grade": "a",
+        "nutriscore_score": 0,
+        "nutriscore_score_opposite": 0,
+        "nutrition_data_per": "100g",
+        "nutrition_data_prepared_per": "100g",
+        "nutrition_grade_fr": "a",
+        "nutrition_grades": "a",
+        "nutrition_grades_tags": [
+            "a"
+        ],
+        "nutrition_score_beverage": 1,
+        "nutrition_score_warning_no_fruits_vegetables_nuts": 1,
+        "origins": "",
+        "origins_hierarchy": [],
+        "origins_lc": "fr",
+        "origins_old": "",
+        "origins_tags": [],
+        "other_nutritional_substances_tags": [],
+        "packaging": "",
+        "packaging_hierarchy": [],
+        "packaging_lc": "fr",
+        "packaging_old": "",
+        "packaging_tags": [],
+        "packagings": [],
+        "photographers_tags": [
+            "kiliweb",
+            "djallil-med",
+            "openfoodfacts-contributors",
+            "gluten-scan"
+        ],
+        "pnns_groups_1": "Beverages",
+        "pnns_groups_1_tags": [
+            "beverages",
+            "known"
+        ],
+        "pnns_groups_2": "Waters and flavored waters",
+        "pnns_groups_2_tags": [
+            "waters-and-flavored-waters",
+            "known"
+        ],
+        "popularity_key": 20950000042,
+        "popularity_tags": [
+            "top-50000-scans-2019",
+            "top-100000-scans-2019",
+            "at-least-5-scans-2019",
+            "at-least-10-scans-2019",
+            "top-75-percent-scans-2019",
+            "top-80-percent-scans-2019",
+            "top-85-percent-scans-2019",
+            "top-90-percent-scans-2019",
+            "top-50-dz-scans-2019",
+            "top-100-dz-scans-2019",
+            "top-500-dz-scans-2019",
+            "top-1000-dz-scans-2019",
+            "top-5000-dz-scans-2019",
+            "top-10000-dz-scans-2019",
+            "top-50000-dz-scans-2019",
+            "top-100000-dz-scans-2019",
+            "top-country-dz-scans-2019",
+            "at-least-5-dz-scans-2019",
+            "at-least-10-dz-scans-2019",
+            "top-50000-scans-2020",
+            "top-100000-scans-2020",
+            "at-least-5-scans-2020",
+            "at-least-10-scans-2020",
+            "top-75-percent-scans-2020",
+            "top-80-percent-scans-2020",
+            "top-85-percent-scans-2020",
+            "top-90-percent-scans-2020",
+            "top-10-dz-scans-2020",
+            "top-50-dz-scans-2020",
+            "top-100-dz-scans-2020",
+            "top-500-dz-scans-2020",
+            "top-1000-dz-scans-2020",
+            "top-5000-dz-scans-2020",
+            "top-10000-dz-scans-2020",
+            "top-50000-dz-scans-2020",
+            "top-100000-dz-scans-2020",
+            "top-country-dz-scans-2020",
+            "at-least-5-dz-scans-2020",
+            "at-least-10-dz-scans-2020",
+            "top-50000-scans-2021",
+            "top-100000-scans-2021",
+            "at-least-5-scans-2021",
+            "at-least-10-scans-2021",
+            "top-75-percent-scans-2021",
+            "top-80-percent-scans-2021",
+            "top-85-percent-scans-2021",
+            "top-90-percent-scans-2021",
+            "top-50-dz-scans-2021",
+            "top-100-dz-scans-2021",
+            "top-500-dz-scans-2021",
+            "top-1000-dz-scans-2021",
+            "top-5000-dz-scans-2021",
+            "top-10000-dz-scans-2021",
+            "top-50000-dz-scans-2021",
+            "top-100000-dz-scans-2021",
+            "top-country-dz-scans-2021",
+            "at-least-5-dz-scans-2021",
+            "at-least-10-dz-scans-2021"
+        ],
+        "product_name": "Eau de bessbessa",
+        "product_name_fr": "Eau de bessbessa",
+        "product_name_fr_debug_tags": [],
+        "product_quantity": 1500,
+        "purchase_places": "Algérie",
+        "purchase_places_debug_tags": [],
+        "purchase_places_tags": [
+            "algerie"
+        ],
+        "quantity": "1.5 l",
+        "quantity_debug_tags": [],
+        "removed_countries_tags": [],
+        "rev": 44,
+        "scans_n": 54,
+        "selected_images": {
+            "front": {
+                "display": {
+                    "en": "https://images.openfoodfacts.org/images/products/613/408/200/0017/front_en.40.400.jpg",
+                    "fr": "https://images.openfoodfacts.org/images/products/613/408/200/0017/front_fr.42.400.jpg"
+                },
+                "small": {
+                    "en": "https://images.openfoodfacts.org/images/products/613/408/200/0017/front_en.40.200.jpg",
+                    "fr": "https://images.openfoodfacts.org/images/products/613/408/200/0017/front_fr.42.200.jpg"
+                },
+                "thumb": {
+                    "en": "https://images.openfoodfacts.org/images/products/613/408/200/0017/front_en.40.100.jpg",
+                    "fr": "https://images.openfoodfacts.org/images/products/613/408/200/0017/front_fr.42.100.jpg"
+                }
+            },
+            "ingredients": {
+                "display": {
+                    "fr": "https://images.openfoodfacts.org/images/products/613/408/200/0017/ingredients_fr.44.400.jpg"
+                },
+                "small": {
+                    "fr": "https://images.openfoodfacts.org/images/products/613/408/200/0017/ingredients_fr.44.200.jpg"
+                },
+                "thumb": {
+                    "fr": "https://images.openfoodfacts.org/images/products/613/408/200/0017/ingredients_fr.44.100.jpg"
+                }
+            },
+            "nutrition": {
+                "display": {
+                    "fr": "https://images.openfoodfacts.org/images/products/613/408/200/0017/nutrition_fr.35.400.jpg"
+                },
+                "small": {
+                    "fr": "https://images.openfoodfacts.org/images/products/613/408/200/0017/nutrition_fr.35.200.jpg"
+                },
+                "thumb": {
+                    "fr": "https://images.openfoodfacts.org/images/products/613/408/200/0017/nutrition_fr.35.100.jpg"
+                }
+            },
+            "packaging": {
+                "display": {
+                    "en": "https://images.openfoodfacts.org/images/products/613/408/200/0017/packaging_en.37.400.jpg"
+                },
+                "small": {
+                    "en": "https://images.openfoodfacts.org/images/products/613/408/200/0017/packaging_en.37.200.jpg"
+                },
+                "thumb": {
+                    "en": "https://images.openfoodfacts.org/images/products/613/408/200/0017/packaging_en.37.100.jpg"
+                }
+            }
+        },
+        "serving_size_debug_tags": [],
+        "sortkey": 1609151688,
+        "states": "en:to-be-completed, en:nutrition-facts-completed, en:ingredients-to-be-completed, en:expiration-date-to-be-completed, en:packaging-code-to-be-completed, en:characteristics-to-be-completed, en:origins-to-be-completed, en:categories-completed, en:brands-completed, en:packaging-to-be-completed, en:quantity-completed, en:product-name-completed, en:photos-to-be-validated, en:packaging-photo-to-be-selected, en:nutrition-photo-selected, en:ingredients-photo-selected, en:front-photo-selected, en:photos-uploaded",
+        "states_hierarchy": [
+            "en:to-be-completed",
+            "en:nutrition-facts-completed",
+            "en:ingredients-to-be-completed",
+            "en:expiration-date-to-be-completed",
+            "en:packaging-code-to-be-completed",
+            "en:characteristics-to-be-completed",
+            "en:origins-to-be-completed",
+            "en:categories-completed",
+            "en:brands-completed",
+            "en:packaging-to-be-completed",
+            "en:quantity-completed",
+            "en:product-name-completed",
+            "en:photos-to-be-validated",
+            "en:packaging-photo-to-be-selected",
+            "en:nutrition-photo-selected",
+            "en:ingredients-photo-selected",
+            "en:front-photo-selected",
+            "en:photos-uploaded"
+        ],
+        "states_tags": [
+            "en:to-be-completed",
+            "en:nutrition-facts-completed",
+            "en:ingredients-to-be-completed",
+            "en:expiration-date-to-be-completed",
+            "en:packaging-code-to-be-completed",
+            "en:characteristics-to-be-completed",
+            "en:origins-to-be-completed",
+            "en:categories-completed",
+            "en:brands-completed",
+            "en:packaging-to-be-completed",
+            "en:quantity-completed",
+            "en:product-name-completed",
+            "en:photos-to-be-validated",
+            "en:packaging-photo-to-be-selected",
+            "en:nutrition-photo-selected",
+            "en:ingredients-photo-selected",
+            "en:front-photo-selected",
+            "en:photos-uploaded"
+        ],
+        "stores": "",
+        "stores_debug_tags": [],
+        "stores_tags": [],
+        "traces": "",
+        "traces_debug_tags": [],
+        "traces_from_ingredients": "",
+        "traces_from_user": "(fr) ",
+        "traces_hierarchy": [],
+        "traces_tags": [],
+        "unique_scans_n": 30,
+        "unknown_nutrients_tags": [],
+        "update_key": "ing20220322",
+        "vitamins_prev_tags": [],
+        "vitamins_tags": []
+    },
+    "status": 1,
+    "status_verbose": "product found"
+}

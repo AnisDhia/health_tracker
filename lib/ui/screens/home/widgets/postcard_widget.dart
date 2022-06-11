@@ -61,6 +61,7 @@ class _PostCardState extends State<PostCard> {
     final model.User user = Provider.of<UserProvider>(context).getUser;
     return Container(
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
         color: Theme.of(context).brightness == Brightness.dark
             ? const Color.fromARGB(255, 15, 15, 15)
             : Colors.grey.shade200,
@@ -153,6 +154,7 @@ class _PostCardState extends State<PostCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
+                padding: const EdgeInsets.symmetric(vertical: 4),
                 child: Text(
                   DateFormat.yMMMd()
                       .format(widget.snap['datePublished'].toDate()),
@@ -160,23 +162,13 @@ class _PostCardState extends State<PostCard> {
                       // color: secondaryColor,
                       ),
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 4),
               ),
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.only(
                   top: 8,
                 ),
-                child: RichText(
-                  text: TextSpan(
-                    style: const TextStyle(/*color: primaryColor*/),
-                    children: [
-                      TextSpan(
-                        text: ' ${widget.snap['description']}',
-                      ),
-                    ],
-                  ),
-                ),
+                child: Text(' ${widget.snap['description']}'),
               ),
             ],
           ),
@@ -209,11 +201,6 @@ class _PostCardState extends State<PostCard> {
                 opacity: isLikeAnimating ? 1 : 0,
                 child: LikeAnimation(
                   isAnimating: isLikeAnimating,
-                  child: const Icon(
-                    Icons.favorite,
-                    color: Colors.white,
-                    size: 100,
-                  ),
                   duration: const Duration(
                     milliseconds: 400,
                   ),
@@ -222,6 +209,11 @@ class _PostCardState extends State<PostCard> {
                       isLikeAnimating = false;
                     });
                   },
+                  child: const Icon(
+                    Icons.favorite,
+                    color: Colors.white,
+                    size: 100,
+                  ),
                 ),
               ),
             ],

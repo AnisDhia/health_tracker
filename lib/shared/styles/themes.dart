@@ -6,6 +6,7 @@ class MyThemes {
   static final primaryColor = Colors.red.shade300;
 
   static final darkTheme = ThemeData.dark().copyWith(
+    drawerTheme: const DrawerThemeData(backgroundColor: Color.fromARGB(255, 15, 15, 15)),
     appBarTheme: const AppBarTheme(
       color: /*Colors.grey.shade900*/ Colors.black,
       elevation: 0,
@@ -25,6 +26,7 @@ class MyThemes {
     //     const FloatingActionButtonThemeData(backgroundColor: primary),
     listTileTheme: const ListTileThemeData(textColor: Colors.white),
     cardColor: const Color.fromARGB(255, 15, 15, 15),
+    dialogBackgroundColor: const Color.fromARGB(255, 15, 15, 15),
     textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
       foregroundColor: MaterialStateProperty.all(Colors.white),

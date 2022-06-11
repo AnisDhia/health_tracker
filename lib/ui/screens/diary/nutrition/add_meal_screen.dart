@@ -1,20 +1,17 @@
 import 'dart:developer';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:health_tracker/data/models/food_model.dart';
 import 'package:health_tracker/data/models/product_model.dart';
 import 'package:health_tracker/data/repositories/fdc_api.dart';
-import 'package:health_tracker/data/repositories/firestore.dart';
 import 'package:health_tracker/data/repositories/off_api.dart';
 import 'package:health_tracker/ui/screens/diary/nutrition/food_details_screen.dart';
 import 'package:health_tracker/ui/screens/diary/nutrition/quick_add_screen.dart';
 import 'package:health_tracker/ui/screens/diary/nutrition/upc_details_screen.dart';
-import 'package:health_tracker/ui/widgets/search_field_widget.dart';
 import 'package:health_tracker/ui/widgets/snackbar_widget.dart';
-import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class AddMealScreen extends StatefulWidget {
   const AddMealScreen({Key? key, required this.title}) : super(key: key);
@@ -155,13 +152,21 @@ class _AddFoodScreenState extends State<AddMealScreen> {
                                                     color: Colors.red,
                                                     context: context);
                                               } else {
+                                                Product product =
+                                                    await OpenFoodFactsAPI
+                                                        .instance
+                                                        .fetchProductByUPC(
+                                                            _scanBarcode /*'6134082000017'*/);
+                                                if (!mounted) {
+                                                  return;
+                                                }
                                                 Navigator.push(
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (context) =>
                                                             ProductDetailsScreen(
-                                                                upc:
-                                                                    _scanBarcode,
+                                                                product:
+                                                                    product,
                                                                 meal: widget
                                                                     .title)));
                                               }
@@ -172,7 +177,8 @@ class _AddFoodScreenState extends State<AddMealScreen> {
                                               child: Column(
                                                 children: const [
                                                   Icon(
-                                                    Icons.qr_code_scanner,
+                                                    // Icons.qr_code_scanner,
+                                                    CupertinoIcons.barcode_viewfinder,
                                                     size: 50,
                                                   ),
                                                   SizedBox(
@@ -264,15 +270,9 @@ class _AddFoodScreenState extends State<AddMealScreen> {
                             ],
                           ),
                         ),
-                        Container(
-                          child: const Center(child: Text("My Meals")),
-                        ),
-                        Container(
-                          child: const Center(child: Text("My Recipes")),
-                        ),
-                        Container(
-                          child: const Center(child: Text("My Foods")),
-                        )
+                        const Center(child: Text("My Meals")),
+                        const Center(child: Text("My Recipes")),
+                        const Center(child: Text("My Foods"))
                       ],
                     ))
                   ],

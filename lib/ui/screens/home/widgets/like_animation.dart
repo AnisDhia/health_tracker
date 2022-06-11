@@ -16,10 +16,10 @@ class LikeAnimation extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _LikeAnimationState createState() => _LikeAnimationState();
+  LikeAnimationState createState() => LikeAnimationState();
 }
 
-class _LikeAnimationState extends State<LikeAnimation>
+class LikeAnimationState extends State<LikeAnimation>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> scale;

@@ -1,32 +1,54 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/bloc/auth/authentication_cubit.dart';
+import 'package:health_tracker/shared/services/user_provider.dart';
 import 'package:health_tracker/shared/styles/themes.dart';
+import 'package:health_tracker/ui/screens/profile/profile_screen.dart';
 import 'package:health_tracker/ui/screens/settings/settings_screen.dart';
 import 'package:provider/provider.dart';
 
-class NavDrawer extends StatelessWidget {
-  NavDrawer({Key? key, required this.authenticationCubit}) : super(key: key);
+class NavDrawer extends StatefulWidget {
+  const NavDrawer({Key? key, required this.authenticationCubit})
+      : super(key: key);
 
-  AuthenticationCubit authenticationCubit;
+  final AuthenticationCubit authenticationCubit;
 
   @override
+  State<NavDrawer> createState() => _NavDrawerState();
+}
+
+class _NavDrawerState extends State<NavDrawer> {
+  @override
   Widget build(BuildContext context) {
+    final UserProvider userProvider = Provider.of<UserProvider>(context);
+    final user = userProvider.getUser;
     return Drawer(
         child: ListView(
       padding: EdgeInsets.zero,
       children: <Widget>[
-        const DrawerHeader(
-          child: Text(
-            'Side menu',
-            style: TextStyle(color: Colors.white, fontSize: 25),
+        DrawerHeader(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                CircleAvatar(
+                  backgroundColor: Colors.red,
+                  backgroundImage: NetworkImage(user.photoUrl),
+                  radius: 25,
+                ),
+                const SizedBox(height: 14),
+                Text(
+                  user.username,
+                  style: const TextStyle(fontSize: 26),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  user.email,
+                  style: const TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+              ],
+            ),
           ),
-          decoration: BoxDecoration(
-              color: Colors.red,
-              image: DecorationImage(
-                fit: BoxFit.fill,
-                image: AssetImage('assets/images/cover.jpg'),
-              )),
         ),
         ListTile(
           leading: const Icon(Icons.input),
@@ -38,10 +60,12 @@ class NavDrawer extends StatelessWidget {
           title: const Text('Profile'),
           onTap: () => {
             Navigator.pop(context),
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (BuildContext context) => const ProfileScreen()))
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => ProfileScreen(
+                          uid: user.uid,
+                        )))
           },
         ),
         ListTile(
@@ -50,9 +74,9 @@ class NavDrawer extends StatelessWidget {
           onTap: () => {
             Navigator.of(context).pop(),
             Navigator.push(
-              context, 
-              MaterialPageRoute(
-                builder: (BuildContext context) => const SettingsScreen()))
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => const SettingsScreen()))
           },
         ),
         ListTile(
@@ -65,8 +89,8 @@ class NavDrawer extends StatelessWidget {
           title: const Text('Logout'),
           onTap: () => {
             // AuthenticationService().signOut()
-            authenticationCubit.signout()
-            },
+            widget.authenticationCubit.signout()
+          },
         ),
         ListTile(
           leading: const Icon(CupertinoIcons.moon_stars),
@@ -74,12 +98,11 @@ class NavDrawer extends StatelessWidget {
           trailing: Consumer<ThemeNotifier>(
             builder: (context, value, child) {
               return CupertinoSwitch(
-                value: value.darkTheme,
-                activeColor: Colors.red,
-                onChanged: (newValue) {
-                  value.toggleTheme();
-                }
-              );
+                  value: value.darkTheme,
+                  activeColor: Colors.red,
+                  onChanged: (newValue) {
+                    value.toggleTheme();
+                  });
             },
           ),
         ),

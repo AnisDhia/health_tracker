@@ -1,10 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:heart_bpm/chart.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:heart_bpm/heart_bpm.dart';
 
 class HeartStatsScreen extends StatefulWidget {
   const HeartStatsScreen({Key? key}) : super(key: key);
@@ -14,8 +11,6 @@ class HeartStatsScreen extends StatefulWidget {
 }
 
 class _HeartDetailsScreenState extends State<HeartStatsScreen> {
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,6 +80,7 @@ class _HeartDetailsScreenState extends State<HeartStatsScreen> {
                     width: double.infinity,
                     child: LineChart(LineChartData(
                       gridData: FlGridData(show: false),
+                      borderData: FlBorderData(show: false),
                       titlesData: FlTitlesData(
                         show: true,
                         topTitles: AxisTitles(
@@ -201,7 +197,7 @@ class _HeartDetailsScreenState extends State<HeartStatsScreen> {
                                       Align(
                                         alignment: Alignment.centerRight,
                                         child: Icon(
-                                          FontAwesomeIcons.heartbeat,
+                                          FontAwesomeIcons.heartPulse,
                                           color: Colors.red,
                                         ),
                                       )
@@ -327,6 +323,7 @@ class _HeartDetailsScreenState extends State<HeartStatsScreen> {
                         ),
                       ],
                     ),
+                    backgroundColor: Colors.grey.shade800.withOpacity(0.3),
                     animation: true,
                     percent: 1,
                     lineHeight: 18,
@@ -366,7 +363,7 @@ class _HeartDetailsScreenState extends State<HeartStatsScreen> {
                         ),
                       ],
                     ),
-                    backgroundColor: Colors.grey.shade800,
+                    backgroundColor: Colors.grey.shade800.withOpacity(0.3),
                     animation: true,
                     percent: 0.5,
                     lineHeight: 18,
@@ -452,7 +449,7 @@ Widget bottomTitleWidgets(double value, TitleMeta meta) {
       break;
   }
 
-  return Padding(child: text, padding: const EdgeInsets.only(top: 8.0));
+  return Padding(padding: const EdgeInsets.only(top: 8.0), child: text);
 }
 
 Widget leftTitleWidgets(double value, TitleMeta meta) {

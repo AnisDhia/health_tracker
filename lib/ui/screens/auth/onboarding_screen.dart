@@ -1,277 +1,175 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:health_tracker/shared/styles/themes.dart';
 import 'package:health_tracker/ui/screens/auth/welcome_screen.dart';
-import 'package:health_tracker/ui/widgets/custom_dots.dart';
-import 'package:health_tracker/ui/widgets/mycustompainter.dart';
-import 'package:health_tracker/ui/widgets/onboarding_item.dart';
-import 'package:sizer/sizer.dart';
-import 'package:health_tracker/bloc/onboarding/onboarding_cubit.dart';
-import 'package:health_tracker/shared/constants/consts_variables.dart';
+import 'package:introduction_screen/introduction_screen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);
 
   @override
-  State<OnBoardingScreen> createState() => _OnboardingPageState();
+  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
 }
 
-class _OnboardingPageState extends State<OnBoardingScreen> {
-  late PageController _pageController;
+class _OnBoardingScreenState extends State<OnBoardingScreen> {
+  final introKey = GlobalKey<IntroductionScreenState>();
 
-  @override
-  void initState() {
-    _pageController = PageController();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: MyThemes.primary,
-      body: BlocConsumer<OnboardingCubit, OnboardingState>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          OnboardingCubit cubit = BlocProvider.of(context);
-          return SafeArea(
-              child: Column(
-            children: [
-              Stack(
-                alignment: Alignment.topCenter,
-                children: [
-                  Container(
-                      width: 100.w,
-                      height: 95.h,
-                      color: MyThemes.primary,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 10.w,
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    _pageController.previousPage(
-                                        duration:
-                                            const Duration(milliseconds: 500),
-                                        curve: Curves.easeIn);
-
-                                    cubit.curruntindext > 0
-                                        ? cubit.removefromindex()
-                                        : null;
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 20),
-                                    child: Text(
-                                      'Back',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline1
-                                          ?.copyWith(
-                                            fontSize: 13.sp,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                    ),
-                                  ),
-                                ),
-                                CustomDots(myindex: cubit.curruntindext),
-                                SizedBox(
-                                  width: 10.w,
-                                )
-                              ],
-                            )
-                          ],
-                        ),
-                      )),
-                  SizedBox(
-                    width: 100.w,
-                    height: 90.h,
-                    child: CustomPaint(
-                      painter: const MycustomPainter(color: Colors.white),
-                      child: SizedBox(
-                        width: 80.w,
-                        height: 50.h,
-                        child: PageView.builder(
-                          itemCount: onboardinglist.length,
-                          physics: const NeverScrollableScrollPhysics(),
-                          controller: _pageController,
-                          itemBuilder: ((context, index) {
-                            return OnBoardingItem(
-                              index: index,
-                              image: onboardinglist[index].img,
-                              title: onboardinglist[index].title,
-                              description: onboardinglist[index].description,
-                            );
-                          }),
-                        ),
-                      ),
-                    ),
-                  ),
-                  cubit.curruntindext != onboardinglist.length - 1
-                      ? Align(
-                          alignment: Alignment.topRight,
-                          child: Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: MyButton(
-                                color: MyThemes.primary,
-                                width: 19.w,
-                                title: 'Skip',
-                                
-                                func: () {
-                                  _pageController.animateToPage(
-                                      onboardinglist.length - 1,
-                                      duration:
-                                          const Duration(milliseconds: 500),
-                                      curve: Curves.easeOut);
-                                  cubit.curruntindext <
-                                          onboardinglist.length - 1
-                                      ? cubit.skipindex()
-                                      : null;
-                                }),
-                          ))
-                      : Container(),
-                  Positioned(
-                    bottom: 10.h,
-                    child: CircularButton(
-                        color: Colors.pink.withOpacity(0.6),
-                        width: 30.w,
-                        icon: Icons.arrow_right_alt_sharp,
-                        condition:
-                            cubit.curruntindext != onboardinglist.length - 1,
-                        func: () {
-                          _pageController.nextPage(
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.easeInOut);
-                          if (cubit.curruntindext < onboardinglist.length - 1) {
-                            cubit.changeindex();
-                          } else {
-                            Navigator.pushReplacement(context,  MaterialPageRoute(
-                                    builder: (context) => const WelcomeScreen()));
-                            cubit.savepref('seen');
-                          }
-                        }),
-                  ),
-                ],
-              ),
-            ],
-          ));
-        },
-      ),
+  void _onIntroEnd(context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => const WelcomeScreen()),
     );
   }
-}
 
-class MyButton extends StatelessWidget {
-  const MyButton(
-      {Key? key,
-      required this.color,
-      required this.width,
-      required this.title,
-      required this.func})
-      : super(key: key);
+  Widget _buildFullscreenImage() {
+    return Image.asset(
+      'assets/images/cover.jpg',
+      fit: BoxFit.cover,
+      height: double.infinity,
+      width: double.infinity,
+      alignment: Alignment.center,
+    );
+  }
 
-  final Color color;
-  final double width;
-  final String title;
-  final Function() func;
+  Widget _buildImage(String assetName, [double width = 350]) {
+    return Image.asset('assets/images/$assetName', width: width);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      padding: EdgeInsets.symmetric(vertical: 0.1.h),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(200),
-        color: color,
-      ),
-      child: MaterialButton(
-        onPressed: func,
-        child: Text(
-          title,
-          style: Theme.of(context)
-              .textTheme
-              .headline1
-              ?.copyWith(fontSize: 11.sp, color: Colors.white, fontWeight: FontWeight.bold),
+    const bodyStyle = TextStyle(fontSize: 19.0);
+
+    final pageDecoration = PageDecoration(
+      titleTextStyle: const TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
+      bodyTextStyle: bodyStyle,
+      bodyPadding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+      pageColor: Theme.of(context).scaffoldBackgroundColor,
+      imagePadding: EdgeInsets.zero,
+    );
+
+    return IntroductionScreen(
+      key: introKey,
+      globalBackgroundColor: Colors.white,
+      // globalHeader: Align(
+      //   alignment: Alignment.topRight,
+      //   child: SafeArea(
+      //     child: Padding(
+      //       padding: const EdgeInsets.only(top: 16, right: 16),
+      //       child: _buildImage('app_logo.png', 100),
+      //     ),
+      //   ),
+      // ),
+      globalFooter: SizedBox(
+        width: double.infinity,
+        height: 60,
+        child: ElevatedButton(
+          child: const Text(
+            'Let\'s go right away!',
+            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.white),
+          ),
+          onPressed: () => _onIntroEnd(context),
         ),
       ),
-    );
-  }
-}
-
-class CircularButton extends StatelessWidget {
-  const CircularButton(
-      {Key? key,
-      required this.color,
-      required this.width,
-      required this.icon,
-      required this.func,
-      required this.condition})
-      : super(key: key);
-
-  final Color color;
-  final double width;
-  final IconData icon;
-  final Function() func;
-  final bool condition;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      padding: EdgeInsets.symmetric(vertical: 2.h),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: color,
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 5.w),
-        child: MaterialButton(
-          onPressed: func,
-          child: Center(
-            child: (condition)
-                ? Icon(
-                    icon,
-                    color: Colors.white,
-                    size: 30.sp,
-                  )
-                : Text(
-                    'Begin',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline1
-                        ?.copyWith(fontSize: 9.sp, color: Colors.white),
-                  ),
+      pages: [
+        PageViewModel(
+          title: "Start a healthy lifestyle",
+          body:
+              "Instead of having to buy an entire share, invest any amount you want.",
+          image: _buildImage('onboardingone.png'),
+          decoration: pageDecoration,
+        ),
+        PageViewModel(
+          title: "Track your progress",
+          body:
+              "Download the Stockpile app and master the market with our mini-lesson.",
+          image: _buildImage('onboardingtwo.png'),
+          decoration: pageDecoration,
+        ),
+        PageViewModel(
+          title: "Connect with others",
+          body:
+              "Kids and teens can track their stocks 24/7 and place trades that you approve.",
+          image: _buildImage('onboardingthree.png'),
+          decoration: pageDecoration,
+        ),
+        PageViewModel(
+          title: "High quality efficient workouts",
+          body:
+              "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
+          image: _buildFullscreenImage(),
+          decoration: pageDecoration.copyWith(
+            contentMargin: const EdgeInsets.symmetric(horizontal: 16),
+            fullScreen: true,
+            bodyFlex: 2,
+            imageFlex: 3,
           ),
         ),
+        PageViewModel(
+          title: "Tasty and healhty recipes",
+          body: "Another beautiful body text for this example onboarding",
+          image: _buildImage('img2.jpg'),
+          footer: ElevatedButton(
+            onPressed: () {
+              introKey.currentState?.animateScroll(0);
+            },
+            style: ElevatedButton.styleFrom(
+              primary: Colors.lightBlue,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+            ),
+            child: const Text(
+              'FooButton',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          decoration: pageDecoration,
+        ),
+        PageViewModel(
+          title: "Title of last page - reversed",
+          bodyWidget: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Text("Click on ", style: bodyStyle),
+              Icon(Icons.edit),
+              Text(" to edit a post", style: bodyStyle),
+            ],
+          ),
+          decoration: pageDecoration.copyWith(
+            bodyFlex: 2,
+            imageFlex: 4,
+            bodyAlignment: Alignment.bottomCenter,
+            imageAlignment: Alignment.topCenter,
+          ),
+          image: _buildImage('img1.jpg'),
+          reverse: true,
+        ),
+      ],
+      onDone: () => _onIntroEnd(context),
+      //onSkip: () => _onIntroEnd(context), // You can override onSkip callback
+      showSkipButton: false,
+      skipOrBackFlex: 0,
+      nextFlex: 0,
+      showBackButton: true,
+      //rtl: true, // Display as right-to-left
+      back: const Icon(Icons.arrow_back),
+      skip: const Text('Skip', style: TextStyle(fontWeight: FontWeight.w600)),
+      next: const Icon(Icons.arrow_forward),
+      done: const Text('Done', style: TextStyle(fontWeight: FontWeight.w600)),
+      curve: Curves.fastLinearToSlowEaseIn,
+      controlsMargin: const EdgeInsets.all(16),
+      controlsPadding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
+      dotsDecorator: const DotsDecorator(
+        size: Size(10.0, 10.0),
+        color: Color(0xFFBDBDBD),
+        activeSize: Size(22.0, 10.0),
+        activeShape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(25.0)),
+        ),
       ),
+      // dotsContainerDecorator: const ShapeDecoration(
+      //   color: Colors.black87,
+      //   shape: RoundedRectangleBorder(
+      //     borderRadius: BorderRadius.all(Radius.circular(8.0)),
+      //   ),
+      // ),
     );
   }
 }
-
-/*MaterialButton(
-                      minWidth: 10.w,
-                      height: 10.w,
-                      padding: EdgeInsets.all(14.sp),
-                      onPressed: () {},
-                      shape: const CircleBorder(),
-                      color: Colors.deepPurple,
-                      elevation: 20,
-                      child: Icon(
-                        Icons.calendar_today,
-                        color: Appcolors.white,
-                        size: 25.sp,
-                      ),
-                    )*/

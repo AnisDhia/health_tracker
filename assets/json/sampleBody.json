@@ -1,0 +1,384 @@
+{
+    "recipes": [
+        {
+            "vegetarian": false,
+            "vegan": false,
+            "glutenFree": true,
+            "dairyFree": true,
+            "veryHealthy": false,
+            "cheap": false,
+            "veryPopular": false,
+            "sustainable": false,
+            "weightWatcherSmartPoints": 16,
+            "gaps": "no",
+            "lowFodmap": false,
+            "aggregateLikes": 6,
+            "spoonacularScore": 76.0,
+            "healthScore": 28.0,
+            "creditsText": "Foodista.com – The Cooking Encyclopedia Everyone Can Edit",
+            "license": "CC BY 3.0",
+            "sourceName": "Foodista",
+            "pricePerServing": 228.22,
+            "extendedIngredients": [
+                {
+                    "id": 11266,
+                    "aisle": "Produce",
+                    "image": "mushrooms.png",
+                    "consistency": "solid",
+                    "name": "baby bella mushrooms",
+                    "nameClean": "crimini mushrooms",
+                    "original": "3 baby portabella mushrooms, coarsely chopped",
+                    "originalName": "baby portabella mushrooms, coarsely chopped",
+                    "amount": 3.0,
+                    "unit": "",
+                    "meta": [
+                        "coarsely chopped"
+                    ],
+                    "measures": {
+                        "us": {
+                            "amount": 3.0,
+                            "unitShort": "",
+                            "unitLong": ""
+                        },
+                        "metric": {
+                            "amount": 3.0,
+                            "unitShort": "",
+                            "unitLong": ""
+                        }
+                    }
+                },
+                {
+                    "id": 1027063,
+                    "aisle": "Meat",
+                    "image": "breakfast-sausage-links.jpg",
+                    "consistency": "solid",
+                    "name": "breakfast sausage",
+                    "nameClean": "breakfast sausage",
+                    "original": "6 ounces Diestel Breakfast Sausage",
+                    "originalName": "Diestel Breakfast Sausage",
+                    "amount": 6.0,
+                    "unit": "ounces",
+                    "meta": [],
+                    "measures": {
+                        "us": {
+                            "amount": 6.0,
+                            "unitShort": "oz",
+                            "unitLong": "ounces"
+                        },
+                        "metric": {
+                            "amount": 170.097,
+                            "unitShort": "g",
+                            "unitLong": "grams"
+                        }
+                    }
+                },
+                {
+                    "id": 11147,
+                    "aisle": "Produce",
+                    "image": "swiss-chard.jpg",
+                    "consistency": "solid",
+                    "name": "chard",
+                    "nameClean": "swiss chard",
+                    "original": "2-3 stalks rainbow chard, stems removed and chopped, leaves chopped",
+                    "originalName": "rainbow chard, stems removed and chopped, leaves chopped",
+                    "amount": 2.0,
+                    "unit": "stalks",
+                    "meta": [
+                        "chopped"
+                    ],
+                    "measures": {
+                        "us": {
+                            "amount": 2.0,
+                            "unitShort": "stalks",
+                            "unitLong": "stalks"
+                        },
+                        "metric": {
+                            "amount": 2.0,
+                            "unitShort": "stalks",
+                            "unitLong": "stalks"
+                        }
+                    }
+                },
+                {
+                    "id": 1123,
+                    "aisle": "Milk, Eggs, Other Dairy",
+                    "image": "egg.png",
+                    "consistency": "solid",
+                    "name": "eggs",
+                    "nameClean": "egg",
+                    "original": "6 eggs",
+                    "originalName": "eggs",
+                    "amount": 6.0,
+                    "unit": "",
+                    "meta": [],
+                    "measures": {
+                        "us": {
+                            "amount": 6.0,
+                            "unitShort": "",
+                            "unitLong": ""
+                        },
+                        "metric": {
+                            "amount": 6.0,
+                            "unitShort": "",
+                            "unitLong": ""
+                        }
+                    }
+                },
+                {
+                    "id": 11291,
+                    "aisle": "Produce",
+                    "image": "spring-onions.jpg",
+                    "consistency": "solid",
+                    "name": "green onion",
+                    "nameClean": "spring onions",
+                    "original": "2 stalks green onion, chopped",
+                    "originalName": "green onion, chopped",
+                    "amount": 2.0,
+                    "unit": "stalks",
+                    "meta": [
+                        "chopped"
+                    ],
+                    "measures": {
+                        "us": {
+                            "amount": 2.0,
+                            "unitShort": "stalks",
+                            "unitLong": "stalks"
+                        },
+                        "metric": {
+                            "amount": 2.0,
+                            "unitShort": "stalks",
+                            "unitLong": "stalks"
+                        }
+                    }
+                },
+                {
+                    "id": 4053,
+                    "aisle": "Oil, Vinegar, Salad Dressing",
+                    "image": "olive-oil.jpg",
+                    "consistency": "liquid",
+                    "name": "olive oil",
+                    "nameClean": "olive oil",
+                    "original": "2 teaspoons olive oil",
+                    "originalName": "olive oil",
+                    "amount": 2.0,
+                    "unit": "teaspoons",
+                    "meta": [],
+                    "measures": {
+                        "us": {
+                            "amount": 2.0,
+                            "unitShort": "tsps",
+                            "unitLong": "teaspoons"
+                        },
+                        "metric": {
+                            "amount": 2.0,
+                            "unitShort": "tsps",
+                            "unitLong": "teaspoons"
+                        }
+                    }
+                },
+                {
+                    "id": 11507,
+                    "aisle": "Produce",
+                    "image": "sweet-potato.png",
+                    "consistency": "solid",
+                    "name": "sweet potato",
+                    "nameClean": "sweet potato",
+                    "original": "½ sweet potato",
+                    "originalName": "sweet potato",
+                    "amount": 0.5,
+                    "unit": "",
+                    "meta": [],
+                    "measures": {
+                        "us": {
+                            "amount": 0.5,
+                            "unitShort": "",
+                            "unitLong": ""
+                        },
+                        "metric": {
+                            "amount": 0.5,
+                            "unitShort": "",
+                            "unitLong": ""
+                        }
+                    }
+                },
+                {
+                    "id": 14412,
+                    "aisle": "Beverages",
+                    "image": "water.png",
+                    "consistency": "liquid",
+                    "name": "water",
+                    "nameClean": "water",
+                    "original": "¼ cup water",
+                    "originalName": "water",
+                    "amount": 0.25,
+                    "unit": "cup",
+                    "meta": [],
+                    "measures": {
+                        "us": {
+                            "amount": 0.25,
+                            "unitShort": "cups",
+                            "unitLong": "cups"
+                        },
+                        "metric": {
+                            "amount": 59.147,
+                            "unitShort": "ml",
+                            "unitLong": "milliliters"
+                        }
+                    }
+                }
+            ],
+            "id": 664054,
+            "title": "Turkey Sausage, Chard & Sweet Potato Breakfast Scramble",
+            "readyInMinutes": 45,
+            "servings": 2,
+            "sourceUrl": "http://www.foodista.com/recipe/S3LTQRHW/turkey-sausage-chard-sweet-potato-breakfast-scramble",
+            "image": "https://spoonacular.com/recipeImages/664054-556x370.jpg",
+            "imageType": "jpg",
+            "summary": "Turkey Sausage, Chard & Sweet Potato Breakfast Scramble might be just the morn meal you are searching for. One serving contains <b>471 calories</b>, <b>32g of protein</b>, and <b>32g of fat</b>. For <b>$2.28 per serving</b>, this recipe <b>covers 33%</b> of your daily requirements of vitamins and minerals. 3 people were impressed by this recipe. A mixture of olive oil, baby portabella mushrooms, green onion, and a handful of other ingredients are all it takes to make this recipe so tasty. From preparation to the plate, this recipe takes about <b>45 minutes</b>. It is a good option if you're following a <b>caveman, gluten free, dairy free, and primal</b> diet. All things considered, we decided this recipe <b>deserves a spoonacular score of 82%</b>. This score is spectacular. Try <a href=\"https://spoonacular.com/recipes/rutabaga-and-sweet-potato-breakfast-hash-with-turkey-sausage-587476\">Rutabagan and Sweet Potato Breakfast Hash with Turkey Sausage</a>, <a href=\"https://spoonacular.com/recipes/mexican-egg-and-sweet-potato-breakfast-scramble-476084\">Mexican Egg and Sweet Potato Breakfast Scramble</a>, and <a href=\"https://spoonacular.com/recipes/smoked-salmon-collards-and-sweet-potato-breakfast-scramble-551533\">Smoked Salmon, Collards and Sweet Potato Breakfast Scramble</a> for similar recipes.",
+            "cuisines": [],
+            "dishTypes": [
+                "morning meal",
+                "brunch",
+                "breakfast"
+            ],
+            "diets": [
+                "gluten free",
+                "dairy free",
+                "paleolithic",
+                "primal"
+            ],
+            "occasions": [],
+            "instructions": "<ol><li>In a medium-sized skillet, heat about two teaspoons of olive oil on medium heat. Add the chopped sweet potato and saut 3 or 4 minutes before adding a little liquid and covering. In about 2 minutes, check to see if the liquid has burned off. If it has, add a little more and cover again. Repeat this several times until the sweet potato is soften, but still al dente. Add the mushrooms and the chopped chard stems. Saut another 3 to 5 minutes and add additional liquid if necessary.</li><li>Move the veggies to one side of the skillet with a wooden spoon and add the ground breakfast sausage. Brown the meat and using the wooden spoon break it apart. Continue sauting until the sausage is cooked all the way through.</li><li>Immediately add the green onion and chard leaves. Allow to steam for about 30 seconds before pouring the scrambled egg mixture evenly over the meat and veggies. This is where the technique comes in. Avoid the temptation to stir. Simply allow the skillet to sit 2 to three minutes. Then, using a wooden spoon or spatula, begin flipping sections of egg and veggies (similar to how you would fold whipped egg whites into a cake batter, just gently fold the scramble onto itself). Once all sections have been flipped over, everything to sit and cook another 2 or 3 minutes. Repeat the flipping.  Continue doing this until the egg is no longer cooking to the skillet.</li><li>Serve with your favorite toppings!</li></ol>",
+            "analyzedInstructions": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "number": 1,
+                            "step": "In a medium-sized skillet, heat about two teaspoons of olive oil on medium heat.",
+                            "ingredients": [
+                                {
+                                    "id": 4053,
+                                    "name": "olive oil",
+                                    "localizedName": "olive oil",
+                                    "image": "olive-oil.jpg"
+                                }
+                            ],
+                            "equipment": [
+                                {
+                                    "id": 404645,
+                                    "name": "frying pan",
+                                    "localizedName": "frying pan",
+                                    "image": "pan.png"
+                                }
+                            ]
+                        },
+                        {
+                            "number": 2,
+                            "step": "Add the chopped sweet potato and saut 3 or 4 minutes before adding a little liquid and covering. In about 2 minutes, check to see if the liquid has burned off. If it has, add a little more and cover again. Repeat this several times until the sweet potato is soften, but still al dente.",
+                            "ingredients": [
+                                {
+                                    "id": 11507,
+                                    "name": "sweet potato",
+                                    "localizedName": "sweet potato",
+                                    "image": "sweet-potato.png"
+                                }
+                            ],
+                            "equipment": [],
+                            "length": {
+                                "number": 6,
+                                "unit": "minutes"
+                            }
+                        },
+                        {
+                            "number": 3,
+                            "step": "Add the mushrooms and the chopped chard stems. Saut another 3 to 5 minutes and add additional liquid if necessary.Move the veggies to one side of the skillet with a wooden spoon and add the ground breakfast sausage. Brown the meat and using the wooden spoon break it apart. Continue sauting until the sausage is cooked all the way through.Immediately add the green onion and chard leaves. Allow to steam for about 30 seconds before pouring the scrambled egg mixture evenly over the meat and veggies. This is where the technique comes in. Avoid the temptation to stir. Simply allow the skillet to sit 2 to three minutes. Then, using a wooden spoon or spatula, begin flipping sections of egg and veggies (similar to how you would fold whipped egg whites into a cake batter, just gently fold the scramble onto itself). Once all sections have been flipped over, everything to sit and cook another 2 or 3 minutes. Repeat the flipping.  Continue doing this until the egg is no longer cooking to the skillet.",
+                            "ingredients": [
+                                {
+                                    "id": 1027063,
+                                    "name": "breakfast sausage",
+                                    "localizedName": "breakfast sausage",
+                                    "image": "breakfast-sausage-links.jpg"
+                                },
+                                {
+                                    "id": 11291,
+                                    "name": "green onions",
+                                    "localizedName": "green onions",
+                                    "image": "spring-onions.jpg"
+                                },
+                                {
+                                    "id": 1124,
+                                    "name": "egg whites",
+                                    "localizedName": "egg whites",
+                                    "image": "egg-white.jpg"
+                                },
+                                {
+                                    "id": 11260,
+                                    "name": "mushrooms",
+                                    "localizedName": "mushrooms",
+                                    "image": "mushrooms.png"
+                                },
+                                {
+                                    "id": 1017063,
+                                    "name": "sausage",
+                                    "localizedName": "sausage",
+                                    "image": "raw-pork-sausage.png"
+                                },
+                                {
+                                    "id": 11147,
+                                    "name": "swiss chard",
+                                    "localizedName": "swiss chard",
+                                    "image": "swiss-chard.jpg"
+                                },
+                                {
+                                    "id": 1065062,
+                                    "name": "meat",
+                                    "localizedName": "meat",
+                                    "image": "whole-chicken.jpg"
+                                },
+                                {
+                                    "id": 1123,
+                                    "name": "egg",
+                                    "localizedName": "egg",
+                                    "image": "egg.png"
+                                }
+                            ],
+                            "equipment": [
+                                {
+                                    "id": 404732,
+                                    "name": "wooden spoon",
+                                    "localizedName": "wooden spoon",
+                                    "image": "wooden-spoon.jpg"
+                                },
+                                {
+                                    "id": 404645,
+                                    "name": "frying pan",
+                                    "localizedName": "frying pan",
+                                    "image": "pan.png"
+                                },
+                                {
+                                    "id": 404642,
+                                    "name": "spatula",
+                                    "localizedName": "spatula",
+                                    "image": "spatula-or-turner.jpg"
+                                }
+                            ],
+                            "length": {
+                                "number": 8,
+                                "unit": "minutes"
+                            }
+                        },
+                        {
+                            "number": 4,
+                            "step": "Serve with your favorite toppings!",
+                            "ingredients": [],
+                            "equipment": []
+                        }
+                    ]
+                }
+            ],
+            "originalId": null,
+            "spoonacularSourceUrl": "https://spoonacular.com/turkey-sausage-chard-sweet-potato-breakfast-scramble-664054"
+        }
+    ]
+}

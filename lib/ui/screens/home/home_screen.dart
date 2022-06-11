@@ -23,15 +23,14 @@ class _HomeState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       // drawer: const NavDrawer(),
-      appBar: AppBar(
-        title: const Text('Health Tracker'),
-        centerTitle: true,
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Health Tracker'),
+      //   centerTitle: true,
+      // ),
       body: Padding(
         padding: const EdgeInsets.only(top: 16.0),
         child: Column(
           children: [
-            const Text('home'),
             Expanded(
               child: StreamBuilder(
                   stream:
@@ -58,7 +57,6 @@ class _HomeState extends State<HomeScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
         backgroundColor: Colors.red,
         foregroundColor: Colors.white,
         onPressed: () {
@@ -68,6 +66,7 @@ class _HomeState extends State<HomeScreen> {
                 builder: (context) => const AddPostScreen(),
               ));
         },
+        child: const Icon(Icons.add),
       ),
     );
   }

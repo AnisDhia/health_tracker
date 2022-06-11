@@ -31,7 +31,7 @@ Future main() async {
   final prefs = await SharedPreferences.getInstance();
   final bool? seen = prefs.getBool('seen');
 
-  runApp(MyApp(seen: seen));
+  runApp(const MyApp(seen: false));
 }
 
 class MyApp extends StatelessWidget {

@@ -49,7 +49,7 @@ class AuthenticationService {
       UserCredential userCredential = await _firebaseAuth
           .createUserWithEmailAndPassword(email: email, password: password);
 
-      model.User _user = model.User(
+      model.User user = model.User(
         username: name,
         sex: sex,
         uid: userCredential.user!.uid,
@@ -65,7 +65,7 @@ class AuthenticationService {
       await _firestore
           .collection("users")
           .doc(userCredential.user!.uid)
-          .set(_user.toJson());
+          .set(user.toJson());
 
       log('Signed Up');
       return "success";

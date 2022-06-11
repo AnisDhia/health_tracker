@@ -8,7 +8,7 @@ import 'package:health_tracker/ui/screens/home/widgets/comment_card.dart';
 import 'package:provider/provider.dart';
 
 class CommentsScreen extends StatefulWidget {
-  final postId;
+  final String postId;
   const CommentsScreen({Key? key, required this.postId}) : super(key: key);
 
   @override
@@ -30,6 +30,9 @@ class _CommentsScreenState extends State<CommentsScreen> {
       );
 
       if (res != 'success') {
+        if (!mounted) {
+          return;
+        }
         showSnackBar(context, res);
       }
       setState(() {

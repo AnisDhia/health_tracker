@@ -1,10 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/data/models/recipe_model.dart';
 import 'package:health_tracker/ui/screens/recipes/recipe_details_screen.dart';
-import 'package:health_tracker/shared/services/firestore_service.dart';
-import 'package:provider/provider.dart';
-import 'package:health_tracker/data/models/user_model.dart' as model;
 
 class NewRecipe extends StatelessWidget {
   final Future<List<Recipe>> newRecipesList;
@@ -159,7 +155,7 @@ class _RecipeCardState extends State<RecipeCard> {
                       const SizedBox(
                         width: 4,
                       ),
-                      Text(widget.recipe.cookingTime.toString() + '\''),
+                      Text('${widget.recipe.cookingTime}\''),
                       const Spacer(),
                       InkWell(
                           onTap: () {

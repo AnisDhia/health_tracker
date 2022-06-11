@@ -39,10 +39,9 @@ class MyTextfield extends StatelessWidget {
       onTap: readonly ? ontap : null,
       controller: textEditingController,
       style: Theme.of(context).textTheme.headline1?.copyWith(
-            fontSize: 9.sp,
-            // color: Colors.black,
-            fontWeight: FontWeight.bold
-          ),
+          fontSize: 9.sp,
+          // color: Colors.black,
+          fontWeight: FontWeight.bold),
       decoration: InputDecoration(
           // fillColor: Colors.grey.shade200,
           // filled: true,
