@@ -29,14 +29,12 @@ class _AddFoodScreenState extends State<AddMealScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _searchController = TextEditingController();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _searchController.dispose();
     super.dispose();
   }

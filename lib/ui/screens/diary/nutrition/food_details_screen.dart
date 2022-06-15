@@ -23,7 +23,6 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     servingUnitController = TextEditingController();
     servingsController = TextEditingController();
@@ -37,7 +36,6 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     servingUnitController.dispose();
     servingsController.dispose();
     super.dispose();

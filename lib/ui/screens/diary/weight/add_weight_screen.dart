@@ -20,7 +20,6 @@ class _MeassureBPMScreenState extends State<AddWeightScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     bodyFatController = TextEditingController();
     skeletalMuscleController = TextEditingController();

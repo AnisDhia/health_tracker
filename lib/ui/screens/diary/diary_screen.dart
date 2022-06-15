@@ -16,7 +16,6 @@ import 'package:health_tracker/ui/screens/diary/sleep/sleep_stats_screen.dart';
 import 'package:health_tracker/ui/screens/diary/water/add_water_screen.dart';
 import 'package:health_tracker/ui/screens/diary/water/water_stats_screen.dart';
 import 'package:health_tracker/ui/screens/diary/weight/add_weight_screen.dart';
-import 'package:health_tracker/ui/widgets/appbar_widget.dart';
 import 'package:health_tracker/ui/widgets/indicator_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:pedometer/pedometer.dart';
@@ -1217,9 +1216,6 @@ class _DiaryScreenState extends State<DiaryScreen> {
 class MyClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    // TODO: implement getClip
-    // throw UnimplementedError();
-
     double w = size.width;
     double h = size.height;
 
@@ -1236,8 +1232,6 @@ class MyClipper extends CustomClipper<Path> {
 
   @override
   bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    // TODO: implement shouldReclip
-    // throw UnimplementedError();
     return true;
   }
 }

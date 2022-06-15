@@ -19,7 +19,6 @@ class _MeassureBPMScreenState extends State<AddWaterScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     fetchWaterValue();
   }

@@ -7,9 +7,9 @@ import 'package:provider/provider.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  List<Widget>? actions;
+  final List<Widget>? actions;
 
-  CustomAppBar({Key? key, required this.title, this.actions}) : super(key: key);
+  const CustomAppBar({Key? key, required this.title, this.actions}) : super(key: key);
 
   @override
   Size get preferredSize => const Size.fromHeight(50.0);
