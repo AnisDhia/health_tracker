@@ -65,35 +65,35 @@ class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
                     builder: (context,
                         AsyncSnapshot<DocumentSnapshot<Map<String, dynamic>>>
                             snapshot) {
-                      if (!snapshot.hasData || !snapshot.data!.exists) {
+                      if (!snapshot.hasData) {
                         return const MyCircularIndicator();
                       } else {
                         Map<String, dynamic> breakfast = {
-                              'breakfastCalories': 0,
-                              'breakfastProtein': 0,
-                              'breakfastfat': 0,
-                              'breakfastcarbs': 0,
+                              'breakfastCalories': 0.0,
+                              'breakfastProtein': 0.0,
+                              'breakfastFat': 0.0,
+                              'breakfastCarbs': 0.0,
                               'foods': [],
                             },
                             lunch = {
-                              'lunchCalories': 0,
-                              'lunchProtein': 0,
-                              'lunchFat': 0,
-                              'lunchCarbs': 0,
+                              'lunchCalories': 0.0,
+                              'lunchProtein': 0.0,
+                              'lunchFat': 0.0,
+                              'lunchCarbs': 0.0,
                               'foods': [],
                             },
                             dinner = {
-                              'dinnerCalories': 0,
-                              'dinnerProtein': 0,
-                              'dinnerFat': 0,
-                              'dinnerCarbs': 0,
+                              'dinnerCalories': 0.0,
+                              'dinnerProtein': 0.0,
+                              'dinnerFat': 0.0,
+                              'dinnerCarbs': 0.0,
                               'foods': [],
                             },
                             snacks = {
-                              'snacksCalories': 0,
-                              'snacksProtein': 0,
-                              'snacksFat': 0,
-                              'snacksCarbs': 0,
+                              'snacksCalories': 0.0,
+                              'snacksProtein': 0.0,
+                              'snacksFat': 0.0,
+                              'snacksCarbs': 0.0,
                               'foods': [],
                             };
                         double totalCalories = 0,
@@ -204,9 +204,11 @@ class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
                               height: 6,
                             ),
                             LinearPercentIndicator(
-                                percent: totalCalories >= 2000
-                                    ? 1
-                                    : totalCalories / 2000,lineHeight: 1,),
+                              percent: totalCalories >= 2000
+                                  ? 1
+                                  : totalCalories / 2000,
+                              lineHeight: 1,
+                            ),
                             const SizedBox(
                               height: 24,
                             ),
@@ -252,7 +254,7 @@ class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
                                 Column(
                                   children: [
                                     Text(
-                                      '${macroPercentage(totalCarbs, 1, percentCalories).ceil()}%',
+                                      '${macroPercentage(totalCarbs, 1, percentCalories).round()}%',
                                       style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color:
@@ -279,7 +281,7 @@ class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
                                 Column(
                                   children: [
                                     Text(
-                                        '${macroPercentage(totalProtein, 1, percentCalories).ceil()}%',
+                                        '${macroPercentage(totalProtein, 1, percentCalories).round()}%',
                                         style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: Color.fromARGB(
@@ -625,7 +627,9 @@ class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
   }
 
   double macroPercentage(double value, int type, double percentCalories) {
-    if (type == 1) {
+    if (percentCalories == 0) {
+      return 0;
+    } else if (type == 1) {
       return (value * 4 / percentCalories) * 100;
     } else {
       return (value * 9 / percentCalories) * 100;

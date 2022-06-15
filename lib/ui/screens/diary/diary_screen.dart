@@ -124,9 +124,9 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                 : 'Good morning, ',
                             style: const TextStyle(fontSize: 22),
                           ),
-                          const Text(
-                            'Anis !',
-                            style: TextStyle(
+                          Text(
+                            FirebaseAuth.instance.currentUser!.displayName!,
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 22),
                           )
                         ],
@@ -740,24 +740,42 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                               .snapshots(),
                                           builder: (context,
                                               AsyncSnapshot snapshot) {
-                                            if (!snapshot.hasData) {
+                                            if (snapshot.connectionState ==
+                                                ConnectionState.waiting) {
                                               return const MyCircularIndicator();
                                             } else {
-                                              late double calories,
+                                              late double calories = 0,
                                                   protein = 0,
                                                   carbs = 0,
                                                   fat = 0;
-                                              if (!snapshot.data!.exists) {
-                                                calories = 0;
-                                              } else {
-                                                calories = snapshot.data!
-                                                    .get('totalCalories');
-                                                protein = snapshot.data!
-                                                    .get('totalProtein');
-                                                carbs = snapshot.data!
-                                                    .get('totalCarbs');
-                                                fat = snapshot.data!
-                                                    .get('totalFat');
+                                              if (snapshot.data!.exists) {
+                                                if (snapshot.data!
+                                                    .data()!
+                                                    .containsKey(
+                                                        'totalCalories')) {
+                                                  calories = snapshot.data!
+                                                      .get('totalCalories');
+                                                }
+                                                if (snapshot.data!
+                                                    .data()!
+                                                    .containsKey(
+                                                        'totalProtein')) {
+                                                  protein = snapshot.data!
+                                                      .get('totalProtein');
+                                                }
+                                                if (snapshot.data!
+                                                    .data()!
+                                                    .containsKey('totalFat')) {
+                                                  fat = snapshot.data!
+                                                      .get('totalFat');
+                                                }
+                                                if (snapshot.data!
+                                                    .data()!
+                                                    .containsKey(
+                                                        'totalCarbs')) {
+                                                  carbs = snapshot.data!
+                                                      .get('totalCarbs');
+                                                }
                                               }
                                               return Column(
                                                 children: [

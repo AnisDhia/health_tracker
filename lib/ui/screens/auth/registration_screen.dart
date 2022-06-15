@@ -248,10 +248,6 @@ class _LoginScreenState extends State<SignUpScreen> {
                                       context: context);
                                 }
                               }),
-                          // Container(
-                          //     // width: 80.h,
-                          //     // padding: EdgeInsets.symmetric(vertical: 0.1.h),
-                          //     child: _buildLoginButton(MyThemes.primary, 80.w)),
                           SizedBox(
                             height: 2.h,
                           ),
