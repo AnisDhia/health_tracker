@@ -14,12 +14,15 @@ class FireStoreCrud {
   final _firestore = FirebaseFirestore.instance;
 
   // Upload a post
-  Future<String> uploadPost(String description, Uint8List file, String uid,
+  Future<String> uploadPost(String description, Uint8List? file, String uid,
       String username, String profImage) async {
     String res = "Some error occured";
     try {
-      String photoUrl =
-          await FireStorage().uploadImageToStorage('posts', file, true);
+      String? photoUrl;
+      if (file != null) {
+        photoUrl =
+            await FireStorage().uploadImageToStorage('posts', file, true);
+      }
       String postId = const Uuid().v1();
       Post post = Post(
           description: description,
@@ -174,8 +177,15 @@ class FireStoreCrud {
     }
   }
 
-  Future<void> removeDiaryMealFood(String meal, String foodId, String name, double calories,
-      double carbs, double fat, double protein, String type) async {
+  Future<void> removeDiaryMealFood(
+      String meal,
+      String foodId,
+      String name,
+      double calories,
+      double carbs,
+      double fat,
+      double protein,
+      String type) async {
     try {
       _firestore
           .collection('users')
@@ -243,9 +253,7 @@ class FireStoreCrud {
           .doc(FirebaseAuth.instance.currentUser!.uid)
           .collection('diary')
           .doc(DateFormat('d-M-y').format(DateTime.now()))
-          .set({
-        'water': waterValue
-      }, SetOptions(merge: true)).onError(
+          .set({'water': waterValue}, SetOptions(merge: true)).onError(
               (error, stackTrace) => log('Error writing document: $error'));
     } catch (e) {
       log(e.toString());

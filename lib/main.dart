@@ -4,9 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:health_tracker/bloc/auth/authentication_cubit.dart';
-import 'package:health_tracker/bloc/connectivity/connectivity_cubit.dart';
-import 'package:health_tracker/bloc/onboarding/onboarding_cubit.dart';
 import 'package:health_tracker/shared/services/user_provider.dart';
 import 'package:health_tracker/ui/screens/auth/onboarding_screen.dart';
 import 'package:health_tracker/ui/screens/auth/welcome_screen.dart';
@@ -44,47 +41,31 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(
       builder: (BuildContext context, Orientation orientation, deviceType) {
-        return MultiBlocProvider(
+        return MultiProvider(
           providers: [
-            BlocProvider(
-              lazy: false,
-              create: (context) =>
-                  ConnectivityCubit()..initializeConnectivity(),
-            ),
-            BlocProvider(create: (context) => OnboardingCubit()),
-            BlocProvider(create: (context) => AuthenticationCubit()),
+            ChangeNotifierProvider(create: ((context) => ThemeNotifier())),
+            ChangeNotifierProvider(create: ((_) => UserProvider()))
           ],
-          child: MultiProvider(
-            providers: [
-              ChangeNotifierProvider(create: ((context) => ThemeNotifier())),
-              ChangeNotifierProvider(create: ((_) => UserProvider()))
-            ],
-            child: Consumer<ThemeNotifier>(
-              builder: (context, value, child) {
-                return MaterialApp(
-                  title: title,
-                  debugShowCheckedModeBanner: false,
-                  theme: value.darkTheme
-                      ? MyThemes.darkTheme
-                      : MyThemes.lightTheme,
-                  home: StreamBuilder<User?>(
-                      stream: FirebaseAuth.instance.authStateChanges(),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return const MyCircularIndicator();
-                        }
-                        if (snapshot.hasData) {
-                          return const Navigation();
-                        }
-                        if (seen == null) {
-                          return const WelcomeScreen();
-                        }
-                        return const OnBoardingScreen();
-                      }),
-                );
-              },
-            ),
+          child: Consumer<ThemeNotifier>(
+            builder: (context, value, child) {
+              return MaterialApp(
+                title: title,
+                debugShowCheckedModeBanner: false,
+                theme:
+                    value.darkTheme ? MyThemes.darkTheme : MyThemes.lightTheme,
+                home: StreamBuilder<User?>(
+                    stream: FirebaseAuth.instance.authStateChanges(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const MyCircularIndicator();
+                      }
+                      if (snapshot.hasData) {
+                        return const Navigation();
+                      }
+                      return const WelcomeScreen();
+                    }),
+              );
+            },
           ),
         );
       },

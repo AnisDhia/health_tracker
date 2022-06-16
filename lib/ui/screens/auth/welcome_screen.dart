@@ -30,13 +30,10 @@ class WelcomeScreen extends StatelessWidget {
               ),
               Text(
                 'Hello !',
-                style: Theme.of(context)
-                    .textTheme
-                    .headline1
-                    ?.copyWith(
-                      fontSize: 20.sp,
-                      letterSpacing: 3,
-                      fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.headline1?.copyWith(
+                    fontSize: 20.sp,
+                    letterSpacing: 3,
+                    fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 2.h,
@@ -58,7 +55,10 @@ class WelcomeScreen extends StatelessWidget {
                 width: 80.w,
                 title: 'LOGIN',
                 func: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginScreen()));
                 },
               ),
               SizedBox(
@@ -69,7 +69,10 @@ class WelcomeScreen extends StatelessWidget {
                 width: 80.w,
                 title: 'CREATE ACCOUNT',
                 func: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SignUpScreen()));
                 },
               ),
               SizedBox(

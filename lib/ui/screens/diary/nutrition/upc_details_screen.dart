@@ -17,15 +17,30 @@ class ProductDetailsScreen extends StatefulWidget {
 class _FoodDetailsScreenState extends State<ProductDetailsScreen> {
   late String meal;
   late double calories, fat, protein, carbs;
+  TimeOfDay time = TimeOfDay.now();
+  late TextEditingController servingsController;
+  late TextEditingController servingUnitController;
+  double servingSize = 100, servings = 1;
 
   @override
   void initState() {
     super.initState();
+    servingUnitController = TextEditingController();
+    servingsController = TextEditingController();
+
     meal = widget.meal;
     calories = widget.product.nutrients['energy-kcal'].toDouble();
     protein = widget.product.nutrients['proteins'].toDouble();
     carbs = widget.product.nutrients['carbohydrates'].toDouble();
     fat = widget.product.nutrients['fat'].toDouble();
+  }
+
+  @override
+  void dispose() {
+    servingUnitController.dispose();
+    servingsController.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -157,9 +172,9 @@ class _FoodDetailsScreenState extends State<ProductDetailsScreen> {
                   const Expanded(child: Text('Number of Servings')),
                   TextButton(
                       onPressed: () {
-                        // showDialog(context: context, builder: builder)
+                        _servingsDialog(context);
                       },
-                      child: const Text('will be added soon'))
+                      child: Text(servings.toString()))
                 ],
               ),
               const Divider(),
@@ -168,11 +183,32 @@ class _FoodDetailsScreenState extends State<ProductDetailsScreen> {
                   const Expanded(child: Text('Serving Size')),
                   TextButton(
                       onPressed: () {
-                        // showDialog(context: context, builder: builder)
+                        _servingsDialog(context);
                       },
-                      child: const Text('will be added soon'))
+                      child: Text('$servingSize g'))
                 ],
               ),
+              const Divider(),
+              Row(
+                children: [
+                  const Expanded(child: Text('Time')),
+                  TextButton(
+                    onPressed: () async {
+                      final newTime = await showTimePicker(
+                          context: context, initialTime: TimeOfDay.now());
+
+                      if (newTime == null) return;
+
+                      setState(() {
+                        time = newTime;
+                      });
+                    },
+                    child: Text('${time.hour}:${time.minute}',
+                        style: const TextStyle(fontWeight: FontWeight.bold)),
+                  ),
+                ],
+              ),
+              const Divider(),
               const Divider(),
               // ? CHART
               Row(
@@ -224,7 +260,7 @@ class _FoodDetailsScreenState extends State<ProductDetailsScreen> {
                             color: Color.fromARGB(255, 0, 210, 124)),
                       ),
                       Text(
-                          '$carbs ${widget.product.nutrients['carbohydrates_unit']}',
+                          '${carbs.round()} ${widget.product.nutrients['carbohydrates_unit']}',
                           style: const TextStyle(fontSize: 20)),
                       const Text('Carbs'),
                     ],
@@ -238,7 +274,8 @@ class _FoodDetailsScreenState extends State<ProductDetailsScreen> {
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Color.fromARGB(255, 128, 71, 246))),
-                      Text('$fat ${widget.product.nutrients['fat_unit']}',
+                      Text(
+                          '${fat.round()} ${widget.product.nutrients['fat_unit']}',
                           style: const TextStyle(fontSize: 20)),
                       const Text('Fat'),
                     ],
@@ -253,7 +290,7 @@ class _FoodDetailsScreenState extends State<ProductDetailsScreen> {
                               fontWeight: FontWeight.bold,
                               color: Color.fromARGB(255, 254, 164, 44))),
                       Text(
-                          '$protein ${widget.product.nutrients['proteins_unit']}',
+                          '${protein.round()} ${widget.product.nutrients['proteins_unit']}',
                           style: const TextStyle(fontSize: 20)),
                       const Text('Protein'),
                     ],
@@ -296,5 +333,70 @@ class _FoodDetailsScreenState extends State<ProductDetailsScreen> {
     } else {
       return (value * 9 / calories) * 100;
     }
+  }
+
+  Future<dynamic> _servingsDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return SimpleDialog(
+            contentPadding: const EdgeInsets.all(16),
+            title: const Text('How Much?'),
+            children: [
+              const Text('How Much?'),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      controller: servingsController,
+                    ),
+                  ),
+                  const Text('Serving(s) of')
+                ],
+              ),
+              DropdownButton<double>(
+                  value: servingSize,
+                  items: const [
+                    DropdownMenuItem(
+                      value: 100,
+                      child: Text('100 g'),
+                    ),
+                    DropdownMenuItem(
+                      value: 1,
+                      child: Text('1 g'),
+                    ),
+                  ],
+                  onChanged: (newValue) {
+                    setState(() {
+                      servingSize = newValue!;
+                    });
+                  }),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text('cancel'),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      if (servingsController.text.isNotEmpty) {
+                        setState(() {
+                          servings = double.parse(servingsController.text);
+                          // servingSize = double.parse(servingsController.text);
+                        });
+                      }
+                      Navigator.pop(context);
+                    },
+                    child: const Text('save'),
+                  )
+                ],
+              )
+            ],
+          );
+        });
   }
 }

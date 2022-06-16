@@ -146,7 +146,6 @@ class _PostCardState extends State<PostCard> {
           ),
         ),
         // ? POST DESCRIPTION AND NUMBER OF COMMENTS
-        //DESCRIPTION AND NUMBER OF COMMENTS
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           child: Column(
@@ -173,52 +172,54 @@ class _PostCardState extends State<PostCard> {
             ],
           ),
         ),
-        // ?post image
-        GestureDetector(
-          onDoubleTap: () {
-            FireStoreCrud().likePost(
-              widget.snap['postId'].toString(),
-              user.uid,
-              widget.snap['likes'],
-            );
-            setState(() {
-              isLikeAnimating = true;
-            });
-          },
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.35,
-                width: double.infinity,
-                child: Image.network(
-                  widget.snap['postUrl'].toString(),
-                  fit: BoxFit.cover,
+        // ? POST IMAGE
+        widget.snap['postUrl'] != null
+            ? GestureDetector(
+                onDoubleTap: () {
+                  FireStoreCrud().likePost(
+                    widget.snap['postId'].toString(),
+                    user.uid,
+                    widget.snap['likes'],
+                  );
+                  setState(() {
+                    isLikeAnimating = true;
+                  });
+                },
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.35,
+                      width: double.infinity,
+                      child: Image.network(
+                        widget.snap['postUrl'].toString(),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    AnimatedOpacity(
+                      duration: const Duration(milliseconds: 200),
+                      opacity: isLikeAnimating ? 1 : 0,
+                      child: LikeAnimation(
+                        isAnimating: isLikeAnimating,
+                        duration: const Duration(
+                          milliseconds: 400,
+                        ),
+                        onEnd: () {
+                          setState(() {
+                            isLikeAnimating = false;
+                          });
+                        },
+                        child: const Icon(
+                          Icons.favorite,
+                          color: Colors.white,
+                          size: 100,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              AnimatedOpacity(
-                duration: const Duration(milliseconds: 200),
-                opacity: isLikeAnimating ? 1 : 0,
-                child: LikeAnimation(
-                  isAnimating: isLikeAnimating,
-                  duration: const Duration(
-                    milliseconds: 400,
-                  ),
-                  onEnd: () {
-                    setState(() {
-                      isLikeAnimating = false;
-                    });
-                  },
-                  child: const Icon(
-                    Icons.favorite,
-                    color: Colors.white,
-                    size: 100,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+              )
+            : const Divider(),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Align(

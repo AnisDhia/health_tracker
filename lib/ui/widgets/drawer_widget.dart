@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:health_tracker/bloc/auth/authentication_cubit.dart';
+import 'package:health_tracker/data/repositories/firebase_auth.dart';
 import 'package:health_tracker/shared/services/user_provider.dart';
 import 'package:health_tracker/shared/styles/themes.dart';
 import 'package:health_tracker/ui/screens/profile/profile_screen.dart';
@@ -8,10 +8,7 @@ import 'package:health_tracker/ui/screens/settings/settings_screen.dart';
 import 'package:provider/provider.dart';
 
 class NavDrawer extends StatefulWidget {
-  const NavDrawer({Key? key, required this.authenticationCubit})
-      : super(key: key);
-
-  final AuthenticationCubit authenticationCubit;
+  const NavDrawer({Key? key}) : super(key: key);
 
   @override
   State<NavDrawer> createState() => _NavDrawerState();
@@ -87,10 +84,7 @@ class _NavDrawerState extends State<NavDrawer> {
         ListTile(
           leading: const Icon(Icons.exit_to_app),
           title: const Text('Logout'),
-          onTap: () => {
-            // AuthenticationService().signOut()
-            widget.authenticationCubit.signout()
-          },
+          onTap: () => {FirebaseAuthRepo().logout()},
         ),
         ListTile(
           leading: const Icon(CupertinoIcons.moon_stars),

@@ -7,7 +7,7 @@ class Post {
   final dynamic likes;
   final String postId;
   final DateTime datePublished;
-  final String postUrl;
+  final String? postUrl;
   final String profImage;
 
   const Post(
@@ -17,7 +17,7 @@ class Post {
       required this.likes,
       required this.postId,
       required this.datePublished,
-      required this.postUrl,
+      this.postUrl,
       required this.profImage,
       });
 

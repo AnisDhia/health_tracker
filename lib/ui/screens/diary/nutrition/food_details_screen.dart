@@ -14,11 +14,11 @@ class FoodDetailsScreen extends StatefulWidget {
 }
 
 class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
-  late String meal;
+  late String meal, servingUnit;
   TimeOfDay time = TimeOfDay.now();
   late TextEditingController servingsController;
   late TextEditingController servingUnitController;
-  late Map<String, dynamic> serving;
+  late double servings, servingSize;
   late Map<String, dynamic> protein, fat, carbs, calories;
 
   @override
@@ -27,11 +27,13 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
     servingUnitController = TextEditingController();
     servingsController = TextEditingController();
     meal = widget.meal;
-    serving = {'size': 100, 'unit': 'g'};
+    servingSize = widget.food.servingSize ?? 0;
+    servingUnit = widget.food.servingSizeUnit ?? 'g';
     protein = widget.food.nutrientFromMap(1003);
     fat = widget.food.nutrientFromMap(1004);
     carbs = widget.food.nutrientFromMap(1005);
     calories = widget.food.nutrientFromMap(1008);
+    servings = widget.food.numberOfServings!;
   }
 
   @override
@@ -150,7 +152,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                     onPressed: () {
                       _servingsDialog(context);
                     },
-                    child: Text(widget.food.numberOfServings.toString()))
+                    child: Text(servings.toString()))
               ],
             ),
             const Divider(),
@@ -161,8 +163,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                     onPressed: () {
                       _servingsDialog(context);
                     },
-                    child: Text(
-                        '${widget.food.servingSize} ${widget.food.servingSizeUnit}'))
+                    child: Text('$servingSize ${widget.food.servingSizeUnit}'))
               ],
             ),
             const Divider(),
@@ -299,7 +300,6 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
             contentPadding: const EdgeInsets.all(16),
             title: const Text('How Much?'),
             children: [
-              const Text('How Much?'),
               Row(
                 children: [
                   Expanded(
@@ -311,25 +311,25 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                   const Text('Serving(s) of')
                 ],
               ),
-              DropdownButton<Map<String, dynamic>>(
-                  value: serving,
+              DropdownButton<double>(
+                  value: servingSize,
                   items: [
                     DropdownMenuItem(
-                      value: serving,
-                      child: Text('${serving['size']} ${serving['unit']}'),
+                      value: widget.food.servingSize,
+                      child: Text('${widget.food.servingSize} g'),
                     ),
-                    DropdownMenuItem(
-                      value: {
-                        'size': widget.food.servingSize,
-                        'unit': widget.food.servingSizeUnit
-                      },
-                      child: Text(
-                          '${widget.food.servingSize} ${widget.food.servingSizeUnit}'),
+                    const DropdownMenuItem(
+                      value: 100,
+                      child: Text('100 g'),
+                    ),
+                    const DropdownMenuItem(
+                      value: 1,
+                      child: Text('1 g'),
                     ),
                   ],
                   onChanged: (newValue) {
                     setState(() {
-                      serving = newValue!;
+                      servingSize = newValue!;
                     });
                   }),
               Row(
@@ -343,10 +343,11 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                   ),
                   TextButton(
                     onPressed: () {
-                      setState(() {
-                        serving['size'] = servingsController.text.trim();
-                        serving['unit'] = servingUnitController.text.trim();
-                      });
+                      if (servingsController.text.isNotEmpty) {
+                        setState(() {
+                          servings = double.parse(servingsController.text);
+                        });
+                      }
                       Navigator.pop(context);
                     },
                     child: const Text('save'),

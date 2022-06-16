@@ -229,7 +229,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Text(
-                                              '${_todaySteps * 0.04}',
+                                              (_todaySteps * 0.04).round().toString(),
                                               style: const TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 22),
