@@ -1,11 +1,8 @@
-// import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:health_tracker/shared/services/user_provider.dart';
-import 'package:health_tracker/ui/screens/auth/onboarding_screen.dart';
 import 'package:health_tracker/ui/screens/auth/welcome_screen.dart';
 import 'package:health_tracker/ui/widgets/indicator_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';

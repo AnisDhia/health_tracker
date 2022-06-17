@@ -93,36 +93,35 @@ class _RecipeCategoriesState extends State<RecipeCategories> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Expanded(
-          child: Padding(
+      child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Text('Keto', style: TextStyle(fontSize: 24),),
-            SizedBox(
-              height: 4,
-            ),
-            HorizontalRecipes(category: "keto"),
-            SizedBox(
-              height: 8,
-            ),
-            Text('Vegetarian', style: TextStyle(fontSize: 24),),
-            SizedBox(
-              height: 4,
-            ),
-            HorizontalRecipes(category: "vegetarian"),
-            SizedBox(
-              height: 8,
-            ),
-            Text('Pescetarian', style: TextStyle(fontSize: 24),),
-            SizedBox(
-              height: 4,
-            ),
-            HorizontalRecipes(category: "pescetarian"),
-          ],
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: const [
+        Text('Keto', style: TextStyle(fontSize: 24),),
+        SizedBox(
+          height: 4,
         ),
-      )),
+        HorizontalRecipes(category: "keto"),
+        SizedBox(
+          height: 8,
+        ),
+        Text('Vegetarian', style: TextStyle(fontSize: 24),),
+        SizedBox(
+          height: 4,
+        ),
+        HorizontalRecipes(category: "vegetarian"),
+        SizedBox(
+          height: 8,
+        ),
+        Text('Pescetarian', style: TextStyle(fontSize: 24),),
+        SizedBox(
+          height: 4,
+        ),
+        HorizontalRecipes(category: "pescetarian"),
+      ],
+        ),
+      ),
     );
   }
 }
