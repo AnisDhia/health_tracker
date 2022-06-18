@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:health_tracker/data/repositories/firebase_auth.dart';
 import 'package:health_tracker/shared/services/user_provider.dart';
 import 'package:health_tracker/shared/styles/themes.dart';
+import 'package:health_tracker/ui/screens/messages/messages_screen.dart';
 import 'package:health_tracker/ui/screens/profile/profile_screen.dart';
 import 'package:health_tracker/ui/screens/settings/settings_screen.dart';
 import 'package:provider/provider.dart';
@@ -63,6 +64,17 @@ class _NavDrawerState extends State<NavDrawer> {
                     builder: (BuildContext context) => ProfileScreen(
                           uid: user.uid,
                         )))
+          },
+        ),
+        ListTile(
+          leading: const Icon(Icons.message),
+          title: const Text('Messages'),
+          onTap: () => {
+            Navigator.pop(context),
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => const MessagesScreen()))
           },
         ),
         ListTile(
