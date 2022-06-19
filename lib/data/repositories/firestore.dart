@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:health_tracker/data/models/post_model.dart';
+import 'package:health_tracker/data/models/user_model.dart' as model;
 import 'package:health_tracker/data/repositories/storage.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
@@ -283,23 +284,27 @@ class FireStoreCrud {
     }
   }
 
-  // Future<void> bookmarkRecipe(String recipeId, String uid) async {
-  //   DocumentReference user = _firestore.collection('users').doc(uid);
-  //   user.get();
-  //   try {
-  //     if (user['bookmarks'].contains(recipeId)) {
-  //       // if already bookmarked then remove from bookmarks
-  //       _firestore.collection('users').doc(uid).update({
-  //         'bookmarkedRecipes': FieldValue.arrayRemove([recipeId])
-  //       });
-  //     } else {
-  //       _firestore.collection('users').doc(uid).update({
-  //         'bookmarkedRecipes': FieldValue.arrayUnion([recipeId])
-  //       });
-  //     }
-  //     log("Bookmarks Updated");
-  //   } catch (e) {
-  //     throw e.toString();
-  //   }
-  // }
+  Future<void> bookmarkRecipe(String recipeId) async {
+    String uid = FirebaseAuth.instance.currentUser!.uid;
+    DocumentSnapshot user = await _firestore.collection('users').doc(uid).get();
+
+    try {
+      if (user['bookmarkedRecipes'].contains(recipeId)) {
+        // if already bookmarked then remove from bookmarks
+        _firestore.collection('users').doc(uid).update({
+          'bookmarkedRecipes': FieldValue.arrayRemove([recipeId])
+        });
+        log("Bookmark Removed");
+      } else {
+        _firestore.collection('users').doc(uid).update({
+          'bookmarkedRecipes': FieldValue.arrayUnion([recipeId])
+        });
+        log("Bookmark Added");
+      }
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
+  // Stream<List<model.User>> getUsers() => _firestore.collection('users').snapshots().transform(Utils.transformer(model.User.fromSnap));
 }

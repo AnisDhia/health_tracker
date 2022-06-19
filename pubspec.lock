@@ -917,6 +917,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.9"
+  time_range_picker:
+    dependency: "direct main"
+    description:
+      name: time_range_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.0"
   timezone:
     dependency: transitive
     description:

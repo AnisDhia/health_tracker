@@ -4,6 +4,7 @@ import 'package:health_tracker/data/repositories/firebase_auth.dart';
 import 'package:health_tracker/shared/services/user_provider.dart';
 import 'package:health_tracker/shared/styles/themes.dart';
 import 'package:health_tracker/ui/screens/messages/messages_screen.dart';
+import 'package:health_tracker/ui/screens/auth/onboarding/onboarding_screen.dart';
 import 'package:health_tracker/ui/screens/profile/profile_screen.dart';
 import 'package:health_tracker/ui/screens/settings/settings_screen.dart';
 import 'package:provider/provider.dart';
@@ -75,6 +76,17 @@ class _NavDrawerState extends State<NavDrawer> {
                 context,
                 MaterialPageRoute(
                     builder: (BuildContext context) => const MessagesScreen()))
+          },
+        ),
+        ListTile(
+          leading: const Icon(Icons.woman),
+          title: const Text('onboarding test'),
+          onTap: () => {
+            Navigator.pop(context),
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => const OnBoardingScreen()))
           },
         ),
         ListTile(

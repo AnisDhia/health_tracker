@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/ui/screens/auth/login_screen.dart';
+import 'package:health_tracker/ui/screens/auth/onboarding/onboarding_screen.dart';
 import 'package:health_tracker/ui/screens/auth/registration_screen.dart';
 import 'package:health_tracker/shared/styles/themes.dart';
 import 'package:health_tracker/ui/widgets/button_widget.dart';
@@ -72,7 +73,7 @@ class WelcomeScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const SignUpScreen()));
+                          builder: (context) => const OnBoardingScreen()));
                 },
               ),
               SizedBox(

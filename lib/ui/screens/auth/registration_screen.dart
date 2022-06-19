@@ -7,7 +7,9 @@ import 'package:health_tracker/shared/utilities/utils.dart';
 import 'package:health_tracker/ui/screens/auth/login_screen.dart';
 import 'package:health_tracker/shared/constants/consts_variables.dart';
 import 'package:health_tracker/shared/styles/themes.dart';
+import 'package:health_tracker/ui/screens/auth/onboarding/onboarding_screen.dart';
 import 'package:health_tracker/ui/widgets/button_widget.dart';
+import 'package:health_tracker/ui/widgets/navigation_widget.dart';
 import 'package:health_tracker/ui/widgets/snackbar_widget.dart';
 import 'package:health_tracker/ui/widgets/textfield_widget.dart';
 import 'package:image_picker/image_picker.dart';
@@ -213,7 +215,7 @@ class _LoginScreenState extends State<SignUpScreen> {
                             if (!mounted) {
                               return;
                             }
-                            _signUpWithEmailAndPass(context);
+                            await _signUpWithEmailAndPass(context);
                           } else {
                             MySnackBar.error(
                                 message:
@@ -282,7 +284,9 @@ class _LoginScreenState extends State<SignUpScreen> {
           .onError((error, stackTrace) => MySnackBar.error(
               message: error.toString(), color: Colors.red, context: context));
       if (FirebaseAuth.instance.currentUser != null) {
-        Navigator.pop(context);
+        // Navigator.pop(context);
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const Navigation()));
       }
     }
   }

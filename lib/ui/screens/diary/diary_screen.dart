@@ -12,6 +12,7 @@ import 'package:health_tracker/ui/screens/diary/heart/meassure_bpm_screen.dart';
 import 'package:health_tracker/ui/screens/diary/heart/heart_stats_screen.dart';
 import 'package:health_tracker/ui/screens/diary/nutrition/add_meal_screen.dart';
 import 'package:health_tracker/ui/screens/diary/nutrition/calories_stats_screen.dart';
+import 'package:health_tracker/ui/screens/diary/sleep/record_sleep_screen.dart';
 import 'package:health_tracker/ui/screens/diary/sleep/sleep_stats_screen.dart';
 import 'package:health_tracker/ui/screens/diary/water/add_water_screen.dart';
 import 'package:health_tracker/ui/screens/diary/water/water_stats_screen.dart';
@@ -1040,24 +1041,28 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                       child: Column(
                                         children: [
                                           Row(
-                                            children: const [
-                                              Expanded(
+                                            children: [
+                                              const Expanded(
                                                   child: Text(
                                                 'Sleep',
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 20),
                                               )),
-                                              Align(
-                                                alignment:
-                                                    Alignment.centerRight,
-                                                child: Icon(
-                                                  CupertinoIcons
-                                                      .moon_stars_fill,
-                                                  color: Color.fromARGB(
-                                                      255, 255, 200, 38),
-                                                ),
-                                              )
+                                              IconButton(
+                                                  onPressed: () {
+                                                    Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                const RecordSleepScreen()));
+                                                  },
+                                                  icon: const Icon(
+                                                    CupertinoIcons
+                                                        .moon_stars_fill,
+                                                    color: Color.fromARGB(
+                                                        255, 255, 200, 38),
+                                                  ))
                                             ],
                                           ),
                                           const SizedBox(

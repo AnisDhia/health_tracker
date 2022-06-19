@@ -4,14 +4,19 @@ class ConversationScreen extends StatefulWidget {
   const ConversationScreen({Key? key}) : super(key: key);
 
   @override
-  State<ConversationScreen> createState() => _MessagesScreenState();
+  State<ConversationScreen> createState() => _ConversationScreenState();
 }
 
-class _MessagesScreenState extends State<ConversationScreen> {
+class _ConversationScreenState extends State<ConversationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Conversation')),
-    );
+        appBar: AppBar(title: const Text('Conversation')),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: const [],
+          ),
+        ));
   }
 }
