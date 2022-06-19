@@ -3,7 +3,10 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:health_tracker/data/repositories/firestore.dart';
+import 'package:health_tracker/main.dart';
+import 'package:health_tracker/ui/widgets/button_widget.dart';
 import 'package:intl/intl.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
@@ -19,7 +22,6 @@ class _MeassureBPMScreenState extends State<AddWaterScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     fetchWaterValue();
   }
@@ -120,9 +122,50 @@ class _MeassureBPMScreenState extends State<AddWaterScreen> {
                     )
                   ])),
             ),
+            Card(
+                // margin: const EdgeInsets.all(8.0),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Reminders',
+                            style: TextStyle(fontSize: 20),
+                          )),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      ButtonWidget(
+                          color: Colors.red,
+                          width: 150,
+                          title: 'Notification',
+                          func: () async {
+                            await _showNotification();
+                          }),
+                    ],
+                  ),
+                )),
           ],
         ),
       ),
     );
+  }
+
+  Future<void> _showNotification() async {
+    const AndroidNotificationDetails androidPlatformChannelSpecifics =
+        AndroidNotificationDetails('your channel id', 'your channel name',
+            channelDescription: 'your channel description',
+            importance: Importance.max,
+            priority: Priority.high,
+            ticker: 'ticker');
+    const NotificationDetails platformChannelSpecifics =
+        NotificationDetails(android: androidPlatformChannelSpecifics);
+    await flutterLocalNotificationsPlugin.show(0, 'Drink Water!',
+        'Don\'t forget to drink water', platformChannelSpecifics,
+        payload: 'item x');
   }
 }

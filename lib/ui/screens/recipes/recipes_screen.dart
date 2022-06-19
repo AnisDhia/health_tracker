@@ -14,27 +14,18 @@ class RecipesScreen extends StatefulWidget {
 }
 
 class _RecipesScreenState extends State<RecipesScreen> {
-  Future<List<Recipe>> recipeList =
-      SpoonacularService.instance.getRandomRecipes(tags: "keto", number: 15);
-  // ScrollController _scrollController = new ScrollController();
-
-  // @override
-  // void dispose() {
-  //   _scrollController.dispose();
-
-  //   super.dispose();
-  // }
+  Future<List<Recipe>> recipeList = SpoonacularService.instance
+      .getRandomRecipes(tags: "Pescetarian,keto,Whole30", number: 50);
+  List<Future<List<Recipe>>> recipesByCategory = [
+    SpoonacularService.instance.getRandomRecipes(number: 20, tags: 'keto'),
+    SpoonacularService.instance
+        .getRandomRecipes(number: 20, tags: 'pescetarian'),
+    SpoonacularService.instance.getRandomRecipes(number: 20, tags: 'vegetarian')
+  ];
 
   @override
   Widget build(BuildContext context) {
-    // final List<Recipe> recipesFromAPI = APIService.instance.getRandomRecipes(number: 3) as List<Recipe>;
     return Scaffold(
-        // drawer: const NavDrawer(),
-        // appBar: AppBar(
-        //   elevation: 0,
-        //   title: const Text('Recipes'),
-        //   centerTitle: true,
-        // ),
         body: DefaultTabController(
             length: 3,
             initialIndex: 0,
@@ -67,12 +58,11 @@ class _RecipesScreenState extends State<RecipesScreen> {
                 ),
                 Expanded(
                   child: TabBarView(children: [
-                    const RecipeCategories(),
+                    RecipeCategories(recipes: recipesByCategory),
                     const Center(child: Text("Favourites")),
                     NewRecipe(
                       newRecipesList: recipeList,
                     ),
-                    // NewRecipe(),
                   ]),
                 )
               ],
@@ -81,10 +71,9 @@ class _RecipesScreenState extends State<RecipesScreen> {
 }
 
 class RecipeCategories extends StatefulWidget {
-  const RecipeCategories({
-    Key? key,
-  }) : super(key: key);
+  const RecipeCategories({Key? key, required this.recipes}) : super(key: key);
 
+  final List recipes;
   @override
   State<RecipeCategories> createState() => _RecipeCategoriesState();
 }
@@ -93,50 +82,62 @@ class _RecipeCategoriesState extends State<RecipeCategories> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Expanded(
-          child: Padding(
+      child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Text('Keto', style: TextStyle(fontSize: 24),),
-            SizedBox(
+          children: [
+            const Text(
+              'Keto',
+              style: TextStyle(fontSize: 24),
+            ),
+            const SizedBox(
               height: 4,
             ),
-            HorizontalRecipes(category: "keto"),
-            SizedBox(
+            HorizontalRecipes(category: "keto", recipesList: widget.recipes[0]),
+            const SizedBox(
               height: 8,
             ),
-            Text('Vegetarian', style: TextStyle(fontSize: 24),),
-            SizedBox(
+            const Text(
+              'Vegetarian',
+              style: TextStyle(fontSize: 24),
+            ),
+            const SizedBox(
               height: 4,
             ),
-            HorizontalRecipes(category: "vegetarian"),
-            SizedBox(
+            HorizontalRecipes(
+                category: "vegetarian", recipesList: widget.recipes[1]),
+            const SizedBox(
               height: 8,
             ),
-            Text('Pescetarian', style: TextStyle(fontSize: 24),),
-            SizedBox(
+            const Text(
+              'Pescetarian',
+              style: TextStyle(fontSize: 24),
+            ),
+            const SizedBox(
               height: 4,
             ),
-            HorizontalRecipes(category: "pescetarian"),
+            HorizontalRecipes(
+                category: "pescetarian", recipesList: widget.recipes[2]),
           ],
         ),
-      )),
+      ),
     );
   }
 }
 
 class HorizontalRecipes extends StatelessWidget {
-  const HorizontalRecipes({Key? key, required this.category}) : super(key: key);
+  const HorizontalRecipes(
+      {Key? key, required this.category, required this.recipesList})
+      : super(key: key);
+  final Future<List<Recipe>> recipesList;
   final String category;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 250,
       child: FutureBuilder(
-          future: SpoonacularService.instance
-              .getRandomRecipes(number: 15, tags: category),
+          future: recipesList,
           builder: (context, AsyncSnapshot<List<Recipe>> snapshot) {
             if (!snapshot.hasData) {
               return const MyCircularIndicator();

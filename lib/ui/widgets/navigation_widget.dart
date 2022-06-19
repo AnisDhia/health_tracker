@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:health_tracker/bloc/auth/authentication_cubit.dart';
-import 'package:health_tracker/bloc/connectivity/connectivity_cubit.dart';
 import 'package:health_tracker/shared/services/user_provider.dart';
 import 'package:health_tracker/ui/screens/auth/loading_screen.dart';
 import 'package:health_tracker/ui/screens/auth/welcome_screen.dart';
@@ -78,59 +76,23 @@ class _NavigationState extends State<Navigation> {
 
   @override
   Widget build(BuildContext context) {
-    AuthenticationCubit authenticationCubit = BlocProvider.of(context);
-    // ConnectivityCubit connectivityCubit = BlocProvider.of(context);
-
     return isLoading
         ? const LoadingScreen()
         : Scaffold(
             // extendBody: true,
             appBar: CustomAppBar(title: _screenTitles[_selectedIndex]),
-            drawer: NavDrawer(authenticationCubit: authenticationCubit),
-            body: MultiBlocListener(
-                listeners: [
-                  BlocListener<ConnectivityCubit, ConnectivityState>(
-                      listener: (context, state) {
-                    if (state is ConnectivityOnlineState) {
-                      MySnackBar.error(
-                          message: 'Connected',
-                          color: Colors.blue,
-                          context: context);
-                    } else {
-                      MySnackBar.error(
-                          message: 'Please Check Your Internet Connection',
-                          color: Colors.red,
-                          context: context);
-                    }
-                  }),
-                  BlocListener<AuthenticationCubit, AuthenticationState>(
-                      listener: (context, state) {
-                    if (state is UnAuthenticationState) {
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const WelcomeScreen()),
-                          (route) => false);
-                    }
-                  })
-                ],
-                child: BlocBuilder<AuthenticationCubit, AuthenticationState>(
-                  builder: (context, state) {
-                    if (state is AuthenticationLoadingState) {
-                      return const MyCircularIndicator();
-                    }
-                    return PageView(
-                      physics: const NeverScrollableScrollPhysics(),
-                      controller: pageController,
-                      children: _widgetOption,
-                      onPageChanged: (index) {
-                        setState(() {
-                          _selectedIndex = index;
-                        });
-                      },
-                    );
-                  },
-                )),
+            drawer: const NavDrawer(),
+            body: PageView(
+              physics: const NeverScrollableScrollPhysics(),
+              controller: pageController,
+              children: _widgetOption,
+              onPageChanged: (index) {
+                setState(() {
+                  _selectedIndex = index;
+                });
+              },
+            ),
+
             bottomNavigationBar: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
               items: const <BottomNavigationBarItem>[

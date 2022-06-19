@@ -12,11 +12,11 @@ import 'package:health_tracker/ui/screens/diary/heart/meassure_bpm_screen.dart';
 import 'package:health_tracker/ui/screens/diary/heart/heart_stats_screen.dart';
 import 'package:health_tracker/ui/screens/diary/nutrition/add_meal_screen.dart';
 import 'package:health_tracker/ui/screens/diary/nutrition/calories_stats_screen.dart';
+import 'package:health_tracker/ui/screens/diary/sleep/record_sleep_screen.dart';
 import 'package:health_tracker/ui/screens/diary/sleep/sleep_stats_screen.dart';
 import 'package:health_tracker/ui/screens/diary/water/add_water_screen.dart';
 import 'package:health_tracker/ui/screens/diary/water/water_stats_screen.dart';
 import 'package:health_tracker/ui/screens/diary/weight/add_weight_screen.dart';
-import 'package:health_tracker/ui/widgets/appbar_widget.dart';
 import 'package:health_tracker/ui/widgets/indicator_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:pedometer/pedometer.dart';
@@ -125,9 +125,9 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                 : 'Good morning, ',
                             style: const TextStyle(fontSize: 22),
                           ),
-                          const Text(
-                            'Anis !',
-                            style: TextStyle(
+                          Text(
+                            FirebaseAuth.instance.currentUser!.displayName!,
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 22),
                           )
                         ],
@@ -146,7 +146,6 @@ class _DiaryScreenState extends State<DiaryScreen> {
                       ),
                       // ? STEPS CARD
                       Card(
-                        // margin: const EdgeInsets.all(8.0),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         child: InkWell(
@@ -230,7 +229,9 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Text(
-                                              '${_todaySteps * 0.04}',
+                                              (_todaySteps * 0.04)
+                                                  .round()
+                                                  .toString(),
                                               style: const TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 22),
@@ -403,20 +404,24 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                       child: Column(
                                         children: [
                                           Row(
-                                            children: const [
-                                              Expanded(
+                                            children: [
+                                              const Expanded(
                                                   child: Text('Heart rate',
                                                       style: TextStyle(
                                                           fontWeight:
                                                               FontWeight.bold,
                                                           fontSize: 20))),
-                                              Align(
-                                                alignment:
-                                                    Alignment.centerRight,
-                                                child: Icon(
-                                                  FontAwesomeIcons.heartPulse,
-                                                  color: Colors.red,
-                                                ),
+                                              IconButton(
+                                                icon: const Icon(
+                                                    FontAwesomeIcons.heartPulse,
+                                                    color: Colors.red),
+                                                onPressed: () {
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              const MeassureBPMScreen()));
+                                                },
                                               )
                                             ],
                                           ),
@@ -580,8 +585,8 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                               return Column(
                                                 children: [
                                                   Row(
-                                                    children: const [
-                                                      Expanded(
+                                                    children: [
+                                                      const Expanded(
                                                           child: Text(
                                                         'Water',
                                                         style: TextStyle(
@@ -589,10 +594,8 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                                                 FontWeight.bold,
                                                             fontSize: 20),
                                                       )),
-                                                      Align(
-                                                        alignment: Alignment
-                                                            .centerRight,
-                                                        child: Icon(
+                                                      IconButton(
+                                                        icon: const Icon(
                                                           Icons.water_drop,
                                                           color: Color.fromARGB(
                                                               255,
@@ -600,6 +603,14 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                                               184,
                                                               252),
                                                         ),
+                                                        onPressed: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) =>
+                                                                          const AddWaterScreen()));
+                                                        },
                                                       )
                                                     ],
                                                   ),
@@ -741,24 +752,42 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                               .snapshots(),
                                           builder: (context,
                                               AsyncSnapshot snapshot) {
-                                            if (!snapshot.hasData) {
+                                            if (snapshot.connectionState ==
+                                                ConnectionState.waiting) {
                                               return const MyCircularIndicator();
                                             } else {
-                                              late double calories,
+                                              late double calories = 0,
                                                   protein = 0,
                                                   carbs = 0,
                                                   fat = 0;
-                                              if (!snapshot.data!.exists) {
-                                                calories = 0;
-                                              } else {
-                                                calories = snapshot.data!
-                                                    .get('totalCalories');
-                                                protein = snapshot.data!
-                                                    .get('totalProtein');
-                                                carbs = snapshot.data!
-                                                    .get('totalCarbs');
-                                                fat = snapshot.data!
-                                                    .get('totalFat');
+                                              if (snapshot.data!.exists) {
+                                                if (snapshot.data!
+                                                    .data()!
+                                                    .containsKey(
+                                                        'totalCalories')) {
+                                                  calories = snapshot.data!
+                                                      .get('totalCalories');
+                                                }
+                                                if (snapshot.data!
+                                                    .data()!
+                                                    .containsKey(
+                                                        'totalProtein')) {
+                                                  protein = snapshot.data!
+                                                      .get('totalProtein');
+                                                }
+                                                if (snapshot.data!
+                                                    .data()!
+                                                    .containsKey('totalFat')) {
+                                                  fat = snapshot.data!
+                                                      .get('totalFat');
+                                                }
+                                                if (snapshot.data!
+                                                    .data()!
+                                                    .containsKey(
+                                                        'totalCarbs')) {
+                                                  carbs = snapshot.data!
+                                                      .get('totalCarbs');
+                                                }
                                               }
                                               return Column(
                                                 children: [
@@ -1012,24 +1041,28 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                       child: Column(
                                         children: [
                                           Row(
-                                            children: const [
-                                              Expanded(
+                                            children: [
+                                              const Expanded(
                                                   child: Text(
                                                 'Sleep',
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 20),
                                               )),
-                                              Align(
-                                                alignment:
-                                                    Alignment.centerRight,
-                                                child: Icon(
-                                                  CupertinoIcons
-                                                      .moon_stars_fill,
-                                                  color: Color.fromARGB(
-                                                      255, 255, 200, 38),
-                                                ),
-                                              )
+                                              IconButton(
+                                                  onPressed: () {
+                                                    Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                const RecordSleepScreen()));
+                                                  },
+                                                  icon: const Icon(
+                                                    CupertinoIcons
+                                                        .moon_stars_fill,
+                                                    color: Color.fromARGB(
+                                                        255, 255, 200, 38),
+                                                  ))
                                             ],
                                           ),
                                           const SizedBox(
@@ -1064,7 +1097,110 @@ class _DiaryScreenState extends State<DiaryScreen> {
                             ),
                           )
                         ],
-                      )
+                      ),
+                      // ? WEIGHT CARD
+                      Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                          child: InkWell(
+                              borderRadius: BorderRadius.circular(20),
+                              onTap: () {},
+                              child: Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: Column(children: [
+                                  Row(
+                                    children: [
+                                      const Expanded(
+                                          child: Text(
+                                        'Weight',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20),
+                                      )),
+                                      IconButton(
+                                        icon: const Icon(
+                                          Icons.monitor_weight,
+                                          color:
+                                              Color.fromARGB(255, 92, 98, 255),
+                                        ),
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const AddWeightScreen()));
+                                        },
+                                      )
+                                    ],
+                                  ),
+                                  // ? WEIGHT CHART
+                                  SizedBox(
+                                    height: 180,
+                                    width: double.infinity,
+                                    child: LineChart(LineChartData(
+                                      gridData: FlGridData(
+                                          drawVerticalLine: false,
+                                          drawHorizontalLine: true),
+                                      borderData: FlBorderData(show: false),
+                                      titlesData: FlTitlesData(
+                                        show: true,
+                                        topTitles: AxisTitles(
+                                          sideTitles:
+                                              SideTitles(showTitles: false),
+                                        ),
+                                        rightTitles: AxisTitles(
+                                          sideTitles:
+                                              SideTitles(showTitles: false),
+                                        ),
+                                        bottomTitles: AxisTitles(
+                                          sideTitles: SideTitles(
+                                            showTitles: true,
+                                            reservedSize: 30,
+                                            interval: 1,
+                                            getTitlesWidget:
+                                                weightBottomTitleWidgets,
+                                          ),
+                                        ),
+                                        leftTitles: AxisTitles(
+                                          sideTitles: SideTitles(
+                                            showTitles: true,
+                                            interval: 1,
+                                            getTitlesWidget:
+                                                weightLeftTitleWidgets,
+                                            reservedSize: 42,
+                                          ),
+                                        ),
+                                      ),
+                                      minX: 0,
+                                      maxX: 4,
+                                      minY: 40,
+                                      maxY: 90,
+                                      lineBarsData: [
+                                        LineChartBarData(
+                                          spots: const [
+                                            FlSpot(0, 60),
+                                            FlSpot(4, 57),
+                                          ],
+                                          isCurved: true,
+                                          gradient: const LinearGradient(
+                                            colors: [
+                                              Color.fromARGB(255, 92, 98, 255),
+                                              Color.fromARGB(255, 73, 79, 255),
+                                            ],
+                                            begin: Alignment.centerLeft,
+                                            end: Alignment.centerRight,
+                                          ),
+                                          barWidth: 4,
+                                          isStrokeCapRound: true,
+                                          dotData: FlDotData(
+                                            show: false,
+                                          ),
+                                        )
+                                      ],
+                                    )),
+                                  ),
+                                ]),
+                              ))),
                     ],
                   )),
             ),
@@ -1217,9 +1353,6 @@ class _DiaryScreenState extends State<DiaryScreen> {
 class MyClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    // TODO: implement getClip
-    // throw UnimplementedError();
-
     double w = size.width;
     double h = size.height;
 
@@ -1236,8 +1369,73 @@ class MyClipper extends CustomClipper<Path> {
 
   @override
   bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    // TODO: implement shouldReclip
-    // throw UnimplementedError();
     return true;
   }
+}
+
+Widget weightBottomTitleWidgets(double value, TitleMeta meta) {
+  const style = TextStyle(
+    color: Color(0xff727272),
+    // fontWeight: FontWeight.bold,
+    fontSize: 14,
+  );
+  Widget text;
+  switch (value.toInt()) {
+    case 0:
+      text = Text(
+          DateFormat('d/M')
+              .format(DateTime.now().subtract(const Duration(days: 90))),
+          style: style);
+      break;
+    case 1:
+      text = Text(
+          DateFormat('d/M')
+              .format(DateTime.now().subtract(const Duration(days: 60))),
+          style: style);
+      break;
+    case 2:
+      text = Text(
+          DateFormat('d/M')
+              .format(DateTime.now().subtract(const Duration(days: 30))),
+          style: style);
+      break;
+    case 3:
+      text = Text(DateFormat('d/M').format(DateTime.now()), style: style);
+      break;
+    default:
+      text = const Text('', style: style);
+      break;
+  }
+
+  return Padding(padding: const EdgeInsets.only(top: 8.0), child: text);
+}
+
+Widget weightLeftTitleWidgets(double value, TitleMeta meta) {
+  const style = TextStyle(
+    color: Color(0xff67727d),
+    fontWeight: FontWeight.bold,
+    fontSize: 15,
+  );
+  String text;
+  switch (value.toInt()) {
+    case 40:
+      text = '40';
+      break;
+    case 50:
+      text = '50';
+      break;
+    case 60:
+      text = '60';
+      break;
+    case 70:
+      text = '70';
+      break;
+    case 80:
+      text = '80';
+      break;
+    default:
+      return Container();
+  }
+
+  return Text(text, style: style, textAlign: TextAlign.left);
 }

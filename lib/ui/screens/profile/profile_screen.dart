@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:health_tracker/shared/services/user_provider.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   final String uid;
@@ -12,6 +14,9 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
+    final UserProvider userProvider = Provider.of<UserProvider>(context);
+    final user = userProvider.getUser;
+
     return Scaffold(
       appBar: _getAppBar(),
       body: Padding(
@@ -27,11 +32,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   percent: 0.7,
                   backgroundColor: Colors.transparent,
                   animation: true,
-                  center: const SizedBox(
+                  center: SizedBox(
                     height: 80,
                     width: 80,
                     child: CircleAvatar(
-                      backgroundImage: AssetImage('assets/images/profile.jpg'),
+                      backgroundImage: NetworkImage(user.photoUrl),
                       backgroundColor: Colors.red,
                     ),
                   ),
@@ -69,11 +74,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
               height: 24,
             ),
             Text(
-              'Anis',
+              user.username,
               style: Theme.of(context).textTheme.headline3,
             ),
-            const Text(
-              'Dhia',
+            Text(
+              user.bio,
             ),
             Card(
               // margin: const EdgeInsets.all(8.0),

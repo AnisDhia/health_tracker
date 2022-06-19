@@ -67,7 +67,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
     // start loading
     try {
       String res = await FireStoreCrud().uploadPost(
-          _descriptionController.text, _file!, uid, username, profImage);
+          _descriptionController.text, _file, uid, username, profImage);
       if (res == 'success') {
         setState(() {
           isLoading = false;

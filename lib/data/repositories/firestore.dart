@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:health_tracker/data/models/post_model.dart';
+import 'package:health_tracker/data/models/user_model.dart' as model;
 import 'package:health_tracker/data/repositories/storage.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
@@ -14,12 +15,15 @@ class FireStoreCrud {
   final _firestore = FirebaseFirestore.instance;
 
   // Upload a post
-  Future<String> uploadPost(String description, Uint8List file, String uid,
+  Future<String> uploadPost(String description, Uint8List? file, String uid,
       String username, String profImage) async {
     String res = "Some error occured";
     try {
-      String photoUrl =
-          await FireStorage().uploadImageToStorage('posts', file, true);
+      String? photoUrl;
+      if (file != null) {
+        photoUrl =
+            await FireStorage().uploadImageToStorage('posts', file, true);
+      }
       String postId = const Uuid().v1();
       Post post = Post(
           description: description,
@@ -174,8 +178,15 @@ class FireStoreCrud {
     }
   }
 
-  Future<void> removeDiaryMealFood(String meal, String foodId, String name, double calories,
-      double carbs, double fat, double protein, String type) async {
+  Future<void> removeDiaryMealFood(
+      String meal,
+      String foodId,
+      String name,
+      double calories,
+      double carbs,
+      double fat,
+      double protein,
+      String type) async {
     try {
       _firestore
           .collection('users')
@@ -243,9 +254,7 @@ class FireStoreCrud {
           .doc(FirebaseAuth.instance.currentUser!.uid)
           .collection('diary')
           .doc(DateFormat('d-M-y').format(DateTime.now()))
-          .set({
-        'water': waterValue
-      }, SetOptions(merge: true)).onError(
+          .set({'water': waterValue}, SetOptions(merge: true)).onError(
               (error, stackTrace) => log('Error writing document: $error'));
     } catch (e) {
       log(e.toString());
@@ -275,23 +284,27 @@ class FireStoreCrud {
     }
   }
 
-  // Future<void> bookmarkRecipe(String recipeId, String uid) async {
-  //   DocumentReference user = _firestore.collection('users').doc(uid);
-  //   user.get();
-  //   try {
-  //     if (user['bookmarks'].contains(recipeId)) {
-  //       // if already bookmarked then remove from bookmarks
-  //       _firestore.collection('users').doc(uid).update({
-  //         'bookmarkedRecipes': FieldValue.arrayRemove([recipeId])
-  //       });
-  //     } else {
-  //       _firestore.collection('users').doc(uid).update({
-  //         'bookmarkedRecipes': FieldValue.arrayUnion([recipeId])
-  //       });
-  //     }
-  //     log("Bookmarks Updated");
-  //   } catch (e) {
-  //     throw e.toString();
-  //   }
-  // }
+  Future<void> bookmarkRecipe(String recipeId) async {
+    String uid = FirebaseAuth.instance.currentUser!.uid;
+    DocumentSnapshot user = await _firestore.collection('users').doc(uid).get();
+
+    try {
+      if (user['bookmarkedRecipes'].contains(recipeId)) {
+        // if already bookmarked then remove from bookmarks
+        _firestore.collection('users').doc(uid).update({
+          'bookmarkedRecipes': FieldValue.arrayRemove([recipeId])
+        });
+        log("Bookmark Removed");
+      } else {
+        _firestore.collection('users').doc(uid).update({
+          'bookmarkedRecipes': FieldValue.arrayUnion([recipeId])
+        });
+        log("Bookmark Added");
+      }
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
+  // Stream<List<model.User>> getUsers() => _firestore.collection('users').snapshots().transform(Utils.transformer(model.User.fromSnap));
 }

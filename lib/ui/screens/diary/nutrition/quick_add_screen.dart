@@ -17,7 +17,6 @@ class _QuickAddScreenState extends State<QuickAddScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     caloriesController = TextEditingController();
     proteinController = TextEditingController();

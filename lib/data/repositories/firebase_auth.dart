@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -45,13 +46,14 @@ class FirebaseAuthRepo implements UserRepository {
       required String email,
       required String password,
       required Sex sex,
-      required Uint8List file}) async {
+      Uint8List? file}) async {
     try {
       UserCredential cred = await _firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
-
-      String photoUrl =
-          await FireStorage().uploadImageToStorage('profilePics', file, false);
+      _firebaseAuth.currentUser!.updateDisplayName(username);
+      String photoUrl = file != null
+          ? await FireStorage().uploadImageToStorage('profilePics', file, false)
+          : 'https://i.stack.imgur.com/l60Hf.png';
 
       model.User user = model.User(
         username: username,

@@ -12,10 +12,10 @@ class CommentsScreen extends StatefulWidget {
   const CommentsScreen({Key? key, required this.postId}) : super(key: key);
 
   @override
-  _CommentsScreenState createState() => _CommentsScreenState();
+  CommentsScreenState createState() => CommentsScreenState();
 }
 
-class _CommentsScreenState extends State<CommentsScreen> {
+class CommentsScreenState extends State<CommentsScreen> {
   final TextEditingController commentEditingController =
       TextEditingController();
 

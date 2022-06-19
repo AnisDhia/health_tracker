@@ -14,24 +14,28 @@ class SpoonacularService {
   static const String _apiKey = '73071387df1246538cb0d2678f85ec94';
 
   // Generate Meal Plan
-  Future<MealPlan> generateMealPlan({int? targetCalories, String? diet}) async {
-    if (diet == 'None') diet = '';
+  Future<List<Recipe>> generateMealPlan({int? targetCalories, String? diet, String? timeFrame, String? exclude}) async {
     Map<String, String> parameters = {
-      'timeFrame': 'day',
+      'timeFrame': timeFrame!,
       'targetCalories': targetCalories.toString(),
       'diet': diet!,
+      'exclude': exclude!,
       'apiKey': _apiKey,
     };
-    Uri uri = Uri.https(_baseUrl, '/recipes/mealplanner/generate', parameters);
+    Uri uri = Uri.https(_baseUrl, '/mealplanner/generate', parameters);
     Map<String, String> headers = {
       HttpHeaders.contentTypeHeader: 'application/json',
     };
-
+    log(uri.toString());
     try {
       var response = await http.get(uri, headers: headers);
-      Map<String, dynamic> data = json.decode(response.body);
-      MealPlan mealPlan = MealPlan.fromMap(data);
-      return mealPlan;
+      List<dynamic> data = jsonDecode(response.body)['meals'];
+      List<Recipe> recipes = [];
+      if(response.body.isNotEmpty) {
+        recipes = data.map((json) => Recipe.fromJson(json)).toList();
+      } 
+      return recipes;
+      // return mealPlan;
     } catch (e) {
       throw e.toString();
     }
