@@ -92,7 +92,6 @@ class _NavigationState extends State<Navigation> {
                 });
               },
             ),
-
             bottomNavigationBar: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
               items: const <BottomNavigationBarItem>[

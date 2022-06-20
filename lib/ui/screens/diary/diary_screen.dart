@@ -36,6 +36,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
   // DateTime _selectedDate = DateTime.now();
   // DateTime _focusedDate = DateTime.now();
   // CalendarFormat _calendarFormat = CalendarFormat.week;
+  DateTime date = DateTime.now();
   final Future<SharedPreferences> prefs = SharedPreferences.getInstance();
 
   // ? steps vars
@@ -137,9 +138,25 @@ class _DiaryScreenState extends State<DiaryScreen> {
                       ),
                       Align(
                           alignment: Alignment.centerLeft,
-                          child: Text(
-                            DateFormat('d MMMM, y').format(DateTime.now()),
-                            style: const TextStyle(fontWeight: FontWeight.bold),
+                          child: TextButton(
+                            onPressed: () async {
+                              DateTime? newDate = await showDatePicker(
+                                  context: context,
+                                  initialDate: DateTime.now(),
+                                  firstDate: DateTime(2000),
+                                  lastDate: DateTime.now());
+
+                              if (newDate == null) return;
+
+                              setState(() {
+                                date = newDate;
+                              });
+                            },
+                            child: Text(
+                              DateFormat('d MMMM, y').format(date),
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
+                            ),
                           )),
                       const SizedBox(
                         height: 30,
@@ -564,7 +581,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                                   .instance.currentUser!.uid)
                                               .collection('diary')
                                               .doc(DateFormat('d-M-y')
-                                                  .format(DateTime.now()))
+                                                  .format(date))
                                               .snapshots(),
                                           builder: (context,
                                               AsyncSnapshot snapshot) {
@@ -736,7 +753,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>
-                                                const CaloriesStatsScreen(),
+                                                CaloriesStatsScreen(date: date),
                                           ));
                                     },
                                     child: Padding(
@@ -748,7 +765,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                                   .instance.currentUser!.uid)
                                               .collection('diary')
                                               .doc(DateFormat('d-M-y')
-                                                  .format(DateTime.now()))
+                                                  .format(date))
                                               .snapshots(),
                                           builder: (context,
                                               AsyncSnapshot snapshot) {
