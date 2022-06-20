@@ -70,7 +70,7 @@ dependencies:
   flutter_bloc: ^8.0.1
   pedometer: ^3.0.0
   intl: ^0.17.0
-  fl_chart: ^0.51.0
+  fl_chart: ^0.55.0
   percent_indicator: ^4.0.0
   heart_bpm: ^1.1.1+0
   camera: ^0.9.4+19

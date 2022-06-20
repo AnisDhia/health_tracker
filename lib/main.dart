@@ -42,18 +42,14 @@ Future main() async {
       systemNavigationBarColor: Colors.black,
       systemNavigationBarIconBrightness: Brightness.light));
   // await UserPreferences.init();
-  final prefs = await SharedPreferences.getInstance();
-  final bool? seen = prefs.getBool('seen');
 
-  runApp(const MyApp(seen: false));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   static const String title = 'Health Tracker';
 
-  const MyApp({Key? key, required this.seen}) : super(key: key);
-
-  final bool? seen;
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
