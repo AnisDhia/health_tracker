@@ -175,6 +175,7 @@
 //   }
 // }
 import 'package:flutter/material.dart';
+import 'package:health_tracker/ui/screens/auth/about/about_screen.dart';
 import 'package:health_tracker/ui/screens/auth/onboarding/size_config.dart';
 import 'package:health_tracker/ui/screens/auth/onboarding/onboarding_contents.dart';
 import 'package:health_tracker/ui/screens/auth/registration_screen.dart';
@@ -285,7 +286,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           padding: const EdgeInsets.all(30),
                           child: ElevatedButton(
                             onPressed: () {
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignUpScreen()));
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const AboutYouScreen()));
                             },
                             style: ElevatedButton.styleFrom(
                               primary: Colors.red,

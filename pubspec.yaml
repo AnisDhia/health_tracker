@@ -89,6 +89,7 @@ dependencies:
   internet_connection_checker: ^0.0.1+4
   flutter_local_notifications: ^9.6.1
   time_range_picker: ^2.1.0
+  horizontal_picker: ^1.2.0
   # flutter_icons: ^1.1.0
   
 dependency_overrides:

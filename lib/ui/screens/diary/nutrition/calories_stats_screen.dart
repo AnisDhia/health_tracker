@@ -9,7 +9,8 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'package:pie_chart/pie_chart.dart' as pie;
 
 class CaloriesStatsScreen extends StatefulWidget {
-  const CaloriesStatsScreen({Key? key}) : super(key: key);
+  const CaloriesStatsScreen({Key? key, required this.date}) : super(key: key);
+  final DateTime date;
 
   @override
   State<CaloriesStatsScreen> createState() => _HeartDetailsScreenState();
@@ -60,7 +61,7 @@ class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
                         .collection('users')
                         .doc(FirebaseAuth.instance.currentUser!.uid)
                         .collection('diary')
-                        .doc(DateFormat('d-M-y').format(DateTime.now()))
+                        .doc(DateFormat('d-M-y').format(widget.date))
                         .snapshots(),
                     builder: (context,
                         AsyncSnapshot<DocumentSnapshot<Map<String, dynamic>>>

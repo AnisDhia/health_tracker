@@ -73,7 +73,7 @@ class SpoonacularService {
       // return recipes;
     } catch (e) {
       log(e.toString());
-      throw 'POOP ==> $e';
+      throw 'I AM HERE ==> $e';
     }
   }
 
