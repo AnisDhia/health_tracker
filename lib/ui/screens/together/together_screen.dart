@@ -29,8 +29,8 @@ class TogetherScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Column(
-                    children: const [
+                  const Column(
+                    children: [
                       Text(
                         '11',
                         style: TextStyle(fontSize: 24),
@@ -65,8 +65,8 @@ class TogetherScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Column(
-                    children: const [
+                  const Column(
+                    children: [
                       Text(
                         '66',
                         style: TextStyle(fontSize: 24),
@@ -92,8 +92,8 @@ class TogetherScreen extends StatelessWidget {
               const SizedBox(
                 height: 24,
               ),
-              Row(
-                children: const [
+              const Row(
+                children: [
                   CircleAvatar(
                       backgroundColor: Color.fromARGB(255, 255, 117, 68),
                       radius: 22,
@@ -220,14 +220,14 @@ class TogetherScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(20)),
                             child: InkWell(
                               borderRadius: BorderRadius.circular(20),
-                              child: Padding(
-                                padding: const EdgeInsets.all(32.0),
+                              child: const Padding(
+                                padding: EdgeInsets.all(32.0),
                                 child: Row(
                                   children: [
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
-                                      children: const [
+                                      children: [
                                         SizedBox(
                                           height: 20,
                                         ),
@@ -296,14 +296,14 @@ class TogetherScreen extends StatelessWidget {
                                             const MeditationScreen()));
                               },
                               borderRadius: BorderRadius.circular(20),
-                              child: Padding(
-                                padding: const EdgeInsets.all(16.0),
+                              child: const Padding(
+                                padding: EdgeInsets.all(16.0),
                                 child: Row(
                                   children: [
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
-                                      children: const [
+                                      children: [
                                         Text(
                                           'Exercise',
                                           style: TextStyle(
@@ -344,14 +344,14 @@ class TogetherScreen extends StatelessWidget {
                             child: InkWell(
                               onTap: () {},
                               borderRadius: BorderRadius.circular(20),
-                              child: Padding(
-                                padding: const EdgeInsets.all(16.0),
+                              child: const Padding(
+                                padding: EdgeInsets.all(16.0),
                                 child: Row(
                                   children: [
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
-                                      children: const [
+                                      children: [
                                         Text(
                                           'Start a',
                                           style: TextStyle(

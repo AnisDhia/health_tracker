@@ -4,7 +4,6 @@ import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:health_tracker/data/models/post_model.dart';
-import 'package:health_tracker/data/models/user_model.dart' as model;
 import 'package:health_tracker/data/repositories/storage.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';

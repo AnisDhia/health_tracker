@@ -131,14 +131,14 @@ class _WorkoutCardState extends State<WorkoutCard> {
                     children: [
                       Text(
                         widget.workout.name,
-                        style: Theme.of(context).textTheme.subtitle1,
+                        style: Theme.of(context).textTheme.titleMedium,
                       ),
                       const SizedBox(
                         height: 8,
                       ),
                       Text(
                         widget.workout.level,
-                        style: Theme.of(context).textTheme.caption,
+                        style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],
                   )),

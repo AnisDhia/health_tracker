@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:health_tracker/ui/screens/auth/about/widgets/gender_picker_widget.dart';
-import 'package:health_tracker/ui/widgets/button_widget.dart';
 import 'package:horizontal_picker/horizontal_picker.dart';
 import 'package:numberpicker/numberpicker.dart';
 
@@ -17,7 +16,7 @@ List<AboutContents> contents = [
   AboutContents(
       title: "Tell us about yourself!",
       desc: "To give you a better experience we need\n to know your gender",
-      body: GenderPicker()),
+      body: const GenderPicker()),
   AboutContents(
     title: "How old are you?",
     desc: "This helps us create your personalized plan",

@@ -1,13 +1,9 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:health_tracker/data/repositories/firebase_auth.dart';
 import 'package:health_tracker/ui/screens/auth/registration_screen.dart';
 import 'package:health_tracker/shared/styles/themes.dart';
 import 'package:health_tracker/ui/widgets/button_widget.dart';
-import 'package:health_tracker/ui/widgets/indicator_widget.dart';
-import 'package:health_tracker/ui/widgets/navigation_widget.dart';
 import 'package:health_tracker/ui/widgets/snackbar_widget.dart';
 import 'package:health_tracker/ui/widgets/textfield_widget.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -68,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Welcome back!',
-                        style: Theme.of(context).textTheme.headline1?.copyWith(
+                        style: Theme.of(context).textTheme.displayLarge?.copyWith(
                             fontSize: 20.sp,
                             letterSpacing: 2,
                             fontWeight: FontWeight.bold)),
@@ -77,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Text(
                       'Sign In To Continue !',
-                      style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
                             fontSize: 12.sp,
                             letterSpacing: 2,
                           ),
@@ -144,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           'Don\'t have an Account ?',
                           style: Theme.of(context)
                               .textTheme
-                              .subtitle1
+                              .titleMedium
                               ?.copyWith(
                                   fontSize: 8.sp, fontWeight: FontWeight.bold),
                         ),
@@ -164,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             'Sign Up',
                             style: Theme.of(context)
                                 .textTheme
-                                .headline1
+                                .displayLarge
                                 ?.copyWith(
                                     fontSize: 9.sp,
                                     color: MyThemes.primary,
@@ -187,7 +183,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           'Or',
                           style: Theme.of(context)
                               .textTheme
-                              .headline1
+                              .displayLarge
                               ?.copyWith(
                                   fontSize: 9.sp,
                                   color: MyThemes.primary,
@@ -222,7 +218,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 'It will be added soon !!',
                                 style: Theme.of(context)
                                     .textTheme
-                                    .headline1
+                                    .displayLarge
                                     ?.copyWith(
                                         fontSize: 11.sp,
                                         color: Colors.white,
@@ -246,7 +242,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 'It will be added soon !!',
                                 style: Theme.of(context)
                                     .textTheme
-                                    .headline1
+                                    .displayLarge
                                     ?.copyWith(
                                         fontSize: 11.sp,
                                         color: Colors.white,

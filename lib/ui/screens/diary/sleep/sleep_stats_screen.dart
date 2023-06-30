@@ -54,8 +54,8 @@ class _HeartDetailsScreenState extends State<SleepStatsScreen> {
                     const SizedBox(
                       height: 24,
                     ),
-                    Row(
-                      children: const [
+                    const Row(
+                      children: [
                         Text(
                           '7.5',
                           style: TextStyle(
@@ -221,12 +221,12 @@ class _HeartDetailsScreenState extends State<SleepStatsScreen> {
                             child: InkWell(
                               borderRadius: BorderRadius.circular(20),
                               onTap: () {},
-                              child: Padding(
-                                padding: const EdgeInsets.all(16.0),
+                              child: const Padding(
+                                padding: EdgeInsets.all(16.0),
                                 child: Column(
                                   children: [
                                     Row(
-                                      children: const [
+                                      children: [
                                         Expanded(
                                             child: Text(
                                           'Total sleep',
@@ -244,10 +244,10 @@ class _HeartDetailsScreenState extends State<SleepStatsScreen> {
                                         )
                                       ],
                                     ),
-                                    const SizedBox(
+                                    SizedBox(
                                       height: 32,
                                     ),
-                                    const Align(
+                                    Align(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
                                         '8h 30m',
@@ -269,12 +269,12 @@ class _HeartDetailsScreenState extends State<SleepStatsScreen> {
                             child: InkWell(
                               borderRadius: BorderRadius.circular(20),
                               onTap: () {},
-                              child: Padding(
-                                padding: const EdgeInsets.all(16.0),
+                              child: const Padding(
+                                padding: EdgeInsets.all(16.0),
                                 child: Column(
                                   children: [
                                     Row(
-                                      children: const [
+                                      children: [
                                         Expanded(
                                             child: Text(
                                           'Deep sleep',
@@ -292,10 +292,10 @@ class _HeartDetailsScreenState extends State<SleepStatsScreen> {
                                         )
                                       ],
                                     ),
-                                    const SizedBox(
+                                    SizedBox(
                                       height: 32,
                                     ),
-                                    const Align(
+                                    Align(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
                                         '3h 10m',
@@ -344,27 +344,27 @@ class _HeartDetailsScreenState extends State<SleepStatsScreen> {
                                   end: Alignment.bottomLeft),
                               circularStrokeCap: CircularStrokeCap.round,
                             ),
-                            Expanded(
+                            const Expanded(
                                 flex: 2,
                                 child: Padding(
-                                  padding: const EdgeInsets.only(left: 16.0),
+                                  padding: EdgeInsets.only(left: 16.0),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      const Text(
+                                      Text(
                                         'Quality of sleep',
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 18),
                                       ),
-                                      const SizedBox(
+                                      SizedBox(
                                         height: 14,
                                       ),
                                       Row(
-                                        children: const [
+                                        children: [
                                           Icon(
                                             Icons.circle,
                                             color: Colors.red,
@@ -373,11 +373,11 @@ class _HeartDetailsScreenState extends State<SleepStatsScreen> {
                                           Text('0 - 50% Poor quality'),
                                         ],
                                       ),
-                                      const SizedBox(
+                                      SizedBox(
                                         height: 8,
                                       ),
                                       Row(
-                                        children: const [
+                                        children: [
                                           Icon(
                                             Icons.circle,
                                             color: Colors.orange,
@@ -386,11 +386,11 @@ class _HeartDetailsScreenState extends State<SleepStatsScreen> {
                                           Text('50 - 70% Avg. quality'),
                                         ],
                                       ),
-                                      const SizedBox(
+                                      SizedBox(
                                         height: 8,
                                       ),
                                       Row(
-                                        children: const [
+                                        children: [
                                           Icon(
                                             Icons.circle,
                                             color: Colors.green,

@@ -109,8 +109,8 @@ class _MeassureBPMScreenState extends State<MeassureBPMScreen> {
               Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20)),
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
+                child: const Padding(
+                  padding: EdgeInsets.all(16),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -118,15 +118,15 @@ class _MeassureBPMScreenState extends State<MeassureBPMScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(children: const [
+                              Row(children: [
                                 Icon(Icons.circle, size: 6),
                                 Text(' Don\'t press too hard.')
                               ]),
-                              Row(children: const [
+                              Row(children: [
                                 Icon(Icons.circle, size: 6),
                                 Text(' Remain still and quiet.')
                               ]),
-                              Row(children: const [
+                              Row(children: [
                                 Icon(Icons.circle, size: 6),
                                 Expanded(
                                   child: Text(

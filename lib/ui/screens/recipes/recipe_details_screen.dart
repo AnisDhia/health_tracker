@@ -84,14 +84,14 @@ class RecipeDetails extends StatelessWidget {
                   ),
                   Text(
                     recipeModel.title,
-                    style: textTheme.headline6,
+                    style: textTheme.titleLarge,
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   Text(
                     recipeModel.author,
-                    style: textTheme.caption,
+                    style: textTheme.bodySmall,
                   ),
                   const SizedBox(
                     height: 10,

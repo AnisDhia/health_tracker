@@ -68,14 +68,14 @@ class ExerciseDetails extends StatelessWidget {
                   ),
                   Text(
                     exerciseDeatails.name,
-                    style: textTheme.headline6,
+                    style: textTheme.titleLarge,
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   Text(
                     exerciseDeatails.category,
-                    style: textTheme.caption,
+                    style: textTheme.bodySmall,
                   ),
                   const SizedBox(
                     height: 10,

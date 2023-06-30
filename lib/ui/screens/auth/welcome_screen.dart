@@ -2,7 +2,6 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/ui/screens/auth/login_screen.dart';
 import 'package:health_tracker/ui/screens/auth/onboarding/onboarding_screen.dart';
-import 'package:health_tracker/ui/screens/auth/registration_screen.dart';
 import 'package:health_tracker/shared/styles/themes.dart';
 import 'package:health_tracker/ui/widgets/button_widget.dart';
 import 'package:sizer/sizer.dart';
@@ -31,7 +30,7 @@ class WelcomeScreen extends StatelessWidget {
               ),
               Text(
                 'Hello !',
-                style: Theme.of(context).textTheme.headline1?.copyWith(
+                style: Theme.of(context).textTheme.displayLarge?.copyWith(
                     fontSize: 20.sp,
                     letterSpacing: 3,
                     fontWeight: FontWeight.bold),
@@ -42,7 +41,7 @@ class WelcomeScreen extends StatelessWidget {
               Text(
                 'Welcome to Health Tracker\n Get started !',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       letterSpacing: 3,
                       fontSize: 10.sp,
                       wordSpacing: 2,

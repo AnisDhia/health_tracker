@@ -36,14 +36,14 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     labelPadding: const EdgeInsets.symmetric(horizontal: 40),
                   ),
                 ),
-                Expanded(
+                const Expanded(
                     child: TabBarView(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(8.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           SizedBox(
                             height: 12,
                           ),
@@ -71,7 +71,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                         ],
                       ),
                     ),
-                    const Text('Messages'),
+                    Text('Messages'),
                   ],
                 ))
               ],

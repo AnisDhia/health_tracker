@@ -178,7 +178,6 @@ import 'package:flutter/material.dart';
 import 'package:health_tracker/ui/screens/auth/about/about_screen.dart';
 import 'package:health_tracker/ui/screens/auth/onboarding/size_config.dart';
 import 'package:health_tracker/ui/screens/auth/onboarding/onboarding_contents.dart';
-import 'package:health_tracker/ui/screens/auth/registration_screen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);
@@ -228,42 +227,39 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 onPageChanged: (value) => setState(() => _currentPage = value),
                 itemCount: contents.length,
                 itemBuilder: (context, i) {
-                  return Container(
-                    // color: colors[i],
-                    child: Padding(
-                      padding: const EdgeInsets.all(40.0),
-                      child: Column(
-                        children: [
-                          Image.asset(
-                            contents[i].image,
-                            height: SizeConfig.blockV! * 35,
+                  return Padding(
+                    padding: const EdgeInsets.all(40.0),
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          contents[i].image,
+                          height: SizeConfig.blockV! * 35,
+                        ),
+                        SizedBox(
+                          height: (height >= 840) ? 60 : 30,
+                        ),
+                        Text(
+                          contents[i].title,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: "Mulish",
+                            fontWeight: FontWeight.w600,
+                            fontSize: (width <= 550) ? 30 : 35,
                           ),
-                          SizedBox(
-                            height: (height >= 840) ? 60 : 30,
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        Text(
+                          contents[i].desc,
+                          style: TextStyle(
+                            fontFamily: "Mulish",
+                            fontWeight: FontWeight.w300,
+                            fontSize: (width <= 550) ? 17 : 25,
                           ),
-                          Text(
-                            contents[i].title,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontFamily: "Mulish",
-                              fontWeight: FontWeight.w600,
-                              fontSize: (width <= 550) ? 30 : 35,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          Text(
-                            contents[i].desc,
-                            style: TextStyle(
-                              fontFamily: "Mulish",
-                              fontWeight: FontWeight.w300,
-                              fontSize: (width <= 550) ? 17 : 25,
-                            ),
-                            textAlign: TextAlign.center,
-                          )
-                        ],
-                      ),
+                          textAlign: TextAlign.center,
+                        )
+                      ],
                     ),
                   );
                 },
@@ -289,7 +285,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const AboutYouScreen()));
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.red,
+                              backgroundColor: Colors.red,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
@@ -333,7 +329,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                   );
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.red,
+                                  backgroundColor: Colors.red,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   ),

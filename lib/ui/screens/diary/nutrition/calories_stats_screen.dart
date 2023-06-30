@@ -143,10 +143,10 @@ class _HeartDetailsScreenState extends State<CaloriesStatsScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Column(
+                                const Column(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
-                                  children: const [
+                                  children: [
                                     Text(
                                       '2000',
                                       style: TextStyle(

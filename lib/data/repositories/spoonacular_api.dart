@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-import 'package:health_tracker/data/models/meal_plan_model.dart';
 import 'package:health_tracker/data/models/recipe_model.dart';
 import 'package:http/http.dart' as http;
 

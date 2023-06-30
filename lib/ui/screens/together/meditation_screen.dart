@@ -24,7 +24,7 @@ class _MeditationScreenState extends State<MeditationScreen> {
                 onTap: () {},
                 borderRadius: BorderRadius.circular(20),
                 child:
-                    Padding(padding: const EdgeInsets.all(16.0), child: Row()),
+                    const Padding(padding: EdgeInsets.all(16.0), child: Row()),
               ),
             ),
           ],

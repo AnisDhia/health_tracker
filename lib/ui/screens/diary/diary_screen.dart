@@ -172,8 +172,8 @@ class _DiaryScreenState extends State<DiaryScreen> {
                             padding: const EdgeInsets.all(16.0),
                             child: Column(
                               children: [
-                                Row(
-                                  children: const [
+                                const Row(
+                                  children: [
                                     Expanded(
                                         flex: 2,
                                         child: Text('Activity',
@@ -324,21 +324,21 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                         )
                                       ],
                                     ),
-                                    Column(
+                                    const Column(
                                       children: [
-                                        const Icon(
+                                        Icon(
                                             FontAwesomeIcons.personWalking,
                                             color: Color.fromARGB(
                                                 255, 249, 149, 76)),
-                                        const SizedBox(
+                                        SizedBox(
                                           height: 8,
                                         ),
-                                        const Text('Walking'),
-                                        const SizedBox(
+                                        Text('Walking'),
+                                        SizedBox(
                                           height: 4,
                                         ),
                                         Row(
-                                          children: const [
+                                          children: [
                                             Text(
                                               '76',
                                               style: TextStyle(
@@ -354,21 +354,21 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                         )
                                       ],
                                     ),
-                                    Column(
+                                    const Column(
                                       children: [
-                                        const Icon(
+                                        Icon(
                                             FontAwesomeIcons.personRunning,
                                             color: Color.fromARGB(
                                                 255, 247, 105, 132)),
-                                        const SizedBox(
+                                        SizedBox(
                                           height: 8,
                                         ),
-                                        const Text('Running'),
-                                        const SizedBox(
+                                        Text('Running'),
+                                        SizedBox(
                                           height: 4,
                                         ),
                                         Row(
-                                          children: const [
+                                          children: [
                                             Text(
                                               '24',
                                               style: TextStyle(
@@ -808,8 +808,8 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                               }
                                               return Column(
                                                 children: [
-                                                  Row(
-                                                    children: const [
+                                                  const Row(
+                                                    children: [
                                                       Expanded(
                                                           child: Text(
                                                               'Calories',

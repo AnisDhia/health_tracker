@@ -7,7 +7,6 @@ import 'package:health_tracker/shared/utilities/utils.dart';
 import 'package:health_tracker/ui/screens/auth/login_screen.dart';
 import 'package:health_tracker/shared/constants/consts_variables.dart';
 import 'package:health_tracker/shared/styles/themes.dart';
-import 'package:health_tracker/ui/screens/auth/onboarding/onboarding_screen.dart';
 import 'package:health_tracker/ui/widgets/button_widget.dart';
 import 'package:health_tracker/ui/widgets/navigation_widget.dart';
 import 'package:health_tracker/ui/widgets/snackbar_widget.dart';
@@ -86,7 +85,7 @@ class _LoginScreenState extends State<SignUpScreen> {
                     //   height: 8.h,
                     // ),
                     Text('Hey !',
-                        style: Theme.of(context).textTheme.headline1?.copyWith(
+                        style: Theme.of(context).textTheme.displayLarge?.copyWith(
                             fontSize: 20.sp,
                             letterSpacing: 2,
                             fontWeight: FontWeight.bold)),
@@ -95,7 +94,7 @@ class _LoginScreenState extends State<SignUpScreen> {
                     ),
                     Text(
                       'Create a New Account !',
-                      style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
                             fontSize: 12.sp,
                             letterSpacing: 2,
                             // fontWeight: FontWeight.bold
@@ -234,7 +233,7 @@ class _LoginScreenState extends State<SignUpScreen> {
                           'Already have an Account ?',
                           style: Theme.of(context)
                               .textTheme
-                              .subtitle1
+                              .titleMedium
                               ?.copyWith(
                                   fontSize: 8.sp, fontWeight: FontWeight.bold),
                         ),
@@ -253,7 +252,7 @@ class _LoginScreenState extends State<SignUpScreen> {
                             'Login',
                             style: Theme.of(context)
                                 .textTheme
-                                .headline1
+                                .displayLarge
                                 ?.copyWith(
                                     fontSize: 9.sp,
                                     color: MyThemes.primary,

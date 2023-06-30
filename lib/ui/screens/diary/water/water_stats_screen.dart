@@ -254,8 +254,8 @@ class _HeartDetailsScreenState extends State<WaterStatsScreen> {
                                       padding: const EdgeInsets.all(16.0),
                                       child: Column(
                                         children: [
-                                          Row(
-                                            children: const [
+                                          const Row(
+                                            children: [
                                               Expanded(
                                                   child: Text(
                                                 'Average Intake',
@@ -313,8 +313,8 @@ class _HeartDetailsScreenState extends State<WaterStatsScreen> {
                                       padding: const EdgeInsets.all(16.0),
                                       child: Column(
                                         children: [
-                                          Row(
-                                            children: const [
+                                          const Row(
+                                            children: [
                                               Expanded(
                                                   child: Text(
                                                 'Blood Oxygen',

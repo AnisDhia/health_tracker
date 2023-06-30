@@ -12,10 +12,10 @@ class _ConversationScreenState extends State<ConversationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: const Text('Conversation')),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
+        body: const Padding(
+          padding: EdgeInsets.all(8.0),
           child: Column(
-            children: const [],
+            children: [],
           ),
         ));
   }

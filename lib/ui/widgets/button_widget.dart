@@ -30,7 +30,7 @@ class ButtonWidget extends StatelessWidget {
           title,
           style: Theme.of(context)
               .textTheme
-              .headline1
+              .displayLarge
               ?.copyWith(fontSize: 11.sp, color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),

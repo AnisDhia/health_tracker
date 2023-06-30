@@ -185,8 +185,8 @@ class _HeartDetailsScreenState extends State<HeartStatsScreen> {
                               padding: const EdgeInsets.all(16.0),
                               child: Column(
                                 children: [
-                                  Row(
-                                    children: const [
+                                  const Row(
+                                    children: [
                                       Expanded(
                                           child: Text(
                                         'Bpm range',
@@ -242,8 +242,8 @@ class _HeartDetailsScreenState extends State<HeartStatsScreen> {
                               padding: const EdgeInsets.all(16.0),
                               child: Column(
                                 children: [
-                                  Row(
-                                    children: const [
+                                  const Row(
+                                    children: [
                                       Expanded(
                                           child: Text(
                                         'Resting',

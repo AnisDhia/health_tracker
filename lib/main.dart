@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:health_tracker/shared/services/user_provider.dart';
 import 'package:health_tracker/ui/screens/auth/welcome_screen.dart';
 import 'package:health_tracker/ui/widgets/indicator_widget.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/shared/styles/themes.dart';

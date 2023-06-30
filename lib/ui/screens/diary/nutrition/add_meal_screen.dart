@@ -169,11 +169,11 @@ class _AddFoodScreenState extends State<AddMealScreen> {
                                                                     .title)));
                                               }
                                             },
-                                            child: Padding(
+                                            child: const Padding(
                                               padding:
-                                                  const EdgeInsets.all(16.0),
+                                                  EdgeInsets.all(16.0),
                                               child: Column(
-                                                children: const [
+                                                children: [
                                                   Icon(
                                                     // Icons.qr_code_scanner,
                                                     CupertinoIcons.barcode_viewfinder,
@@ -202,11 +202,11 @@ class _AddFoodScreenState extends State<AddMealScreen> {
                                                       builder: (context) =>
                                                           const QuickAddScreen()));
                                             },
-                                            child: Padding(
+                                            child: const Padding(
                                               padding:
-                                                  const EdgeInsets.all(16.0),
+                                                  EdgeInsets.all(16.0),
                                               child: Column(
-                                                children: const [
+                                                children: [
                                                   Icon(
                                                     Icons.local_fire_department,
                                                     size: 50,

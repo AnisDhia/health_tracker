@@ -79,30 +79,30 @@ class _ExerciseCardState extends State<ExerciseCard> {
                     children: [
                       Text(
                         widget.exercise.name,
-                        style: Theme.of(context).textTheme.subtitle1,
+                        style: Theme.of(context).textTheme.titleMedium,
                       ),
                       const SizedBox(
                         height: 8,
                       ),
                       Text(
                         'Level: ${widget.exercise.level}',
-                        style: Theme.of(context).textTheme.caption,
+                        style: Theme.of(context).textTheme.bodySmall,
                       ),
                       Text(
                         'Equipment: ${widget.exercise.equipment}',
-                        style: Theme.of(context).textTheme.caption,
+                        style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],
                   )),
               // Spacer(),
-              Flexible(
+              const Flexible(
                   flex: 1,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: const[
+                        children: [
                           // const Icon(Icons.timer_outlined),
                           // const SizedBox(
                           //   width: 4,
@@ -111,7 +111,7 @@ class _ExerciseCardState extends State<ExerciseCard> {
                         ],
                       ),
                       // const Spacer(),
-                      const SizedBox(
+                      SizedBox(
                         height: 8,
                       ),
                       // InkWell(

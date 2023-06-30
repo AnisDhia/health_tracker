@@ -53,7 +53,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       'Joined',
                       style: Theme.of(context)
                           .textTheme
-                          .subtitle1!
+                          .titleMedium!
                           .copyWith(fontFamily: 'Avenir'),
                     ),
                     const SizedBox(
@@ -63,7 +63,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       '6 mon ago',
                       style: Theme.of(context)
                           .textTheme
-                          .headline6!
+                          .titleLarge!
                           .copyWith(fontFamily: 'Avenir'),
                     ),
                   ],
@@ -75,7 +75,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             Text(
               user.username,
-              style: Theme.of(context).textTheme.headline3,
+              style: Theme.of(context).textTheme.displaySmall,
             ),
             Text(
               user.bio,
@@ -84,10 +84,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               // margin: const EdgeInsets.all(8.0),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
-              child: Column(
+              child: const Column(
                 children: [
                   Row(
-                    children: const [
+                    children: [
                       SizedBox(
                         width: 50,
                         height: 30,

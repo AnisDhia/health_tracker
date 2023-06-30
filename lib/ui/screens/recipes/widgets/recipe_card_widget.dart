@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/data/models/recipe_model.dart';
 import 'package:health_tracker/data/repositories/firestore.dart';
@@ -160,14 +158,14 @@ class _RecipeCardState extends State<RecipeCard> {
                     children: [
                       Text(
                         widget.recipe.title,
-                        style: Theme.of(context).textTheme.subtitle1,
+                        style: Theme.of(context).textTheme.titleMedium,
                       ),
                       const SizedBox(
                         height: 8,
                       ),
                       Text(
                         widget.recipe.author,
-                        style: Theme.of(context).textTheme.caption,
+                        style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],
                   )),

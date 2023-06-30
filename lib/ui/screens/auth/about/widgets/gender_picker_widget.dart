@@ -23,9 +23,9 @@ class _GenderPickerState extends State<GenderPicker> {
                   selected = 0;
                 });
               },
-              child: Column(
+              child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Icon(
                     Icons.male,
                     size: 50,
@@ -48,9 +48,9 @@ class _GenderPickerState extends State<GenderPicker> {
                   selected = 1;
                 });
               },
-              child: Column(
+              child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Icon(
                     Icons.female,
                     size: 50,
