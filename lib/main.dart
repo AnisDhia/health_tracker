@@ -19,19 +19,17 @@ Future main() async {
 
   var initializationSettingsAndroid =
       const AndroidInitializationSettings('splash');
-  var initializationSettingsIOS = IOSInitializationSettings(
-      requestAlertPermission: true,
-      requestBadgePermission: true,
-      requestSoundPermission: true,
-      onDidReceiveLocalNotification:
-          (int id, String? title, String? body, String? payload) async {});
+  // var initializationSettingsIOS = IOSInitializationSettings(
+  //     requestAlertPermission: true,
+  //     requestBadgePermission: true,
+  //     requestSoundPermission: true,
+  //     onDidReceiveLocalNotification:
+  //         (int id, String? title, String? body, String? payload) async {});
   var initializationSettings = InitializationSettings(
-      android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
+      android: initializationSettingsAndroid);
   await flutterLocalNotificationsPlugin.initialize(initializationSettings,
-      onSelectNotification: (payload) async {
-    if (payload != null) {
-      debugPrint('notification payload: $payload');
-    }
+      onDidReceiveNotificationResponse: (payload) async {
+    debugPrint('notification payload: $payload');
   });
 
   await Firebase.initializeApp();
