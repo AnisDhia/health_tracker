@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "176584428229-v76oknbrf13g38clqckjc90jv6ge2rmj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.health_tracker",
+            "certificate_hash": "f404dd4f7619694fdcbd06e0c3980e941ec2dd8d"
+          }
+        },
+        {
           "client_id": "176584428229-0r8ft7kp1ul0ahr1iu8u0ocajr6a28sb.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -32,10 +40,10 @@
               "client_type": 3
             },
             {
-              "client_id": "176584428229-e8pdl44evv4sk4genkc1f2ajlg207v2o.apps.googleusercontent.com",
+              "client_id": "176584428229-bvdsrtvn0143cb3re67fsn8aeqqb4p7c.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.anis.healthtracker"
+                "bundle_id": "com.example.healthTracker"
               }
             }
           ]

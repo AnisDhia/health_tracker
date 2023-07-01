@@ -79,9 +79,9 @@ class _HeartDetailsScreenState extends State<HeartStatsScreen> {
                     height: 180,
                     width: double.infinity,
                     child: LineChart(LineChartData(
-                      gridData: FlGridData(show: false),
+                      gridData: const FlGridData(show: false),
                       borderData: FlBorderData(show: false),
-                      titlesData: FlTitlesData(
+                      titlesData: const FlTitlesData(
                         show: true,
                         topTitles: AxisTitles(
                           sideTitles: SideTitles(showTitles: false),
@@ -138,7 +138,7 @@ class _HeartDetailsScreenState extends State<HeartStatsScreen> {
                             ),
                             barWidth: 4,
                             isStrokeCapRound: true,
-                            dotData: FlDotData(
+                            dotData: const FlDotData(
                               show: false,
                             ),
                             belowBarData: BarAreaData(

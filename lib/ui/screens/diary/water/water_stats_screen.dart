@@ -219,8 +219,8 @@ class _HeartDetailsScreenState extends State<WaterStatsScreen> {
                                           ]),
                                     ],
                                     maxY: 4000,
-                                    gridData: FlGridData(show: false),
-                                    titlesData: FlTitlesData(
+                                    gridData: const FlGridData(show: false),
+                                    titlesData: const FlTitlesData(
                                       show: true,
                                       leftTitles: AxisTitles(
                                           sideTitles: SideTitles(

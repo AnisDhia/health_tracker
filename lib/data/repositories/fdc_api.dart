@@ -39,7 +39,7 @@ class FoodDataCentralService {
       return foods;
     } catch (e) {
       log(e.toString());
-      throw e.toString();
+      rethrow;
     }
   }
 

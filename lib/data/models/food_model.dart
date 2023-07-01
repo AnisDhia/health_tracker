@@ -21,7 +21,7 @@ class Food {
   factory Food.fromJson(Map<String, dynamic> json) {
     return Food(
         id: json['fdcId'].toString(),
-        name: json['lowercaseDescription'] as String,
+        name: (json['description'] as String).toLowerCase(),
         nutrients: json['foodNutrients'] as List<dynamic>,
         servingSize: json['servingSize'],
         servingSizeUnit: json['servingSizeUnit']);

@@ -19,12 +19,12 @@ Future main() async {
 
   var initializationSettingsAndroid =
       const AndroidInitializationSettings('splash');
-  // var initializationSettingsIOS = IOSInitializationSettings(
-  //     requestAlertPermission: true,
-  //     requestBadgePermission: true,
-  //     requestSoundPermission: true,
-  //     onDidReceiveLocalNotification:
-  //         (int id, String? title, String? body, String? payload) async {});
+  var initializationSettingsIOS = DarwinInitializationSettings(
+      requestAlertPermission: true,
+      requestBadgePermission: true,
+      requestSoundPermission: true,
+      onDidReceiveLocalNotification:
+          (int id, String? title, String? body, String? payload) async {});
   var initializationSettings = InitializationSettings(
       android: initializationSettingsAndroid);
   await flutterLocalNotificationsPlugin.initialize(initializationSettings,

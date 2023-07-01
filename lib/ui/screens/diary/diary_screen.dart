@@ -446,9 +446,9 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                             height: 100,
                                             width: double.infinity,
                                             child: LineChart(LineChartData(
-                                              gridData: FlGridData(show: false),
+                                              gridData: const FlGridData(show: false),
                                               titlesData:
-                                                  FlTitlesData(show: false),
+                                                  const FlTitlesData(show: false),
                                               borderData:
                                                   FlBorderData(show: false),
                                               minX: 0,
@@ -496,7 +496,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                                     // ),
                                                     barWidth: 2,
                                                     isStrokeCapRound: true,
-                                                    dotData: FlDotData(
+                                                    dotData: const FlDotData(
                                                       show: false,
                                                     ),
                                                     belowBarData: BarAreaData(
@@ -636,9 +636,9 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                                     width: 150,
                                                     child:
                                                         LineChart(LineChartData(
-                                                      gridData: FlGridData(
+                                                      gridData: const FlGridData(
                                                           show: false),
-                                                      titlesData: FlTitlesData(
+                                                      titlesData: const FlTitlesData(
                                                           show: false),
                                                       borderData: FlBorderData(
                                                           show: false),
@@ -674,7 +674,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                                             barWidth: 5,
                                                             isStrokeCapRound:
                                                                 true,
-                                                            dotData: FlDotData(
+                                                            dotData: const FlDotData(
                                                               show: false,
                                                             ),
                                                             belowBarData: BarAreaData(
@@ -1155,11 +1155,11 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                     height: 180,
                                     width: double.infinity,
                                     child: LineChart(LineChartData(
-                                      gridData: FlGridData(
+                                      gridData: const FlGridData(
                                           drawVerticalLine: false,
                                           drawHorizontalLine: true),
                                       borderData: FlBorderData(show: false),
-                                      titlesData: FlTitlesData(
+                                      titlesData: const FlTitlesData(
                                         show: true,
                                         topTitles: AxisTitles(
                                           sideTitles:
@@ -1209,7 +1209,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                           ),
                                           barWidth: 4,
                                           isStrokeCapRound: true,
-                                          dotData: FlDotData(
+                                          dotData: const FlDotData(
                                             show: false,
                                           ),
                                         )
