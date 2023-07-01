@@ -108,7 +108,7 @@ class _RecipeCardState extends State<RecipeCard> {
                     },
                     child: const Icon(
                       Icons.bookmark_add_outlined,
-                      color: Colors.white,
+                      // color: Colors.white,
                       size: 38,
                     )
                     // StreamBuilder<Object>(

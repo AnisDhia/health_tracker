@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/data/models/user_model.dart' as model;
@@ -42,7 +43,8 @@ class _PostCardState extends State<PostCard> {
         err.toString(),
       );
     }
-    setState(() {});
+    mounted ? setState(() {}) : null;
+    // setState(() {});
   }
 
   deletePost(String postId) async {
@@ -63,7 +65,7 @@ class _PostCardState extends State<PostCard> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: Theme.of(context).brightness == Brightness.dark
-            ? const Color.fromARGB(255, 15, 15, 15)
+            ? const Color.fromARGB(255, 16, 16, 16)
             : Colors.grey.shade200,
       ),
       padding: const EdgeInsets.symmetric(vertical: 10),
@@ -167,7 +169,17 @@ class _PostCardState extends State<PostCard> {
                 padding: const EdgeInsets.only(
                   top: 8,
                 ),
-                child: Text(' ${widget.snap['description']}'),
+                child: ExpandableText(
+                  widget.snap['description'].toString(),
+                  expandText: 'more',
+                  collapseText: 'less',
+                  maxLines: 3,
+                  linkColor: Colors.blue,
+                  style: const TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+                // Text(' ${widget.snap['description']}'),
               ),
             ],
           ),
@@ -221,7 +233,7 @@ class _PostCardState extends State<PostCard> {
               )
             : const Divider(),
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
           child: Align(
             alignment: Alignment.centerLeft,
             child: DefaultTextStyle(
@@ -274,27 +286,34 @@ class _PostCardState extends State<PostCard> {
             ),
             Expanded(
               flex: 1,
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        icon: const Icon(
-                          CupertinoIcons.text_bubble,
-                        ),
-                        onPressed: () => Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => CommentsScreen(
-                              postId: widget.snap['postId'].toString(),
-                            ),
-                          ),
-                        ),
-                      ),
-                      const Text('Comment')
-                    ],
+              child: InkWell(
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => CommentsScreen(
+                      postId: widget.snap['postId'].toString(),
+                    ),
                   ),
-                ],
+                ),
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // IconButton(
+                    //   icon: const Icon(
+                    //     CupertinoIcons.text_bubble,
+                    //   ),
+                    //   onPressed: () => Navigator.of(context).push(
+                    //     MaterialPageRoute(
+                    //       builder: (context) => CommentsScreen(
+                    //         postId: widget.snap['postId'].toString(),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                    Icon(CupertinoIcons.text_bubble),
+                    SizedBox(width: 10,),
+                    Text('Comment')
+                  ],
+                ),
               ),
             ),
           ],

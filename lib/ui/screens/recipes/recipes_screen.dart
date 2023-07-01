@@ -57,13 +57,16 @@ class _RecipesScreenState extends State<RecipesScreen> {
                   labelPadding: const EdgeInsets.symmetric(horizontal: 24),
                 ),
                 Expanded(
-                  child: TabBarView(children: [
-                    RecipeCategories(recipes: recipesByCategory),
-                    const Center(child: Text("Favourites")),
-                    NewRecipe(
-                      newRecipesList: recipeList,
-                    ),
-                  ]),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: TabBarView(children: [
+                      RecipeCategories(recipes: recipesByCategory),
+                      const Center(child: Text("Favourites")),
+                      NewRecipe(
+                        newRecipesList: recipeList,
+                      ),
+                    ]),
+                  ),
                 )
               ],
             )));
@@ -89,7 +92,7 @@ class _RecipeCategoriesState extends State<RecipeCategories> {
           children: [
             const Text(
               'Keto',
-              style: TextStyle(fontSize: 24),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 4,
@@ -100,7 +103,7 @@ class _RecipeCategoriesState extends State<RecipeCategories> {
             ),
             const Text(
               'Vegetarian',
-              style: TextStyle(fontSize: 24),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 4,
@@ -112,7 +115,7 @@ class _RecipeCategoriesState extends State<RecipeCategories> {
             ),
             const Text(
               'Pescetarian',
-              style: TextStyle(fontSize: 24),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 4,
@@ -135,7 +138,7 @@ class HorizontalRecipes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 250,
+      height: 220,
       child: FutureBuilder(
           future: recipesList,
           builder: (context, AsyncSnapshot<List<Recipe>> snapshot) {
@@ -152,7 +155,7 @@ class HorizontalRecipes extends StatelessWidget {
                   bool bookmarked = false;
                   return Card(
                     clipBehavior: Clip.antiAlias,
-                    elevation: 10,
+                    elevation: 8,
                     // margin: const EdgeInsets.all(8.0),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
@@ -179,32 +182,47 @@ class HorizontalRecipes extends StatelessWidget {
                           const SizedBox(
                             height: 12,
                           ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  snapshot.data![index].title,
-                                  // softWrap: false,
-                                  // overflow: TextOverflow.fade,
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    snapshot.data![index].title
+                                    // .length > 30
+                                    //     ? "${snapshot.data![index].title
+                                    //             .substring(0, 30)}..."
+                                    //     : snapshot.data![index].title
+                                        ,
+                                    softWrap: false,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          Row(children: [
-                            IconButton(
-                                onPressed: () {
-                                  bookmarked = !bookmarked;
-                                  // setState(() {
-
-                                  // });
-                                },
-                                icon: Icon(bookmarked
-                                    ? Icons.bookmark
-                                    : Icons.bookmark_border))
-                          ])
+                          // const SizedBox(
+                          //   height: 12,
+                          // ),
+                          const Spacer(),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                              Text("${snapshot.data![index].cookingTime} mins"),
+                              IconButton(
+                                  onPressed: () {
+                                    bookmarked = !bookmarked;
+                                    // setState(() {
+                          
+                                    // });
+                                  },
+                                  icon: Icon(bookmarked
+                                      ? Icons.bookmark
+                                      : Icons.bookmark_border))
+                            ]),
+                          )
                         ]),
                       ),
                     ),

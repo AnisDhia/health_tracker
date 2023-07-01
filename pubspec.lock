@@ -289,6 +289,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.5"
+  expandable_text:
+    dependency: "direct main"
+    description:
+      name: expandable_text
+      sha256: "7d03ea48af6987b20ece232678b744862aa3250d4a71e2aaf1e4af90015d76b1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.0"
   fab_circular_menu:
     dependency: "direct main"
     description:
@@ -729,7 +737,7 @@ packages:
     source: hosted
     version: "1.0.0"
   image_picker_android:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       name: image_picker_android
       sha256: "524c04b800320c92c079294a8a2024912b5cff6854d8e5da4d966338b243a276"

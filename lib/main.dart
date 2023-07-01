@@ -26,7 +26,7 @@ Future main() async {
       onDidReceiveLocalNotification:
           (int id, String? title, String? body, String? payload) async {});
   var initializationSettings = InitializationSettings(
-      android: initializationSettingsAndroid);
+      android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
   await flutterLocalNotificationsPlugin.initialize(initializationSettings,
       onDidReceiveNotificationResponse: (payload) async {
     debugPrint('notification payload: $payload');

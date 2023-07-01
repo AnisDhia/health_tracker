@@ -65,9 +65,10 @@ dependencies:
   time_range_picker: ^2.1.0
   horizontal_picker: ^1.2.0
   firebase_messaging: ^14.6.4
+  expandable_text: ^2.3.0
 
-dependency_overrides:
-  image_picker_android: 0.8.4+13
+# dependency_overrides:
+  # image_picker_android: 0.8.4+13
 
 dev_dependencies:
   flutter_test:
