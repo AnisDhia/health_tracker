@@ -15,7 +15,7 @@ class FoodDataCentralService {
   static const String _apiKey = 'gkWkb1cAcwybUkTpxX7RIBfadCfVigZQM7WUFPr2';
 
   Future<List<Food>> searchFood(String query) async {
-    if(query.isEmpty) {
+    if (query.isEmpty) {
       return [];
     }
     Map<String, String> parameters = {
@@ -26,8 +26,6 @@ class FoodDataCentralService {
     Map<String, String> headers = {
       HttpHeaders.contentTypeHeader: 'application/json',
     };
-    log(uri.toString());
-    // ! remove this ^
 
     try {
       var response = await http.get(uri, headers: headers);
@@ -51,8 +49,6 @@ class FoodDataCentralService {
     Map<String, String> headers = {
       HttpHeaders.contentTypeHeader: 'application/json',
     };
-    log(uri.toString());
-    // ! remove this ^
 
     try {
       var response = await http.get(uri, headers: headers);
