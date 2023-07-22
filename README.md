@@ -1,14 +1,26 @@
-# Health Tracker
+# <center> <img align="center" src="./assets/images/app_logo.png" height="36"/> Health Tracker <center/>
 
 A mobile application with the goal of helping people track their fitness progress, encourage a healthier lifestyle using gamification, and connect fitness enthusiasts from around the world.
 
-Features of this app include:
+# Features 
 - a diary for tracking daily activity, weight, calories, nutrition, water, heart rate ...etc
 - healthy recipes based on your fitness goals with nutrition details and cooking steps.
 - workouts and diet plans.
 - daily, weekly, and monthly challenges.
 - a community feed.
 
-![alt text](https://github.com/AnisDhia/health_tracker/blob/master/screenshots/Screenshot%203.png)
-![alt text](https://github.com/AnisDhia/health_tracker/blob/master/screenshots/Screenshot%201.png)
-![alt text](https://github.com/AnisDhia/health_tracker/blob/master/screenshots/Screenshot%202.png)
+# Additional Features
+- Firebase authentication (Email, Google, Facebook)
+- Firebase Firestore & Cloud Storage integration
+- API integration (Spoonacular, FDC, Open Food Facts... etc)
+- Heart rate sensor
+- Barcode scanner
+
+# Built with 
+ - <img align="center" src="https://img.icons8.com/color/48/000000/flutter.png" height="30"/> Flutter 
+ - <img align="center" src="https://img.icons8.com/color/48/000000/firebase.png" height="30"/> Firebase
+
+# screenshots 
+![App screenshots](./screenshots/ss1.png)
+![App screenshots](./screenshots/ss2.png)
+![App screenshots](./screenshots/ss3.png)
