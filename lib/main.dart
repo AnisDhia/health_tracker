@@ -16,7 +16,7 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  
   var initializationSettingsAndroid =
       const AndroidInitializationSettings('splash');
   var initializationSettingsIOS = DarwinInitializationSettings(

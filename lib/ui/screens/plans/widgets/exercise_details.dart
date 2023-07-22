@@ -3,7 +3,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-import 'package:health_tracker/data/models/exercises/exercise.dart';
+import 'package:health_tracker/data/models/exercise_model.dart';
 import 'package:health_tracker/shared/styles/themes.dart';
 
 class ExerciseDetails extends StatelessWidget {

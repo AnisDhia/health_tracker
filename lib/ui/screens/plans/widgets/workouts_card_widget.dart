@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:health_tracker/data/models/exercises/workout.dart';
+import 'package:health_tracker/data/models/workout_model.dart';
 import 'package:health_tracker/ui/screens/plans/workouts_details.dart';
 
 class NewWorkout extends StatelessWidget {

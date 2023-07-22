@@ -1,4 +1,4 @@
-import 'package:health_tracker/data/models/exercises/exercise.dart';
+import 'package:health_tracker/data/models/exercise_model.dart';
 
 class Workouts {
   late final String name;

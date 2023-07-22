@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/services.dart' as root_bundle;
-import 'package:health_tracker/data/models/exercises/workout.dart';
+import 'package:health_tracker/data/models/workout_model.dart';
 
 Future<List<Workouts>> fetchWorkoutsJsonData() async {
   final data =

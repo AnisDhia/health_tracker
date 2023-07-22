@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:health_tracker/data/models/exercises/workout.dart';
+import 'package:health_tracker/data/models/workout_model.dart';
 import 'package:health_tracker/ui/screens/plans/widgets/workouts_card_widget.dart';
 import 'package:health_tracker/shared/services/workouts_json.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
