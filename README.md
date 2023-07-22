@@ -9,7 +9,7 @@ A mobile application with the goal of helping people track their fitness progres
 - daily, weekly, and monthly challenges.
 - a community feed.
 
-# Additional Features
+- ## Additional Features
 - Firebase authentication (Email, Google, Facebook)
 - Firebase Firestore & Cloud Storage integration
 - API integration (Spoonacular, FDC, Open Food Facts... etc)
