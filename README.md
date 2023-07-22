@@ -9,6 +9,6 @@ Features of this app include:
 - daily, weekly, and monthly challenges.
 - a community feed.
 
+![alt text](https://github.com/AnisDhia/health_tracker/blob/master/screenshots/Screenshot%203.png)
 ![alt text](https://github.com/AnisDhia/health_tracker/blob/master/screenshots/Screenshot%201.png)
 ![alt text](https://github.com/AnisDhia/health_tracker/blob/master/screenshots/Screenshot%202.png)
-![alt text](https://github.com/AnisDhia/health_tracker/blob/master/screenshots/Screenshot%203.png)
