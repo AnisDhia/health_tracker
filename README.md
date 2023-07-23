@@ -24,3 +24,23 @@ A mobile application with the goal of helping people track their fitness progres
 ![App screenshots](./screenshots/ss1.png)
 ![App screenshots](./screenshots/ss2.png)
 ![App screenshots](./screenshots/ss3.png)
+
+## Getting Started
+Step-1 Download or clone this repository -
+
+<code>git clone https://github.com/anisdhia/health_tracker.git</code>
+
+Step-2 Open the root directory and type this command -
+
+<code>flutter pub get</code>
+
+Step-1 Run the app -
+
+<code>flutter run</code>
+
+## Required Tools
+- Android Studio
+- Visual Studio Code (Optional)
+- Flutter
+- Dart
+
