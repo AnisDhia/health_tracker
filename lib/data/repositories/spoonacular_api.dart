@@ -10,7 +10,7 @@ class SpoonacularService {
   static final SpoonacularService instance = SpoonacularService._instantiate();
 
   final String _baseUrl = 'api.spoonacular.com';
-  static const String _apiKey = '73071387df1246538cb0d2678f85ec94';
+  static const String _apiKey = 'YOUR OWN API KEY';
 
   // Generate Meal Plan
   Future<List<Recipe>> generateMealPlan({int? targetCalories, String? diet, String? timeFrame, String? exclude}) async {

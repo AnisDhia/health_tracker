@@ -12,7 +12,7 @@ class FoodDataCentralService {
       FoodDataCentralService._instantiate();
 
   final String _baseUrl = 'api.nal.usda.gov';
-  static const String _apiKey = 'gkWkb1cAcwybUkTpxX7RIBfadCfVigZQM7WUFPr2';
+  static const String _apiKey = 'YOUR OWN API KEY';
 
   Future<List<Food>> searchFood(String query) async {
     if (query.isEmpty) {
