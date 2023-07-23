@@ -43,3 +43,4 @@ Step-1 Run the app -
 - Visual Studio Code (Optional)
 - Flutter
 - Dart
+- Firebase
