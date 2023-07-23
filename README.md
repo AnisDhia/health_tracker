@@ -28,15 +28,15 @@ A mobile application with the goal of helping people track their fitness progres
 ## Getting Started
 Step-1 Download or clone this repository -
 
-<code>git clone https://github.com/anisdhia/health_tracker.git</code>
+    git clone https://github.com/anisdhia/health_tracker.git
 
 Step-2 Open the root directory and type this command -
 
-<code>flutter pub get</code>
+    flutter pub get
 
 Step-1 Run the app -
 
-<code>flutter run</code>
+    flutter run
 
 ## Required Tools
 - Android Studio
