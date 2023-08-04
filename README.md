@@ -2,7 +2,7 @@
 
 A mobile application with the goal of helping people track their fitness progress, encourage a healthier lifestyle using gamification, and connect fitness enthusiasts from around the world.
 
-# Features 
+# Core Features 
 - a diary for tracking daily activity, weight, calories, nutrition, water, heart rate ...etc
 - healthy recipes based on your fitness goals with nutrition details and cooking steps.
 - workouts and diet plans.
