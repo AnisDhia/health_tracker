@@ -1,5 +1,6 @@
 # <center> <img align="center" src="./assets/images/app_logo.png" height="36"/> Health Tracker <center/>
 
+
 A mobile application with the goal of helping people track their fitness progress, encourage a healthier lifestyle using gamification, and connect fitness enthusiasts from around the world.
 
 # Core Features 
