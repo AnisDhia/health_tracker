@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 import 'package:health_tracker/data/models/recipe_model.dart';
+import 'package:health_tracker/data/repositories/api_keys.dart';
 import 'package:http/http.dart' as http;
 
 class SpoonacularService {
@@ -10,7 +11,7 @@ class SpoonacularService {
   static final SpoonacularService instance = SpoonacularService._instantiate();
 
   final String _baseUrl = 'api.spoonacular.com';
-  static const String _apiKey = 'YOUR OWN API KEY';
+  static const String _apiKey = APIKeys.spoonacular;
 
   // Generate Meal Plan
   Future<List<Recipe>> generateMealPlan({int? targetCalories, String? diet, String? timeFrame, String? exclude}) async {

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:health_tracker/data/models/food_model.dart';
+import 'package:health_tracker/data/repositories/api_keys.dart';
 import 'package:http/http.dart' as http;
 
 class FoodDataCentralService {
@@ -12,7 +13,7 @@ class FoodDataCentralService {
       FoodDataCentralService._instantiate();
 
   final String _baseUrl = 'api.nal.usda.gov';
-  static const String _apiKey = 'YOUR OWN API KEY';
+  static const String _apiKey = APIKeys.fdc;
 
   Future<List<Food>> searchFood(String query) async {
     if (query.isEmpty) {

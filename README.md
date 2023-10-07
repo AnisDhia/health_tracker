@@ -3,6 +3,9 @@
 
 A mobile application with the goal of helping people track their fitness progress, encourage a healthier lifestyle using gamification, and connect fitness enthusiasts from around the world.
 
+![App screenshots](./screenshots/group.png)
+
+
 # Core Features 
 - a diary for tracking daily activity, weight, calories, nutrition, water, heart rate ...etc
 - healthy recipes based on your fitness goals with nutrition details and cooking steps.
@@ -23,8 +26,8 @@ A mobile application with the goal of helping people track their fitness progres
 
 # screenshots 
 ![App screenshots](./screenshots/ss1.png)
-![App screenshots](./screenshots/ss2.png)
-![App screenshots](./screenshots/ss3.png)
+![App screenshots](./screenshots/dark.png)
+![App screenshots](./screenshots/light.png)
 
 ## Getting Started
 Step-1 Download or clone this repository -
@@ -35,9 +38,11 @@ Step-2 Open the root directory and type this command -
 
     flutter pub get
 
-Step-1 Run the app -
+Step-3 Run the app -
 
     flutter run
+
+// note: make sure you add your own api keys in `lib/data/repositories/api_keys.dart` file
 
 ## Required Tools
 - Android Studio
